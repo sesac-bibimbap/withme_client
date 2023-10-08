@@ -14,7 +14,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'react', 'react-hooks', 'jsx-a11y', 'prettier'],
   rules: {
-    'prettier/prettier': ['error', , { endOfLine: 'auto' }],
+    'prettier/prettier': 'error',
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
     'react-refresh/only-export-components': [
       'warn',
