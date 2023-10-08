@@ -1,4 +1,4 @@
-name: Deploy to AWS S3
+name: prod AWS S3 배포
 
 on:
   push:
