@@ -14,4 +14,5 @@ yarn add -D commitizen cz-customizable
 
 - `.cz-config.js` 파일 추가
 - `package.json` 설정 추가
+  - `type: module` 옵션 삭제
 
