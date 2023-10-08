@@ -36,7 +36,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ap-northeast-2 # S3 버킷의 지역에 맞게 변경
         run: |
-          aws s3 mv s3://withme-sesac/ dist/$DATE/ --recursive  
+          aws s3 mv s3://withme-sesac/ s3://withme-sesac/dist/$DATE/ --recursive  
           aws s3 sync dist/ s3://withme-sesac/
           aws s3 website s3://withme-sesac/ --index-document index.html --error-document 404.html
           aws s3api put-bucket-acl --bucket withme-sesac --acl public-read
