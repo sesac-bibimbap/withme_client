@@ -4,7 +4,11 @@
 const App = () => {
   // const routes = useRoutes(PAGE_LIST);
   // return routes;
-  return <>Main</>;
+  return (
+    <>
+      <div>하잉</div>
+    </>
+  );
 };
 
 export default App;
