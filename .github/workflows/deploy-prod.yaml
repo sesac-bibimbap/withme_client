@@ -35,8 +35,9 @@ jobs:
           aws s3 mv s3://withme-sesac/ s3://withme-sesac/dist/$DATE/ --recursive  
           aws s3 sync dist/ s3://withme-sesac/
           aws s3 website s3://withme-sesac/ --index-document index.html --error-document 404.html
-          aws s3api put-bucket-acl --bucket withme-sesac --acl public-read
+          aws s3api put-bucket-acl --bucket withme-sesac --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
         # 기존 S3 객체를 날짜 폴더로 이동시킵니다.
         # 새로 빌드한 파일을 S3에 업로드합니다.
         # S3 웹사이트 설정을 업데이트합니다.
         # public-read ACL을 설정합니다.
+        # aws s3api put-bucket-acl --bucket withme-sesac --acl public-read
