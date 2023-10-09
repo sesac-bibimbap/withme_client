@@ -31,4 +31,7 @@ $ npx husky-init && yarn
 $ npx husky add .husky/pre-push '명령어'
 ```
 
-- 배포테스트
+5. node version 관리
+
+- `.nvmrc` 파일 설정 - v18.18.0
+
