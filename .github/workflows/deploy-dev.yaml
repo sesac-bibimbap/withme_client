@@ -1,4 +1,4 @@
-name: Deploy to AWS S3
+name: dev AWS S3 배포
 
 on:
   push:
@@ -34,6 +34,6 @@ jobs:
           aws s3 sync dist/ s3://withme-sesac-dev/
           aws s3 website s3://withme-sesac-dev/ --index-document index.html --error-document 404.html
           aws s3api put-bucket-acl --bucket withme-sesac-dev --acl public-read
+        aws s3api put-bucket-acl --bucket withme-sesac-dev --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 
         # aws s3api put-object-acl --bucket withme-sesac-dev --key index.html --acl public-read
-        # aws s3api put-bucket-acl --bucket withme-sesac-dev --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
