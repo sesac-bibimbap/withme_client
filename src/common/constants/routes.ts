@@ -1,16 +1,16 @@
-// const ROUTES = {
-//   MAIN: {
-//     PATH: '/',
-//     NAME: 'Main',
-//   },
-//   LOGIN: {
-//     PATH: '/login',
-//     NAME: 'Login',
-//   },
-//   SIGN_UP: {
-//     PATH: '/signup',
-//     NAME: 'SignUp',
-//   },
-// };
+const ROUTES = {
+  MAIN: {
+    PATH: '/',
+    NAME: 'Main',
+  },
+  REGISTER: {
+    PATH: '/register',
+    NAME: 'Register',
+  },
+  LOGIN: {
+    PATH: '/login',
+    NAME: 'Login',
+  },
+};
 
-// export default ROUTES;
+export default ROUTES;
