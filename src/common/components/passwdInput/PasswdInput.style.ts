@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
 
-export const email_input: CSSProperties = {
+export const passwd_input: CSSProperties = {
   height: 40,
 };
