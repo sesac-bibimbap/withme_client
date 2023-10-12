@@ -23,6 +23,7 @@ import {
   Popup,
   YellowBtn,
 } from '../../../common/components';
+import { ROUTES } from '../../../common/constants';
 
 const RegisterForm = () => {
   const { handleRegisterSubmit, showPopup, closePopup, popupTitle, popupText } =
@@ -77,6 +78,7 @@ const RegisterForm = () => {
                 <CharcoalBtn
                   buttonText="돌아가기"
                   buttonStyle={register_button_back}
+                  path={ROUTES.LOGIN.PATH}
                 />
                 <YellowBtn
                   htmlType="submit"
