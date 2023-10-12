@@ -18,7 +18,13 @@ const PasswdInput = ({ inputStyle, inputname }: passwdInputType) => {
     <>
       <Form.Item<AuthType>
         name={inputname}
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={[
+          { required: true, message: '비밀번호를 입력해주세요' },
+          {
+            pattern: /^[A-z\d!@#$%^&*()]{8,30}$/,
+            message: '영문과 특수문자만 가능하며, 8글자 이상 30글자 미만입니다',
+          },
+        ]}
       >
         <Input.Password
           style={passwdInputCss}

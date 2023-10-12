@@ -19,7 +19,6 @@ const useRegister = () => {
   const handleRegisterSubmit = async (registerData: AuthType) => {
     try {
       const data = await registerUser(registerData);
-      // console.log('🚀  a:', data.statusCode);
       setStatus(data.statusCode);
       setPopupTitle('회원가입 완료');
       setPopupText(popSuccessText);

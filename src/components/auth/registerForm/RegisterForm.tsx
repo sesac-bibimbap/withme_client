@@ -30,10 +30,11 @@ const RegisterForm = () => {
     useRegister();
 
   const { mutate } = useMutation(handleRegisterSubmit);
-  // const popupText = `회원가입이 성공적으로 완료되었습니다.
-  // 로그인 후 이용해주세요.
-  // `;
 
+  // const check = () => {
+  //   // if(form.getFieldValue("password"))
+  //   console.log(form.getFieldValue('password'));
+  // };
   return (
     <>
       <div style={wrapper}>
@@ -68,6 +69,12 @@ const RegisterForm = () => {
               name="personalInfo"
               valuePropName="checked"
               style={register_checkbox_box}
+              rules={[
+                {
+                  required: true,
+                  message: '개인정보 수집에 동의해주세요',
+                },
+              ]}
             >
               <Checkbox style={register_checkbox_ment}>
                 개인정보 수집 및 이용에 동의합니다.
