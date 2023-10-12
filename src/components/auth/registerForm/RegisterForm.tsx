@@ -25,7 +25,7 @@ import {
 } from '../../../common/components';
 
 const RegisterForm = () => {
-  const { handleRegisterSubmit, showPopup, closePopup, popupText, popupTitle } =
+  const { handleRegisterSubmit, showPopup, closePopup, popupTitle, popupText } =
     useRegister();
 
   const { mutate } = useMutation(handleRegisterSubmit);
