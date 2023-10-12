@@ -77,11 +77,10 @@ const RegisterForm = () => {
                 <CharcoalBtn
                   buttonText="돌아가기"
                   buttonStyle={register_button_back}
-                  // onClick={}
                 />
                 <YellowBtn
                   htmlType="submit"
-                  buttonText="로그인"
+                  buttonText="회원가입"
                   buttonStyle={register_button_signup}
                   // disabled={isLoading}
                 />
