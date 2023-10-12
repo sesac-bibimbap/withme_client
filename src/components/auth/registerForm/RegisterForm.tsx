@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Space } from 'antd';
+import { Checkbox, Form, Space } from 'antd';
 import { useMutation } from '@tanstack/react-query';
 import {
   backgroundForm,
@@ -7,8 +7,8 @@ import {
   register_text_title,
   register_form_base,
   register_text_reg,
-  button_back,
-  button_signup,
+  register_button_back,
+  register_button_signup,
   register_checkbox_ment,
   register_checkbox_box,
   register_button_bundle,
@@ -16,12 +16,22 @@ import {
 } from './RegisterForm.style';
 import { AuthType } from '../../../types';
 import useRegister from '../hooks/useRegister';
-import { EmailInput, PasswdInput, YellowBtn } from '../../../common/components';
+import {
+  CharcoalBtn,
+  EmailInput,
+  PasswdInput,
+  Popup,
+  YellowBtn,
+} from '../../../common/components';
 
 const RegisterForm = () => {
-  const { handleRegisterSubmit } = useRegister();
+  const { handleRegisterSubmit, showPopup, closePopup, popupText, popupTitle } =
+    useRegister();
 
   const { mutate } = useMutation(handleRegisterSubmit);
+  // const popupText = `회원가입이 성공적으로 완료되었습니다.
+  // 로그인 후 이용해주세요.
+  // `;
 
   return (
     <>
@@ -64,13 +74,15 @@ const RegisterForm = () => {
             </Form.Item>
             <Form.Item>
               <Space wrap style={register_button_bundle}>
-                <Button type="primary" style={button_back}>
-                  돌아가기
-                </Button>
+                <CharcoalBtn
+                  buttonText="돌아가기"
+                  buttonStyle={register_button_back}
+                  // onClick={}
+                />
                 <YellowBtn
                   htmlType="submit"
                   buttonText="로그인"
-                  buttonStyle={button_signup}
+                  buttonStyle={register_button_signup}
                   // disabled={isLoading}
                 />
               </Space>
@@ -78,6 +90,13 @@ const RegisterForm = () => {
           </Form>
         </div>
       </div>
+      {showPopup && (
+        <Popup
+          popupTitle={popupTitle}
+          popupText={popupText}
+          onClose={closePopup}
+        />
+      )}
     </>
   );
 };

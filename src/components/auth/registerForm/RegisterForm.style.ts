@@ -5,6 +5,7 @@ export const wrapper: CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '100dvh',
+  backgroundColor: '#000000',
 };
 
 export const backgroundForm: CSSProperties = {
@@ -54,7 +55,7 @@ export const register_checkbox_ment: CSSProperties = {
   marginTop: '20px',
 };
 
-export const button_back: CSSProperties = {
+export const register_button_back: CSSProperties = {
   width: '164px',
   height: '44px',
   backgroundColor: '#585656',
@@ -62,7 +63,7 @@ export const button_back: CSSProperties = {
   fontWeight: '600',
 };
 
-export const button_signup: CSSProperties = {
+export const register_button_signup: CSSProperties = {
   width: '165px',
   height: '44px',
   backgroundColor: '#F6C54D',
