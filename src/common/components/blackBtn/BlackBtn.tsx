@@ -8,10 +8,14 @@ type blackBtnType = {
   buttonStyle?: CSSProperties;
 };
 
-const BlackBtn = ({ buttonText, htmlType }: blackBtnType) => {
+const BlackBtn = ({ buttonText, htmlType, buttonStyle }: blackBtnType) => {
+  const blackBtnCss = {
+    ...blackBtn_button,
+    ...buttonStyle,
+  };
   return (
     <>
-      <Button style={blackBtn_button} htmlType={htmlType}>
+      <Button style={blackBtnCss} htmlType={htmlType}>
         {buttonText}
       </Button>
     </>
