@@ -1,6 +1,7 @@
-// import { LoginForm } from '../../components';
+import { LoginForm } from '../../components';
 
-export const Login = () => {
-  // return <LoginForm />;
-  return <>로그인창</>;
+const Login = () => {
+  return <LoginForm />;
 };
+
+export default Login;

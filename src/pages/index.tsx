@@ -1,10 +1,10 @@
+import { RegisterForm, LoginForm } from '../components';
 import { ROUTES } from '../common/constants';
 import { CreateStudyForm } from '../components';
-import { RegisterForm, LoginForm } from '../components';
-import Register from './register/Register';
-import { Login } from './login/Login';
 import Main from './main/Main';
 import CreateStudy from './study/create/CreateStudy';
+import Login from './login/Login';
+import Register from './register/Register';
 
 interface Route {
   element: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
