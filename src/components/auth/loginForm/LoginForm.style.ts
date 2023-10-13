@@ -5,6 +5,7 @@ export const login_wrapper: CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '100dvh',
+  backgroundColor: '#000000',
 };
 
 export const login_bg: CSSProperties = {
@@ -49,6 +50,7 @@ export const login_text_center: CSSProperties = {
 export const login_text_underline: CSSProperties = {
   textDecoration: 'underline',
   fontSize: '16px',
+  color: 'white',
 };
 
 export const login_btn: CSSProperties = {
