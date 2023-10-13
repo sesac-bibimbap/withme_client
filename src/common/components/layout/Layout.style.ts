@@ -4,6 +4,7 @@ export const layout_container: CSSProperties = {
   backgroundColor: '#454343',
   width: '100dvw',
   height: '100dvh',
+  display: 'flex',
 };
 
 // export const layout_header: CSSProperties = {
@@ -85,4 +86,17 @@ export const layout_sidebar_pageTabs_userInfo_circle: CSSProperties = {
   height: '35px',
   borderRadius: '50px',
   margin: '0px 10px',
+};
+
+// 바뀌어질 페이지 부분
+export const layout_contents_container: CSSProperties = {
+  // width: '100dvw',
+  // height: '100dvh',
+  // backgroundColor: '#FFFFFF',
+  // width: '1148px',
+  // height: '972px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px',
 };

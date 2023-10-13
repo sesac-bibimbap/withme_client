@@ -1,4 +1,4 @@
-export interface AuthType {
+interface AuthType {
   email?: string;
   password?: string;
   passwordCheck?: string;

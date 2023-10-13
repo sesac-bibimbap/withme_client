@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { AuthType } from '../../../types';
 import { loginUser } from '../api';
 import { ROUTES } from '../../../common/constants';
 import { useState } from 'react';

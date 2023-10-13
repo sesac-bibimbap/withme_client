@@ -14,7 +14,6 @@ import {
   register_button_bundle,
   register_input_passwd,
 } from './RegisterForm.style';
-import { AuthType } from '../../../types';
 import useRegister from '../hooks/useRegister';
 import {
   CharcoalBtn,

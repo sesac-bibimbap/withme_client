@@ -6,6 +6,6 @@ export const blackBtn_button: CSSProperties = {
   height: '50px',
   borderColor: 'transparent',
   color: '#FFFFFF',
-  fontWeight: '600',
+  fontWeight: '500',
   fontSize: '16px',
 };

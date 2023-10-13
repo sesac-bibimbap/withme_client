@@ -20,7 +20,6 @@ import {
   Popup,
   YellowBtn,
 } from '../../../common/components/index.ts';
-import { AuthType } from '../../../types/index';
 import ROUTES from '../../../common/constants/routes.ts';
 import { Link } from 'react-router-dom';
 

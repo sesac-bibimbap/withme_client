@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { Layout } from '../../common/components';
 import { ROUTES } from '../../common/constants';
 // import { useProfileQuery } from '../../components/auth/hooks/queries/useQueries.ts';
 
@@ -9,7 +8,6 @@ export const Main = () => {
 
   return (
     <>
-      <Layout />
       <button
         onClick={() => {
           navigate(ROUTES.LOGIN.PATH);

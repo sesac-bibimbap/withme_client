@@ -1,7 +1,6 @@
 import { MailOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 import { email_input } from './EmailInput.style';
-import { AuthType } from '../../../types';
 
 const EmailInput = () => {
   return (
