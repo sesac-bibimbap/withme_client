@@ -7,7 +7,7 @@ type blackBtnType = {
   buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  path: string;
+  path: string | number;
 };
 
 const BlackBtn = ({
@@ -22,12 +22,17 @@ const BlackBtn = ({
     ...blackBtn_button,
     ...buttonStyle,
   };
+
+  const handleButtonClick = () => {
+    typeof path === 'number' ? navigate(-1) : navigate(path);
+  };
+
   return (
     <>
       <Button
         style={blackBtnCss}
         htmlType={htmlType}
-        onClick={() => navigate(path)}
+        onClick={handleButtonClick}
       >
         {buttonText}
       </Button>

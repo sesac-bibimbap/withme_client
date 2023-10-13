@@ -98,4 +98,5 @@ export const layout_contents_container: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  padding: '20px',
 };
