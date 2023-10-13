@@ -22,6 +22,7 @@ import {
 } from '../../../common/components/index.ts';
 import { AuthType } from '../../../types/index';
 import ROUTES from '../../../common/constants/routes.ts';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const { handleLoginSubmit, showPopup, closePopup, popupTitle, popupText } =
@@ -81,9 +82,9 @@ const LoginForm = () => {
         <Space style={login_lost}>
           <div style={login_text_center}>
             <p style={login_text_ment}>아직 회원이 아니신가요?</p>
-            <a href={ROUTES.REGISTER.PATH} style={login_text_underline}>
+            <Link to={ROUTES.REGISTER.PATH} style={login_text_underline}>
               회원가입
-            </a>
+            </Link>
           </div>
           <div style={login_text_center}>
             <p style={login_text_ment}>비밀번호를 잊으셨나요?</p>
