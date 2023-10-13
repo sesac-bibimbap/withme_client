@@ -13,8 +13,7 @@ export const popup_container: CSSProperties = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  // border: '2px solid #000000',
-  boxShadow: '#222121 4px 4px 4px 4px',
+  boxShadow: '2px 2px 5px 5px rgb(0, 0, 0, 0.2)',
 };
 
 export const popup_title: CSSProperties = {

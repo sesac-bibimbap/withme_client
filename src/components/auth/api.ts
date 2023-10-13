@@ -1,14 +1,14 @@
 import { API } from '../../common/utils/axiosInstance';
 import { AuthType } from '../../types';
 
-// export const loginUser = async (loginData: LoginType) => {
-//   const { data } = await API({
-//     method: 'post',
-//     url: '/auth',
-//     data: loginData,
-//   });
-//   return data;
-// };
+export const loginUser = async (loginData: AuthType) => {
+  const { data } = await API({
+    method: 'post',
+    url: '/auth',
+    data: loginData,
+  });
+  return data;
+};
 
 export const registerUser = async (registerData: AuthType) => {
   const { data } = await API({
@@ -19,10 +19,10 @@ export const registerUser = async (registerData: AuthType) => {
   return data;
 };
 
-// export const userProfile = async () => {
-//   const { data } = await API({
-//     method: 'get',
-//     url: '/users/req-user',
-//   });
-//   return data;
-// };
+export const userProfile = async () => {
+  const { data } = await API({
+    method: 'get',
+    url: '/users/req-user',
+  });
+  return data;
+};
