@@ -5,3 +5,10 @@ export interface AuthType {
   personalInfo?: string;
   remember?: boolean;
 }
+
+export interface RegisterResponse {
+  status: number;
+  data: {
+    message: string;
+  };
+}

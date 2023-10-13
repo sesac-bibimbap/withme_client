@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { AuthType } from '../../../types';
+import { AuthType, RegisterResponse } from '../../../types';
 import { registerUser } from '../api';
 import { ROUTES } from '../../../common/constants';
 import { useState } from 'react';
@@ -23,12 +23,20 @@ const useRegister = () => {
       setPopupTitle('회원가입 완료');
       setPopupText(popSuccessText);
       setShowPopup(true);
-    } catch (err: AxiosError) {
-      setStatus(err.response.status);
-      const errMsg = err.response.data.message;
-      setPopupTitle('회원가입 실패');
-      setPopupText(errMsg);
-
+    } catch (err) {
+      const error = err as AxiosError<RegisterResponse>;
+      // if (axios.isAxiosError(err)) {
+      if (
+        error.response &&
+        error.response.data &&
+        'message' in error.response.data
+      ) {
+        setStatus(error.response.status);
+        const errMsg: string = error.response.data.message as string;
+        setPopupTitle('회원가입 실패');
+        setPopupText(errMsg);
+      }
+      // }
       // switch (status) {
       //   case 409: {
       //     setPopupText(errMsg);
