@@ -31,10 +31,6 @@ const RegisterForm = () => {
 
   const { mutate } = useMutation(handleRegisterSubmit);
 
-  // const check = () => {
-  //   // if(form.getFieldValue("password"))
-  //   console.log(form.getFieldValue('password'));
-  // };
   return (
     <>
       <div style={wrapper}>
@@ -62,7 +58,7 @@ const RegisterForm = () => {
             />
             <PasswdInput inputname="passwordCheck" />
             <p style={register_text_reg}>
-              비밀번호는 하나 이상의 특수문자 포함, 8~20자 이내여야 합니다.
+              비밀번호는 영문과 특수문자만 가능하며, 8~30자 이내여야 합니다.
             </p>
 
             <Form.Item<AuthType>

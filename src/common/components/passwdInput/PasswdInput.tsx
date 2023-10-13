@@ -7,6 +7,8 @@ import { CSSProperties } from 'react';
 type passwdInputType = {
   inputStyle?: CSSProperties;
   inputname?: keyof AuthType;
+  // ref: Ref<InputRef> | undefined;
+  // handler: (e: ChangeEvent) => void;
 };
 
 const PasswdInput = ({ inputStyle, inputname }: passwdInputType) => {
@@ -24,12 +26,22 @@ const PasswdInput = ({ inputStyle, inputname }: passwdInputType) => {
             pattern: /^[A-z\d!@#$%^&*()]{8,30}$/,
             message: '영문과 특수문자만 가능하며, 8글자 이상 30글자 미만입니다',
           },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('비밀번호가 일치하지 않습니다'));
+            },
+          }),
         ]}
       >
         <Input.Password
           style={passwdInputCss}
           prefix={<LockOutlined style={{ color: '#9F9C9C' }} />}
           placeholder="비밀번호를 입력해주세요"
+          // ref={ref}
+          // onChange={handler}
         />
       </Form.Item>
     </>
