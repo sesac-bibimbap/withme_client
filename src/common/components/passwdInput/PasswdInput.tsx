@@ -7,8 +7,6 @@ import { CSSProperties } from 'react';
 type passwdInputType = {
   inputStyle?: CSSProperties;
   inputname?: keyof AuthType;
-  // ref: Ref<InputRef> | undefined;
-  // handler: (e: ChangeEvent) => void;
 };
 
 const PasswdInput = ({ inputStyle, inputname }: passwdInputType) => {
@@ -40,8 +38,6 @@ const PasswdInput = ({ inputStyle, inputname }: passwdInputType) => {
           style={passwdInputCss}
           prefix={<LockOutlined style={{ color: '#9F9C9C' }} />}
           placeholder="비밀번호를 입력해주세요"
-          // ref={ref}
-          // onChange={handler}
         />
       </Form.Item>
     </>
