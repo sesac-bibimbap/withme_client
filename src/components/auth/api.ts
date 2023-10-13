@@ -10,14 +10,14 @@ export const loginUser = async (loginData: AuthType) => {
   return data;
 };
 
-// export const registerUser = async (registerData: RegisterType) => {
-//   const { data } = await API({
-//     method: 'post',
-//     url: '/users',
-//     data: registerData,
-//   });
-//   return data;
-// };
+export const registerUser = async (registerData: AuthType) => {
+  const { data } = await API({
+    method: 'post',
+    url: '/users',
+    data: registerData,
+  });
+  return data;
+};
 
 export const userProfile = async () => {
   const { data } = await API({
