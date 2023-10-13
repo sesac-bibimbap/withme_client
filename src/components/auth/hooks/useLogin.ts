@@ -11,8 +11,8 @@ const useLogin = () => {
   const [popupTitle, setPopupTitle] = useState(``);
   const [popupText, setPopupText] = useState(``);
 
-  const passwdErrText = `비밀번호가 다릅니다.
-올바른 비밀번호로 다시 시도해주세요.
+  const passwdErrText = `이메일 혹은 비밀번호가 일치하지 않습니다.
+확인 후 다시 시도해주세요.
 `;
   const handleLoginSubmit = async (loginData: AuthType) => {
     try {
@@ -21,11 +21,7 @@ const useLogin = () => {
     } catch (err) {
       if (err instanceof AxiosError) {
         setPopupTitle('로그인 실패');
-        if (err.response?.status) setPopupText(passwdErrText);
-        else {
-          const errMsg = err.response?.data.message;
-          setPopupText(errMsg);
-        }
+        setPopupText(passwdErrText);
       }
       setShowPopup(true);
     }
