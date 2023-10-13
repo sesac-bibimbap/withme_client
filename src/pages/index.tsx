@@ -1,7 +1,7 @@
 import { ROUTES } from '../common/constants';
-// import { RegisterForm, LoginForm } from '../components';
+import { RegisterForm, LoginForm } from '../components';
 // import { Register } from './register/Register';
-// import { Login } from './login/Login';
+import Login from './login/Login';
 import { Main } from './main/Main';
 
 interface Route {
@@ -11,15 +11,15 @@ interface Route {
 }
 
 const PAGE_LIST: Route[] = [
-  // {
-  //   element: <Login />,
-  //   children: [
-  //     {
-  //       path: ROUTES.LOGIN.PATH,
-  //       element: <LoginForm />,
-  //     },
-  //   ],
-  // },
+  {
+    element: <Login />,
+    children: [
+      {
+        path: ROUTES.LOGIN.PATH,
+        element: <LoginForm />,
+      },
+    ],
+  },
   // {
   //   element: <Register />,
   //   children: [
