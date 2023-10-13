@@ -9,9 +9,10 @@ import YellowBtn from '../yellowBtn/YellowBtn';
 type popupType = {
   popupTitle: string;
   popupText: string;
+  onClose?: () => void;
 };
 
-const Popup = ({ popupTitle, popupText }: popupType) => {
+const Popup = ({ popupTitle, popupText, onClose }: popupType) => {
   return (
     <>
       <div style={popup_container}>
@@ -19,7 +20,7 @@ const Popup = ({ popupTitle, popupText }: popupType) => {
         <div style={popup_textBox}>
           <span style={popup_text}>{popupText}</span>
         </div>
-        <YellowBtn buttonText="확인" />
+        <YellowBtn buttonText="확인" onClick={onClose} />
       </div>
     </>
   );

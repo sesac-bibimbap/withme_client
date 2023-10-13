@@ -6,9 +6,15 @@ type yellowBtnType = {
   buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
+  onClick?: () => void;
 };
 
-const YellowBtn = ({ buttonText, buttonStyle, htmlType }: yellowBtnType) => {
+const YellowBtn = ({
+  buttonText,
+  buttonStyle,
+  htmlType,
+  onClick,
+}: yellowBtnType) => {
   const yellowBtnCss = {
     ...yellowBtn_button,
     ...buttonStyle,
@@ -16,7 +22,7 @@ const YellowBtn = ({ buttonText, buttonStyle, htmlType }: yellowBtnType) => {
 
   return (
     <>
-      <Button style={yellowBtnCss} htmlType={htmlType}>
+      <Button style={yellowBtnCss} htmlType={htmlType} onClick={onClick}>
         {buttonText}
       </Button>
     </>

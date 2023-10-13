@@ -9,6 +9,12 @@ export const popup_container: CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  // border: '2px solid #000000',
+  boxShadow: '#222121 4px 4px 4px 4px',
 };
 
 export const popup_title: CSSProperties = {

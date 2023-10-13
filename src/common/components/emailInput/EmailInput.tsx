@@ -8,7 +8,13 @@ const EmailInput = () => {
     <>
       <Form.Item<AuthType>
         name="email"
-        rules={[{ required: true, message: 'Please input your email!' }]}
+        rules={[
+          { required: true, message: '이메일을 입력해주세요' },
+          {
+            type: 'email',
+            message: '이메일 형식이 올바르지 않습니다.',
+          },
+        ]}
       >
         <Input
           style={email_input}
