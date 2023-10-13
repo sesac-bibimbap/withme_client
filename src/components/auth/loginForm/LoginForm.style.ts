@@ -50,6 +50,7 @@ export const login_text_center: CSSProperties = {
 export const login_text_underline: CSSProperties = {
   textDecoration: 'underline',
   fontSize: '16px',
+  color: 'white',
 };
 
 export const login_btn: CSSProperties = {

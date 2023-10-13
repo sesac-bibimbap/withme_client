@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Space } from 'antd';
+import { Checkbox, Form, Space } from 'antd';
 import {
   login_wrapper,
   login_bg,
@@ -12,14 +12,20 @@ import {
   login_checkbox_box,
   login_text_center,
 } from './LoginForm.style.ts';
-
 import { useMutation } from '@tanstack/react-query';
 import useLogin from '../hooks/useLogin.ts';
-import { EmailInput, PasswdInput } from '../../../common/components/index.ts';
+import {
+  EmailInput,
+  PasswdInput,
+  Popup,
+  YellowBtn,
+} from '../../../common/components/index.ts';
 import { AuthType } from '../../../types/index';
+import ROUTES from '../../../common/constants/routes.ts';
 
 const LoginForm = () => {
-  const { handleLoginSubmit } = useLogin();
+  const { handleLoginSubmit, showPopup, closePopup, popupTitle, popupText } =
+    useLogin();
   const { mutate } = useMutation(handleLoginSubmit);
 
   return (
@@ -38,7 +44,7 @@ const LoginForm = () => {
         >
           <EmailInput />
 
-          <PasswdInput />
+          <PasswdInput inputname="password" />
 
           <Form.Item<AuthType>
             name="remember"
@@ -51,34 +57,33 @@ const LoginForm = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button
-              type="primary"
+            <YellowBtn
               htmlType="submit"
-              style={login_btn}
-              // disabled={isLoading}
-            >
-              로그인
-            </Button>
+              buttonText="로그인"
+              buttonStyle={login_btn}
+            />
           </Form.Item>
         </Form>
         <Space size={'large'}>
           <a href="!#">
-            <img src={'/publicAssets/naver.svg'} alt="네이버" />
+            <img src={'/socialLogin/naver.svg'} alt="네이버" />
           </a>
           <a href="!#">
-            <img src={'/publicAssets/kakao.svg'} alt="카카오" />
+            <img src={'/socialLogin/kakao.svg'} alt="카카오" />
           </a>
           <a href="!#">
-            <img src={'/publicAssets/google.svg'} alt="구글" />
+            <img src={'/socialLogin/google.svg'} alt="구글" />
           </a>
           <a href="!#">
-            <img src={'/publicAssets/github.svg'} alt="깃허브" />
+            <img src={'/socialLogin/github.svg'} alt="깃허브" />
           </a>
         </Space>
         <Space style={login_lost}>
           <div style={login_text_center}>
             <p style={login_text_ment}>아직 회원이 아니신가요?</p>
-            <p style={login_text_underline}>회원가입</p>
+            <a href={ROUTES.REGISTER.PATH} style={login_text_underline}>
+              회원가입
+            </a>
           </div>
           <div style={login_text_center}>
             <p style={login_text_ment}>비밀번호를 잊으셨나요?</p>
@@ -86,6 +91,13 @@ const LoginForm = () => {
           </div>
         </Space>
       </div>
+      {showPopup && (
+        <Popup
+          popupTitle={popupTitle}
+          popupText={popupText}
+          onClose={closePopup}
+        />
+      )}
     </div>
   );
 };
