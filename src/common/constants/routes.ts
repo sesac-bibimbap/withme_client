@@ -3,13 +3,17 @@ const ROUTES = {
     PATH: '/',
     NAME: 'Main',
   },
+  REGISTER: {
+    PATH: '/register',
+    NAME: 'Register',
+  },
   LOGIN: {
     PATH: '/login',
     NAME: 'Login',
   },
-  SIGN_UP: {
-    PATH: '/signup',
-    NAME: 'SignUp',
+  CREATESTUDY: {
+    PATH: '/study/create',
+    NAME: 'CreateStudy',
   },
 };
 

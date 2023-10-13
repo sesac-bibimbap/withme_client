@@ -10,12 +10,14 @@ import {
   layout_sidebar_pageTabs_container,
   layout_sidebar_pageTabs_wrap,
   layout_sidebar_pageTabs_link,
+  layout_contents_container,
 } from './Layout.style';
 import { BlackBtn } from '..';
 import { HomeOutlined, BookOutlined, BellOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
+import { ROUTES } from '../../constants';
 
-const Layout = () => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const { Text } = Typography;
 
   return (
@@ -56,7 +58,11 @@ const Layout = () => {
                   </p>
                 </a>
               </div>
-              <BlackBtn buttonText="스터디 만들기" />
+              <BlackBtn
+                buttonText="스터디 만들기"
+                htmlType="button"
+                path={ROUTES.CREATESTUDY.PATH}
+              />
             </div>
             <a href="!#" style={layout_sidebar_pageTabs_link}>
               <div style={layout_sidebar_pageTabs_userInfo}>
@@ -76,6 +82,7 @@ const Layout = () => {
             </a>
           </div>
         </div>
+        <div style={layout_contents_container}>{children}</div>
       </div>
     </>
   );

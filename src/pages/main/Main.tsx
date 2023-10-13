@@ -1,12 +1,9 @@
-import { Layout } from '../../common/components';
-// import { useProfileQuery } from '../../components/auth/hooks/queries/useQueries.ts';
-
-export const Main = () => {
+const Main = () => {
   // const { data, isLoading } = useProfileQuery();
 
   return (
     <>
-      <Layout />
+      메인페이지얌!~
       {/* {!isLoading ? (
         <>
           <div>Main</div>
@@ -18,3 +15,5 @@ export const Main = () => {
     </>
   );
 };
+
+export default Main;
