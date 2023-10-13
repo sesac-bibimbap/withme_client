@@ -19,7 +19,7 @@ import {
   PasswdInput,
   Popup,
   YellowBtn,
-} from '../../../common/components/index.ts';
+} from '../../../common/components';
 import ROUTES from '../../../common/constants/routes.ts';
 import { Link } from 'react-router-dom';
 
