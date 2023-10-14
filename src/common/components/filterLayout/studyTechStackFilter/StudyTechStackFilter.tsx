@@ -5,6 +5,7 @@ const StudyTechStackFilter = () => {
   return (
     <div style={studyTechStackFilter_container}>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        {/* 나중에 여기부분 프롭스로 해시태그인지 필터인지 넘겨 받을 것*/}
         <p>해시태그</p>
         <p>(최대 5개)</p>
       </div>
