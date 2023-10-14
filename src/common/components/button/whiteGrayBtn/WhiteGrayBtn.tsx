@@ -3,13 +3,13 @@ import { Button } from 'antd';
 import { whiteGrayBtn_button } from './WhiteGrayBtn.style';
 
 type whiteGrayBtnType = {
-  buttonText: string;
+  children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
 };
 
 const WhiteGrayBtn = ({
-  buttonText,
+  children,
   htmlType,
   buttonStyle,
 }: whiteGrayBtnType) => {
@@ -20,7 +20,7 @@ const WhiteGrayBtn = ({
   return (
     <>
       <Button style={whiteGrayBtnCss} htmlType={htmlType}>
-        {buttonText}
+        {children}
       </Button>
     </>
   );

@@ -4,18 +4,13 @@ import { blackBtn_button } from './BlackBtn.style';
 import { useNavigate } from 'react-router-dom';
 
 type blackBtnType = {
-  buttonText: string;
+  children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
   path: string | number;
 };
 
-const BlackBtn = ({
-  buttonText,
-  htmlType,
-  buttonStyle,
-  path,
-}: blackBtnType) => {
+const BlackBtn = ({ children, htmlType, buttonStyle, path }: blackBtnType) => {
   const navigate = useNavigate();
 
   const blackBtnCss = {
@@ -34,7 +29,7 @@ const BlackBtn = ({
         htmlType={htmlType}
         onClick={handleButtonClick}
       >
-        {buttonText}
+        {children}
       </Button>
     </>
   );

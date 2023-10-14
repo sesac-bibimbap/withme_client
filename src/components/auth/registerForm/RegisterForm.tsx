@@ -78,16 +78,17 @@ const RegisterForm = () => {
             <Form.Item>
               <Space wrap style={register_button_bundle}>
                 <CharcoalBtn
-                  buttonText="돌아가기"
                   buttonStyle={register_button_back}
                   path={ROUTES.LOGIN.PATH}
-                />
+                >
+                  돌아가기
+                </CharcoalBtn>
                 <YellowBtn
                   htmlType="submit"
-                  buttonText="회원가입"
                   buttonStyle={register_button_signup}
-                  // disabled={isLoading}
-                />
+                >
+                  회원가입
+                </YellowBtn>
               </Space>
             </Form.Item>
           </Form>
