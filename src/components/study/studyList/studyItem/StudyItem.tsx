@@ -24,8 +24,8 @@ const StudyItem = () => {
           </div>
         </div>
         <div style={dsf}>
-          <BookmarkBtn buttonText="모집중" />
-          <DarkGrayBtn buttonText="자세히 보기" buttonStyle={ere} />
+          <BookmarkBtn>모집중</BookmarkBtn>
+          <DarkGrayBtn buttonStyle={ere}>자세히 보기</DarkGrayBtn>
         </div>
       </div>
     </>

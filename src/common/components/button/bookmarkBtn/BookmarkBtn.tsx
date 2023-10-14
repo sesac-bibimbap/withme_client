@@ -7,11 +7,11 @@ import {
 } from './BookmarkBtn.style';
 
 type bookmarkBtnType = {
-  buttonText: string;
+  children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
 };
 
-const BookmarkBtn = ({ buttonText, htmlType }: bookmarkBtnType) => {
+const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(false);
 
   const bookmarkImage = bookmark
@@ -31,7 +31,7 @@ const BookmarkBtn = ({ buttonText, htmlType }: bookmarkBtnType) => {
           htmlType={htmlType}
           onClick={handleButtonClick}
         >
-          {buttonText}
+          {children}
         </Button>
         <img src={bookmarkImage} alt="북마크" style={bookmarkBtn_bookmark} />
       </div>
