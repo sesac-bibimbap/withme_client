@@ -3,14 +3,14 @@ import { yellowBtn_button } from './YellowBtn.style';
 import { CSSProperties } from 'react';
 
 type yellowBtnType = {
-  children: string;
+  buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
   onClick?: () => void;
 };
 
 const YellowBtn = ({
-  children,
+  buttonText,
   buttonStyle,
   htmlType,
   onClick,
@@ -23,7 +23,7 @@ const YellowBtn = ({
   return (
     <>
       <Button style={yellowBtnCss} htmlType={htmlType} onClick={onClick}>
-        {children}
+        {buttonText}
       </Button>
     </>
   );

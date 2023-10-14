@@ -13,7 +13,6 @@ export const rightBarFilter_beforeClicking_bg: CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   borderColor: 'transparent',
-  margin: '5px',
 };
 
 export const rightBarFilter_afterClicking_bg: CSSProperties = {
@@ -31,5 +30,4 @@ export const rightBarFilter_afterClicking_bg: CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   borderColor: 'transparent',
-  margin: '5px',
 };
