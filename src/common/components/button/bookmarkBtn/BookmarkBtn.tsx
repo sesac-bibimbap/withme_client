@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Button } from 'antd';
-import { bookmarkBtn_button, bookmarkBtn_container } from './BookmarkBtn.style';
+import {
+  bookmarkBtn_bookmark,
+  bookmarkBtn_button,
+  bookmarkBtn_container,
+} from './BookmarkBtn.style';
 
 type bookmarkBtnType = {
   buttonText: string;
@@ -21,6 +25,7 @@ const BookmarkBtn = ({ buttonText, htmlType }: bookmarkBtnType) => {
   return (
     <>
       <div style={bookmarkBtn_container}>
+        {/* <div> */}
         <Button
           style={bookmarkBtn_button}
           htmlType={htmlType}
@@ -28,17 +33,7 @@ const BookmarkBtn = ({ buttonText, htmlType }: bookmarkBtnType) => {
         >
           {buttonText}
         </Button>
-        <img
-          src={bookmarkImage}
-          alt="북마크"
-          style={{
-            position: 'relative',
-            bottom: '13px',
-            zIndex: '1',
-            right: '41px',
-            filter: 'drop-shadow(2px 2px 3px #454343)',
-          }}
-        />
+        <img src={bookmarkImage} alt="북마크" style={bookmarkBtn_bookmark} />
       </div>
     </>
   );

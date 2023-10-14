@@ -11,5 +11,13 @@ export const bookmarkBtn_button: CSSProperties = {
   borderColor: 'transparent',
   color: '#222121',
   fontWeight: '600',
+  position: 'relative',
   fontSize: '16px',
+};
+
+export const bookmarkBtn_bookmark: CSSProperties = {
+  position: 'absolute',
+  marginLeft: '150px',
+  zIndex: '1',
+  filter: 'drop-shadow(2px 2px 3px #454343)',
 };

@@ -7,7 +7,7 @@ type TechStackHashtagType = {
 const TechStackHashtag = ({ hashtagText }: TechStackHashtagType) => {
   return (
     <>
-      <span style={techStackHashtag_bg}>{hashtagText}</span>
+      <span style={techStackHashtag_bg}># {hashtagText}</span>
     </>
   );
 };
