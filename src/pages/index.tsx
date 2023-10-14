@@ -1,7 +1,7 @@
 import { ROUTES } from '../common/constants';
 import RegisterPage from './register/RegisterPage';
 import NotificationPage from './notification/NotificationPage';
-import MainPage from './main/Main';
+import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
 
 interface Route {
