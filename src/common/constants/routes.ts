@@ -19,6 +19,10 @@ const ROUTES = {
     PATH: '/notification',
     NAME: 'Notification',
   },
+  STUDY: {
+    PATH: '/study',
+    NAME: 'STUDY',
+  },
 };
 
 export default ROUTES;
