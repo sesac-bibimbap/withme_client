@@ -61,7 +61,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <BlackBtn
                 buttonText="스터디 만들기"
                 htmlType="button"
-                path={ROUTES.CREATESTUDY.PATH}
+                path={ROUTES.CREATE_STUDY.PATH}
               />
             </div>
             <a href="!#" style={layout_sidebar_pageTabs_link}>

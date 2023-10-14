@@ -11,9 +11,13 @@ const ROUTES = {
     PATH: '/login',
     NAME: 'Login',
   },
-  CREATESTUDY: {
+  CREATE_STUDY: {
     PATH: '/study/create',
     NAME: 'CreateStudy',
+  },
+  NOTIFICATION: {
+    PATH: '/notification',
+    NAME: 'Notification',
   },
 };
 
