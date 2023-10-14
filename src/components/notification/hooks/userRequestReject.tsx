@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   NOTIFICATION_ACTIONS,
   NOTIFICATION_COLORS,
@@ -7,6 +8,8 @@ import {
 import { socket } from '../../../common/utils/socket';
 
 const useRequestReject = (rejectRequestData: RejectRequestData) => {
+  const [isRejected, setIsRejected] = useState(false);
+
   const onClickRejectSend = () => {
     const { fromUser, toUserId, studyId, studyName, rejectReason } =
       rejectRequestData;
@@ -26,8 +29,9 @@ const useRequestReject = (rejectRequestData: RejectRequestData) => {
     };
 
     socket.emit('studyRequestReject', requestRejectPayload);
+    setIsRejected(true);
   };
-  return { onClickRejectSend };
+  return { onClickRejectSend, isRejected };
 };
 
 export default useRequestReject;

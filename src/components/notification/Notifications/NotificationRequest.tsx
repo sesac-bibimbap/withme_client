@@ -27,7 +27,7 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
   const requestData = { fromUser, toUserId, studyId, studyName };
   const rejectRequestData = { ...requestData, rejectReason };
   const { isAccepted, onClickAccept } = useRequestAccept(requestData);
-  const { onClickRejectSend } = useRequestReject(rejectRequestData);
+  const { isRejected, onClickRejectSend } = useRequestReject(rejectRequestData);
 
   const onClickReject = () => setRejectTab(true);
   const onClickCancelReject = () => setRejectTab(false);
@@ -66,8 +66,11 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
       </div>
 
       <div style={notification_request_common_btn_container}>
-        {isAccepted ? (
-          <DeepDarkGrayBtn buttonText="완료된 요청" />
+        {isAccepted || isRejected ? (
+          <DeepDarkGrayBtn
+            buttonText="완료된 요청"
+            buttonStyle={{ cursor: 'default' }}
+          />
         ) : (
           <>
             <DarkGrayBtn
