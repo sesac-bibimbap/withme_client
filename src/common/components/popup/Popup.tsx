@@ -20,7 +20,7 @@ const Popup = ({ popupTitle, popupText, onClose }: popupType) => {
         <div style={popup_textBox}>
           <span style={popup_text}>{popupText}</span>
         </div>
-        <YellowBtn onClick={onClose}>{'확인'}</YellowBtn>
+        <YellowBtn buttonText="확인" onClick={onClose} />
       </div>
     </>
   );

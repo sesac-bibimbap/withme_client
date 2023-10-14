@@ -13,4 +13,3 @@ export { default as MiddleGrayBtn } from './button/middleGrayBtn/MiddleGrayBtn';
 export { default as TechStackFilter } from './filter/techStackFilter/TechStackFilter';
 export { default as RightBarFilter } from './filter/rightBarFilter/RightBarFilter';
 export { default as BookmarkBtn } from './button/bookmarkBtn/BookmarkBtn';
-export { default as StudyTechStackFilter } from './filterLayout/studyTechStackFilter/StudyTechStackFilter';

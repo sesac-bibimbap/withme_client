@@ -3,13 +3,13 @@ import { Button } from 'antd';
 import { middleGrayBtn_button } from './MiddleGrayBtn.style';
 
 type middleGrayBtnType = {
-  children: string;
+  buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
 };
 
 const MiddleGrayBtn = ({
-  children,
+  buttonText,
   htmlType,
   buttonStyle,
 }: middleGrayBtnType) => {
@@ -20,7 +20,7 @@ const MiddleGrayBtn = ({
   return (
     <>
       <Button style={middleGrayBtnCss} htmlType={htmlType}>
-        {children}
+        {buttonText}
       </Button>
     </>
   );

@@ -3,11 +3,11 @@ import { Button } from 'antd';
 import { bookmarkBtn_button, bookmarkBtn_container } from './BookmarkBtn.style';
 
 type bookmarkBtnType = {
-  children: string;
+  buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
 };
 
-const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
+const BookmarkBtn = ({ buttonText, htmlType }: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(false);
 
   const bookmarkImage = bookmark
@@ -26,7 +26,7 @@ const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
           htmlType={htmlType}
           onClick={handleButtonClick}
         >
-          {children}
+          {buttonText}
         </Button>
         <img
           src={bookmarkImage}
