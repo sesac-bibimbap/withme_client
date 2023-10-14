@@ -3,7 +3,7 @@ import {
   rightBarFilter_beforeClicking_bg,
   rightBarFilter_afterClicking_bg,
 } from '../rightBarFilter/RightBarFilter.style';
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
 
 type RightBarFilterType = {
   techStackName: string;
@@ -25,14 +25,16 @@ const RightBarFilter = ({
 
   return (
     <>
-      <Button style={tackStackChoose} onClick={handleButtonClick}>
-        <img
-          src={techStackImage}
-          alt={techStackName}
-          style={{ width: '30px', height: '30px' }}
-        />
-        <p>{techStackName}</p>
-      </Button>
+      <Form.Item<createStudyType> name="techStacks">
+        <Button style={tackStackChoose} onClick={handleButtonClick}>
+          <img
+            src={techStackImage}
+            alt={techStackName}
+            style={{ width: '30px', height: '30px' }}
+          />
+          <p>{techStackName}</p>
+        </Button>
+      </Form.Item>
     </>
   );
 };
