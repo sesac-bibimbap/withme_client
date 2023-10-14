@@ -3,7 +3,7 @@ import RegisterPage from './register/RegisterPage';
 import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
-import CreateStudy from './study/create/CreateStudy';
+import CreateStudy from './study/create/CreateStudyPage';
 
 interface Route {
   element: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
