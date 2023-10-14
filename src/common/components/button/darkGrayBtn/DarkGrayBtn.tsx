@@ -3,7 +3,6 @@ import { Button } from 'antd';
 import { darkGrayBtn_button } from './DarkGrayBtn.style';
 
 type darkGrayBtnType = {
-  // buttonText: string;
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
@@ -11,7 +10,6 @@ type darkGrayBtnType = {
 };
 
 const DarkGrayBtn = ({
-  // buttonText,
   children,
   htmlType,
   buttonStyle,

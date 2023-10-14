@@ -51,7 +51,7 @@ const NotificationPage = () => {
             styles={{
               textarea: {
                 backgroundColor: '#222121',
-                color: '#ffffff',
+                color: '#ff4c4c',
                 fontSize: '14px',
                 padding: '15px',
               },
@@ -66,7 +66,7 @@ const NotificationPage = () => {
             }}
           />
         </Form.Item>
-        <YellowBtn htmlType="submit" buttonText="스터디 참여요청" />
+        <YellowBtn htmlType="submit">스터디 참여요청</YellowBtn>
       </Form>
       {/* 스터디 신청칸 (임시 생성) */}
 

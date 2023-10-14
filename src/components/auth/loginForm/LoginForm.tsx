@@ -57,26 +57,24 @@ const LoginForm = () => {
           </Form.Item>
 
           <Form.Item>
-            <YellowBtn
-              htmlType="submit"
-              buttonText="로그인"
-              buttonStyle={login_btn}
-            />
+            <YellowBtn htmlType="submit" buttonStyle={login_btn}>
+              로그인
+            </YellowBtn>
           </Form.Item>
         </Form>
         <Space size={'large'}>
-          <a href="!#">
+          <Link to="!#">
             <img src={'/socialLogin/naver.svg'} alt="네이버" />
-          </a>
-          <a href="!#">
+          </Link>
+          <Link to="!#">
             <img src={'/socialLogin/kakao.svg'} alt="카카오" />
-          </a>
-          <a href="!#">
+          </Link>
+          <Link to="!#">
             <img src={'/socialLogin/google.svg'} alt="구글" />
-          </a>
-          <a href="!#">
+          </Link>
+          <Link to="!#">
             <img src={'/socialLogin/github.svg'} alt="깃허브" />
-          </a>
+          </Link>
         </Space>
         <Space style={login_lost}>
           <div style={login_text_center}>

@@ -67,10 +67,9 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
 
       <div style={notification_request_common_btn_container}>
         {isAccepted || isRejected ? (
-          <DeepDarkGrayBtn
-            buttonText="완료된 요청"
-            buttonStyle={{ cursor: 'default' }}
-          />
+          <DeepDarkGrayBtn buttonStyle={{ cursor: 'default' }}>
+            완료된 요청
+          </DeepDarkGrayBtn>
         ) : (
           <>
             <DarkGrayBtn
@@ -78,10 +77,9 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
             >
               {rejectTab ? '취소' : '거절'}
             </DarkGrayBtn>
-            <YellowBtn
-              buttonText={rejectTab ? '보내기' : '수락'}
-              onClick={rejectTab ? onClickRejectSend : onClickAccept}
-            />
+            <YellowBtn onClick={rejectTab ? onClickRejectSend : onClickAccept}>
+              {rejectTab ? '보내기' : '수락'}
+            </YellowBtn>
             {rejectTab && (
               <SelectRejectReason
                 selectRejectReasonChange={selectRejectReasonChange}

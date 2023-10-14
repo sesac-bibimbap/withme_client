@@ -3,14 +3,14 @@ import { Button } from 'antd';
 import { yellowBtn_button } from './YellowBtn.style';
 
 type yellowBtnType = {
-  buttonText: string;
+  children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const YellowBtn = ({
-  buttonText,
+  children,
   buttonStyle,
   htmlType,
   onClick,
@@ -23,7 +23,7 @@ const YellowBtn = ({
   return (
     <>
       <Button style={yellowBtnCss} htmlType={htmlType} onClick={onClick}>
-        {buttonText}
+        {children}
       </Button>
     </>
   );
