@@ -1,4 +1,4 @@
-import Notifications from '../../components/notification/Notifications';
+import Notifications from '../../components/notification/Notifications/Notifications';
 import { socket } from '../../common/utils/socket';
 import { Form } from 'antd';
 import TextArea from 'antd/es/input/TextArea';

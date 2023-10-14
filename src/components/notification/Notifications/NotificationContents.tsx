@@ -1,4 +1,4 @@
-import { NOTIFICATION_ACTIONS } from '../../common/constants/enum/notification.enum';
+import { NOTIFICATION_ACTIONS } from '../../../common/constants/enum/notification.enum';
 import NotificationAccept from './NotificationAccept';
 import NotificationReject from './NotificationReject';
 import NotificationRequest from './NotificationRequest';

@@ -1,4 +1,4 @@
-import { detailDate } from '../../common/utils/getDetailDate';
+import { detailDate } from '../../../common/utils/getDetailDate';
 import {
   notification_common,
   notification_header_container,

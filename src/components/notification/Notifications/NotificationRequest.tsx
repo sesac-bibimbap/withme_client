@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import SelectRejectReason from './SelectRejectReason';
-import useRequestAccept from './hooks/useRequestAccept';
-import useRequestReject from './hooks/userRequestReject';
+import useRequestAccept from '../hooks/useRequestAccept';
+import useRequestReject from '../hooks/userRequestReject';
 import {
   DarkGrayBtn,
   DeepDarkGrayBtn,
   YellowBtn,
-} from '../../common/components';
+} from '../../../common/components';
 import {
   notification_common,
   notification_contents_common,

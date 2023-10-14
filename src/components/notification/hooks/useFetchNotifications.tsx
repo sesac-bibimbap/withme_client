@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { socket } from '../../../common/utils/socket';
 import { useNotificationStore } from '../../../common/store/notificationState';
-import NotificationHeader from '../NotificationHeader';
-import NotificationContents from '../NotificationContents';
+import NotificationHeader from '../Notifications/NotificationHeader';
+import NotificationContents from '../Notifications/NotificationContents';
 
 const useFetchNotifications = () => {
   const { notifications, setNotifications } = useNotificationStore();

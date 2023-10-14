@@ -1,5 +1,5 @@
 import { Select } from 'antd';
-import { STUDY_REJECT_REASON } from '../../common/constants/enum/study.enum';
+import { STUDY_REJECT_REASON } from '../../../common/constants/enum/study.enum';
 
 const SelectRejectReason = ({
   selectRejectReasonChange,

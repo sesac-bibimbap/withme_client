@@ -1,6 +1,6 @@
 import { Collapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-import useFetchNotifications from './hooks/useFetchNotifications';
+import useFetchNotifications from '../hooks/useFetchNotifications';
 import { notification_collapse } from './Notifications.style';
 
 const Notifications = () => {
