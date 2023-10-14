@@ -7,22 +7,34 @@ export const createStudyForm_container: CSSProperties = {
   // height: '917px',
   backgroundColor: '#222121',
   color: '#FFFFFF',
+  fontSize: '20px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: '10',
+  borderRadius: '10px',
 };
 
 export const createStudyForm_form_contaner: CSSProperties = {
-  width: '900px',
-  height: '500px',
   backgroundColor: '#454343',
-
-  // width: '100%',
+  borderRadius: '10px',
+  padding: '20px',
 };
-export const createStudyForm_form: CSSProperties = {
+
+export const createStudyFrom_wrap: CSSProperties = {
+  display: 'flex',
+};
+
+export const createStudyFrom_form_btn_wrap: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+};
+
+export const createStudyForm_form_wrap: CSSProperties = {
   width: '603px',
+  marginRight: '30px',
   // width: '100%',
 };
 

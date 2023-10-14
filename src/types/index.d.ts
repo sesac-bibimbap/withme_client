@@ -6,7 +6,7 @@ interface AuthType {
   remember?: boolean;
 }
 
-export interface createStudyType {
+interface createStudyType {
   studyName: string;
   people: number;
   date: Date;
