@@ -3,7 +3,14 @@ import {
   DarkGrayBtn,
   TechStackHashtag,
 } from '../../../../common/components';
-import { a, b, dsf, e, ere, studyItem_wrapper, z } from './StudyItem.style';
+import {
+  studyItem_wrapper,
+  studyItem_text_left,
+  studyItem_text_title,
+  studyItem_text_personnel,
+  studyItem_text_detail,
+  studyItem_button_detail,
+} from './StudyItem.style';
 
 const StudyItem = () => {
   const studyDetail =
@@ -11,21 +18,23 @@ const StudyItem = () => {
   return (
     <>
       <div style={studyItem_wrapper}>
-        <div style={e}>
-          <div style={z}>
+        <div style={studyItem_text_left}>
+          <div style={studyItem_text_title}>
             <p>자스 공부할 분 괌 | 팀자스</p>
           </div>
-          <div style={b}>
+          <div style={studyItem_text_personnel}>
             <p>인원: 3 / 7</p>
           </div>
-          <div style={a}>{studyDetail}</div>
+          <div style={studyItem_text_detail}>{studyDetail}</div>
           <div>
             <TechStackHashtag hashtagText="JavaScript" />
           </div>
         </div>
-        <div style={dsf}>
+        <div>
           <BookmarkBtn>모집중</BookmarkBtn>
-          <DarkGrayBtn buttonStyle={ere}>자세히 보기</DarkGrayBtn>
+          <DarkGrayBtn buttonStyle={studyItem_button_detail}>
+            자세히 보기
+          </DarkGrayBtn>
         </div>
       </div>
     </>
