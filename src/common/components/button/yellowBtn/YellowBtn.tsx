@@ -1,12 +1,12 @@
+import { CSSProperties, MouseEvent } from 'react';
 import { Button } from 'antd';
 import { yellowBtn_button } from './YellowBtn.style';
-import { CSSProperties } from 'react';
 
 type yellowBtnType = {
   buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const YellowBtn = ({

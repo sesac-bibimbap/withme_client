@@ -1,17 +1,21 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, MouseEvent } from 'react';
 import { Button } from 'antd';
 import { darkGrayBtn_button } from './DarkGrayBtn.style';
 
 type darkGrayBtnType = {
-  buttonText: string;
+  // buttonText: string;
+  children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 const DarkGrayBtn = ({
-  buttonText,
+  // buttonText,
+  children,
   htmlType,
   buttonStyle,
+  onClick,
 }: darkGrayBtnType) => {
   const darkGrayBtnCss = {
     ...darkGrayBtn_button,
@@ -19,8 +23,8 @@ const DarkGrayBtn = ({
   };
   return (
     <>
-      <Button style={darkGrayBtnCss} htmlType={htmlType}>
-        {buttonText}
+      <Button style={darkGrayBtnCss} htmlType={htmlType} onClick={onClick}>
+        {children}
       </Button>
     </>
   );
