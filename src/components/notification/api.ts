@@ -1,10 +1,10 @@
 import { API } from '../../common/utils/axiosInstance';
 
-export const acceptAttend = async (fromUserStudyData: FromUserStudyType) => {
+export const acceptAttend = async (requestData: RequestData) => {
   const { data } = await API({
     method: 'post',
     url: 'studies/attend/accept',
-    data: fromUserStudyData,
+    data: requestData,
   });
   return data;
 };
