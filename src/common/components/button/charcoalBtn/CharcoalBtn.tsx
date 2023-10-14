@@ -4,13 +4,13 @@ import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type charcoalBtnType = {
-  children: string;
+  buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
   path: string;
 };
 const CharcoalBtn = ({
-  children,
+  buttonText,
   htmlType,
   buttonStyle,
   path,
@@ -27,7 +27,7 @@ const CharcoalBtn = ({
         htmlType={htmlType}
         onClick={() => navigate(path)}
       >
-        {children}
+        {buttonText}
       </Button>
     </>
   );

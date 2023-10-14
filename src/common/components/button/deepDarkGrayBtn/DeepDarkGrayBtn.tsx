@@ -3,13 +3,13 @@ import { Button } from 'antd';
 import { deepDarkGrayBtn_button } from './DeepDarkGrayBtn.style';
 
 type deepDarkGrayBtnType = {
-  children: string;
+  buttonText: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
 };
 
 const DeepDarkGrayBtn = ({
-  children,
+  buttonText,
   htmlType,
   buttonStyle,
 }: deepDarkGrayBtnType) => {
@@ -20,7 +20,7 @@ const DeepDarkGrayBtn = ({
   return (
     <>
       <Button style={deepDarkGrayBtnCss} htmlType={htmlType}>
-        {children}
+        {buttonText}
       </Button>
     </>
   );
