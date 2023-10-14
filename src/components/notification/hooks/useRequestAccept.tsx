@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { socket } from '../../../common/utils/socket';
 import {
   NOTIFICATION_ACTIONS,
@@ -9,6 +10,8 @@ import { acceptAttend } from '../api';
 import { STUDY_ACCEPT_MESSAGE } from '../../../common/constants/study';
 
 const useRequestAccept = (requestData: RequestData) => {
+  const [isAccepted, setIsAccepted] = useState(false);
+
   const onClickAccept = async () => {
     const { fromUser, toUserId, studyId, studyName } = requestData;
     try {
@@ -29,12 +32,13 @@ const useRequestAccept = (requestData: RequestData) => {
       };
 
       socket.emit('studyRequestAccept', requestAcceptPayload);
+      setIsAccepted(true);
     } catch (err) {
       console.log(err);
     }
   };
 
-  return { onClickAccept };
+  return { onClickAccept, isAccepted };
 };
 
 export default useRequestAccept;

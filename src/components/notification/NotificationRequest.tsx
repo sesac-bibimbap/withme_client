@@ -2,7 +2,11 @@ import { useState } from 'react';
 import SelectRejectReason from './SelectRejectReason';
 import useRequestAccept from './hooks/useRequestAccept';
 import useRequestReject from './hooks/userRequestReject';
-import { DarkGrayBtn, YellowBtn } from '../../common/components';
+import {
+  DarkGrayBtn,
+  DeepDarkGrayBtn,
+  YellowBtn,
+} from '../../common/components';
 import {
   notification_common,
   notification_contents_common,
@@ -22,7 +26,7 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
 
   const requestData = { fromUser, toUserId, studyId, studyName };
   const rejectRequestData = { ...requestData, rejectReason };
-  const { onClickAccept } = useRequestAccept(requestData);
+  const { isAccepted, onClickAccept } = useRequestAccept(requestData);
   const { onClickRejectSend } = useRequestReject(rejectRequestData);
 
   const onClickReject = () => setRejectTab(true);
@@ -62,17 +66,25 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
       </div>
 
       <div style={notification_request_common_btn_container}>
-        <DarkGrayBtn onClick={rejectTab ? onClickCancelReject : onClickReject}>
-          {rejectTab ? '취소' : '거절'}
-        </DarkGrayBtn>
-        <YellowBtn
-          buttonText={rejectTab ? '보내기' : '수락'}
-          onClick={rejectTab ? onClickRejectSend : onClickAccept}
-        />
-        {rejectTab && (
-          <SelectRejectReason
-            selectRejectReasonChange={selectRejectReasonChange}
-          />
+        {isAccepted ? (
+          <DeepDarkGrayBtn buttonText="완료된 요청" />
+        ) : (
+          <>
+            <DarkGrayBtn
+              onClick={rejectTab ? onClickCancelReject : onClickReject}
+            >
+              {rejectTab ? '취소' : '거절'}
+            </DarkGrayBtn>
+            <YellowBtn
+              buttonText={rejectTab ? '보내기' : '수락'}
+              onClick={rejectTab ? onClickRejectSend : onClickAccept}
+            />
+            {rejectTab && (
+              <SelectRejectReason
+                selectRejectReasonChange={selectRejectReasonChange}
+              />
+            )}
+          </>
         )}
       </div>
     </>
