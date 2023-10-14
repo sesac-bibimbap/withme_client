@@ -1,7 +1,6 @@
 import { Form, Input } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
 import { passwd_input } from './PasswdInput.style';
-import { AuthType } from '../../../types';
 import { CSSProperties } from 'react';
 
 type passwdInputType = {

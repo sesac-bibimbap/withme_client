@@ -1,5 +1,4 @@
 import { API } from '../../common/utils/axiosInstance';
-import { AuthType } from '../../types';
 
 export const loginUser = async (loginData: AuthType) => {
   const { data } = await API({

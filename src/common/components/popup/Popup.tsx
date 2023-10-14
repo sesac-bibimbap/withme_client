@@ -4,7 +4,7 @@ import {
   popup_text,
   popup_title,
 } from './Popup.style';
-import YellowBtn from '../yellowBtn/YellowBtn';
+import YellowBtn from '../button/yellowBtn/YellowBtn';
 
 type popupType = {
   popupTitle: string;
