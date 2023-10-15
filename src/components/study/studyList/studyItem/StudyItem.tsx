@@ -10,6 +10,7 @@ import {
   studyItem_text_personnel,
   studyItem_text_detail,
   studyItem_button_detail,
+  studyItem_button_bundle,
 } from './StudyItem.style';
 
 type studyItemType = {
@@ -17,7 +18,7 @@ type studyItemType = {
   teamName: string;
   attendantsLimit: number;
   detail: string;
-  hasTag: string[];
+  hasTag: HashTagType[];
 };
 
 const StudyItem = ({
@@ -25,15 +26,13 @@ const StudyItem = ({
   teamName,
   attendantsLimit,
   detail,
+  hasTag,
 }: studyItemType) => {
-  // const studyDetail =
-  //   '책으로 진행할 예정이며, 책은 딥다이브 자바스크립트로 할 예정입니다. \n스터디 일자는 추후에 맞출 예정입니다.';
   return (
     <>
       <div style={studyItem_wrapper}>
         <div style={studyItem_text_left}>
           <div style={studyItem_text_title}>
-            {/* <p>자스 공부할 분 괌 | 팀자스</p>*/}
             <p>
               {title} | {teamName}
             </p>
@@ -41,14 +40,15 @@ const StudyItem = ({
           <div style={studyItem_text_personnel}>
             <p>인원: 3 / {attendantsLimit}</p>
           </div>
-          {/* <div style={studyItem_text_detail}>{studyDetail}</div> */}
           <div style={studyItem_text_detail}>{detail}</div>
 
           <div>
-            <TechStackHashtag hashtagText="JavaScript" />
+            {hasTag?.map((v) => (
+              <TechStackHashtag key={v.id} hashtagText={v.stackName} />
+            ))}
           </div>
         </div>
-        <div>
+        <div style={studyItem_button_bundle}>
           <BookmarkBtn>모집중</BookmarkBtn>
           <DarkGrayBtn buttonStyle={studyItem_button_detail}>
             자세히 보기

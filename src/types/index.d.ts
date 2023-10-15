@@ -72,9 +72,14 @@ interface StudyListType {
   id: number;
   name: string;
   content: string;
-  techStack: string[];
+  techStacks: hasTagType[];
   attendantsLimit: number;
-  recuit: {
+  recruit: {
     title: string;
   };
+}
+
+interface HashTagType {
+  id: number;
+  stackName: string;
 }
