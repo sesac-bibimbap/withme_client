@@ -10,7 +10,11 @@ import { useStudyListQuery } from '../../hooks/queries/useQueries';
 
 const StudyListBoard = () => {
   const { data, isLoading } = useStudyListQuery();
-  console.log('🚀  data:', data);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <div style={studyList_background}>
@@ -22,7 +26,6 @@ const StudyListBoard = () => {
         />
         <div style={studyList_item_background}>
           {data[0].map((study: StudyListType) => (
-            // <li key={study.id}>{study.name}</li>
             <StudyItem
               key={study.id}
               title={study.recuit?.title}
@@ -33,9 +36,6 @@ const StudyListBoard = () => {
             />
           ))}
         </div>
-        {/* <div style={studyList_item_background}> */}
-        {/* <StudyItem /> */}
-        {/* </div> */}
       </div>
     </>
   );

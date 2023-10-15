@@ -40,9 +40,12 @@ const PAGE_LIST: Route[] = [
     // ],
   },
   // {
-  //   element: <Study />,
   //   path: ROUTES.STUDY.PATH,
   //   children: [
+  //     {
+  //       element: <Study />,
+  //       path: ROUTES.STUDY.PATH,
+  //     },
   //     {
   //       element: <CreateStudy />,
   //       path: ROUTES.CREATE_STUDY.PATH,

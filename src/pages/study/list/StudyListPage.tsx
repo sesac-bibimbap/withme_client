@@ -1,4 +1,4 @@
-import StudyListBoard from '../../../components/study/studyList/studyListBoard/StudyListBoard';
+import { StudyListBoard } from '../../../components';
 
 const StudyListPage = () => {
   return (
