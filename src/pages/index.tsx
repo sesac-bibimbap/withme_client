@@ -4,7 +4,7 @@ import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
 // import Study from './study/list/StudyListPage';
-// import CreateStudy from './study/create/CreateStudyPage';
+import CreateStudy from './study/create/CreateStudyPage';
 
 interface Route {
   element: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
@@ -28,6 +28,10 @@ const PAGE_LIST: Route[] = [
   {
     element: <NotificationPage />,
     path: ROUTES.NOTIFICATION.PATH,
+  },
+  {
+    element: <CreateStudy />,
+    path: ROUTES.CREATE_STUDY.PATH,
   },
   // {
   //   element: <Study />,
