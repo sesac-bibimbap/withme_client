@@ -28,11 +28,11 @@ const StudyListBoard = () => {
           {data[0].map((study: StudyListType) => (
             <StudyItem
               key={study.id}
-              title={study.recuit?.title}
+              title={study.recruit.title}
               teamName={study.name}
               attendantsLimit={study.attendantsLimit}
               detail={study.content}
-              hasTag={study.techStack}
+              hasTag={study.techStacks}
             />
           ))}
         </div>
