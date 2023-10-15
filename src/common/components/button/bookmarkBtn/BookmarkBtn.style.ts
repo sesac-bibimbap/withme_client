@@ -2,6 +2,7 @@ import { CSSProperties } from 'react';
 
 export const bookmarkBtn_container: CSSProperties = {
   display: 'flex',
+  position: 'relative',
 };
 
 export const bookmarkBtn_button: CSSProperties = {
@@ -11,8 +12,8 @@ export const bookmarkBtn_button: CSSProperties = {
   borderColor: 'transparent',
   color: '#222121',
   fontWeight: '600',
-  position: 'relative',
   fontSize: '16px',
+  borderRadius: '10px',
 };
 
 export const bookmarkBtn_bookmark: CSSProperties = {

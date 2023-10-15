@@ -8,4 +8,5 @@ export const techStackHashtag_bg: CSSProperties = {
   height: '78px',
   width: '20px',
   fontSize: '11px',
+  marginRight: '5px',
 };
