@@ -1,9 +1,9 @@
-import { StudyList } from '../../../components';
+import StudyListBoard from '../../../components/study/studyList/studyListBoard/StudyListBoard';
 
 const StudyListPage = () => {
   return (
     <>
-      <StudyList />
+      <StudyListBoard />
     </>
   );
 };

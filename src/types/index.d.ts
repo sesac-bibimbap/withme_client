@@ -66,3 +66,15 @@ type RejectReason = {
 type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
+
+//Study
+interface StudyListType {
+  id: number;
+  name: string;
+  content: string;
+  techStack: string[];
+  attendantsLimit: number;
+  recuit: {
+    title: string;
+  };
+}

@@ -9,6 +9,8 @@ export const studyItem_wrapper: CSSProperties = {
   color: 'white',
   borderRadius: '10px',
   boxShadow: '2px 2px 5px 5px rgb(0, 0, 0, 0.2)',
+  padding: '13px',
+  // marginTop: '13px',
 };
 
 export const studyItem_text_left: CSSProperties = {

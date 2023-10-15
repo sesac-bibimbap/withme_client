@@ -12,20 +12,38 @@ import {
   studyItem_button_detail,
 } from './StudyItem.style';
 
-const StudyItem = () => {
-  const studyDetail =
-    '책으로 진행할 예정이며, 책은 딥다이브 자바스크립트로 할 예정입니다. \n스터디 일자는 추후에 맞출 예정입니다.';
+type studyItemType = {
+  title: string;
+  teamName: string;
+  attendantsLimit: number;
+  detail: string;
+  hasTag: string[];
+};
+
+const StudyItem = ({
+  title,
+  teamName,
+  attendantsLimit,
+  detail,
+}: studyItemType) => {
+  // const studyDetail =
+  //   '책으로 진행할 예정이며, 책은 딥다이브 자바스크립트로 할 예정입니다. \n스터디 일자는 추후에 맞출 예정입니다.';
   return (
     <>
       <div style={studyItem_wrapper}>
         <div style={studyItem_text_left}>
           <div style={studyItem_text_title}>
-            <p>자스 공부할 분 괌 | 팀자스</p>
+            {/* <p>자스 공부할 분 괌 | 팀자스</p>*/}
+            <p>
+              {title} | {teamName}
+            </p>
           </div>
           <div style={studyItem_text_personnel}>
-            <p>인원: 3 / 7</p>
+            <p>인원: 3 / {attendantsLimit}</p>
           </div>
-          <div style={studyItem_text_detail}>{studyDetail}</div>
+          {/* <div style={studyItem_text_detail}>{studyDetail}</div> */}
+          <div style={studyItem_text_detail}>{detail}</div>
+
           <div>
             <TechStackHashtag hashtagText="JavaScript" />
           </div>
