@@ -1,0 +1,7 @@
+.ant-input.ant-input-lg.css-dev-only-do-not-override-pr0fja {
+  background-color: #454343;
+}
+
+.ant-input.ant-input-lg.css-dev-only-do-not-override-pr0fja::placeholder {
+  color: #9f9c9c;
+}

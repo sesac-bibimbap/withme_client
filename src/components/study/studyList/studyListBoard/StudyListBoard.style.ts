@@ -12,7 +12,7 @@ export const studyList_background: CSSProperties = {
   color: 'white',
 };
 
-export const studyList_button_search: CSSProperties = {
+export const studyList_input_search: CSSProperties = {
   backgroundColor: '#454343',
   borderRadius: '10px',
   border: 'none',
