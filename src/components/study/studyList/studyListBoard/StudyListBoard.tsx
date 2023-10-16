@@ -8,9 +8,28 @@ import StudyItem from '../studyItem/StudyItem';
 import { SearchOutlined } from '@ant-design/icons';
 import { useStudyListQuery } from '../../hooks/queries/useQueries';
 import '../../study.css';
+import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const StudyListBoard = () => {
-  const { data, isLoading } = useStudyListQuery();
+  const [offset, setOffset] = useState(0);
+  const limit = 20;
+  const { data, isLoading } = useStudyListQuery(limit, offset);
+
+  const list = useRef<StudyListType[]>([]);
+
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
+
+  useEffect(() => {
+    if (!inView) {
+      return;
+    }
+    list.current = [...list.current, data?.[0]];
+    setOffset(limit + offset);
+  }, [inView]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -26,7 +45,7 @@ const StudyListBoard = () => {
           style={studyList_input_search}
         />
         <div style={studyList_item_background}>
-          {data[0].map((study: StudyListType) => (
+          {list.current.flat().map((study: StudyListType) => (
             <StudyItem
               key={study.id}
               title={study.recruit.title}
@@ -36,6 +55,7 @@ const StudyListBoard = () => {
               hasTag={study.techStacks}
             />
           ))}
+          <div ref={ref}></div>
         </div>
       </div>
     </>
