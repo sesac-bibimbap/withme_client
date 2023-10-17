@@ -4,6 +4,8 @@ import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
 import StudyDetailPage from './study/StudyDetailPage';
+// import ResetPasswordPage from './resetPassword/ResetPasswordPage';
+// import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
 // import Study from './study/list/StudyListPage';
 // import CreateStudy from './study/create/CreateStudyPage';
 
@@ -26,6 +28,19 @@ const PAGE_LIST: Route[] = [
     element: <RegisterPage />,
     path: ROUTES.REGISTER.PATH,
   },
+  // {
+  //   path: ROUTES.RESET_PASSWORD.PATH,
+  //   children: [
+  //     {
+  //       element: <ResetPasswordPage />,
+  //       path: ROUTES.RESET_PASSWORD.PATH,
+  //     },
+  //     {
+  //       element: <ResetPasswordCheckPage />,
+  //       path: ROUTES.RESET_PASSWORD_CHECK.PATH,
+  //     },
+  //   ],
+  // },
   {
     element: <NotificationPage />,
     path: ROUTES.NOTIFICATION.PATH,

@@ -68,11 +68,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   </p>
                 </Link>
               </div>
-              <BlackBtn
-                children="스터디 만들기"
-                htmlType="button"
-                path={ROUTES.CREATE_STUDY.PATH}
-              />
+              <BlackBtn htmlType="button" path={ROUTES.CREATE_STUDY.PATH}>
+                스터디 만들기
+              </BlackBtn>
             </div>
             <Link to={'!#'} style={layout_sidebar_pageTabs_link}>
               <div style={layout_sidebar_pageTabs_userInfo}>

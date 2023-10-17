@@ -6,7 +6,8 @@ type yellowBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
 };
 
 const YellowBtn = ({
@@ -14,6 +15,7 @@ const YellowBtn = ({
   buttonStyle,
   htmlType,
   onClick,
+  disabled,
 }: yellowBtnType) => {
   const yellowBtnCss = {
     ...yellowBtn_button,
@@ -22,7 +24,12 @@ const YellowBtn = ({
 
   return (
     <>
-      <Button style={yellowBtnCss} htmlType={htmlType} onClick={onClick}>
+      <Button
+        style={yellowBtnCss}
+        htmlType={htmlType}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {children}
       </Button>
     </>
