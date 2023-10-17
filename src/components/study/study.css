@@ -8,16 +8,16 @@
 }
 
 /* studyCreate */
-.ant-input.css-dev-only-do-not-override-pr0fja {
+/* .ant-input.css-dev-only-do-not-override-pr0fja {
   background-color: #222121;
-}
+} */
 
 .ant-input.css-dev-only-do-not-override-pr0fja::placeholder {
   color: #9f9c9c;
 }
 
 .ant-input-number-input-wrap {
-  background-color: #222121;
+  /* background-color: #222121; */
   border-radius: 5px;
 }
 
@@ -30,9 +30,10 @@
   border-radius: 5px;
 }
 
-.ant-picker.ant-picker-range.css-dev-only-do-not-override-pr0fja {
+/* .ant-picker.ant-picker-range.css-dev-only-do-not-override-pr0fja {
   background-color: #222121;
-}
+} */
+
 :where(.css-dev-only-do-not-override-pr0fja).ant-picker
   .ant-picker-input
   input::placeholder {
