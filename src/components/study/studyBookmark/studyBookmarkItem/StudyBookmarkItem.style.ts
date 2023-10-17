@@ -27,8 +27,11 @@ export const studyBookmark_text_techStack: CSSProperties = {
 export const studyBookmark_bookmarkBtn_bookmark: CSSProperties = {
   height: '22px',
   position: 'absolute',
-  marginLeft: '220px',
+  backgroundColor: 'transparent',
+  marginLeft: '205px',
   marginTop: '5px',
   zIndex: '1',
   filter: 'drop-shadow(2px 2px 3px #454343)',
+  border: 'none',
+  borderColor: 'transparent',
 };

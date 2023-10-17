@@ -26,11 +26,18 @@ const StudyBookmarkItem = () => {
           <p style={studyBookmark_text_teamName}>팀자스</p>
           <p style={studyBookmark_text_techStack}># javascript</p>
         </Button>
-        <img
-          src={bookmarkImage}
-          alt="북마크"
+        <Button
           style={studyBookmark_bookmarkBtn_bookmark}
-        />
+          onClick={handleButtonClick}
+        >
+          <img
+            src={bookmarkImage}
+            alt="북마크"
+            style={{ height: '22px' }}
+
+            // style={studyBookmark_bookmarkBtn_bookmark}
+          />
+        </Button>
       </div>
     </>
   );
