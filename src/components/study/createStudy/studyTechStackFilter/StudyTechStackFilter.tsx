@@ -9,10 +9,11 @@ import {
 } from './StudyTechStackFilter.style';
 import { useState } from 'react';
 import { RightBarFilter } from '../../../../common/components';
-import { useTechStakQuery } from '../../hooks/queries copy/useQueries';
+import { useTechStakQuery } from '../../hooks/queries/useQueries';
 
 const StudyTechStackFilter = () => {
   const { data, isLoading } = useTechStakQuery();
+  console.log('🦄  data:', data);
   const [selectedTechStacks, setSelectedTechStacks] = useState<number[]>([]);
 
   const selectedTechStacksTypeChange = selectedTechStacks.join(' ');

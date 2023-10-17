@@ -85,5 +85,5 @@ export const createStudyForm_form_wrap: CSSProperties = {
 
 export const createStudyForm_create_btn: CSSProperties = {
   width: '181px',
-  height: '40px',
+  height: '50px',
 };
