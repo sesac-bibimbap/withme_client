@@ -15,6 +15,7 @@ const StudyListBoard = () => {
   const [offset, setOffset] = useState(0);
   const limit = 20;
   const { data, isLoading } = useStudyListQuery(limit, offset);
+  console.log('🚀  data:', data);
 
   const list = useRef<StudyListType[]>([]);
 
@@ -50,6 +51,7 @@ const StudyListBoard = () => {
               key={study.id}
               title={study.recruit.title}
               teamName={study.name}
+              participants={study.participants.length}
               attendantsLimit={study.attendantsLimit}
               detail={study.content}
               hasTag={study.techStacks}

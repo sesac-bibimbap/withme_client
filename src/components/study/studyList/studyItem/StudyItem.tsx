@@ -16,6 +16,7 @@ import {
 type studyItemType = {
   title: string;
   teamName: string;
+  participants: number;
   attendantsLimit: number;
   detail: string;
   hasTag: HashTagType[];
@@ -24,6 +25,7 @@ type studyItemType = {
 const StudyItem = ({
   title,
   teamName,
+  participants,
   attendantsLimit,
   detail,
   hasTag,
@@ -38,7 +40,9 @@ const StudyItem = ({
             </p>
           </div>
           <div style={studyItem_text_personnel}>
-            <p>인원: 3 / {attendantsLimit}</p>
+            <p>
+              인원: {participants} / {attendantsLimit}
+            </p>
           </div>
           <div style={studyItem_text_detail}>{detail}</div>
 

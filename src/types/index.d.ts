@@ -73,6 +73,7 @@ interface StudyListType {
   name: string;
   content: string;
   techStacks: hasTagType[];
+  participants: number[];
   attendantsLimit: number;
   recruit: {
     title: string;
