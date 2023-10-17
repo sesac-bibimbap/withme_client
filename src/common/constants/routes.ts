@@ -21,7 +21,11 @@ const ROUTES = {
   },
   STUDY: {
     PATH: '/study',
-    NAME: 'STUDY',
+    NAME: 'Study',
+  },
+  STUDY_DETAIL: {
+    PATH: '/study/deatil/:id',
+    NAME: 'StudyDetail',
   },
 };
 

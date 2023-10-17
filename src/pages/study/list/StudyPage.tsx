@@ -1,6 +1,6 @@
 import { StudyListBoard } from '../../../components';
 
-const StudyListPage = () => {
+const StudyPage = () => {
   return (
     <>
       <StudyListBoard />
@@ -8,4 +8,4 @@ const StudyListPage = () => {
   );
 };
 
-export default StudyListPage;
+export default StudyPage;
