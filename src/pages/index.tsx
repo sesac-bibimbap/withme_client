@@ -3,11 +3,12 @@ import RegisterPage from './register/RegisterPage';
 import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
+import StudyDetailPage from './study/StudyDetailPage';
 // import Study from './study/list/StudyListPage';
 // import CreateStudy from './study/create/CreateStudyPage';
 
 interface Route {
-  element: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
+  element?: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
   path?: string;
   children?: Route[];
 }
@@ -29,16 +30,23 @@ const PAGE_LIST: Route[] = [
     element: <NotificationPage />,
     path: ROUTES.NOTIFICATION.PATH,
   },
-  // {
-  //   element: <Study />,
-  //   path: ROUTES.STUDY.PATH,
-  //   children: [
-  //     {
-  //       element: <CreateStudy />,
-  //       path: ROUTES.CREATE_STUDY.PATH,
-  //     },
-  //   ],
-  // },
+  {
+    path: ROUTES.STUDY.PATH,
+    children: [
+      // {
+      //   element: <StudyPage />,
+      //   path: ROUTES.STUDY.PATH,
+      // },
+      // {
+      //   element: <CreateStudyPage />,
+      //   path: ROUTES.CREATE_STUDY.PATH,
+      // },
+      {
+        element: <StudyDetailPage />,
+        path: ROUTES.STUDY_DETAIL.PATH,
+      },
+    ],
+  },
   // {
   //   path: "*",
   //   element:<NotFound />
