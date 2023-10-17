@@ -67,6 +67,21 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+type EmailData = { email: string };
+
+type EmailTokenData = {
+  email: string;
+  token: string;
+};
+
+type navigatedDataType = { statusCode: number; email: string };
+
+type VerifyInputType = (count: number) => {
+  prevInputRef: React.RefObject<HTMLInputElement> | null;
+  currentInputRef: React.RefObject<HTMLInputElement> | null;
+  nextInputRef: React.RefObject<HTMLInputElement> | null;
+}[];
+
 //Study
 interface StudyListType {
   id: number;

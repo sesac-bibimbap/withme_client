@@ -11,6 +11,14 @@ const ROUTES = {
     PATH: '/login',
     NAME: 'Login',
   },
+  RESET_PASSWORD: {
+    PATH: '/reset-password',
+    NAME: 'RESET_PASSWORD',
+  },
+  RESET_PASSWORD_CHECK: {
+    PATH: 'check',
+    NAME: 'RESET_PASSWORD_CHECK',
+  },
   CREATE_STUDY: {
     PATH: '/study/create',
     NAME: 'CreateStudy',

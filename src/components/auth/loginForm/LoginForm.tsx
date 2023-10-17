@@ -85,7 +85,9 @@ const LoginForm = () => {
           </div>
           <div style={login_text_center}>
             <p style={login_text_ment}>비밀번호를 잊으셨나요?</p>
-            <p style={login_text_underline}>비밀번호 찾기</p>
+            <Link to={ROUTES.RESET_PASSWORD.PATH} style={login_text_underline}>
+              비밀번호 찾기
+            </Link>
           </div>
         </Space>
       </div>

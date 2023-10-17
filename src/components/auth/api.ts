@@ -25,3 +25,21 @@ export const userProfile = async () => {
   });
   return data;
 };
+
+export const emailCheck = async (email: EmailData) => {
+  const { data } = await API({
+    method: 'post',
+    url: '/email',
+    data: email,
+  });
+  return data;
+};
+
+export const verifyToken = async (emailTokenData: EmailTokenData) => {
+  const { data } = await API({
+    method: 'post',
+    url: '/email/verify',
+    data: emailTokenData,
+  });
+  return data;
+};
