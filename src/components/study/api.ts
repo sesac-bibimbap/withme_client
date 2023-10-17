@@ -8,3 +8,12 @@ export const createStudy = async (createStudyData: createStudyType) => {
   });
   return data;
 };
+
+export const techStacks = async () => {
+  const { data } = await API({
+    method: 'get',
+    url: 'tech-stacks',
+    data: techStacks,
+  });
+  return data;
+};

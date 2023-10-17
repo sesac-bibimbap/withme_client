@@ -68,8 +68,8 @@ type SelectRejectReason = {
 };
 
 type TechStack = {
-  id: number;
-  stackName: string;
+  id: string;
+  stackName?: string;
 };
 
 type Recruit = {
@@ -80,8 +80,19 @@ type Recruit = {
 interface createStudyType {
   name: string;
   attendantsLimit: number;
-  date: Date;
+  date?: Date;
   recruit: Recruit;
   content: string;
   techStacks: TechStack[];
+}
+
+interface createStudyDataType extends createStudyType {
+  startDate?: Date;
+  endDate?: Date;
+}
+
+interface StudyStacks {
+  id: number;
+  stackImg: string;
+  stackName: string;
 }

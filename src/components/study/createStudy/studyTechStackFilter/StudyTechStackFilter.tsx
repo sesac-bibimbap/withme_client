@@ -1,57 +1,58 @@
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
-import { studyTechStackFilter_container } from './StudyTechStackFilter.style';
+import {
+  studyTechStackFilter_container,
+  studyTechStackFilter_p,
+  studyTechStackFilter_p_hashTag,
+  studyTechStackFilter_p_max,
+  studyTechStackFilter_warp,
+} from './StudyTechStackFilter.style';
 import { useState } from 'react';
 import { RightBarFilter } from '../../../../common/components';
+import { useTechStakQuery } from '../../hooks/queries copy/useQueries';
 
 const StudyTechStackFilter = () => {
-  const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>([]);
+  const { data, isLoading } = useTechStakQuery();
+  const [selectedTechStacks, setSelectedTechStacks] = useState<number[]>([]);
 
-  const handleTechStackSelect = (techStackName: string) => {
-    if (selectedTechStacks.includes(techStackName)) {
+  const selectedTechStacksTypeChange = selectedTechStacks.join(' ');
+  console.log(selectedTechStacksTypeChange);
+
+  const handleTechStackSelect = (techStackId: number) => {
+    if (selectedTechStacks.includes(techStackId)) {
       setSelectedTechStacks(
-        selectedTechStacks.filter((item) => item !== techStackName),
+        selectedTechStacks.filter((item) => item !== techStackId),
       );
     } else {
-      setSelectedTechStacks([...selectedTechStacks, techStackName]);
+      setSelectedTechStacks([...selectedTechStacks, techStackId]);
     }
   };
   console.log(selectedTechStacks);
 
+  // if (isLoading) {
+  //   return <p>Loading...</p>;
+  // }
+
   return (
     <div style={studyTechStackFilter_container}>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <p>해시태그</p>
-        <p>(최대 5개)</p>
+      <div style={studyTechStackFilter_p}>
+        <p style={studyTechStackFilter_p_hashTag}>해시태그</p>
+        <p style={studyTechStackFilter_p_max}>(최대 5개)</p>
       </div>
-      <div
-        style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
-      >
-        {selectedTechStacks.map((techStackName) => (
-          <Form.Item<TechStack> key={techStackName} name="stackName">
-            <input type="hidden" value={techStackName} />
-          </Form.Item>
+      <div style={studyTechStackFilter_warp}>
+        {/* <Form.Item<TechStack> name="id">
+          <Input type="hidden" value={selectedTechStacksTypeChange} />
+        </Form.Item> */}
+
+        {data?.map((techStack: StudyStacks) => (
+          <RightBarFilter
+            key={techStack.id}
+            techStackName={techStack.stackName}
+            techStackImage={techStack.stackImg}
+            techStackId={techStack.id}
+            onTechStackSelect={handleTechStackSelect}
+          />
         ))}
-        <RightBarFilter
-          techStackName="react"
-          techStackImage="/techStack/react.svg"
-          onTechStackSelect={handleTechStackSelect}
-        />
-        <RightBarFilter
-          techStackName="javascript"
-          techStackImage="/techStack/javascript.svg"
-          onTechStackSelect={handleTechStackSelect}
-        />
-        <RightBarFilter
-          techStackName="c++"
-          techStackImage="/techStack/c++.svg"
-          onTechStackSelect={handleTechStackSelect}
-        />
-        <RightBarFilter
-          techStackName="java"
-          techStackImage="/techStack/java.svg"
-          onTechStackSelect={handleTechStackSelect}
-        />
       </div>
     </div>
   );
