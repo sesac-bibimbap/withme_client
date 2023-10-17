@@ -4,22 +4,19 @@ import { useRoutes } from 'react-router-dom';
 
 const App = () => {
   const routes = useRoutes(PAGE_LIST);
-  // console.log('🦄  routes:', routes);
-  // console.log('🦄  routes:111', routes?.props?.match?.pathname);
-  // console.log(PAGE_LIST[0]);
+  const url = routes?.props?.match?.pathname;
 
   return (
     <>
-      {routes?.props?.match?.pathname === '/login' ||
-      routes?.props?.match?.pathname === '/register' ? (
+      {url === '/login' ||
+      url === '/register' ||
+      url === '/reset-password' ||
+      url === '/reset-password/check' ? (
         routes
       ) : (
         <Layout>{routes}</Layout>
       )}
     </>
-    // <>
-    //   <Layout>{routes}</Layout>
-    // </>
   );
 };
 
