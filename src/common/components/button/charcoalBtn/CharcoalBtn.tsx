@@ -7,13 +7,17 @@ type charcoalBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  path: string;
+  path?: string | undefined;
+  disabled?: boolean;
+  onClick?: () => Promise<void>;
 };
 const CharcoalBtn = ({
   children,
   htmlType,
   buttonStyle,
   path,
+  onClick,
+  disabled,
 }: charcoalBtnType) => {
   const navigate = useNavigate();
   const charcoalBtnCss = {
@@ -23,9 +27,10 @@ const CharcoalBtn = ({
   return (
     <>
       <Button
+        disabled={disabled}
         style={charcoalBtnCss}
         htmlType={htmlType}
-        onClick={() => navigate(path)}
+        onClick={path ? () => navigate(path) : onClick}
       >
         {children}
       </Button>

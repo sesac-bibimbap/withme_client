@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { Form } from 'antd';
 import { CharcoalBtn, EmailInput, YellowBtn } from '../../../common/components';
-import { API } from '../../../common/utils/axiosInstance';
 import {
+  resetPassword_CharcoalBtn,
   resetPassword_btn_wrapper,
   resetPassword_comment,
   resetPassword_comment_error,
@@ -10,27 +9,14 @@ import {
   resetPassword_container,
   resetPassword_title,
   resetPassword_wrapper,
+  resetPassword_yellowBtn,
 } from './ResetPassword.style';
-import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../../common/constants';
+import useCheckAndSendEmail from '../hooks/useCheckAndSendEmail';
+import { RESET_PASSWORD_COMMENT } from '../../../common/constants/auth';
 
 const ResetPassword = () => {
-  const [errorMsg, setErrorMsg] = useState('');
-  const navigate = useNavigate();
-
-  const onSubmitCheckAndSendEmail = async (email: { email: string }) => {
-    try {
-      const { data } = await API({
-        method: 'post',
-        url: '/email',
-        data: email,
-      });
-      navigate(ROUTES.RESET_PASSWORD_CHECK.PATH, { state: { data } });
-    } catch (err) {
-      if (err instanceof AxiosError) setErrorMsg(err.response?.data.message);
-    }
-  };
+  const { errorMsg, onSubmitCheckAndSendEmail, onChangeEmailInput } =
+    useCheckAndSendEmail();
 
   return (
     <div style={resetPassword_container}>
@@ -40,26 +26,19 @@ const ResetPassword = () => {
           임시 비밀번호를 받을 메일을 입력해주세요.
         </div>
         <Form onFinish={onSubmitCheckAndSendEmail}>
-          <EmailInput />
+          <EmailInput onChange={onChangeEmailInput} />
           <div style={resetPassword_comment_wrapper}>
-            <div style={resetPassword_comment}>
-              {`메일로 발송된 임시비밀번호로 로그인 후 
-              프로필 수정 페이지에서 새로운 비밀번호를 다시 설정해주세요.`}
-            </div>
+            <div style={resetPassword_comment}>{RESET_PASSWORD_COMMENT}</div>
             <div style={resetPassword_comment_error}>{errorMsg}</div>
           </div>
           <div style={resetPassword_btn_wrapper}>
-            <CharcoalBtn path={'/login'} buttonStyle={{ marginRight: '10px' }}>
+            <CharcoalBtn
+              path={'/login'}
+              buttonStyle={resetPassword_CharcoalBtn}
+            >
               돌아가기
             </CharcoalBtn>
-            <YellowBtn
-              htmlType="submit"
-              buttonStyle={{
-                marginLeft: '10px',
-                color: '#222121',
-                fontWeight: 'bold',
-              }}
-            >
+            <YellowBtn htmlType="submit" buttonStyle={resetPassword_yellowBtn}>
               확인
             </YellowBtn>
           </div>
