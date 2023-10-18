@@ -14,49 +14,43 @@ import {
   createStudyForm_input_date,
   createStudyForm_input_people,
 } from './CreateStudyForm.style';
-import { BlackBtn, YellowBtn } from '../../../../common/components';
+import { BlackBtn, Popup, YellowBtn } from '../../../../common/components';
 import { useMutation } from '@tanstack/react-query';
 import useCreateStudy from '../../hooks/useCreateStudy';
 import StudyTechStackFilter from '../studyTechStackFilter/StudyTechStackFilter';
 import '../../study.css';
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 
 const { RangePicker } = DatePicker;
 
 const CreateStudyForm = () => {
-  const [techStackSelect, setTechStackSelect] = useState();
-  const { handleStudySubmit } = useCreateStudy();
+  const {
+    handleStudySubmit,
+    popSuccessTitle,
+    popSuccessText,
+    closePopup,
+    showPopup,
+  } = useCreateStudy();
+  const [techStackId, setTechStackId] = useState<number[]>([]);
 
   const { mutate } = useMutation(handleStudySubmit);
 
-  const rangeConfig = {
-    rules: [
-      {
-        type: 'array' as const,
-        // required: true,
-        message: 'Please select time!',
-      },
-    ],
-  };
-  const handleHiddenStack = () => {
-    setTechStackSelect(techStackId);
+  const handleOnlyNumber = (e: KeyboardEvent<HTMLInputElement>) => {
+    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
   };
 
-  const formatCreateStudyData = (data) => {
-    const {
-      name,
-      attendantsLimit,
-      date,
-      title,
-      recruitPlaceholder,
-      content,
-      id,
-    } = data;
-    const [startDate, endDate] = date.map((el) => el.$d);
-    // const a = id.split(' ');
-    console.log('🦄  id:', id);
+  const formatCreateStudyData = (data: createStudyDataType) => {
+    const { name, attendantsLimit, date, title, recruitPlaceholder, content } =
+      data;
+    const [startDate, endDate] = date.map((el: any) => el.$d);
 
-    const createStudyData: createStudyDataType = {
+    const techStacks: TechStack[] = [];
+    techStackId.map((el) => {
+      const obj = { id: el };
+      techStacks.push(obj);
+    });
+
+    const createStudyData: createStudyType = {
       name,
       attendantsLimit,
       startDate,
@@ -66,10 +60,9 @@ const CreateStudyForm = () => {
         recruitPlaceholder: recruitPlaceholder,
       },
       content,
-      techStacks: { id: id },
+      techStacks: techStacks,
     };
-    console.log(createStudyData);
-
+    mutate(createStudyData);
     return createStudyData;
   };
 
@@ -79,22 +72,11 @@ const CreateStudyForm = () => {
         <p style={{ marginBottom: '15px' }}>스터디 만들기</p>
         <div style={createStudyForm_form_contaner}>
           <Form
-            // labelCol={{ span: 4 }}
-            // wrapperCol={{ span: 14 }}
-            // layout="horizontal"
-            // initialValues={{ size: componentSize }}
-            // onValuesChange={onFormLayoutChange}
-            // size={componentSize as SizeType}
             initialValues={{
               attendantsLimit: 2,
-              id: '123',
             }}
-            // 데이터 가공하는 함수를 따로 빼서 작업하고
-            // mutate(가공된 데이터)
             onFinish={(data) => {
-              console.log(data);
               formatCreateStudyData(data);
-              // mutate(data);
             }}
           >
             <div style={createStudyFrom_wrap}>
@@ -102,7 +84,15 @@ const CreateStudyForm = () => {
                 <div style={createStudyForm_form_wrap}>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>스터디명</p>
-                    <Form.Item<createStudyType> name="name">
+                    <Form.Item<createStudyDataType>
+                      name="name"
+                      rules={[
+                        {
+                          required: true,
+                          message: '스터디 명을 입력해주세요',
+                        },
+                      ]}
+                    >
                       <Input
                         placeholder="스터디 명을 입력하세요"
                         style={createStudyForm_input_studyName}
@@ -111,28 +101,49 @@ const CreateStudyForm = () => {
                   </div>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>인원</p>
-                    <Form.Item<createStudyType> name="attendantsLimit">
+                    <Form.Item<createStudyDataType>
+                      name="attendantsLimit"
+                      rules={[
+                        {
+                          required: true,
+                          message: '인원 수를 입력해주세요',
+                        },
+                      ]}
+                    >
                       <InputNumber
                         min={2}
                         max={10}
+                        onKeyUp={handleOnlyNumber}
                         style={createStudyForm_input_people}
                       />
                     </Form.Item>
                   </div>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>기간</p>
-                    <Form.Item<createStudyType>
+                    <Form.Item<createStudyDataType>
                       name="date"
-                      {...rangeConfig}
-                      // validateStatus="error"
-                      // help="Please select right date"
+                      rules={[
+                        {
+                          type: 'array' as const,
+                          required: true,
+                          message: '스터디 진행 기간을 입력해주세요',
+                        },
+                      ]}
                     >
                       <RangePicker style={createStudyForm_input_date} />
                     </Form.Item>
                   </div>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>제목</p>
-                    <Form.Item<Recruit> name="title">
+                    <Form.Item<createStudyDataType>
+                      name="title"
+                      rules={[
+                        {
+                          required: true,
+                          message: '스터디원 모집 게시글 제목을 입력해주세요',
+                        },
+                      ]}
+                    >
                       <Input
                         placeholder="제목을 입력하세요"
                         style={createStudyForm_input_title}
@@ -141,7 +152,15 @@ const CreateStudyForm = () => {
                   </div>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>세부내용</p>
-                    <Form.Item<createStudyType> name="content">
+                    <Form.Item<createStudyDataType>
+                      name="content"
+                      rules={[
+                        {
+                          required: true,
+                          message: '스터디 세부 내용을 입력해주세요',
+                        },
+                      ]}
+                    >
                       <Input.TextArea
                         placeholder="세부 내용을 입력하세요"
                         style={createStudyForm_input_textarea}
@@ -150,7 +169,15 @@ const CreateStudyForm = () => {
                   </div>
                   <div style={createStudyFrom_input_wrap}>
                     <p style={createStudyFrom_form_input}>신청내용</p>
-                    <Form.Item<Recruit> name="recruitPlaceholder">
+                    <Form.Item<createStudyDataType>
+                      name="recruitPlaceholder"
+                      rules={[
+                        {
+                          required: true,
+                          message: '신청시 받을 사항을 입력해주세요',
+                        },
+                      ]}
+                    >
                       <Input
                         placeholder="ex) 스터디원들이 스터디에 임하는 각오, 스터디가 가능한 요일 등 신청시 받을 사항 작성"
                         style={createStudyForm_input_title}
@@ -158,7 +185,7 @@ const CreateStudyForm = () => {
                     </Form.Item>
                   </div>
                 </div>
-                <Space>
+                <Space style={{ marginTop: '15px' }}>
                   <Form.Item>
                     <BlackBtn htmlType="submit" path={-1}>
                       {'취소'}
@@ -174,14 +201,18 @@ const CreateStudyForm = () => {
                   </Form.Item>
                 </Space>
               </div>
-              <Form.Item<TechStack> name="id" hidden>
-                <Input type="hidden" />
-              </Form.Item>
-              <StudyTechStackFilter />
+              <StudyTechStackFilter setTechStackId={setTechStackId} />
             </div>
           </Form>
         </div>
       </div>
+      {showPopup && (
+        <Popup
+          popupTitle={popSuccessTitle}
+          popupText={popSuccessText}
+          onClose={closePopup}
+        />
+      )}
     </>
   );
 };

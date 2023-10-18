@@ -68,7 +68,7 @@ type SelectRejectReason = {
 };
 
 type TechStack = {
-  id: string;
+  id: number;
   stackName?: string;
 };
 
@@ -77,18 +77,23 @@ type Recruit = {
   recruitPlaceholder: string;
 };
 
-interface createStudyType {
+interface createStudyDataType {
   name: string;
-  attendantsLimit: number;
-  date?: Date;
-  recruit: Recruit;
+  attendantsLimit?: number;
+  title: string;
+  date: Array;
+  recruitPlaceholder: string;
   content: string;
-  techStacks: TechStack[];
 }
 
-interface createStudyDataType extends createStudyType {
+interface createStudyType {
+  name: string;
+  attendantsLimit?: number;
+  recruit?: Recruit;
   startDate?: Date;
   endDate?: Date;
+  content?: string;
+  techStacks?: TechStack[];
 }
 
 interface StudyStacks {
@@ -96,6 +101,7 @@ interface StudyStacks {
   stackImg: string;
   stackName: string;
 }
+
 type EmailData = { email: string };
 
 type EmailTokenData = {

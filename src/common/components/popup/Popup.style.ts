@@ -1,5 +1,16 @@
 import { CSSProperties } from 'react';
 
+export const popup_back: CSSProperties = {
+  minHeight: '100dvh',
+  minWidth: '100dvw',
+  backgroundColor: '#222121',
+  opacity: '0.9',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
 export const popup_container: CSSProperties = {
   width: '400px',
   height: '300px',
@@ -14,6 +25,7 @@ export const popup_container: CSSProperties = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   boxShadow: '2px 2px 5px 5px rgb(0, 0, 0, 0.2)',
+  zIndex: '1',
 };
 
 export const popup_title: CSSProperties = {

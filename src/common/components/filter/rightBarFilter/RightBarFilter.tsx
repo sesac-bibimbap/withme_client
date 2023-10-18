@@ -9,6 +9,7 @@ type RightBarFilterType = {
   techStackName: string;
   techStackImage: string;
   techStackId: number;
+  techStackIds: Array<number>;
   onTechStackSelect: (techStackId: number) => void;
 };
 
@@ -17,6 +18,7 @@ const RightBarFilter = ({
   techStackImage,
   onTechStackSelect,
   techStackId,
+  techStackIds,
 }: RightBarFilterType) => {
   const [isTechClicked, setTechClicked] = useState(false);
   const tackStackChoose = isTechClicked
@@ -24,10 +26,15 @@ const RightBarFilter = ({
     : rightBarFilter_beforeClicking_bg;
 
   const handleButtonClick = () => {
-    setTechClicked(!isTechClicked);
-    onTechStackSelect(techStackId);
+    techStackIds.length !== 5
+      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      : isTechClicked === true
+      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      : (alert('기술 스택은 최대 5개까지만 선택할 수 있습니다.'),
+        setTechClicked(isTechClicked),
+        onTechStackSelect(techStackId));
   };
-  // console.log(selectedValues);
+
   return (
     <>
       <Button style={tackStackChoose} onClick={handleButtonClick}>
