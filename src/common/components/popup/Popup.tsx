@@ -3,6 +3,7 @@ import {
   popup_textBox,
   popup_text,
   popup_title,
+  popup_back,
 } from './Popup.style';
 import YellowBtn from '../button/yellowBtn/YellowBtn';
 
@@ -15,6 +16,7 @@ type popupType = {
 const Popup = ({ popupTitle, popupText, onClose }: popupType) => {
   return (
     <>
+      <div style={popup_back}></div>
       <div style={popup_container}>
         <p style={popup_title}>{popupTitle}</p>
         <div style={popup_textBox}>

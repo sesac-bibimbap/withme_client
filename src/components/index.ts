@@ -7,4 +7,4 @@ export { default as ResetPassword } from './auth/resetPassword/ResetPassword';
 export { default as Notifications } from './notification/Notifications/Notifications';
 
 // create study
-// export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';
+export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';
