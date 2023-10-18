@@ -7,3 +7,11 @@ export const studyList = async (limit: number, offset: number) => {
   });
   return data;
 };
+
+export const studyBookMark = async (id: number) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/studies/${id}/bookmark`,
+  });
+  return data;
+};

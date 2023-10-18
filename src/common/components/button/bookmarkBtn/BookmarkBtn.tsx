@@ -5,13 +5,15 @@ import {
   bookmarkBtn_button,
   bookmarkBtn_container,
 } from './BookmarkBtn.style';
+import { studyBookMark } from '../../../../components/study/api';
 
 type bookmarkBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
+  id: number;
 };
 
-const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
+const BookmarkBtn = ({ children, htmlType, id }: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(false);
 
   const bookmarkImage = bookmark
@@ -19,6 +21,7 @@ const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
     : '/bookmark/bookmarkLine.svg';
 
   const handleButtonClick = () => {
+    studyBookMark(id);
     setBookmark(!bookmark);
   };
 

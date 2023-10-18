@@ -20,6 +20,7 @@ type studyItemType = {
   attendantsLimit: number;
   detail: string;
   hasTag: HashTagType[];
+  id: number;
 };
 
 const StudyItem = ({
@@ -29,6 +30,7 @@ const StudyItem = ({
   attendantsLimit,
   detail,
   hasTag,
+  id,
 }: studyItemType) => {
   return (
     <>
@@ -53,7 +55,7 @@ const StudyItem = ({
           </div>
         </div>
         <div style={studyItem_button_bundle}>
-          <BookmarkBtn>모집중</BookmarkBtn>
+          <BookmarkBtn id={id}>모집중</BookmarkBtn>
           <DarkGrayBtn buttonStyle={studyItem_button_detail}>
             자세히 보기
           </DarkGrayBtn>

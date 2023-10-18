@@ -99,3 +99,8 @@ interface HashTagType {
   id: number;
   stackName: string;
 }
+
+interface Bookmark {
+  name: string;
+  id: number;
+}
