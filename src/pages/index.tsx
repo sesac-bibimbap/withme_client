@@ -45,15 +45,19 @@ const PAGE_LIST: Route[] = [
     path: ROUTES.NOTIFICATION.PATH,
   },
   {
-    element: <Study />,
-    path: ROUTES.STUDY.PATH,
-    children: [
-      {
-        element: <CreateStudy />,
-        path: ROUTES.CREATE_STUDY.PATH,
-      },
-    ],
+    element: <CreateStudy />,
+    path: ROUTES.CREATE_STUDY.PATH,
   },
+  // {
+  //   element: <Study />,
+  //   path: ROUTES.STUDY.PATH,
+  //   children: [
+  //     {
+  //       element: <CreateStudy />,
+  //       path: ROUTES.CREATE_STUDY.PATH,
+  //     },
+  //   ],
+  // },
   // {
   //   path: "*",
   //   element:<NotFound />
