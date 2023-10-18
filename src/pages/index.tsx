@@ -3,7 +3,7 @@ import RegisterPage from './register/RegisterPage';
 import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
-import StudyDetailPage from './study/StudyDetailPage';
+import StudyDetailPage from './study/detail/StudyDetailPage';
 // import ResetPasswordPage from './resetPassword/ResetPasswordPage';
 // import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
 // import Study from './study/list/StudyListPage';
