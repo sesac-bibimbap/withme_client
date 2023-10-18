@@ -7,15 +7,22 @@ import {
   studyBookmark_text_techStack,
 } from './StudyBookmarkItem.style';
 import { Button } from 'antd';
+import { studyBookMark } from '../../api';
 
-const StudyBookmarkItem = () => {
+export type BookmarkItemType = {
+  teamName: string;
+  id: number;
+};
+
+const StudyBookmarkItem = ({ teamName, id }: BookmarkItemType) => {
   const [bookmark, setBookmark] = useState(false);
 
   const bookmarkImage = bookmark
-    ? '/bookmark/bookmark.svg'
-    : '/bookmark/bookmarkLine.svg';
+    ? '/bookmark/bookmarkLine.svg'
+    : '/bookmark/bookmark.svg';
 
   const handleButtonClick = () => {
+    studyBookMark(id);
     setBookmark(!bookmark);
   };
 
@@ -23,20 +30,14 @@ const StudyBookmarkItem = () => {
     <>
       <div style={bookmarkItem_wrapper}>
         <Button type="primary" style={studyBookmarkItem_button_detail}>
-          <p style={studyBookmark_text_teamName}>팀자스</p>
+          <p style={studyBookmark_text_teamName}>{teamName}</p>
           <p style={studyBookmark_text_techStack}># javascript</p>
         </Button>
         <Button
           style={studyBookmark_bookmarkBtn_bookmark}
           onClick={handleButtonClick}
         >
-          <img
-            src={bookmarkImage}
-            alt="북마크"
-            style={{ height: '22px' }}
-
-            // style={studyBookmark_bookmarkBtn_bookmark}
-          />
+          <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />
         </Button>
       </div>
     </>

@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 export const bookmarkItem_wrapper: CSSProperties = {
   display: 'flex',
   position: 'relative',
+  marginTop: '8px',
 };
 
 export const studyBookmarkItem_button_detail: CSSProperties = {
