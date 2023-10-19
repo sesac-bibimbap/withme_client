@@ -42,3 +42,11 @@ export const studyItem_button_detail: CSSProperties = {
   height: '56px',
   marginTop: '15px',
 };
+
+export const studyItem_button_hashtag: CSSProperties = {
+  display: 'inline-block',
+  fontSize: '11px',
+  padding: '3px 8px',
+  marginRight: '5px',
+  borderRadius: '5px',
+};
