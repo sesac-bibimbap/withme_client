@@ -1,13 +1,22 @@
+import { CSSProperties } from 'react';
 import { techStackHashtag_bg } from '../techStackHashtag/TechStackHashtag.style';
 
 type TechStackHashtagType = {
-  hashtagText: string;
+  children: string;
+  buttonStyle?: CSSProperties;
 };
 
-const TechStackHashtag = ({ hashtagText }: TechStackHashtagType) => {
+const TechStackHashtag = ({ children, buttonStyle }: TechStackHashtagType) => {
+  const techStackHashtagCss = {
+    ...techStackHashtag_bg,
+    ...buttonStyle,
+  };
+
   return (
     <>
-      <span style={techStackHashtag_bg}># {hashtagText}</span>
+      <div style={techStackHashtagCss}>
+        <span># {children}</span>
+      </div>
     </>
   );
 };
