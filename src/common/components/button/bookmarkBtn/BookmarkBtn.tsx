@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Button } from 'antd';
 import {
   bookmarkBtn_bookmark,
@@ -11,24 +11,27 @@ type bookmarkBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   id: number;
+  isMarked?: boolean;
 };
 
-const BookmarkBtn = ({ children, htmlType, id }: bookmarkBtnType) => {
-  const [bookmark, setBookmark] = useState(false);
+const BookmarkBtn = ({ children, htmlType, id, isMarked }: bookmarkBtnType) => {
+  const [bookmark, setBookmark] = useState(isMarked);
+  const [bookmarkImage, setBookmarkImage] = useState<string>();
 
-  const bookmarkImage = bookmark
-    ? '/bookmark/bookmark.svg'
-    : '/bookmark/bookmarkLine.svg';
+  useEffect(() => {
+    setBookmarkImage(
+      bookmark ? '/bookmark/bookmark.svg' : '/bookmark/bookmarkLine.svg',
+    );
+  }, [bookmark]);
 
   const handleButtonClick = () => {
     studyBookMark(id);
-    setBookmark(!bookmark);
+    setBookmark((prev) => !prev);
   };
 
   return (
     <>
       <div style={bookmarkBtn_container}>
-        {/* <div> */}
         <Button
           style={bookmarkBtn_button}
           htmlType={htmlType}
@@ -42,4 +45,6 @@ const BookmarkBtn = ({ children, htmlType, id }: bookmarkBtnType) => {
   );
 };
 
-export default BookmarkBtn;
+const MemoBookmarkBtn = memo(BookmarkBtn);
+
+export default MemoBookmarkBtn;
