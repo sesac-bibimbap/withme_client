@@ -4,7 +4,7 @@ import { studyList } from '../../api';
 
 //스터디 목록 가져오기
 const useStudyListQuery = (limit: number, offset: number) => {
-  const { data, isLoading, isFetching } = useQuery(
+  const { data, isLoading } = useQuery(
     ['studyList', limit, offset],
     () => studyList(limit, offset),
     {
@@ -12,7 +12,7 @@ const useStudyListQuery = (limit: number, offset: number) => {
       refetchOnWindowFocus: false,
     },
   );
-  return { data, isLoading, isFetching };
+  return { data, isLoading };
 };
 
 export { useStudyListQuery };

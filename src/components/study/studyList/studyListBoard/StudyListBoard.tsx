@@ -10,16 +10,28 @@ import {
 } from './StudyListBoard.style';
 import '../../study.css';
 
-const StudyListBoard = ({ user, studies, setOffset, limit, offset }) => {
+type studyListBoardType = {
+  user: UserData;
+  studies: Studies;
+  setOffset: (offset: number) => void;
+  limit: number;
+  offset: number;
+};
+
+const StudyListBoard = ({
+  user,
+  studies,
+  setOffset,
+  limit,
+  offset,
+}: studyListBoardType) => {
   const list = useRef<StudyListType[]>([]);
   const { ref, inView } = useInView({ threshold: 0 });
-  // const setBookmarked = useBookmarkedStore((state) => state.setBookmarked);
 
   useEffect(() => {
     if (!inView) return;
     list.current = [...list.current, studies.data?.[0]];
     setOffset(limit + offset);
-    // setBookmarked(user.bookmarkedStudies);
   }, [inView]);
 
   return (
@@ -33,8 +45,10 @@ const StudyListBoard = ({ user, studies, setOffset, limit, offset }) => {
             style={studyList_input_search}
           />
           <div style={studyList_item_background}>
-            {list.current.flat().map((study: StudyListType, idx) => {
-              return <MemoedStudyItem key={idx} study={study} user={user} />;
+            {list.current.flat().map((study: StudyListType) => {
+              return (
+                <MemoedStudyItem key={study.id} study={study} user={user} />
+              );
             })}
             <div ref={ref}></div>
           </div>

@@ -13,14 +13,14 @@ import {
 import MemoBookmarkBtn from '../../../../common/components/button/bookmarkBtn/BookmarkBtn';
 
 type studyItemType = {
-  user: any;
   study: StudyListType;
+  user: UserData;
 };
 
 const StudyItem = ({ study, user }: studyItemType) => {
   const {
     id,
-    recruit: { title },
+    recruit,
     name,
     participants,
     attendantsLimit,
@@ -29,7 +29,7 @@ const StudyItem = ({ study, user }: studyItemType) => {
   } = study;
   const userBookmarkedStudies = user.data.bookmarkedStudies;
   const loginUserBookmarkedStudy = userBookmarkedStudies.find(
-    (userBookmarkedStudy) => {
+    (userBookmarkedStudy: Study) => {
       return userBookmarkedStudy.id === id;
     },
   );
@@ -40,7 +40,7 @@ const StudyItem = ({ study, user }: studyItemType) => {
         <div style={studyItem_text_left}>
           <div style={studyItem_text_title}>
             <p>
-              {title} | {name}
+              {recruit?.title} | {name}
             </p>
           </div>
           <div style={studyItem_text_personnel}>
