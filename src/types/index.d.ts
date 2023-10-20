@@ -86,7 +86,7 @@ interface createStudyDataType {
   content: string;
 }
 
-interface createStudyType {
+interface CreateStudyType {
   name: string;
   attendantsLimit?: number;
   recruit?: Recruit;
@@ -116,3 +116,49 @@ type VerifyInputType = (count: number) => {
   currentInputRef: React.RefObject<HTMLInputElement> | null;
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
+
+interface Study extends ISuperDate {
+  id?: number;
+  name?: string;
+  content?: string;
+  attendantsLimit?: number;
+  startDate: Date;
+  endDate: Date;
+  owner: User;
+  inquiries: Inquiry[];
+  techStacks: TechStack[];
+  participants: User[];
+}
+
+interface ISuperDate {
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+}
+
+interface User extends ISuperDate {
+  id?: string;
+  email: string;
+  password?: string;
+  emailVerified?: string;
+  profile: Profile;
+}
+
+interface Profile extends ISuperDate {
+  id?: string;
+  nickname?: string;
+  profileImg?: string;
+  gender?: boolean;
+}
+
+interface Inquiry extends ISuperDate {
+  id?: string;
+  title?: string;
+  contents?: string;
+}
+
+interface TechStack extends ISuperDate {
+  id?: string;
+  stackName?: string;
+  stackImg?: string;
+}
