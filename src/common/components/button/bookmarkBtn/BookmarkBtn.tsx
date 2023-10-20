@@ -37,19 +37,19 @@ const BookmarkBtn = ({
     try {
       setBookmark((prev) => !prev);
 
-      const user = cache.getQueryData(['login-user']);
+      const user = cache.getQueryData(['userProfile']);
       const bookmarkedStudies = user.bookmarkedStudies || [];
       const isAlreadyBookmarked = bookmarkedStudies.find(
         (item) => item.id === id,
       );
 
       if (isAlreadyBookmarked) {
-        cache.setQueryData(['login-user'], (oldData) => ({
+        cache.setQueryData(['userProfile'], (oldData) => ({
           ...oldData,
           bookmarkedStudies: bookmarkedStudies.filter((item) => item.id !== id),
         }));
       } else {
-        cache.setQueryData(['login-user'], (oldData) => ({
+        cache.setQueryData(['userProfile'], (oldData) => ({
           ...oldData,
           bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
         }));

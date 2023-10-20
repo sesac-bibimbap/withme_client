@@ -13,7 +13,7 @@ type StudyBookmarkType = {
 
 const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
   const { cache } = useCacheInstance();
-  const user = cache.getQueryData(['login-user']);
+  const user = cache.getQueryData(['userProfile']);
   const bookmarkedStudies = user.bookmarkedStudies || [];
   const bookmarkCss = {
     ...studyBookmark_wrapper,
