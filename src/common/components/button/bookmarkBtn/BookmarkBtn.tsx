@@ -9,9 +9,9 @@ import { studyBookMark } from '../../../../components/study/api';
 import useCacheInstance from '../../../utils/cache';
 
 type bookmarkBtnType = {
-  children: string;
+  children?: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
-  id: number;
+  id?: number;
   isMarked?: boolean;
   teamName?: string;
 };
@@ -37,22 +37,26 @@ const BookmarkBtn = ({
     try {
       setBookmark((prev) => !prev);
 
-      const user = cache.getQueryData(['userProfile']);
-      const bookmarkedStudies = user.bookmarkedStudies || [];
+      const user: User | undefined = cache.getQueryData(['userProfile']);
+      const bookmarkedStudies = user?.bookmarkedStudies || [];
       const isAlreadyBookmarked = bookmarkedStudies.find(
         (item) => item.id === id,
       );
 
       if (isAlreadyBookmarked) {
-        cache.setQueryData(['userProfile'], (oldData) => ({
-          ...oldData,
-          bookmarkedStudies: bookmarkedStudies.filter((item) => item.id !== id),
-        }));
+        cache.setQueryData(['userProfile'], (oldData) =>
+          Object.assign({}, oldData, {
+            bookmarkedStudies: bookmarkedStudies.filter(
+              (item) => item.id !== id,
+            ),
+          }),
+        );
       } else {
-        cache.setQueryData(['userProfile'], (oldData) => ({
-          ...oldData,
-          bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
-        }));
+        cache.setQueryData(['userProfile'], (oldData) =>
+          Object.assign({}, oldData, {
+            bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
+          }),
+        );
       }
 
       await studyBookMark(id);

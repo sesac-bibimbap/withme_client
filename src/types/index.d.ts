@@ -155,7 +155,7 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
-  bookmarkedStudies: StudyListType[];
+  bookmarkedStudies?: StudyListType[];
 }
 
 interface Profile extends ISuperDate {

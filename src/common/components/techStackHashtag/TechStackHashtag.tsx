@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import { techStackHashtag_bg } from '../techStackHashtag/TechStackHashtag.style';
 
 type TechStackHashtagType = {
-  children: string;
+  children?: string;
   buttonStyle?: CSSProperties;
 };
 

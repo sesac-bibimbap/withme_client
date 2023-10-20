@@ -28,7 +28,7 @@ const StudyItem = ({ study, user }: studyItemType) => {
     techStacks,
   } = study;
   const userBookmarkedStudies = user.data.bookmarkedStudies;
-  const loginUserBookmarkedStudy = userBookmarkedStudies.find(
+  const loginUserBookmarkedStudy = userBookmarkedStudies?.find(
     (userBookmarkedStudy: Study) => {
       return userBookmarkedStudy.id === id;
     },
