@@ -1,39 +1,30 @@
+import { useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { Input } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import MemoedStudyItem from '../studyItem/StudyItem';
 import {
   studyList_background,
   studyList_input_search,
   studyList_item_background,
 } from './StudyListBoard.style';
-import StudyItem from '../studyItem/StudyItem';
-import { SearchOutlined } from '@ant-design/icons';
-import { useStudyListQuery } from '../../hooks/queries/useQueries';
 import '../../study.css';
-import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 
-const StudyListBoard = () => {
-  const [offset, setOffset] = useState(0);
-  const limit = 20;
-  const { data, isLoading } = useStudyListQuery(limit, offset);
-
+const StudyListBoard = ({ user, studies, setOffset, limit, offset }) => {
   const list = useRef<StudyListType[]>([]);
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
+  const { ref, inView } = useInView({ threshold: 0 });
+  // const setBookmarked = useBookmarkedStore((state) => state.setBookmarked);
 
   useEffect(() => {
-    if (!inView) {
-      return;
-    }
-    list.current = [...list.current, data?.[0]];
+    if (!inView) return;
+    list.current = [...list.current, studies.data?.[0]];
     setOffset(limit + offset);
+    // setBookmarked(user.bookmarkedStudies);
   }, [inView]);
 
-  if (isLoading) {
-    // return 'isloading';
-    return (
-      <>
+  return (
+    <>
+      {!user.isLoading && !studies.isLoading ? (
         <div style={studyList_background}>
           <Input
             size="large"
@@ -41,37 +32,14 @@ const StudyListBoard = () => {
             prefix={<SearchOutlined style={{ color: '#9F9C9C' }} />}
             style={studyList_input_search}
           />
-          <div style={studyList_item_background}></div>
+          <div style={studyList_item_background}>
+            {list.current.flat().map((study: StudyListType, idx) => {
+              return <MemoedStudyItem key={idx} study={study} user={user} />;
+            })}
+            <div ref={ref}></div>
+          </div>
         </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <div style={studyList_background}>
-        <Input
-          size="large"
-          placeholder="검색어를 입력해주세요"
-          prefix={<SearchOutlined style={{ color: '#9F9C9C' }} />}
-          style={studyList_input_search}
-        />
-        <div style={studyList_item_background}>
-          {list.current.flat().map((study: StudyListType) => (
-            <StudyItem
-              key={study.id}
-              id={study.id}
-              title={study.recruit.title}
-              teamName={study.name}
-              participants={study.participants.length}
-              attendantsLimit={study.attendantsLimit}
-              detail={study.content}
-              hasTag={study.techStacks}
-            />
-          ))}
-          <div ref={ref}></div>
-        </div>
-      </div>
+      ) : null}
     </>
   );
 };
