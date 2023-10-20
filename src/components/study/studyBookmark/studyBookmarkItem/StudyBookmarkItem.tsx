@@ -8,6 +8,7 @@ import {
 } from './StudyBookmarkItem.style';
 import { Button } from 'antd';
 import { studyBookMark } from '../../api';
+import useCacheInstance from '../../../../common/utils/cache';
 
 export type BookmarkItemType = {
   teamName: string;
@@ -16,14 +17,38 @@ export type BookmarkItemType = {
 
 const StudyBookmarkItem = ({ teamName, id }: BookmarkItemType) => {
   const [bookmark, setBookmark] = useState(false);
+  const { cache } = useCacheInstance();
 
   const bookmarkImage = bookmark
     ? '/bookmark/bookmarkLine.svg'
     : '/bookmark/bookmark.svg';
 
-  const handleButtonClick = () => {
-    studyBookMark(id);
-    setBookmark(!bookmark);
+  const handleButtonClick = async () => {
+    try {
+      setBookmark((prev) => !prev);
+
+      const user = cache.getQueryData(['login-user']);
+      const bookmarkedStudies = user.bookmarkedStudies || [];
+      const isAlreadyBookmarked = bookmarkedStudies.find(
+        (item) => item.id === id,
+      );
+
+      if (isAlreadyBookmarked) {
+        cache.setQueryData(['login-user'], (oldData) => ({
+          ...oldData,
+          bookmarkedStudies: bookmarkedStudies.filter((item) => item.id !== id),
+        }));
+      } else {
+        cache.setQueryData(['login-user'], (oldData) => ({
+          ...oldData,
+          bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
+        }));
+      }
+
+      await studyBookMark(id);
+    } catch (error) {
+      setBookmark((prev) => !prev);
+    }
   };
 
   return (

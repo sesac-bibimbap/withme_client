@@ -6,17 +6,26 @@ import {
   bookmarkBtn_container,
 } from './BookmarkBtn.style';
 import { studyBookMark } from '../../../../components/study/api';
+import useCacheInstance from '../../../utils/cache';
 
 type bookmarkBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   id: number;
   isMarked?: boolean;
+  teamName?: string;
 };
 
-const BookmarkBtn = ({ children, htmlType, id, isMarked }: bookmarkBtnType) => {
+const BookmarkBtn = ({
+  children,
+  htmlType,
+  id,
+  isMarked,
+  teamName,
+}: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(isMarked);
   const [bookmarkImage, setBookmarkImage] = useState<string>();
+  const { cache } = useCacheInstance();
 
   useEffect(() => {
     setBookmarkImage(
@@ -24,9 +33,32 @@ const BookmarkBtn = ({ children, htmlType, id, isMarked }: bookmarkBtnType) => {
     );
   }, [bookmark]);
 
-  const handleButtonClick = () => {
-    studyBookMark(id);
-    setBookmark((prev) => !prev);
+  const handleButtonClick = async () => {
+    try {
+      setBookmark((prev) => !prev);
+
+      const user = cache.getQueryData(['login-user']);
+      const bookmarkedStudies = user.bookmarkedStudies || [];
+      const isAlreadyBookmarked = bookmarkedStudies.find(
+        (item) => item.id === id,
+      );
+
+      if (isAlreadyBookmarked) {
+        cache.setQueryData(['login-user'], (oldData) => ({
+          ...oldData,
+          bookmarkedStudies: bookmarkedStudies.filter((item) => item.id !== id),
+        }));
+      } else {
+        cache.setQueryData(['login-user'], (oldData) => ({
+          ...oldData,
+          bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
+        }));
+      }
+
+      await studyBookMark(id);
+    } catch (error) {
+      setBookmark((prev) => !prev);
+    }
   };
 
   return (
