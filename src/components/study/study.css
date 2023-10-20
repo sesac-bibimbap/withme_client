@@ -8,34 +8,30 @@
 }
 
 /* studyCreate */
-/* .ant-input.css-dev-only-do-not-override-pr0fja {
-  background-color: #222121;
-} */
-
 .ant-input.css-dev-only-do-not-override-pr0fja::placeholder {
   color: #9f9c9c;
 }
 
 .ant-input-number-input-wrap {
-  /* background-color: #222121; */
   border-radius: 5px;
-}
-
-:where(.css-dev-only-do-not-override-pr0fja).ant-input-number
-  .ant-input-number-input {
-  color: #9f9c9c;
 }
 
 .ant-input-number.ant-input-number-in-form-item.css-dev-only-do-not-override-pr0fja {
   border-radius: 5px;
 }
 
-/* .ant-picker.ant-picker-range.css-dev-only-do-not-override-pr0fja {
-  background-color: #222121;
-} */
+.ant-form-item-explain-error {
+  font-weight: 400;
+}
 
-:where(.css-dev-only-do-not-override-pr0fja).ant-picker
-  .ant-picker-input
-  input::placeholder {
-  color: #9f9c9c;
+/* 스크롤바 배경 */
+.studyTechStackFilter_warp::-webkit-scrollbar {
+  background-color: #222121;
+  width: 7px;
+}
+
+/* 스크롤바 막대 */
+.studyTechStackFilter_warp::-webkit-scrollbar-thumb {
+  background-color: #9f9c9c;
+  border-radius: 10px;
 }

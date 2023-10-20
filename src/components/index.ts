@@ -11,4 +11,4 @@ export { default as StudyListBoard } from './study/studyList/studyListBoard/Stud
 export { default as StudyBookmark } from './study/studyBookmark/studyBookmark';
 
 // create study
-// export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';
+export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';

@@ -67,6 +67,41 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+type TechStack = {
+  id: number;
+  stackName?: string;
+};
+
+type Recruit = {
+  title: stirng;
+  recruitPlaceholder: string;
+};
+
+interface createStudyDataType {
+  name: string;
+  attendantsLimit?: number;
+  title: string;
+  date: Array;
+  recruitPlaceholder: string;
+  content: string;
+}
+
+interface createStudyType {
+  name: string;
+  attendantsLimit?: number;
+  recruit?: Recruit;
+  startDate?: Date;
+  endDate?: Date;
+  content?: string;
+  techStacks?: TechStack[];
+}
+
+interface StudyStacks {
+  id: number;
+  stackImg: string;
+  stackName: string;
+}
+
 type EmailData = { email: string };
 
 type EmailTokenData = {
