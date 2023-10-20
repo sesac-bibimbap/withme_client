@@ -23,10 +23,13 @@ const useRegister = () => {
       setPopupText(popSuccessText);
       setShowPopup(true);
     } catch (err) {
+      //Todo: 에러 타입 추가
       if (err instanceof AxiosError) {
         const errMsg = err.response?.data.message;
         setPopupTitle('회원가입 실패');
         setPopupText(errMsg);
+      } else {
+        (err as Error).message;
       }
       setShowPopup(true);
     }
