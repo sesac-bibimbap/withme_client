@@ -20,9 +20,11 @@ export const studyBookmark_text_teamName: CSSProperties = {
   fontSize: '14px',
 };
 
-export const studyBookmark_text_techStack: CSSProperties = {
+export const studyBookmark_button_techStackHashtag: CSSProperties = {
+  display: 'inline-block',
   fontSize: '11px',
-  marginTop: '2px',
+  padding: '0px 2px',
+  borderRadius: '5px',
 };
 
 export const studyBookmark_bookmarkBtn_bookmark: CSSProperties = {
