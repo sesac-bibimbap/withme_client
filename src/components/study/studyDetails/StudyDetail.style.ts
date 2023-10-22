@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 export const studyDetail_container: CSSProperties = {
-  width: '850px',
+  width: '890px',
   height: '95dvh',
   backgroundColor: '#222121',
   borderRadius: '10px',
@@ -11,16 +11,16 @@ export const studyDetail_container: CSSProperties = {
 };
 
 export const studyDetail_box: CSSProperties = {
-  width: '796px',
-  height: '85dvh',
+  width: '840px',
+  height: '83dvh',
   backgroundColor: '#454343',
   borderRadius: '10px',
   color: '#FFFFFF',
   display: 'flex',
-  // justifyContent: 'center',
+  justifyContent: 'space-between',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '20px 0px 20px 0px',
+  padding: '30px 0px',
 };
 
 export const studyDetail_yellowBtn: CSSProperties = {
@@ -30,3 +30,7 @@ export const studyDetail_yellowBtn: CSSProperties = {
   fontSize: '16px',
   fontWeight: '600',
 };
+
+// export const studyDetail_contents_wrap:CSSProperties={
+
+// }

@@ -14,7 +14,7 @@ export const studyDetail_wrap_contents: CSSProperties = {
 
 export const studyDetail_contents: CSSProperties = {
   display: 'flex',
-  marginBottom: '15px',
+  marginBottom: '20px',
 };
 
 export const studyDetail_contents_title: CSSProperties = {

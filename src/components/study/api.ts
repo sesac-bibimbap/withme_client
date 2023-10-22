@@ -26,6 +26,14 @@ export const studyDetail = async (studyId: string | undefined) => {
   return data;
 };
 
+export const studyCheck = async (studyId: string | undefined) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/studies/attend/check/${studyId}`,
+  });
+  return data;
+};
+
 // 스터디 문의
 export const studyInquiry = async (studyId: string | undefined) => {
   const { data } = await API({

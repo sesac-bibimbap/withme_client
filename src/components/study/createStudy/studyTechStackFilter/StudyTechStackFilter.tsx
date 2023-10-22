@@ -21,7 +21,7 @@ const StudyTechStackFilter = ({
 
   useEffect(() => {
     setTechStackId(selectedTechStacks);
-  }, [selectedTechStacks]);
+  }, [selectedTechStacks, setTechStackId]);
 
   const handleTechStackSelect = (techStackId: number) => {
     selectedTechStacks.length !== 5

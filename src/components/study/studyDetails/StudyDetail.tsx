@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import StudyDetailQuestion from './studyDetailQuestion/StudyDetailQuestion';
 import { BlackBtn, YellowBtn } from '../../../common/components';
 import { Space } from 'antd';
-// import StudyDetailQuestion from './studyDetailQuestion/StudyDetailQuestion';
 
 const StudyDetail = () => {
   const { studyId } = useParams();
@@ -21,8 +20,10 @@ const StudyDetail = () => {
       {!isLoading ? (
         <div style={studyDetail_container}>
           <div style={studyDetail_box}>
-            <StudyDetailContents studyDetailData={data} />
-            <StudyDetailQuestion studyId={studyId} />
+            <div>
+              <StudyDetailContents studyDetailData={data} />
+              <StudyDetailQuestion studyId={studyId} />
+            </div>
             <Space>
               <BlackBtn path="/study">닫기</BlackBtn>
               <YellowBtn buttonStyle={studyDetail_yellowBtn}>

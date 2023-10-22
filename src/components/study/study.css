@@ -30,8 +30,19 @@
   width: 7px;
 }
 
+.studyDetailQuestion_container::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px;
+}
+
 /* 스크롤바 막대 */
-.studyTechStackFilter_warp::-webkit-scrollbar-thumb {
+.studyTechStackFilter_warp::-webkit-scrollbar-thumb,
+.studyDetailQuestion_container::-webkit-scrollbar-thumb {
   background-color: #9f9c9c;
   border-radius: 10px;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  align-items: flex-end;
+  padding: 16px 16px;
 }

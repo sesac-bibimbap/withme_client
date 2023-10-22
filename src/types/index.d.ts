@@ -128,10 +128,11 @@ interface Study extends ISuperDate {
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
+  recruit: Recruit;
 }
 
 interface ISuperDate {
-  createdAt?: Date;
+  createdAt: Date;
   updatedAt?: Date;
   deletedAt?: Date | null;
 }
@@ -155,7 +156,12 @@ interface Inquiry extends ISuperDate {
   id?: string;
   title?: string;
   contents?: string;
+  inquiryResponse: inquiryRes;
 }
+
+type inquiryRes = {
+  contents?: string;
+};
 
 interface TechStack extends ISuperDate {
   id?: string;

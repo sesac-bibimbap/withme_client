@@ -6,36 +6,46 @@ import {
   studyDetail_wrap_contents,
 } from './StudyDetailContents.style';
 import { TechStackHashtag } from '../../../../common/components';
+import { Divider } from 'antd';
+import dateFormatting from '../../../../common/utils/dateFormatting';
 
 const StudyDetailContents = ({
   studyDetailData,
 }: {
   studyDetailData: Study;
 }) => {
-  const { name, content, attendantsLimit, startDate, endDate, techStacks } =
-    studyDetailData;
-
-  const dateFormat = (dateData: Date) => {
-    const date = new Date(dateData);
-    console.log(date);
-
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return { year, month, day };
-  };
+  const {
+    name,
+    recruit: { title },
+    content,
+    attendantsLimit,
+    startDate,
+    endDate,
+    techStacks,
+  } = studyDetailData;
 
   const {
     year: startYear,
     month: startMonth,
-    day: startDay,
-  } = dateFormat(startDate);
-  const { year: endYear, month: endMonth, day: endDay } = dateFormat(endDate);
+    date: startD,
+  } = dateFormatting(startDate);
+  const {
+    year: endYear,
+    month: endMonth,
+    date: endD,
+  } = dateFormatting(endDate);
 
   return (
     <>
       <div style={studyDetail_wrap_contents}>
-        <h3 style={studyDetail_title}>{name}</h3>
+        <div style={{ display: 'flex', alignItems: 'baseline' }}>
+          <h2 style={studyDetail_title}>{title}</h2>
+          <Divider
+            type="vertical"
+            style={{ borderLeft: '2px solid #FFFFFF' }}
+          />
+          <h4>{name}</h4>
+        </div>
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>인원</h4>
           <p>{attendantsLimit} / 10</p>
@@ -43,7 +53,7 @@ const StudyDetailContents = ({
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>진행기간</h4>
           <p>
-            {startYear}.{startMonth}.{startDay} ~ {endYear}.{endMonth}.{endDay}
+            {startYear}.{startMonth}.{startD} ~ {endYear}.{endMonth}.{endD}
           </p>
         </div>
         <div style={studyDetail_contents}>

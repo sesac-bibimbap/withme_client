@@ -21,6 +21,7 @@ const RightBarFilter = ({
   techStackIds,
 }: RightBarFilterType) => {
   const [isTechClicked, setTechClicked] = useState(false);
+
   const tackStackChoose = isTechClicked
     ? rightBarFilter_afterClicking_bg
     : rightBarFilter_beforeClicking_bg;
