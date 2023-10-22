@@ -4,11 +4,10 @@ import NotificationPage from './notification/NotificationPage';
 import MainPage from './main/MainPage';
 import LoginPage from './login/LoginPage';
 import StudyPage from './study/list/StudyPage';
+import CreateStudyPage from './study/create/CreateStudyPage';
 // import StudyDetailPage from './study/StudyDetailPage';
 // import ResetPasswordPage from './resetPassword/ResetPasswordPage';
 // import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
-// import Study from './study/list/StudyListPage';
-// import CreateStudy from './study/create/CreateStudyPage';
 
 interface Route {
   element?: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
@@ -53,10 +52,10 @@ const PAGE_LIST: Route[] = [
         element: <StudyPage />,
         path: ROUTES.STUDY.PATH,
       },
-      // {
-      //   element: <CreateStudyPage />,
-      //   path: ROUTES.CREATE_STUDY.PATH,
-      // },
+      {
+        element: <CreateStudyPage />,
+        path: ROUTES.CREATE_STUDY.PATH,
+      },
       // {
       //   element: <StudyDetailPage />,
       //   path: ROUTES.STUDY_DETAIL.PATH,
