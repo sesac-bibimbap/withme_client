@@ -3,9 +3,13 @@ import { userProfile } from '../../api';
 
 // 유저 프로필 가져오기
 const useProfileQuery = () => {
-  const { data, isLoading } = useQuery(['userProfile'], userProfile, {
-    staleTime: 1 * 60 * 1000, // 1분
-  });
+  const { data, isLoading } = useQuery<UserData | undefined>(
+    ['userProfile'],
+    userProfile,
+    {
+      staleTime: 1 * 60 * 1000, // 1분
+    },
+  );
   return { data, isLoading };
 };
 
