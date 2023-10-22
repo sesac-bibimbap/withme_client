@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { StudyBookmark, StudyListBoard } from '../../../components';
+import {
+  StudyBookmark,
+  StudyListBoard,
+  StudySearchFilter,
+} from '../../../components';
 import { useProfileQuery } from '../../../components/auth/hooks/queries/useQueries';
 import { useStudyListQuery } from '../../../components/study/hooks/queries/useQueries';
 import { studyPage_right_wrapper } from './StudyPage.style';
@@ -22,7 +26,8 @@ const StudyPage = () => {
             offset={offset}
           />
           <div style={studyPage_right_wrapper}>
-            <StudyBookmark />
+            <StudySearchFilter />
+            {/* <StudyBookmark /> */}
             <StudyBookmark />
             {/* <StudyBookmark user={user} bookmarkStyle={{ height: '100%' }} /> */}
           </div>
