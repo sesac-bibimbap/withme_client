@@ -8,7 +8,7 @@ export const studyBookmark_wrapper: CSSProperties = {
   borderRadius: '10px',
   // height: '49%',
   height: '49%',
-  width: '300px',
+  width: '260px',
   marginLeft: '23px',
   color: 'white',
 };

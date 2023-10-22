@@ -8,7 +8,7 @@ export const studyList_background: CSSProperties = {
   backgroundColor: '#222121',
   borderRadius: '10px',
   height: '100%',
-  width: '850px',
+  width: '890px',
   color: 'white',
 };
 

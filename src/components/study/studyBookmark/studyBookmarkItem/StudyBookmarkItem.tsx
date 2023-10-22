@@ -70,7 +70,7 @@ const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
         <Button type="primary" style={studyBookmarkItem_button_detail}>
           <p style={studyBookmark_text_teamName}>{teamName}</p>
           <div>
-            {techStacks?.slice(0, 3).map((v) => (
+            {techStacks?.slice(0, 2).map((v) => (
               <TechStackHashtag
                 key={v.id}
                 buttonStyle={studyBookmark_button_techStackHashtag}

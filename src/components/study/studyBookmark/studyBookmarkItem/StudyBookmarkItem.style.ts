@@ -11,7 +11,7 @@ export const studyBookmarkItem_button_detail: CSSProperties = {
   flexDirection: 'column',
   backgroundColor: '#454343',
   borderRadius: '10px',
-  width: '250px',
+  width: '210px',
   height: '54px',
   borderColor: 'transparent',
 };
@@ -31,7 +31,7 @@ export const studyBookmark_bookmarkBtn_bookmark: CSSProperties = {
   height: '22px',
   position: 'absolute',
   backgroundColor: 'transparent',
-  marginLeft: '205px',
+  marginLeft: '165px',
   marginTop: '5px',
   zIndex: '1',
   filter: 'drop-shadow(2px 2px 3px #454343)',
