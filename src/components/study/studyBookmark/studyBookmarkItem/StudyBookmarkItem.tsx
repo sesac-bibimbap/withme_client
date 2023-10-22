@@ -3,19 +3,21 @@ import {
   bookmarkItem_wrapper,
   studyBookmarkItem_button_detail,
   studyBookmark_bookmarkBtn_bookmark,
+  studyBookmark_button_techStackHashtag,
   studyBookmark_text_teamName,
-  studyBookmark_text_techStack,
 } from './StudyBookmarkItem.style';
 import { Button } from 'antd';
 import { studyBookMark } from '../../api';
 import useCacheInstance from '../../../../common/utils/cache';
+import { TechStackHashtag } from '../../../../common/components';
 
 export type BookmarkItemType = {
-  teamName: string;
-  id: number;
+  teamName?: string;
+  id?: number;
+  techStacks?: TechStack[];
 };
 
-const StudyBookmarkItem = ({ teamName, id }: BookmarkItemType) => {
+const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
   const [bookmark, setBookmark] = useState(false);
   const { cache } = useCacheInstance();
 
@@ -44,7 +46,14 @@ const StudyBookmarkItem = ({ teamName, id }: BookmarkItemType) => {
       } else {
         cache.setQueryData(['userProfile'], (oldData) =>
           Object.assign({}, oldData, {
-            bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
+            bookmarkedStudies: [
+              ...bookmarkedStudies,
+              {
+                id,
+                name: teamName,
+                techStacks: techStacks,
+              },
+            ],
           }),
         );
       }
@@ -60,7 +69,16 @@ const StudyBookmarkItem = ({ teamName, id }: BookmarkItemType) => {
       <div style={bookmarkItem_wrapper}>
         <Button type="primary" style={studyBookmarkItem_button_detail}>
           <p style={studyBookmark_text_teamName}>{teamName}</p>
-          <p style={studyBookmark_text_techStack}># javascript</p>
+          <div>
+            {techStacks?.slice(0, 3).map((v) => (
+              <TechStackHashtag
+                key={v.id}
+                buttonStyle={studyBookmark_button_techStackHashtag}
+              >
+                {v.stackName}
+              </TechStackHashtag>
+            ))}
+          </div>
         </Button>
         <Button
           style={studyBookmark_bookmarkBtn_bookmark}

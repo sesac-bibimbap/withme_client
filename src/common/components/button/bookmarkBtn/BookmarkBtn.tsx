@@ -14,6 +14,7 @@ type bookmarkBtnType = {
   id?: number;
   isMarked?: boolean;
   teamName?: string;
+  techStacks?: TechStack[];
 };
 
 const BookmarkBtn = ({
@@ -22,6 +23,7 @@ const BookmarkBtn = ({
   id,
   isMarked,
   teamName,
+  techStacks,
 }: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(isMarked);
   const [bookmarkImage, setBookmarkImage] = useState<string>();
@@ -54,7 +56,10 @@ const BookmarkBtn = ({
       } else {
         cache.setQueryData(['userProfile'], (oldData) =>
           Object.assign({}, oldData, {
-            bookmarkedStudies: [...bookmarkedStudies, { id, name: teamName }],
+            bookmarkedStudies: [
+              ...bookmarkedStudies,
+              { id, name: teamName, techStacks: techStacks },
+            ],
           }),
         );
       }

@@ -126,8 +126,9 @@ interface StudyListType extends Study {
 }
 
 interface Bookmark {
-  name: string;
-  id: number;
+  name?: string;
+  id?: number;
+  techStacks?: TechStack[];
 }
 
 interface Study extends ISuperDate {

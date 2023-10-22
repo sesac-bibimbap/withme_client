@@ -13,8 +13,8 @@ type StudyBookmarkType = {
 
 const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
   const { cache } = useCacheInstance();
-  const user = cache.getQueryData(['userProfile']);
-  const bookmarkedStudies = user.bookmarkedStudies || [];
+  const user: User | undefined = cache.getQueryData(['userProfile']);
+  const bookmarkedStudies = user?.bookmarkedStudies || [];
   const bookmarkCss = {
     ...studyBookmark_wrapper,
     ...bookmarkStyle,
@@ -26,8 +26,13 @@ const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
         <p style={studyBookmark_text_title}>북마크</p>
         <div style={studyBookmark_item_scroll}>
           {bookmarkedStudies.length !== 0 ? (
-            bookmarkedStudies?.map(({ id, name }: Bookmark) => (
-              <StudyBookmarkItem key={id} id={id} teamName={name} />
+            bookmarkedStudies.map(({ id, name, techStacks }: Bookmark) => (
+              <StudyBookmarkItem
+                key={id}
+                id={id}
+                teamName={name}
+                techStacks={techStacks}
+              />
             ))
           ) : (
             <p>원하는 스터디를 북마크하세요</p>
