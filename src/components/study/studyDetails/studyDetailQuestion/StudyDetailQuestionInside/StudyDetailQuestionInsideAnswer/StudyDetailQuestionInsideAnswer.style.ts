@@ -27,3 +27,18 @@ export const StudyDetailQuestionInsideAnswer_title: CSSProperties = {
 export const StudyDetailQuestionInsideAnswer_contents: CSSProperties = {
   width: '370px',
 };
+
+export const StudyDetailQuestionInsideAnswer_textarea: CSSProperties = {
+  width: '370px',
+  height: '70px',
+  border: 'none',
+  boxShadow: 'none',
+  resize: 'none',
+};
+
+export const StudyDetailQuestionInsideAnswer_btn: CSSProperties = {
+  width: '127px',
+  height: '38px',
+  fontSize: '14px',
+  color: '#222121',
+};

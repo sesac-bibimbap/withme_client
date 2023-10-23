@@ -1,14 +1,24 @@
+import { Input } from 'antd';
 import dateFormatting from '../../../../../../common/utils/dateFormatting';
 
 import {
+  StudyDetailQuestionInsideAnswer_btn,
   StudyDetailQuestionInsideAnswer_container,
   StudyDetailQuestionInsideAnswer_contents,
   StudyDetailQuestionInsideAnswer_contents_wrap,
+  StudyDetailQuestionInsideAnswer_textarea,
   StudyDetailQuestionInsideAnswer_title,
   StudyDetailQuestionInsideAnswer_wrap,
 } from './StudyDetailQuestionInsideAnswer.style';
+import { MiddleGrayBtn } from '../../../../../../common/components';
 
-const StudyDetailQuestionInsideAnswer = ({ item }: { item: Inquiry }) => {
+const StudyDetailQuestionInsideAnswer = ({
+  item,
+  showInput,
+}: {
+  item: Inquiry;
+  showInput: boolean;
+}) => {
   const { inquiryResponse, createdAt } = item;
 
   const {
@@ -16,6 +26,7 @@ const StudyDetailQuestionInsideAnswer = ({ item }: { item: Inquiry }) => {
     month: answerMonth,
     date: answerDate,
   } = dateFormatting(createdAt);
+
   return (
     <>
       {inquiryResponse ? (
@@ -37,17 +48,18 @@ const StudyDetailQuestionInsideAnswer = ({ item }: { item: Inquiry }) => {
       ) : (
         <div style={StudyDetailQuestionInsideAnswer_container}>
           <div style={StudyDetailQuestionInsideAnswer_wrap}>
-            {/* <div style={StudyDetailQuestionInsideAnswer_contents_wrap}>
+            <div style={StudyDetailQuestionInsideAnswer_contents_wrap}>
               <p style={StudyDetailQuestionInsideAnswer_title}>답변</p>
-              <div>
-                <p>
-                  {answerYear}-{answerMonth}-{answerDate}
-                </p>
-                <p style={StudyDetailQuestionInsideAnswer_contents}>
-                  {contents}
-                </p>
-              </div>
-            </div> */}
+              <Input.TextArea
+                style={StudyDetailQuestionInsideAnswer_textarea}
+              />
+            </div>
+            <MiddleGrayBtn
+              htmlType="submit"
+              buttonStyle={StudyDetailQuestionInsideAnswer_btn}
+            >
+              답변등록
+            </MiddleGrayBtn>
           </div>
         </div>
       )}
