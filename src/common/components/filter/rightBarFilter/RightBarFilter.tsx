@@ -32,15 +32,16 @@ const RightBarFilter = ({
     ...rightBarFilter_beforeClicking_bg,
     ...filterStyle,
   };
+
   const tackStackChoose = isTechClicked ? afterCss : beforeCss;
 
   const handleButtonClick = () => {
     techStackIds.length !== 5
-      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      ? (setTechClicked((prev) => !prev), onTechStackSelect(techStackId))
       : isTechClicked === true
-      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      ? (setTechClicked((prev) => !prev), onTechStackSelect(techStackId))
       : (alert('기술 스택은 최대 5개까지만 선택할 수 있습니다.'),
-        setTechClicked(isTechClicked),
+        setTechClicked((prev) => prev),
         onTechStackSelect(techStackId));
   };
 
