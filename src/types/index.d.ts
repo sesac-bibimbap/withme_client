@@ -181,6 +181,7 @@ interface TechStack extends ISuperDate {
 interface Studies {
   data: Study[];
   isLoading: boolean;
+  isFilter: boolean;
 }
 
 interface UserData {

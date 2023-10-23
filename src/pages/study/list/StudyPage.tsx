@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   StudyBookmark,
   StudyListBoard,
@@ -11,8 +11,14 @@ import { studyPage_right_wrapper } from './StudyPage.style';
 const StudyPage = () => {
   const user = useProfileQuery();
   const [offset, setOffset] = useState(0);
+  const [filter, setFilter] = useState('');
+
   const limit = 20;
-  const studies = useStudyListQuery(limit, offset);
+  const studies = useStudyListQuery(limit, offset, filter);
+
+  useEffect(() => {
+    setOffset(0);
+  }, [filter]);
 
   return (
     <>
@@ -20,16 +26,15 @@ const StudyPage = () => {
         <>
           <StudyListBoard
             user={user}
-            studies={studies}
+            studies={studies.data}
+            // studies={studies.data}
             setOffset={setOffset}
             limit={limit}
             offset={offset}
           />
           <div style={studyPage_right_wrapper}>
-            <StudySearchFilter />
-            {/* <StudyBookmark /> */}
+            <StudySearchFilter setFilter={setFilter} />
             <StudyBookmark />
-            {/* <StudyBookmark user={user} bookmarkStyle={{ height: '100%' }} /> */}
           </div>
         </>
       ) : null}

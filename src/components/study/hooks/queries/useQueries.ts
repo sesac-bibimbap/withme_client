@@ -1,18 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 import { techStacks } from '../../api';
 import { studyList } from '../../api';
+import { useEffect } from 'react';
 
 //스터디 목록 가져오기
-const useStudyListQuery = (limit: number, offset: number) => {
-  const { data, isLoading } = useQuery<Studies | undefined>(
-    ['studyList', limit, offset],
-    () => studyList(limit, offset),
+const useStudyListQuery = (limit: number, offset: number, filter: string) => {
+  const { data, isLoading, state } = useQuery<Studies | undefined>(
+    ['studyList', limit, offset, filter],
+    () => studyList(limit, offset, filter),
     {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
     },
   );
-  return { data, isLoading };
+
+  useEffect(() => {}, [filter]);
+  return { data, isLoading, state };
 };
 
 export { useStudyListQuery };
