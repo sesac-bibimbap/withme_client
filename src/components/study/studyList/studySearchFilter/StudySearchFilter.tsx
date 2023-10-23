@@ -10,9 +10,10 @@ import {
 
 type studySearchFilterType = {
   setFilter: (filter: string) => void;
+  setOffset: (offset: number) => void;
 };
 
-const StudySearchFilter = ({ setFilter }: studySearchFilterType) => {
+const StudySearchFilter = ({ setFilter, setOffset }: studySearchFilterType) => {
   const { data, isLoading } = useTechStakQuery();
 
   const [selectedTechStacks, setSelectedTechStacks] = useState<number[]>([]);
@@ -27,6 +28,7 @@ const StudySearchFilter = ({ setFilter }: studySearchFilterType) => {
     const newFilter = newSelectedTechStacks.join(',');
     setFilter(newFilter);
     setSelectedTechStacks(newSelectedTechStacks);
+    setOffset(0);
   };
 
   return (

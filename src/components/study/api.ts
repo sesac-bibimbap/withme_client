@@ -27,7 +27,6 @@ export const studyList = async (limit: number, offset: number, filter = '') => {
     method: 'get',
     url: url,
   });
-  // const isFilter = url.includes('filter') ? true : false;
   const searchFilter = filter;
 
   return { data, searchFilter };

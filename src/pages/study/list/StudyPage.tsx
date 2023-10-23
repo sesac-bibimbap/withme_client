@@ -16,10 +16,6 @@ const StudyPage = () => {
   const limit = 20;
   const studies = useStudyListQuery(limit, offset, filter);
 
-  useEffect(() => {
-    setOffset(0);
-  }, [filter]);
-
   return (
     <>
       {!user.isLoading && !studies.isLoading ? (
@@ -33,7 +29,7 @@ const StudyPage = () => {
             offset={offset}
           />
           <div style={studyPage_right_wrapper}>
-            <StudySearchFilter setFilter={setFilter} />
+            <StudySearchFilter setFilter={setFilter} setOffset={setOffset} />
             <StudyBookmark />
           </div>
         </>

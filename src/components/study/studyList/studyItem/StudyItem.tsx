@@ -40,7 +40,7 @@ const StudyItem = ({ study, user }: studyItemType) => {
         <div style={studyItem_text_left}>
           <div style={studyItem_text_title}>
             <p>
-              {recruit?.title} | {name}
+              #{id} {recruit?.title} | {name}
             </p>
           </div>
           <div style={studyItem_text_personnel}>
