@@ -8,21 +8,25 @@ import {
   studySearchFilter_wrapper,
 } from './StudySearchFilter.style';
 
-const StudySearchFilter = () => {
+type studySearchFilterType = {
+  setFilter: (filter: string) => void;
+};
+
+const StudySearchFilter = ({ setFilter }: studySearchFilterType) => {
   const { data, isLoading } = useTechStakQuery();
 
   const [selectedTechStacks, setSelectedTechStacks] = useState<number[]>([]);
 
   const handleTechStackSelect = (techStackId: number) => {
-    selectedTechStacks.length !== 5
-      ? selectedTechStacks.includes(techStackId)
-        ? setSelectedTechStacks(
-            selectedTechStacks.filter((item) => item !== techStackId),
-          )
-        : setSelectedTechStacks([...selectedTechStacks, techStackId])
-      : setSelectedTechStacks(
-          selectedTechStacks.filter((item) => item !== techStackId),
-        );
+    const newSelectedTechStacks =
+      selectedTechStacks.length !== 5
+        ? selectedTechStacks.includes(techStackId)
+          ? selectedTechStacks.filter((item) => item !== techStackId)
+          : [...selectedTechStacks, techStackId]
+        : selectedTechStacks.filter((item) => item !== techStackId);
+    const newFilter = newSelectedTechStacks.join(',');
+    setFilter(newFilter);
+    setSelectedTechStacks(newSelectedTechStacks);
   };
 
   return (
