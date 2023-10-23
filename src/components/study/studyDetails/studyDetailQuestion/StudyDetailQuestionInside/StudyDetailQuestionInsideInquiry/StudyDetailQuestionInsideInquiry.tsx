@@ -1,3 +1,4 @@
+import { Dispatch } from 'react';
 import { MiddleGrayBtn } from '../../../../../../common/components';
 import dateFormatting from '../../../../../../common/utils/dateFormatting';
 import {
@@ -12,9 +13,11 @@ import {
 const StudyDetailQuestionInsideInquiry = ({
   item,
   setShowInput,
+  showInput,
 }: {
   item: Inquiry;
-  setShowInput: (setShowInput: boolean) => void;
+  setShowInput: Dispatch<React.SetStateAction<boolean>>;
+  showInput: boolean;
 }) => {
   const { contents, createdAt, inquiryResponse } = item;
 
@@ -55,12 +58,21 @@ const StudyDetailQuestionInsideInquiry = ({
                 </p>
               </div>
             </div>
-            <MiddleGrayBtn
-              setShowInput={setShowInput}
-              buttonStyle={StudyDetailQuestionInsideInquiry_btn}
-            >
-              답변하기
-            </MiddleGrayBtn>
+            {showInput ? (
+              <MiddleGrayBtn
+                setShowInput={setShowInput}
+                buttonStyle={StudyDetailQuestionInsideInquiry_btn}
+              >
+                답변닫기
+              </MiddleGrayBtn>
+            ) : (
+              <MiddleGrayBtn
+                setShowInput={setShowInput}
+                buttonStyle={StudyDetailQuestionInsideInquiry_btn}
+              >
+                답변하기
+              </MiddleGrayBtn>
+            )}
           </div>
         </div>
       )}

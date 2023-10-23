@@ -17,8 +17,9 @@ const StudyDetailQuestion = ({ studyId }: { studyId: string | undefined }) => {
   const getItems = data?.map((item, idx) => ({
     key: String(idx),
     label: <StudyDetailQuestionHeader item={item} />,
-    children: <StudyDetailQuestionInside item={item} />,
+    children: <StudyDetailQuestionInside item={item} studyId={studyId} />,
   }));
+
   return (
     <>
       <h4 style={StudyDetailQuestion_title}>스터디 문의</h4>

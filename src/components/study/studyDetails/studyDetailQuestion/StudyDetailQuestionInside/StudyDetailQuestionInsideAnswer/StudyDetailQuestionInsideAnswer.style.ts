@@ -34,6 +34,15 @@ export const StudyDetailQuestionInsideAnswer_textarea: CSSProperties = {
   border: 'none',
   boxShadow: 'none',
   resize: 'none',
+  borderRadius: '10px',
+};
+export const StudyDetailQuestionInsideAnswer_textarea_false: CSSProperties = {
+  width: '370px',
+  height: '70px',
+  border: '2px solid red',
+  boxShadow: 'none',
+  resize: 'none',
+  borderRadius: '10px',
 };
 
 export const StudyDetailQuestionInsideAnswer_btn: CSSProperties = {

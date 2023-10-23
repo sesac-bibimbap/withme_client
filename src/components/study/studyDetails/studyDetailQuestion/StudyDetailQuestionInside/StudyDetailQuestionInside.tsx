@@ -3,16 +3,28 @@ import { StudyDetailQuestionInside_container } from './StudyDetailQuestionInside
 import StudyDetailQuestionInsideAnswer from './StudyDetailQuestionInsideAnswer/StudyDetailQuestionInsideAnswer';
 import StudyDetailQuestionInsideInquiry from './StudyDetailQuestionInsideInquiry/StudyDetailQuestionInsideInquiry';
 
-const StudyDetailQuestionInside = ({ item }: { item: Inquiry }) => {
+const StudyDetailQuestionInside = ({
+  item,
+  studyId,
+}: {
+  item: Inquiry;
+  studyId: string | undefined;
+}) => {
   const [showInput, setShowInput] = useState(false);
+  console.log(showInput);
 
   return (
     <div style={StudyDetailQuestionInside_container}>
       <StudyDetailQuestionInsideInquiry
         item={item}
         setShowInput={setShowInput}
+        showInput={showInput}
       />
-      <StudyDetailQuestionInsideAnswer item={item} showInput={showInput} />
+      <StudyDetailQuestionInsideAnswer
+        item={item}
+        showInput={showInput}
+        studyId={studyId}
+      />
     </div>
   );
 };

@@ -42,3 +42,20 @@ export const studyInquiry = async (studyId: string | undefined) => {
   });
   return data;
 };
+
+// 스터디 문의 답변
+export const studyInquiryAnswer = async (
+  studyId: string | undefined,
+  id: string | undefined,
+  studyAnswerData,
+) => {
+  console.log(studyId, id, studyAnswerData);
+
+  const { data } = await API({
+    method: 'post',
+    url: `/studies/${studyId}/inquiry/${id}`,
+    data: studyAnswerData,
+  });
+
+  return data;
+};

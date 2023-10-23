@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 
 export const StudyDetailQuestion_container: CSSProperties = {
-  height: '320px',
+  maxHeight: '40dvh',
   overflowY: 'scroll',
 };
 

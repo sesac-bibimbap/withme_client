@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, Dispatch } from 'react';
 import { Button } from 'antd';
 import { middleGrayBtn_button } from './MiddleGrayBtn.style';
 
@@ -6,7 +6,8 @@ type middleGrayBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  setShowInput?: (setShowInput: boolean) => void;
+  setShowInput?: Dispatch<React.SetStateAction<boolean>>;
+  AnswerDataSubmit?: () => void;
 };
 
 const MiddleGrayBtn = ({
@@ -14,6 +15,7 @@ const MiddleGrayBtn = ({
   htmlType,
   buttonStyle,
   setShowInput,
+  AnswerDataSubmit,
 }: middleGrayBtnType) => {
   const middleGrayBtnCss = {
     ...middleGrayBtn_button,
@@ -21,7 +23,8 @@ const MiddleGrayBtn = ({
   };
 
   const handleAnswerInput = () => {
-    setShowInput((prev) => !prev);
+    if (setShowInput) setShowInput((prev) => !prev);
+    if (AnswerDataSubmit) AnswerDataSubmit();
   };
 
   return (
