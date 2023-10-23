@@ -27,9 +27,10 @@ export const studyList = async (limit: number, offset: number, filter = '') => {
     method: 'get',
     url: url,
   });
-  const isFilter = url.includes('filter') ? true : false;
+  // const isFilter = url.includes('filter') ? true : false;
+  const searchFilter = filter;
 
-  return { data, isFilter };
+  return { data, searchFilter };
 };
 
 export const studyBookMark = async (id?: number) => {
