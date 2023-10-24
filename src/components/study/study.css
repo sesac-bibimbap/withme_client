@@ -30,14 +30,20 @@
   width: 7px;
 }
 
-.studyDetailQuestion_container::-webkit-scrollbar {
+.studyDetailQuestion_container::-webkit-scrollbar,
+.studyList_item_background::-webkit-scrollbar,
+.studyBookmark_item_scroll::-webkit-scrollbar,
+.studySearchFilter_item_scroll::-webkit-scrollbar {
   background-color: transparent;
   width: 7px;
 }
 
 /* 스크롤바 막대 */
 .studyTechStackFilter_warp::-webkit-scrollbar-thumb,
-.studyDetailQuestion_container::-webkit-scrollbar-thumb {
+.studyDetailQuestion_container::-webkit-scrollbar-thumb,
+.studyList_item_background::-webkit-scrollbar-thumb,
+.studyBookmark_item_scroll::-webkit-scrollbar-thumb,
+.studySearchFilter_item_scroll::-webkit-scrollbar-thumb {
   background-color: #9f9c9c;
   border-radius: 10px;
 }

@@ -21,11 +21,6 @@ const StudyDetailQuestionInsideInquiry = ({
 }) => {
   const { contents, createdAt, inquiryResponse } = item;
 
-  const {
-    year: inquiryYear,
-    month: inquiryMonth,
-    date: inquiryDate,
-  } = dateFormatting(createdAt);
   return (
     <>
       {inquiryResponse ? (
@@ -34,9 +29,7 @@ const StudyDetailQuestionInsideInquiry = ({
             <div style={StudyDetailQuestionInsideInquiry_contents_wrap}>
               <p style={StudyDetailQuestionInsideInquiry_title}>문의</p>
               <div>
-                <p>
-                  {inquiryYear}-{inquiryMonth}-{inquiryDate}
-                </p>
+                <p>{dateFormatting(createdAt)}</p>
                 <p style={StudyDetailQuestionInsideInquiry_contents}>
                   {contents}
                 </p>
@@ -50,9 +43,7 @@ const StudyDetailQuestionInsideInquiry = ({
             <div style={StudyDetailQuestionInsideInquiry_contents_wrap}>
               <p style={StudyDetailQuestionInsideInquiry_title}>문의</p>
               <div>
-                <p>
-                  {inquiryYear}-{inquiryMonth}-{inquiryDate}
-                </p>
+                <p>{dateFormatting(createdAt)}</p>
                 <p style={StudyDetailQuestionInsideInquiry_contents}>
                   {contents}
                 </p>

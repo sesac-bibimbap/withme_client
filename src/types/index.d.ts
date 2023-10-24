@@ -113,6 +113,13 @@ type VerifyInputType = (count: number) => {
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
 
+//Study
+interface Bookmark {
+  name?: string;
+  id?: number;
+  techStacks?: TechStack[];
+}
+
 interface Study extends ISuperDate {
   id?: number;
   name?: string;
@@ -139,6 +146,8 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
+  bookmarkedStudies?: Study[];
+  participatingStudies?: Study[];
 }
 
 interface Profile extends ISuperDate {
@@ -163,4 +172,9 @@ interface TechStack extends ISuperDate {
   id?: string;
   stackName?: string;
   stackImg?: string;
+}
+
+interface Studies {
+  data: Study[];
+  searchFilter: string;
 }
