@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   StudyBookmark,
   StudyListBoard,
@@ -9,21 +9,26 @@ import { useStudyListQuery } from '../../../components/study/hooks/queries/useQu
 import { studyPage_right_wrapper } from './StudyPage.style';
 
 const StudyPage = () => {
-  const user = useProfileQuery();
+  const { data: userData, isLoading: userIsLoading } = useProfileQuery();
   const [offset, setOffset] = useState(0);
   const [filter, setFilter] = useState('');
 
   const limit = 20;
-  const studies = useStudyListQuery(limit, offset, filter);
+  const { data: studyData, isLoading: studyIsLoading } = useStudyListQuery(
+    limit,
+    offset,
+    filter,
+  );
 
   return (
     <>
-      {!user.isLoading && !studies.isLoading ? (
+      {!userIsLoading && !studyIsLoading ? (
         <>
           <StudyListBoard
-            user={user}
-            studies={studies.data}
-            // studies={studies.data}
+            userData={userData}
+            userIsLoading={userIsLoading}
+            studyData={studyData}
+            studyIsLoading={studyIsLoading}
             setOffset={setOffset}
             limit={limit}
             offset={offset}

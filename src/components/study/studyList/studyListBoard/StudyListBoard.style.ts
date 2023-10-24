@@ -12,15 +12,6 @@ export const studyList_background: CSSProperties = {
   color: 'white',
 };
 
-export const studyList_input_search: CSSProperties = {
-  backgroundColor: '#454343',
-  borderRadius: '10px',
-  border: 'none',
-  height: '47px',
-  width: '796px',
-  color: '#9F9C9C',
-};
-
 export const studyList_item_background: CSSProperties = {
   display: 'flex',
   alignItems: 'center',

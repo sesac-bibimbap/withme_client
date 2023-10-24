@@ -118,13 +118,6 @@ type VerifyInputType = (count: number) => {
 }[];
 
 //Study
-interface StudyListType extends Study {
-  techStacks: TechStack[];
-  recruit?: {
-    title?: string;
-  };
-}
-
 interface Bookmark {
   name?: string;
   id?: number;
@@ -142,6 +135,9 @@ interface Study extends ISuperDate {
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
+  recruit?: {
+    title?: string;
+  };
 }
 
 interface ISuperDate {
@@ -156,7 +152,8 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
-  bookmarkedStudies?: StudyListType[];
+  bookmarkedStudies: Study[];
+  participatingStudies: Study[];
 }
 
 interface Profile extends ISuperDate {
@@ -180,11 +177,5 @@ interface TechStack extends ISuperDate {
 
 interface Studies {
   data: Study[];
-  isLoading: boolean;
   searchFilter: string;
-}
-
-interface UserData {
-  data: User;
-  isLoading: boolean;
 }

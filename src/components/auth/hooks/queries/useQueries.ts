@@ -3,7 +3,7 @@ import { userProfile } from '../../api';
 
 // 유저 프로필 가져오기
 const useProfileQuery = () => {
-  const { data, isLoading } = useQuery<UserData | undefined>(
+  const { data, isLoading } = useQuery<User | undefined>(
     ['userProfile'],
     userProfile,
     {

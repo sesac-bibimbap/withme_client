@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 //스터디 목록 가져오기
 const useStudyListQuery = (limit: number, offset: number, filter: string) => {
-  const { data, isLoading } = useQuery<Studies | undefined>(
+  const { data, isLoading } = useQuery<Studies>(
     ['studyList', limit, offset, filter],
     () => studyList(limit, offset, filter),
     {

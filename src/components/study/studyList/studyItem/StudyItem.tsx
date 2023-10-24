@@ -13,11 +13,11 @@ import {
 import MemoBookmarkBtn from '../../../../common/components/button/bookmarkBtn/BookmarkBtn';
 
 type studyItemType = {
-  study: StudyListType;
-  user: UserData;
+  study: Study;
+  userData?: User;
 };
 
-const StudyItem = ({ study, user }: studyItemType) => {
+const StudyItem = ({ study, userData }: studyItemType) => {
   const {
     id,
     recruit,
@@ -27,7 +27,7 @@ const StudyItem = ({ study, user }: studyItemType) => {
     content,
     techStacks,
   } = study;
-  const userBookmarkedStudies = user.data.bookmarkedStudies;
+  const userBookmarkedStudies = userData?.bookmarkedStudies;
   const loginUserBookmarkedStudy = userBookmarkedStudies?.find(
     (userBookmarkedStudy: Study) => {
       return userBookmarkedStudy.id === id;
