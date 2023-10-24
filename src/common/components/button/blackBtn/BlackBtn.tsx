@@ -17,6 +17,7 @@ const BlackBtn = ({ children, htmlType, buttonStyle, path }: blackBtnType) => {
     ...blackBtn_button,
     ...buttonStyle,
   };
+  console.log('✔️  blackBtnCss:', blackBtnCss);
 
   const handleButtonClick = () => {
     typeof path === 'number' ? navigate(-1) : navigate(path);
