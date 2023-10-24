@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { studyDetail, techStacks } from '../../api';
+import { techStacks, studyDetail, studyInquiry } from '../../api';
 import { studyList } from '../../api';
 import { useEffect } from 'react';
 
@@ -42,4 +42,14 @@ const useStudyDetail = (studyId: number | undefined) => {
   return { data, isLoading };
 };
 
-export { useTechStakQuery, useStudyDetail };
+// 스터디 문의 목록
+const useStudyInquiry = (studyId: number | undefined) => {
+  const { data, isLoading } = useQuery<Inquiry[]>(
+    ['studyInquiry', studyId],
+    () => studyInquiry(studyId),
+  );
+
+  return { data, isLoading };
+};
+
+export { useTechStakQuery, useStudyDetail, useStudyInquiry };

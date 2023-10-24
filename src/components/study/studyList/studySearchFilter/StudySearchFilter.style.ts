@@ -25,6 +25,7 @@ export const studySearchFilter_item_scroll: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
   flexWrap: 'wrap',
+  marginBottom: '15px',
 };
 
 export const studySearchFilter_button_filter: CSSProperties = {

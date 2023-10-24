@@ -12,8 +12,7 @@ export const createStudy = async (createStudyData: CreateStudyType) => {
 export const techStacks = async () => {
   const { data } = await API({
     method: 'get',
-    url: 'tech-stacks',
-    data: techStacks,
+    url: '/tech-stacks',
   });
   return data;
 };
@@ -46,6 +45,39 @@ export const studyDetail = async (studyId: number | undefined) => {
   const { data } = await API({
     method: 'get',
     url: `/studies/${studyId}`,
+  });
+  return data;
+};
+
+export const studyCheck = async (studyId: string | undefined) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/studies/attend/check/${studyId}`,
+  });
+  return data;
+};
+
+// 스터디 문의
+export const studyInquiry = async (studyId: number | undefined) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/studies/${studyId}/inquiry`,
+  });
+  return data;
+};
+
+// 스터디 문의 답변
+export const studyInquiryAnswer = async (
+  studyId: number | undefined,
+  id: number | undefined,
+  studyAnswerData: { contents: string | undefined },
+) => {
+  console.log(studyId, id, studyAnswerData);
+
+  const { data } = await API({
+    method: 'post',
+    url: `/studies/${studyId}/inquiry/${id}`,
+    data: studyAnswerData,
   });
   return data;
 };

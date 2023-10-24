@@ -32,7 +32,7 @@ const ROUTES = {
     NAME: 'Study',
   },
   STUDY_DETAIL: {
-    PATH: '/study/deatil/:id',
+    PATH: '/study/detail/:studyId',
     NAME: 'StudyDetail',
   },
   STUDY_EDIT: {

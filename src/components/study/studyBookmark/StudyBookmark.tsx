@@ -24,7 +24,10 @@ const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
     <>
       <div style={bookmarkCss}>
         <p style={studyBookmark_text_title}>북마크</p>
-        <div style={studyBookmark_item_scroll}>
+        <div
+          className="studyBookmark_item_scroll"
+          style={studyBookmark_item_scroll}
+        >
           {bookmarkedStudies.length !== 0 ? (
             bookmarkedStudies.map(({ id, name, techStacks }: Bookmark) => (
               <StudyBookmarkItem

@@ -21,5 +21,10 @@ export const studyBookmark_text_title: CSSProperties = {
 };
 
 export const studyBookmark_item_scroll: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
   overflowY: 'scroll',
+  width: '260px',
+  marginBottom: '15px',
 };

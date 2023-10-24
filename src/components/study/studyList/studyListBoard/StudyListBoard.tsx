@@ -60,7 +60,10 @@ const StudyListBoard = ({
       {!userIsLoading && !studyIsLoading ? (
         <div style={studyList_background}>
           <h2>개설된 스터디 목록</h2>
-          <div style={studyList_item_background}>
+          <div
+            className="studyList_item_background"
+            style={studyList_item_background}
+          >
             {list.current.flat().length !== 0 ? (
               <>
                 {list.current.flat().map((study: Study, index: number) => (
