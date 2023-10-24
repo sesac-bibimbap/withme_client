@@ -1,4 +1,5 @@
 import { BlackBtn, YellowBtn } from '../../../common/components';
+import dateFormatting from '../../../common/utils/dateFormatting';
 
 const BookmarkedStudies = ({
   bookmarkedStudies,
@@ -48,7 +49,9 @@ const BookmarkedStudies = ({
                   <div style={{ fontSize: '14px' }}>
                     <div>{`# ${id} ${title}`}</div>
                     <div>스터디명: {name}</div>
-                    <div>모집시작일: {startDate}</div>
+                    <div>
+                      모집시작일: {dateFormatting(startDate || undefined)}
+                    </div>
                     <div>모집인원 : {attendantsLimit}명</div>
                   </div>
                   <div

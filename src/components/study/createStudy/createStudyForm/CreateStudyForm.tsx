@@ -46,7 +46,7 @@ const CreateStudyForm = () => {
 
     const techStacks: TechStack[] = [];
     techStackId.map((el) => {
-      const obj: TechStack = { id: el.toString() };
+      const obj: TechStack = { id: el };
       techStacks.push(obj);
     });
 

@@ -48,10 +48,10 @@ const StudyRoomMemberList = ({ data, userId }: StudyDataType) => {
     // });
     //   };
     // };
-    const fetchMemberStatus = (fetchMemberStatus) => {
+    const fetchMemberStatus = (fetchMemberStatus: any) => {
       const participantsStatus = participants.map((participant) => {
         const memberStatus = fetchMemberStatus.find(
-          ({ userId, studyId }) => userId === participant.id,
+          ({ userId }: any) => userId === participant.id,
         );
         console.log('✔️  memberStatus:', memberStatus);
         return { ...participant, ...memberStatus };

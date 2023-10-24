@@ -66,7 +66,7 @@ const StudyItem = ({ study, userData }: studyItemType) => {
           <MemoBookmarkBtn
             id={id}
             isMarked={loginUserBookmarkedStudy ? true : false}
-            teamName={name}
+            teamName={name || undefined}
             techStacks={techStacks}
           >
             모집중

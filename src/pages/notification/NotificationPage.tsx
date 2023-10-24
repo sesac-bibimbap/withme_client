@@ -23,7 +23,7 @@ const NotificationPage = () => {
       action: NOTIFICATION_ACTIONS.STUDY_REQUEST,
       comment: NOTIFICATION_COMMENTS.STUDY_REQUEST,
       contents,
-      fromUserId: data.id, // abc1234
+      fromUserId: data?.id, // abc1234
       toUserId: '766073af-2225-48cf-8f23-6afc331082dd', // ttt123
       studyName: 'xptmxm',
       studyId: '3',

@@ -29,7 +29,7 @@ const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
           style={studyBookmark_item_scroll}
         >
           {bookmarkedStudies.length !== 0 ? (
-            bookmarkedStudies.map(({ id, name, techStacks }: Bookmark) => (
+            bookmarkedStudies.map(({ id, name, techStacks }: any) => (
               <StudyBookmarkItem
                 key={id}
                 id={id}

@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { TechStackHashtag } from '../../../common/components';
 
 const OwnedStudies = ({
   ownedStudies,
 }: {
   ownedStudies: Study[] | undefined;
 }) => {
-  console.log('✔️  ownedStudies:', ownedStudies);
   return (
     <div
       style={{
@@ -27,37 +25,33 @@ const OwnedStudies = ({
           overflowX: 'auto',
         }}
       >
-        {ownedStudies?.map(
-          ({ id, name, techStacks, recruit: { isRecruit } }) => (
-            <Link
-              to={`/study/room/${id}`}
-              key={id}
-              style={{
-                padding: '10px',
-                background: '#454343',
-                borderRadius: '10px',
-                marginRight: '10px',
-                color: '#ffffff',
-                textDecoration: 'none',
-                fontSize: '14px',
-                minWidth: '150px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div>
-                <div
-                  style={{ display: 'flex', justifyContent: 'space-between' }}
-                >
-                  <div># {id}</div>
-                  <div>{isRecruit ? '모집중' : '모집종료'}</div>
-                </div>
-                <div>{name}</div>
+        {ownedStudies?.map(({ id, name, recruit: { isRecruit } }) => (
+          <Link
+            to={`/study/room/${id}`}
+            key={id}
+            style={{
+              padding: '10px',
+              background: '#454343',
+              borderRadius: '10px',
+              marginRight: '10px',
+              color: '#ffffff',
+              textDecoration: 'none',
+              fontSize: '14px',
+              minWidth: '150px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div># {id}</div>
+                <div>{isRecruit ? '모집중' : '모집종료'}</div>
               </div>
-            </Link>
-          ),
-        )}
+              <div>{name}</div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
