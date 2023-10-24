@@ -9,10 +9,9 @@ import {
   StudyDetailQuestionInsideAnswer_wrap,
 } from './StudyDetailQuestionInsideAnswer.style';
 import { MiddleGrayBtn } from '../../../../../../common/components';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { studyInquiryAnswer } from '../../../../api';
-import useCacheInstance from '../../../../../../common/utils/cache';
 
 const StudyDetailQuestionInsideAnswer = ({
   item,
@@ -21,18 +20,10 @@ const StudyDetailQuestionInsideAnswer = ({
 }: {
   item: Inquiry;
   showInput: boolean;
-  studyId: string | undefined;
+  studyId: number | undefined;
 }) => {
-  const { cache } = useCacheInstance();
-
   const studyAnswer = useRef<HTMLTextAreaElement>(null);
   const { inquiryResponse, createdAt, id } = item;
-
-  const {
-    year: answerYear,
-    month: answerMonth,
-    date: answerDate,
-  } = dateFormatting(createdAt);
 
   const AnswerDataSubmit = () => {
     const studyAnswerData = {
@@ -68,9 +59,7 @@ const StudyDetailQuestionInsideAnswer = ({
             <div style={StudyDetailQuestionInsideAnswer_contents_wrap}>
               <p style={StudyDetailQuestionInsideAnswer_title}>답변</p>
               <div>
-                <p>
-                  {answerYear}-{answerMonth}-{answerDate}
-                </p>
+                <p>{dateFormatting(createdAt)}</p>
                 <p style={StudyDetailQuestionInsideAnswer_contents}>
                   {inquiryResponse.contents}
                 </p>

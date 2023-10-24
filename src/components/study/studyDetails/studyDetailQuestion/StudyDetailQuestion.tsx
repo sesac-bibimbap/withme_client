@@ -10,7 +10,7 @@ import {
 import '../../study.css';
 import StudyDetailQuestionInside from './StudyDetailQuestionInside/StudyDetailQuestionInside';
 
-const StudyDetailQuestion = ({ studyId }: { studyId: string | undefined }) => {
+const StudyDetailQuestion = ({ studyId }: { studyId: number | undefined }) => {
   const { data, isLoading } = useStudyInquiry(studyId);
 
   console.log('>>>>>>>', data);

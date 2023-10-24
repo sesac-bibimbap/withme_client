@@ -16,8 +16,7 @@ const useCreateStudy = () => {
     try {
       await createStudy(createStudyData);
       setShowPopup(true);
-      // const { data } = await createStudy(createStudyData);
-      // setStatus(data.statusCode);
+
       console.log('전송 성공');
     } catch (err) {
       if (err instanceof AxiosError) {

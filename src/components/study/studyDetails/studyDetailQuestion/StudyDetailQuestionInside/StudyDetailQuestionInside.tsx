@@ -8,7 +8,7 @@ const StudyDetailQuestionInside = ({
   studyId,
 }: {
   item: Inquiry;
-  studyId: string | undefined;
+  studyId: number | undefined;
 }) => {
   const [showInput, setShowInput] = useState(false);
   console.log(showInput);

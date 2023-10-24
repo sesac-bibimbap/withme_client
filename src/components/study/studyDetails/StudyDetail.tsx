@@ -12,7 +12,10 @@ import { Space } from 'antd';
 
 const StudyDetail = () => {
   const { studyId } = useParams();
-  const { data, isLoading } = useStudyDetail(studyId);
+  const studyIdAsNumber = Number(studyId);
+
+  const { data, isLoading } = useStudyDetail(studyIdAsNumber);
+  if (!data) return;
   console.log(data);
 
   return (
@@ -22,7 +25,7 @@ const StudyDetail = () => {
           <div style={studyDetail_box}>
             <div>
               <StudyDetailContents studyDetailData={data} />
-              <StudyDetailQuestion studyId={studyId} />
+              <StudyDetailQuestion studyId={studyIdAsNumber} />
             </div>
             <Space>
               <BlackBtn path="/study">닫기</BlackBtn>

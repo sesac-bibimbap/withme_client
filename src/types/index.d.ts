@@ -75,8 +75,8 @@ type TechStack = {
 };
 
 type Recruit = {
-  title: stirng;
-  recruitPlaceholder: string;
+  title?: stirng;
+  recruitPlaceholder?: string;
 };
 
 interface CreateStudyDataType {
@@ -118,13 +118,13 @@ interface Study extends ISuperDate {
   name?: string;
   content?: string;
   attendantsLimit?: number;
-  startDate: Date;
-  endDate: Date;
+  startDate?: Date;
+  endDate?: Date;
   owner: User;
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
-  recruit: Recruit;
+  recruit?: Recruit;
 }
 
 interface ISuperDate {
@@ -149,7 +149,7 @@ interface Profile extends ISuperDate {
 }
 
 interface Inquiry extends ISuperDate {
-  id?: string;
+  id?: number;
   title?: string;
   contents?: string;
   inquiryResponse: inquiryRes;

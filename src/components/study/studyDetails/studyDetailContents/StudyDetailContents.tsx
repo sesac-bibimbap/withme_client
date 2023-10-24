@@ -16,7 +16,7 @@ const StudyDetailContents = ({
 }) => {
   const {
     name,
-    recruit: { title },
+    recruit,
     content,
     attendantsLimit,
     startDate,
@@ -24,22 +24,11 @@ const StudyDetailContents = ({
     techStacks,
   } = studyDetailData;
 
-  const {
-    year: startYear,
-    month: startMonth,
-    date: startD,
-  } = dateFormatting(startDate);
-  const {
-    year: endYear,
-    month: endMonth,
-    date: endD,
-  } = dateFormatting(endDate);
-
   return (
     <>
       <div style={studyDetail_wrap_contents}>
         <div style={{ display: 'flex', alignItems: 'baseline' }}>
-          <h2 style={studyDetail_title}>{title}</h2>
+          <h2 style={studyDetail_title}>{recruit?.title}</h2>
           <Divider
             type="vertical"
             style={{ borderLeft: '2px solid #FFFFFF' }}
@@ -53,7 +42,7 @@ const StudyDetailContents = ({
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>진행기간</h4>
           <p>
-            {startYear}.{startMonth}.{startD} ~ {endYear}.{endMonth}.{endD}
+            {dateFormatting(startDate)} ~ {dateFormatting(endDate)}
           </p>
         </div>
         <div style={studyDetail_contents}>

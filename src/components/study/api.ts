@@ -35,7 +35,7 @@ export const studyCheck = async (studyId: string | undefined) => {
 };
 
 // 스터디 문의
-export const studyInquiry = async (studyId: string | undefined) => {
+export const studyInquiry = async (studyId: number | undefined) => {
   const { data } = await API({
     method: 'get',
     url: `/studies/${studyId}/inquiry`,
@@ -45,9 +45,9 @@ export const studyInquiry = async (studyId: string | undefined) => {
 
 // 스터디 문의 답변
 export const studyInquiryAnswer = async (
-  studyId: string | undefined,
-  id: string | undefined,
-  studyAnswerData,
+  studyId: number | undefined,
+  id: number | undefined,
+  studyAnswerData: { contents: string | undefined },
 ) => {
   console.log(studyId, id, studyAnswerData);
 

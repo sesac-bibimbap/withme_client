@@ -24,7 +24,7 @@ const useStudyDetail = (studyId: number | undefined) => {
 };
 
 // 스터디 문의 목록
-const useStudyInquiry = (studyId: string | undefined) => {
+const useStudyInquiry = (studyId: number | undefined) => {
   const { data, isLoading } = useQuery<Inquiry[]>(
     ['studyInquiry', studyId],
     () => studyInquiry(studyId),
