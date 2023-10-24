@@ -56,7 +56,7 @@ const CreateStudyForm = () => {
     e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
   };
 
-  const formatEditStudyData = (data: createStudyDataType) => {
+  const formatEditStudyData = (data: CreateStudyDataType) => {
     const { name, attendantsLimit, date, title, recruitPlaceholder, content } =
       data;
     const [startDate, endDate] = date.map((el: any) => el.$d);
@@ -99,7 +99,7 @@ const CreateStudyForm = () => {
                   <div style={editStudyForm_form_wrap}>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>스터디명</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="name"
                         rules={[
                           {
@@ -117,7 +117,7 @@ const CreateStudyForm = () => {
                     </div>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>인원</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="attendantsLimit"
                         rules={[
                           {
@@ -137,7 +137,7 @@ const CreateStudyForm = () => {
                     </div>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>기간</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="date"
                         rules={[
                           {
@@ -152,7 +152,7 @@ const CreateStudyForm = () => {
                     </div>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>제목</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="title"
                         rules={[
                           {
@@ -170,7 +170,7 @@ const CreateStudyForm = () => {
                     </div>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>세부내용</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="content"
                         rules={[
                           {
@@ -188,7 +188,7 @@ const CreateStudyForm = () => {
                     </div>
                     <div style={editStudyFrom_input_wrap}>
                       <p style={editStudyFrom_form_input}>신청내용</p>
-                      <Form.Item<createStudyDataType>
+                      <Form.Item<CreateStudyDataType>
                         name="recruitPlaceholder"
                         rules={[
                           {
