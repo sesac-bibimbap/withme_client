@@ -5,4 +5,6 @@ export const techStackHashtag_bg: CSSProperties = {
   color: '#FFFFFF',
   borderRadius: '10px',
   padding: '5px 10px 5px 10px',
+  display: 'flex',
+  alignItems: 'center',
 };

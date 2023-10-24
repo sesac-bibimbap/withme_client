@@ -21,7 +21,7 @@ const StudyTechStackFilter = ({
 
   useEffect(() => {
     setTechStackId(selectedTechStacks);
-  }, [selectedTechStacks]);
+  }, [selectedTechStacks, setTechStackId]);
 
   const handleTechStackSelect = (techStackId: number) => {
     selectedTechStacks.length !== 5
@@ -35,32 +35,32 @@ const StudyTechStackFilter = ({
         );
   };
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <div style={studyTechStackFilter_container}>
-      <div style={studyTechStackFilter_p}>
-        <p style={studyTechStackFilter_p_hashTag}>해시태그</p>
-        <p style={studyTechStackFilter_p_max}>(최대 5개)</p>
-      </div>
-      <div
-        className="studyTechStackFilter_warp"
-        style={studyTechStackFilter_warp}
-      >
-        {data?.map((techStack: StudyStacks) => (
-          <RightBarFilter
-            key={techStack.id}
-            techStackName={techStack.stackName}
-            techStackImage={techStack.stackImg}
-            techStackId={techStack.id}
-            techStackIds={selectedTechStacks}
-            onTechStackSelect={handleTechStackSelect}
-          />
-        ))}
-      </div>
-    </div>
+    <>
+      {!isLoading ? (
+        <div style={studyTechStackFilter_container}>
+          <div style={studyTechStackFilter_p}>
+            <p style={studyTechStackFilter_p_hashTag}>해시태그</p>
+            <p style={studyTechStackFilter_p_max}>(최대 5개)</p>
+          </div>
+          <div
+            className="studyTechStackFilter_warp"
+            style={studyTechStackFilter_warp}
+          >
+            {data?.map((techStack) => (
+              <RightBarFilter
+                key={techStack.id}
+                techStackName={techStack.stackName}
+                techStackImage={techStack.stackImg}
+                techStackId={techStack.id}
+                techStackIds={selectedTechStacks}
+                onTechStackSelect={handleTechStackSelect}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 

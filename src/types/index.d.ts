@@ -67,17 +67,19 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+// 지니 옵셔널 추가
 type TechStack = {
   id: number;
   stackName?: string;
+  stackImg?: string;
 };
 
 type Recruit = {
-  title: stirng;
-  recruitPlaceholder: string;
+  title?: stirng;
+  recruitPlaceholder?: string;
 };
 
-interface createStudyDataType {
+interface CreateStudyDataType {
   name: string;
   attendantsLimit?: number;
   title: string;
@@ -86,7 +88,7 @@ interface createStudyDataType {
   content: string;
 }
 
-interface createStudyType {
+interface CreateStudyType {
   name: string;
   attendantsLimit?: number;
   recruit?: Recruit;
@@ -94,12 +96,6 @@ interface createStudyType {
   endDate?: Date;
   content?: string;
   techStacks?: TechStack[];
-}
-
-interface StudyStacks {
-  id: number;
-  stackImg: string;
-  stackName: string;
 }
 
 type EmailData = { email: string };
@@ -120,4 +116,69 @@ type VerifyInputType = (count: number) => {
 interface SendCode {
   email?: string;
   token?: string;
+
+//Study
+interface Bookmark {
+  name?: string;
+  id?: number;
+  techStacks?: TechStack[];
+}
+
+interface Study extends ISuperDate {
+  id?: number;
+  name?: string;
+  content?: string;
+  attendantsLimit?: number;
+  startDate?: Date;
+  endDate?: Date;
+  owner: User;
+  inquiries: Inquiry[];
+  techStacks: TechStack[];
+  participants: User[];
+  recruit?: Recruit;
+}
+
+interface ISuperDate {
+  createdAt: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+}
+
+interface User extends ISuperDate {
+  id?: string;
+  email: string;
+  password?: string;
+  emailVerified?: string;
+  profile: Profile;
+  bookmarkedStudies?: Study[];
+  participatingStudies?: Study[];
+}
+
+interface Profile extends ISuperDate {
+  id?: string;
+  nickname?: string;
+  profileImg?: string;
+  gender?: boolean;
+}
+
+interface Inquiry extends ISuperDate {
+  id?: number;
+  title?: string;
+  contents?: string;
+  inquiryResponse: inquiryRes;
+}
+
+type inquiryRes = {
+  contents?: string;
+};
+
+interface TechStack extends ISuperDate {
+  id?: string;
+  stackName?: string;
+  stackImg?: string;
+}
+
+interface Studies {
+  data: Study[];
+  searchFilter: string;
 }

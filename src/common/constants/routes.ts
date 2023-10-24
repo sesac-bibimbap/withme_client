@@ -29,7 +29,19 @@ const ROUTES = {
   },
   STUDY: {
     PATH: '/study',
-    NAME: 'STUDY',
+    NAME: 'Study',
+  },
+  STUDY_DETAIL: {
+    PATH: '/study/detail/:studyId',
+    NAME: 'StudyDetail',
+  },
+  STUDY_EDIT: {
+    PATH: '/study/edit/:studyId',
+    NAME: 'StudyEdit',
+  },
+  STUDY_ROOM: {
+    PATH: '/study/room/:id',
+    NAME: 'StudyRoom',
   },
   FIRSTLOGIN: {
     PATH: '/firstLogin',

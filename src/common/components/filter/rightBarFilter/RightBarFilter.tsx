@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
 import {
   rightBarFilter_beforeClicking_bg,
   rightBarFilter_afterClicking_bg,
@@ -6,10 +6,11 @@ import {
 import { Button } from 'antd';
 
 type RightBarFilterType = {
-  techStackName: string;
-  techStackImage: string;
+  techStackName?: string;
+  techStackImage?: string;
   techStackId: number;
   techStackIds: Array<number>;
+  filterStyle?: CSSProperties;
   onTechStackSelect: (techStackId: number) => void;
 };
 
@@ -19,19 +20,28 @@ const RightBarFilter = ({
   onTechStackSelect,
   techStackId,
   techStackIds,
+  filterStyle,
 }: RightBarFilterType) => {
   const [isTechClicked, setTechClicked] = useState(false);
-  const tackStackChoose = isTechClicked
-    ? rightBarFilter_afterClicking_bg
-    : rightBarFilter_beforeClicking_bg;
+
+  const afterCss = {
+    ...rightBarFilter_afterClicking_bg,
+    ...filterStyle,
+  };
+  const beforeCss = {
+    ...rightBarFilter_beforeClicking_bg,
+    ...filterStyle,
+  };
+
+  const tackStackChoose = isTechClicked ? afterCss : beforeCss;
 
   const handleButtonClick = () => {
     techStackIds.length !== 5
-      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      ? (setTechClicked((prev) => !prev), onTechStackSelect(techStackId))
       : isTechClicked === true
-      ? (setTechClicked(!isTechClicked), onTechStackSelect(techStackId))
+      ? (setTechClicked((prev) => !prev), onTechStackSelect(techStackId))
       : (alert('기술 스택은 최대 5개까지만 선택할 수 있습니다.'),
-        setTechClicked(isTechClicked),
+        setTechClicked((prev) => prev),
         onTechStackSelect(techStackId));
   };
 
