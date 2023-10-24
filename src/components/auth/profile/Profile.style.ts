@@ -7,7 +7,7 @@ export const profile_container: CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '100dvh',
-  backgroundColor: '#000000',
+  backgroundColor: '#222121',
 };
 
 export const profile_wrapper: CSSProperties = {

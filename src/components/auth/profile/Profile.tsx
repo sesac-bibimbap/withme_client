@@ -2,7 +2,6 @@ import {
   profile_button_close,
   profile_button_wrapper,
   profile_container,
-  profile_detail_margin,
   profile_detail_title,
   profile_detail_wrapper,
   profile_image_circle,
@@ -17,9 +16,13 @@ import {
 import { useProfileQuery } from '../hooks/queries/useQueries';
 import { Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../../common/constants';
+import ProfileDetailItem from './profileDetailItem/profileDetailItem';
 
 const Profile = () => {
   const { data, isLoading } = useProfileQuery();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -31,32 +34,33 @@ const Profile = () => {
                 style={profile_button_close}
                 shape="round"
                 icon={<CloseOutlined style={{ color: 'white' }} />}
+                onClick={() => navigate(ROUTES.MAIN.PATH)}
               />
               <div style={profile_image_circle}>
                 <img src={data?.profile.profileImg} alt="userImg" />
               </div>
               <p style={profile_text_name}>{data?.profile.nickname}</p>
               <div style={profile_detail_wrapper}>
-                <div style={profile_detail_margin}>
-                  <p style={profile_detail_title}>인증메일</p>
-                  <p>{data?.emailVerified}</p>
-                </div>
-                <div style={profile_detail_margin}>
-                  <p style={profile_detail_title}>닉네임</p>
-                  <p>{data?.profile.nickname}</p>
-                </div>
-                <div style={profile_detail_margin}>
-                  <p style={profile_detail_title}>성별</p>
-                  <p>{data?.profile.gender ? '남성' : '여성'}</p>
-                </div>
-                <div style={profile_detail_margin}>
-                  <p style={profile_detail_title}>주요직무</p>
-                  <p>{data?.job?.category}</p>
-                </div>
-                <div style={profile_detail_margin}>
-                  <p style={profile_detail_title}>개발경력</p>
-                  <p>{data?.devCareer?.category}</p>
-                </div>
+                <ProfileDetailItem
+                  title="인증메일"
+                  data={data?.emailVerified}
+                />
+                <ProfileDetailItem
+                  title="닉네임"
+                  data={data?.profile.nickname}
+                />
+                <ProfileDetailItem
+                  title="성별"
+                  data={data?.profile.gender ? '남성' : '여성'}
+                />
+                <ProfileDetailItem
+                  title="주요직무"
+                  data={data?.job?.category}
+                />
+                <ProfileDetailItem
+                  title="개발경력"
+                  data={data?.devCareer?.category}
+                />
                 <div>
                   <p style={profile_detail_title}>기술스택</p>
                   <TechStackHashtag>nest</TechStackHashtag>
