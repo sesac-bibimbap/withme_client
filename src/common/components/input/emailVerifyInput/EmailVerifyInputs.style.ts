@@ -13,5 +13,6 @@ export const emailVerify_input: (
     fontSize: '24px',
     textAlign: 'center',
     color: '#7e7d7d',
+    margin: '0 1.5px 0 1.5px',
   };
 };

@@ -113,6 +113,10 @@ type VerifyInputType = (count: number) => {
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
 
+interface SendCode {
+  email?: string;
+  token?: string;
+
 //Study
 interface Bookmark {
   name?: string;

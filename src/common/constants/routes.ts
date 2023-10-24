@@ -43,6 +43,10 @@ const ROUTES = {
     PATH: '/study/room/:id',
     NAME: 'StudyRoom',
   },
+  FIRSTLOGIN: {
+    PATH: '/firstLogin',
+    NAME: 'FirstLogin',
+  },
 };
 
 export default ROUTES;

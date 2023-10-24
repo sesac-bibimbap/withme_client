@@ -11,6 +11,7 @@ const MainPage = () => {
     <>
       <Link to={ROUTES.LOGIN.PATH}>로그인으로 뿅</Link>
       <Link to={ROUTES.NOTIFICATION.PATH}>알림으로</Link>
+      <Link to={ROUTES.FIRSTLOGIN.PATH}>퍼스트</Link>
     </>
   );
 };
