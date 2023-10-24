@@ -10,6 +10,7 @@ import { Button } from 'antd';
 import { studyBookMark } from '../../api';
 import useCacheInstance from '../../../../common/utils/cache';
 import { TechStackHashtag } from '../../../../common/components';
+import { useNavigate } from 'react-router-dom';
 
 export type BookmarkItemType = {
   teamName?: string;
@@ -18,6 +19,7 @@ export type BookmarkItemType = {
 };
 
 const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
+  const navigate = useNavigate();
   const [bookmark, setBookmark] = useState(false);
   const { cache } = useCacheInstance();
 
@@ -67,7 +69,11 @@ const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
   return (
     <>
       <div style={bookmarkItem_wrapper}>
-        <Button type="primary" style={studyBookmarkItem_button_detail}>
+        <Button
+          type="primary"
+          style={studyBookmarkItem_button_detail}
+          onClick={() => navigate(`/study/detail/${id}`)}
+        >
           <p style={studyBookmark_text_teamName}>{teamName}</p>
           <div>
             {techStacks?.slice(0, 2).map((v) => (

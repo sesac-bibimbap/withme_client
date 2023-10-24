@@ -11,6 +11,7 @@ import {
   studyItem_button_hashtag,
 } from './StudyItem.style';
 import MemoBookmarkBtn from '../../../../common/components/button/bookmarkBtn/BookmarkBtn';
+import { useNavigate } from 'react-router-dom';
 
 type studyItemType = {
   study: Study;
@@ -27,6 +28,7 @@ const StudyItem = ({ study, userData }: studyItemType) => {
     content,
     techStacks,
   } = study;
+  const navigate = useNavigate();
   const userBookmarkedStudies = userData?.bookmarkedStudies;
   const loginUserBookmarkedStudy = userBookmarkedStudies?.find(
     (userBookmarkedStudy: Study) => {
@@ -69,7 +71,10 @@ const StudyItem = ({ study, userData }: studyItemType) => {
           >
             모집중
           </MemoBookmarkBtn>
-          <DarkGrayBtn buttonStyle={studyItem_button_detail}>
+          <DarkGrayBtn
+            buttonStyle={studyItem_button_detail}
+            onClick={() => navigate(`/study/detail/${id}`)}
+          >
             자세히 보기
           </DarkGrayBtn>
         </div>

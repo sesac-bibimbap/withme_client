@@ -60,6 +60,10 @@ const PAGE_LIST: Route[] = [
         element: <EditStudyPage />,
         path: ROUTES.STUDY_EDIT.PATH,
       },
+      {
+        // element: <StudyRoomPage />,
+        path: ROUTES.STUDY_ROOM.PATH,
+      },
       // {
       //   element: <StudyDetailPage />,
       //   path: ROUTES.STUDY_DETAIL.PATH,
