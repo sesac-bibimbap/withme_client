@@ -43,6 +43,10 @@ const ROUTES = {
     PATH: '/study/room/:id',
     NAME: 'StudyRoom',
   },
+  PROFILE: {
+    PATH: '/profile',
+    NAME: 'Profile',
+  },
 };
 
 export default ROUTES;
