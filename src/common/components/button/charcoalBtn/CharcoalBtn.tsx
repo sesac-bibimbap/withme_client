@@ -9,7 +9,7 @@ type charcoalBtnType = {
   buttonStyle?: CSSProperties;
   path?: string | undefined;
   disabled?: boolean;
-  onClick?: () => void | Promise<void>;
+  onClick?: () => Promise<void> | void;
 };
 const CharcoalBtn = ({
   children,

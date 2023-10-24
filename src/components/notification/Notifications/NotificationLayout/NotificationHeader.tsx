@@ -1,11 +1,11 @@
-import { detailDate } from '../../../common/utils/getDetailDate';
+import { detailDate } from '../../../../common/utils/getDetailDate';
 import {
   notification_common,
   notification_header_container,
   notification_header_color_icon,
   notification_header_left,
   notification_header_right,
-} from './Notifications.style';
+} from '../Notifications.style';
 
 const NotificationHeader = ({ item }: NotificationItemProps) => {
   const { type, color, studyName, time, comment, fromUser } = item;

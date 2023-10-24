@@ -4,7 +4,7 @@ import {
   notification_reject_container,
   notification_reject_content,
   notification_reject_title,
-} from './Notifications.style';
+} from '../Notifications.style';
 
 const NotificationReject = ({ item }: NotificationItemProps) => {
   const { contents } = item;

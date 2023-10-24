@@ -3,7 +3,7 @@ import {
   notification_accept_navigate_room_btn,
   notification_common,
   notification_contents_common,
-} from './Notifications.style';
+} from '../Notifications.style';
 
 const NotificationAccept = ({ item }: { item: StudyAttendResponse }) => {
   const { contents } = item;
