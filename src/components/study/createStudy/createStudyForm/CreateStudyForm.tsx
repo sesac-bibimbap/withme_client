@@ -50,7 +50,7 @@ const CreateStudyForm = () => {
       techStacks.push(obj);
     });
 
-    const createStudyData: createStudyType = {
+    const createStudyData: CreateStudyType = {
       name,
       attendantsLimit,
       startDate,

@@ -70,6 +70,7 @@ type SelectRejectReason = {
 type TechStack = {
   id: number;
   stackName?: string;
+  stackImg?: string;
 };
 
 type Recruit = {
@@ -86,7 +87,7 @@ interface createStudyDataType {
   content: string;
 }
 
-interface createStudyType {
+interface CreateStudyType {
   name: string;
   attendantsLimit?: number;
   recruit?: Recruit;
@@ -94,12 +95,6 @@ interface createStudyType {
   endDate?: Date;
   content?: string;
   techStacks?: TechStack[];
-}
-
-interface StudyStacks {
-  id: number;
-  stackImg: string;
-  stackName: string;
 }
 
 type EmailData = { email: string };
@@ -116,3 +111,55 @@ type VerifyInputType = (count: number) => {
   currentInputRef: React.RefObject<HTMLInputElement> | null;
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
+
+interface Study extends ISuperDate {
+  id?: number;
+  name?: string;
+  content?: string;
+  attendantsLimit?: number;
+  startDate: Date;
+  endDate: Date;
+  owner: User;
+  inquiries: Inquiry[];
+  techStacks: TechStack[];
+  participants: User[];
+  recruit: Recruit;
+}
+
+interface ISuperDate {
+  createdAt: Date;
+  updatedAt?: Date;
+  deletedAt?: Date | null;
+}
+
+interface User extends ISuperDate {
+  id?: string;
+  email: string;
+  password?: string;
+  emailVerified?: string;
+  profile: Profile;
+}
+
+interface Profile extends ISuperDate {
+  id?: string;
+  nickname?: string;
+  profileImg?: string;
+  gender?: boolean;
+}
+
+interface Inquiry extends ISuperDate {
+  id?: string;
+  title?: string;
+  contents?: string;
+  inquiryResponse: inquiryRes;
+}
+
+type inquiryRes = {
+  contents?: string;
+};
+
+interface TechStack extends ISuperDate {
+  id?: string;
+  stackName?: string;
+  stackImg?: string;
+}

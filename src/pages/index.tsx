@@ -6,7 +6,8 @@ import LoginPage from './login/LoginPage';
 import ResetPasswordPage from './resetPassword/ResetPasswordPage';
 import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
 // import Study from './study/list/StudyListPage';
-import CreateStudy from './study/create/CreateStudyPage';
+import CreateStudyPage from './study/create/CreateStudyPage';
+import EditStudyPage from './study/edit/EditStudyPage';
 
 interface Route {
   element?: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
@@ -45,19 +46,13 @@ const PAGE_LIST: Route[] = [
     path: ROUTES.NOTIFICATION.PATH,
   },
   {
-    element: <Study />,
-    path: ROUTES.STUDY.PATH,
-    children: [
-      {
-        element: <CreateStudy />,
-        path: ROUTES.CREATE_STUDY.PATH,
-      },
-    ],
+    element: <CreateStudyPage />,
+    path: ROUTES.CREATE_STUDY.PATH,
   },
-  // {
-  //   path: "*",
-  //   element:<NotFound />
-  // }
+  {
+    element: <EditStudyPage />,
+    path: ROUTES.STUDY_EDIT.PATH,
+  },
 ];
 
 export default PAGE_LIST;
