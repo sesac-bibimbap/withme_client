@@ -6,7 +6,7 @@ type middleGrayBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  setShowInput?: Dispatch<React.SetStateAction<boolean>>;
+  setShowInput?: (value: boolean) => void;
   AnswerDataSubmit?: () => void;
 };
 

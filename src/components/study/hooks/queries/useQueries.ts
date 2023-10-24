@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { techStacks, studyDetail, studyInquiry } from '../../api';
+import { techStacks, studyDetail, studyInquiry, studyCheck } from '../../api';
 import { studyList } from '../../api';
 import { useEffect } from 'react';
 
@@ -52,4 +52,18 @@ const useStudyInquiry = (studyId: number | undefined) => {
   return { data, isLoading };
 };
 
-export { useTechStakQuery, useStudyDetail, useStudyInquiry };
+// 스터디 장인지 아닌지 체크
+const useStudyParticipate = (studyId: number | undefined) => {
+  const { data, isLoading } = useQuery(['studyCheck', studyId], () =>
+    studyCheck(studyId),
+  );
+
+  return { data, isLoading };
+};
+
+export {
+  useTechStakQuery,
+  useStudyDetail,
+  useStudyInquiry,
+  useStudyParticipate,
+};

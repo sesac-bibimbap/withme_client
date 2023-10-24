@@ -67,7 +67,6 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
-// 지니 옵셔널 추가
 type TechStack = {
   id: number;
   stackName?: string;
@@ -141,17 +140,25 @@ interface ISuperDate {
 }
 
 interface User extends ISuperDate {
-  id?: string;
+  id?: number;
   email: string;
   password?: string;
   emailVerified?: string;
   profile: Profile;
   bookmarkedStudies?: Study[];
   participatingStudies?: Study[];
+  job?: FirstLogin;
+  devCareer?: FirstLogin;
+  techStacks?: TechStack[];
+}
+
+interface FirstLogin extends ISuperDate {
+  id?: number;
+  category?: string;
 }
 
 interface Profile extends ISuperDate {
-  id?: string;
+  id?: number;
   nickname?: string;
   profileImg?: string;
   gender?: boolean;
@@ -169,7 +176,7 @@ type inquiryRes = {
 };
 
 interface TechStack extends ISuperDate {
-  id?: string;
+  id?: number;
   stackName?: string;
   stackImg?: string;
 }
