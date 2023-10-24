@@ -116,7 +116,8 @@ type VerifyInputType = (count: number) => {
 interface SendCode {
   email?: string;
   token?: string;
-
+}
+  
 //Study
 interface Bookmark {
   name?: string;
