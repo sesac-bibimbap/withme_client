@@ -67,17 +67,19 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+// 지니 옵셔널 추가
 type TechStack = {
   id: number;
   stackName?: string;
+  stackImg?: string;
 };
 
 type Recruit = {
-  title: stirng;
-  recruitPlaceholder: string;
+  title?: stirng;
+  recruitPlaceholder?: string;
 };
 
-interface createStudyDataType {
+interface CreateStudyDataType {
   name: string;
   attendantsLimit?: number;
   title: string;
@@ -86,7 +88,7 @@ interface createStudyDataType {
   content: string;
 }
 
-interface createStudyType {
+interface CreateStudyType {
   name: string;
   attendantsLimit?: number;
   recruit?: Recruit;
@@ -94,12 +96,6 @@ interface createStudyType {
   endDate?: Date;
   content?: string;
   techStacks?: TechStack[];
-}
-
-interface StudyStacks {
-  id: number;
-  stackImg: string;
-  stackName: string;
 }
 
 type EmailData = { email: string };
@@ -135,13 +131,11 @@ interface Study extends ISuperDate {
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
-  recruit?: {
-    title?: string;
-  };
+  recruit?: Recruit;
 }
 
 interface ISuperDate {
-  createdAt?: Date;
+  createdAt: Date;
   updatedAt?: Date;
   deletedAt?: Date | null;
 }
@@ -152,8 +146,8 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
-  bookmarkedStudies: Study[];
-  participatingStudies: Study[];
+  bookmarkedStudies?: Study[];
+  participatingStudies?: Study[];
 }
 
 interface Profile extends ISuperDate {
@@ -167,7 +161,12 @@ interface Inquiry extends ISuperDate {
   id?: string;
   title?: string;
   contents?: string;
+  inquiryResponse: inquiryRes;
 }
+
+type inquiryRes = {
+  contents?: string;
+};
 
 interface TechStack extends ISuperDate {
   id?: string;

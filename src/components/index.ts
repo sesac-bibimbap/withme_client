@@ -13,3 +13,6 @@ export { default as StudySearchFilter } from './study/studyList/studySearchFilte
 
 // create study
 export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';
+
+// edit study
+export { default as EditStudyForm } from './study/editStudy/EditStudyForm';

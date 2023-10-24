@@ -6,8 +6,8 @@ import {
 import { Button } from 'antd';
 
 type RightBarFilterType = {
-  techStackName: string;
-  techStackImage: string;
+  techStackName?: string;
+  techStackImage?: string;
   techStackId: number;
   techStackIds: Array<number>;
   filterStyle?: CSSProperties;

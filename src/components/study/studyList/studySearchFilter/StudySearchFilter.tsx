@@ -37,7 +37,7 @@ const StudySearchFilter = ({ setFilter, setOffset }: studySearchFilterType) => {
         <div style={studySearchFilter_wrapper}>
           <p style={studySearchFilter_text_title}>필터</p>
           <div style={studySearchFilter_item_scroll}>
-            {data?.map((techStack: StudyStacks) => (
+            {data?.map((techStack: TechStack) => (
               <RightBarFilter
                 key={techStack.id}
                 techStackName={techStack.stackName}

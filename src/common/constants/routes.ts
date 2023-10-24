@@ -35,6 +35,14 @@ const ROUTES = {
     PATH: '/study/deatil/:id',
     NAME: 'StudyDetail',
   },
+  STUDY_DETAIL: {
+    PATH: '/study/detail/:studyId',
+    NAME: 'StudyDetail',
+  },
+  STUDY_EDIT: {
+    PATH: '/study/edit/:studyId',
+    NAME: 'StudyEdit',
+  },
 };
 
 export default ROUTES;
