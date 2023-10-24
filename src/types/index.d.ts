@@ -67,6 +67,7 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+// 지니 옵셔널 추가
 type TechStack = {
   id: number;
   stackName?: string;
