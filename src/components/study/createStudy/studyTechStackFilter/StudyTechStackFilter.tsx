@@ -47,7 +47,7 @@ const StudyTechStackFilter = ({
             className="studyTechStackFilter_warp"
             style={studyTechStackFilter_warp}
           >
-            {data?.map((techStack: StudyStacks) => (
+            {data?.map((techStack) => (
               <RightBarFilter
                 key={techStack.id}
                 techStackName={techStack.stackName}

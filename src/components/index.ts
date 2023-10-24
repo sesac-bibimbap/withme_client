@@ -9,3 +9,6 @@ export { default as Notifications } from './notification/Notifications/Notificat
 // Study
 export { default as CreateStudyForm } from './study/createStudy/createStudyForm/CreateStudyForm';
 export { default as StudyDetail } from './study/studyDetails/StudyDetail';
+
+// edit study
+export { default as EditStudyForm } from './study/editStudy/EditStudyForm';

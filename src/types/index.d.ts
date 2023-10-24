@@ -67,9 +67,11 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
+// 지니 옵셔널 추가
 type TechStack = {
   id: number;
   stackName?: string;
+  stackImg?: string;
 };
 
 type Recruit = {
@@ -77,7 +79,7 @@ type Recruit = {
   recruitPlaceholder: string;
 };
 
-interface createStudyDataType {
+interface CreateStudyDataType {
   name: string;
   attendantsLimit?: number;
   title: string;
@@ -94,12 +96,6 @@ interface CreateStudyType {
   endDate?: Date;
   content?: string;
   techStacks?: TechStack[];
-}
-
-interface StudyStacks {
-  id: number;
-  stackImg: string;
-  stackName: string;
 }
 
 type EmailData = { email: string };
