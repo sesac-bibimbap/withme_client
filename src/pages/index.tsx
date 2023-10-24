@@ -9,6 +9,7 @@ import ResetPasswordPage from './resetPassword/ResetPasswordPage';
 import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
 import EditStudyPage from './study/edit/EditStudyPage';
 import StudyDetailPage from './study/detail/StudyDetailPage';
+import { Profile } from '../components';
 
 interface Route {
   element?: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
@@ -70,6 +71,10 @@ const PAGE_LIST: Route[] = [
         path: ROUTES.STUDY_DETAIL.PATH,
       },
     ],
+  },
+  {
+    element: <Profile />,
+    path: ROUTES.PROFILE.PATH,
   },
   // {
   //   path: "*",
