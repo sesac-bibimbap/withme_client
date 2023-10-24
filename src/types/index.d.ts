@@ -158,7 +158,7 @@ interface Profile extends ISuperDate {
 }
 
 interface Inquiry extends ISuperDate {
-  id?: string;
+  id?: number;
   title?: string;
   contents?: string;
   inquiryResponse: inquiryRes;

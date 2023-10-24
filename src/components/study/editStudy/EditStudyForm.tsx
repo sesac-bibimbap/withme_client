@@ -25,7 +25,7 @@ import { useStudyDetail } from '../hooks/queries/useQueries';
 
 const { RangePicker } = DatePicker;
 
-const CreateStudyForm = () => {
+const EditStudyForm = () => {
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
 
@@ -44,7 +44,7 @@ const CreateStudyForm = () => {
   if (!data) return;
   const {
     name,
-    recruit: { title, recruitPlaceholder },
+    recruit,
     content,
     attendantsLimit,
     // startDate,
@@ -160,7 +160,7 @@ const CreateStudyForm = () => {
                             message: '스터디원 모집 게시글 제목을 입력해주세요',
                           },
                         ]}
-                        initialValue={title}
+                        initialValue={recruit?.title}
                       >
                         <Input
                           placeholder="제목을 입력하세요"
@@ -196,7 +196,7 @@ const CreateStudyForm = () => {
                             message: '신청시 받을 사항을 입력해주세요',
                           },
                         ]}
-                        initialValue={recruitPlaceholder}
+                        initialValue={recruit?.recruitPlaceholder}
                       >
                         <Input
                           placeholder="ex) 스터디원들이 스터디에 임하는 각오, 스터디가 가능한 요일 등 신청시 받을 사항 작성"
@@ -239,4 +239,4 @@ const CreateStudyForm = () => {
   );
 };
 
-export default CreateStudyForm;
+export default EditStudyForm;
