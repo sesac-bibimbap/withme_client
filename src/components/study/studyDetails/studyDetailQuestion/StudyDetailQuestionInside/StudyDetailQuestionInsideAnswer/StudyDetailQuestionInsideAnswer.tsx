@@ -25,17 +25,6 @@ const StudyDetailQuestionInsideAnswer = ({
 }) => {
   const { cache } = useCacheInstance();
 
-  // const user: User | undefined = cache.getQueryData(['userProfile']);
-  //       const bookmarkedStudies = user?.bookmarkedStudies || [];
-
-  // cache.setQueryData(['userProfile'], (oldData) =>
-  //           Object.assign({}, oldData, {
-  //             bookmarkedStudies: [
-  //               ...bookmarkedStudies,
-  //               { id, name: teamName, techStacks: techStacks },
-  //             ],
-  //           }),
-
   const studyAnswer = useRef<HTMLTextAreaElement>(null);
   const { inquiryResponse, createdAt, id } = item;
 
@@ -51,6 +40,8 @@ const StudyDetailQuestionInsideAnswer = ({
     };
 
     mutate(studyAnswerData);
+    // 나중에 팝업으로 바꿔주기
+    alert('답변이 등록 되었습니다');
   };
 
   const handleAnswer = async (studyAnswerData: {
@@ -67,25 +58,7 @@ const StudyDetailQuestionInsideAnswer = ({
     return { handleAnswer };
   };
 
-  const { mutate } = useMutation(handleAnswer, {
-    async onMutate(answer) {
-      console.log('앰써~~~', answer);
-
-      const previousInquiryData: Inquiry[] | undefined = cache.getQueryData([
-        'studyInquiry',
-        studyId,
-      ]);
-      console.log('studyInquiry, studyId 캐싱해놓은 값', previousInquiryData);
-      if (!previousInquiryData) return;
-
-      // cache.setQueryData(['studyInquiry', studyId], (oldData) => {
-      //   oldData.
-      //   return {
-      //     contents:
-      //   };
-      // });
-    },
-  });
+  const { mutate } = useMutation(handleAnswer);
 
   return (
     <>
