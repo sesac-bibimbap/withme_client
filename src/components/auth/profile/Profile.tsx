@@ -1,4 +1,5 @@
 import {
+  profile_button_close,
   profile_button_wrapper,
   profile_container,
   profile_detail_margin,
@@ -14,6 +15,8 @@ import {
   YellowBtn,
 } from '../../../common/components';
 import { useProfileQuery } from '../hooks/queries/useQueries';
+import { Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 const Profile = () => {
   const { data, isLoading } = useProfileQuery();
@@ -24,6 +27,11 @@ const Profile = () => {
         <>
           <div style={profile_container}>
             <div style={profile_wrapper}>
+              <Button
+                style={profile_button_close}
+                shape="round"
+                icon={<CloseOutlined style={{ color: 'white' }} />}
+              />
               <div style={profile_image_circle}>
                 <img src={data?.profile.profileImg} alt="userImg" />
               </div>
@@ -55,8 +63,12 @@ const Profile = () => {
                 </div>
               </div>
               <div style={profile_button_wrapper}>
-                <CharcoalBtn>계정변경</CharcoalBtn>
-                <YellowBtn>프로필 편집</YellowBtn>
+                <CharcoalBtn buttonStyle={{ fontWeight: 600 }}>
+                  계정변경
+                </CharcoalBtn>
+                <YellowBtn buttonStyle={{ color: '#222121', fontWeight: 600 }}>
+                  프로필 편집
+                </YellowBtn>
               </div>
             </div>
           </div>

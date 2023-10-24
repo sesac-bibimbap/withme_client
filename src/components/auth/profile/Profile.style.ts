@@ -22,6 +22,12 @@ export const profile_wrapper: CSSProperties = {
   borderRadius: '10px',
 };
 
+export const profile_button_close: CSSProperties = {
+  backgroundColor: 'transparent',
+  border: 'none',
+  marginLeft: '430px',
+};
+
 export const profile_image_circle: CSSProperties = {
   width: '70px',
   height: '70px',
@@ -32,7 +38,7 @@ export const profile_image_circle: CSSProperties = {
 export const profile_text_name: CSSProperties = {
   fontSize: '28px',
   fontWeight: 600,
-  marginTop: '15px',
+  marginTop: '3px',
 };
 
 export const profile_detail_wrapper: CSSProperties = {
