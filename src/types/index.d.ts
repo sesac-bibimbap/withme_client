@@ -191,7 +191,7 @@ interface InquiryResponse extends ISuperDate {
 }
 
 interface TechStack extends ISuperDate {
-  id?: string;
+  id?: number;
   stackName?: string;
   stackImg?: string;
 }
@@ -207,4 +207,9 @@ interface StudyListType extends Study {
   recruit?: {
     title?: string;
   };
+}
+
+interface Studies {
+  data: Study[];
+  searchFilter: string;
 }

@@ -12,7 +12,7 @@ import {
 
 const StudyRoomInfo = ({ data }: StudyDataType) => {
   // TODO: 날짜
-  const { content, startDate, endDate, techStacks } = data;
+  const { content, techStacks } = data;
 
   return (
     <div style={studyRoomInfo_container}>
@@ -26,10 +26,7 @@ const StudyRoomInfo = ({ data }: StudyDataType) => {
           <div style={studyRoomInfo_contents_title}>기술스택</div>
           <div style={studyRoomInfo_contents_techStacks}>
             {techStacks.map(({ stackName }) => (
-              <TechStackHashtag
-                key={stackName}
-                hashtagText={`# ${stackName}`}
-              />
+              <TechStackHashtag key={stackName}>{stackName}</TechStackHashtag>
             ))}
           </div>
         </div>

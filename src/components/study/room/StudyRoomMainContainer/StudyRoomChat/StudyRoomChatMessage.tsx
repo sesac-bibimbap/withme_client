@@ -5,7 +5,7 @@ import {
   chatMessage_profileImg,
 } from './StudyRoomChat.style';
 
-const StudyRoomChatMessage = ({ chatMessages }) => {
+const StudyRoomChatMessage = ({ chatMessages }: any) => {
   console.log('✔️  chatMessages:', chatMessages);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +19,13 @@ const StudyRoomChatMessage = ({ chatMessages }) => {
       {chatMessages ? (
         <div ref={scrollRef} style={{ height: '90%', overflowY: 'scroll' }}>
           {chatMessages.map(
-            ({ userProfileImgUrl, userNickname, createdAt, contents, _id }) => (
+            ({
+              userProfileImgUrl,
+              userNickname,
+              createdAt,
+              contents,
+              _id,
+            }: any) => (
               <div key={_id} style={chatMessage_container}>
                 <div style={chatMessage_profileImg}>
                   <img src={userProfileImgUrl} alt="" />
@@ -32,7 +38,7 @@ const StudyRoomChatMessage = ({ chatMessages }) => {
                     </div>
                   </div>
                   <div style={{ marginTop: '5px' }}>
-                    {contents.map((content, idx) => (
+                    {contents.map((content: any, idx: number) => (
                       <div key={idx}>{content}</div>
                     ))}
                   </div>

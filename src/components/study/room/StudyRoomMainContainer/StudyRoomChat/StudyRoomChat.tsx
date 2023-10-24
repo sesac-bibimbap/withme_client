@@ -8,7 +8,7 @@ import StudyRoomChatInput from './StudyRoomChatInput';
 import { InputRef } from 'antd';
 import { chatRoom_container, chatRoom_send_form } from './StudyRoomChat.style';
 
-const StudyRoomChat = ({ studyId }) => {
+const StudyRoomChat = ({ studyId }: any) => {
   const { chatRoomId } = useStudyState();
   const { data } = useFetchChatQuery(chatRoomId);
   const { cache } = useCacheInstance();
@@ -19,7 +19,7 @@ const StudyRoomChat = ({ studyId }) => {
   console.log('✔️  data:', data);
 
   useEffect(() => {
-    const receiveNewChatMessage = async (newChatMessage) => {
+    const receiveNewChatMessage = async (newChatMessage: any) => {
       console.log('✔️  newChatMessage:', newChatMessage);
       await cache.cancelQueries(['fetchChatData', chatRoomId]);
       const addChatMessages = cache.setQueryData<ChatMessageType[]>(

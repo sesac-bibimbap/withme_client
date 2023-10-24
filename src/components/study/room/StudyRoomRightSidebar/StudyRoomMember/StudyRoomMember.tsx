@@ -7,7 +7,7 @@ import {
   studyRoomMemberList_member_wrapper,
 } from '../StudyRoomRightSidebar.style';
 
-const StudyRoomMember = ({ nickname, profileImg, status }) => {
+const StudyRoomMember = ({ nickname, profileImg, status }: any) => {
   return (
     <Fragment key={nickname}>
       <div style={studyRoomMemberList_member_list_wrapper}>

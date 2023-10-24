@@ -45,7 +45,7 @@ const StudySearchFilter = ({ setFilter, setOffset }: studySearchFilterType) => {
                 key={techStack.id}
                 techStackName={techStack.stackName}
                 techStackImage={techStack.stackImg}
-                techStackId={techStack.id}
+                techStackId={Number(techStack.id)}
                 techStackIds={selectedTechStacks}
                 onTechStackSelect={handleTechStackSelect}
                 filterStyle={studySearchFilter_button_filter}

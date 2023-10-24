@@ -42,7 +42,8 @@ const StudyDetailContents = ({
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>진행기간</h4>
           <p>
-            {dateFormatting(startDate)} ~ {dateFormatting(endDate)}
+            {dateFormatting(startDate || undefined)} ~{' '}
+            {dateFormatting(endDate || undefined)}
           </p>
         </div>
         <div style={studyDetail_contents}>
