@@ -28,11 +28,8 @@ const StudyListBoard = ({
 }: studyListBoardType) => {
   const list = useRef<Study[]>([]);
 
-  let keyCount = 0;
-
-  for (const key in studyData?.data[0]) {
-    keyCount++;
-  }
+  const keys = Object.keys(studyData?.data[0] || {});
+  const keyCount = keys.length;
 
   const { ref, inView } = useInView({
     threshold: 1.0,
