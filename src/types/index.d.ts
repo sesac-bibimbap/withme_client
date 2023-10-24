@@ -117,6 +117,20 @@ type StudyDataType = {
   data: Study;
   userId?: string;
 };
+interface SendCode {
+  email?: string;
+  token?: string;
+}
+
+interface SendCode {
+  email?: string;
+  token?: string;
+}
+
+type StudyDataType = {
+  data: Study;
+  userId?: string;
+};
 
 interface Study extends ISuperDate {
   id?: number;

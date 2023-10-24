@@ -8,6 +8,7 @@ import CreateStudyPage from './study/create/CreateStudyPage';
 import ResetPasswordPage from './resetPassword/ResetPasswordPage';
 import ResetPasswordCheckPage from './resetPassword/check/ResetPasswordCheckPage';
 import StudyRoomPage from './study/room/StudyRoomPage';
+import FirstLoginPage from './firstLogin/FirstLoginPage';
 import EditStudyPage from './study/edit/EditStudyPage';
 import LoadingPage from './loading/LoadingPage';
 import StudyDetailPage from './study/detail/StudyDetailPage';
@@ -80,6 +81,10 @@ const PAGE_LIST: Route[] = [
         path: ROUTES.STUDY_EDIT.PATH,
       },
     ],
+  },
+  {
+    element: <FirstLoginPage />,
+    path: ROUTES.FIRST_LOGIN.PATH,
   },
   // {
   //   path: "*",

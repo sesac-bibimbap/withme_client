@@ -47,6 +47,10 @@ const ROUTES = {
     PATH: '/study/edit/:studyId',
     NAME: 'StudyEdit',
   },
+  FIRST_LOGIN: {
+    PATH: '/firstLogin',
+    NAME: 'FirstLogin',
+  },
 };
 
 export default ROUTES;
