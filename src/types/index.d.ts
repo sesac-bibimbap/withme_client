@@ -79,7 +79,7 @@ type Recruit = {
   recruitPlaceholder: string;
 };
 
-interface createStudyDataType {
+interface CreateStudyDataType {
   name: string;
   attendantsLimit?: number;
   title: string;

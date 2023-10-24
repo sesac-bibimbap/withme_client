@@ -12,7 +12,7 @@ const useCreateStudy = () => {
   꿈을 향해 다가가고 있군요
   당신의 꿈을 응원할게요!`;
 
-  const handleStudySubmit = async (createStudyData: createStudyType) => {
+  const handleStudySubmit = async (createStudyData: CreateStudyType) => {
     try {
       await createStudy(createStudyData);
       setShowPopup(true);
