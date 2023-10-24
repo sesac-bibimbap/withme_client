@@ -75,8 +75,8 @@ type TechStack = {
 };
 
 type Recruit = {
-  title: stirng;
-  recruitPlaceholder: string;
+  title?: stirng;
+  recruitPlaceholder?: string;
 };
 
 interface CreateStudyDataType {
@@ -113,18 +113,25 @@ type VerifyInputType = (count: number) => {
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
 
+//Study
+interface Bookmark {
+  name?: string;
+  id?: number;
+  techStacks?: TechStack[];
+}
+
 interface Study extends ISuperDate {
   id?: number;
   name?: string;
   content?: string;
   attendantsLimit?: number;
-  startDate: Date;
-  endDate: Date;
+  startDate?: Date;
+  endDate?: Date;
   owner: User;
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
-  recruit: Recruit;
+  recruit?: Recruit;
 }
 
 interface ISuperDate {
@@ -139,6 +146,8 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
+  bookmarkedStudies?: Study[];
+  participatingStudies?: Study[];
 }
 
 interface Profile extends ISuperDate {
@@ -163,4 +172,9 @@ interface TechStack extends ISuperDate {
   id?: string;
   stackName?: string;
   stackImg?: string;
+}
+
+interface Studies {
+  data: Study[];
+  searchFilter: string;
 }

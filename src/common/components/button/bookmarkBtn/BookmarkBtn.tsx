@@ -1,21 +1,73 @@
-import { useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Button } from 'antd';
-import { bookmarkBtn_button, bookmarkBtn_container } from './BookmarkBtn.style';
+import {
+  bookmarkBtn_bookmark,
+  bookmarkBtn_button,
+  bookmarkBtn_container,
+} from './BookmarkBtn.style';
+import { studyBookMark } from '../../../../components/study/api';
+import useCacheInstance from '../../../utils/cache';
 
 type bookmarkBtnType = {
-  children: string;
+  children?: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
+  id?: number;
+  isMarked?: boolean;
+  teamName?: string;
+  techStacks?: TechStack[];
 };
 
-const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
-  const [bookmark, setBookmark] = useState(false);
+const BookmarkBtn = ({
+  children,
+  htmlType,
+  id,
+  isMarked,
+  teamName,
+  techStacks,
+}: bookmarkBtnType) => {
+  const [bookmark, setBookmark] = useState(isMarked);
+  const [bookmarkImage, setBookmarkImage] = useState<string>();
+  const { cache } = useCacheInstance();
 
-  const bookmarkImage = bookmark
-    ? '/bookmark/bookmark.svg'
-    : '/bookmark/bookmarkLine.svg';
+  useEffect(() => {
+    setBookmarkImage(
+      bookmark ? '/bookmark/bookmark.svg' : '/bookmark/bookmarkLine.svg',
+    );
+  }, [bookmark]);
 
-  const handleButtonClick = () => {
-    setBookmark(!bookmark);
+  const handleButtonClick = async () => {
+    try {
+      setBookmark((prev) => !prev);
+
+      const user: User | undefined = cache.getQueryData(['userProfile']);
+      const bookmarkedStudies = user?.bookmarkedStudies || [];
+      const isAlreadyBookmarked = bookmarkedStudies.find(
+        (item) => item.id === id,
+      );
+
+      if (isAlreadyBookmarked) {
+        cache.setQueryData(['userProfile'], (oldData) =>
+          Object.assign({}, oldData, {
+            bookmarkedStudies: bookmarkedStudies.filter(
+              (item) => item.id !== id,
+            ),
+          }),
+        );
+      } else {
+        cache.setQueryData(['userProfile'], (oldData) =>
+          Object.assign({}, oldData, {
+            bookmarkedStudies: [
+              ...bookmarkedStudies,
+              { id, name: teamName, techStacks: techStacks },
+            ],
+          }),
+        );
+      }
+
+      await studyBookMark(id);
+    } catch (error) {
+      setBookmark((prev) => !prev);
+    }
   };
 
   return (
@@ -28,20 +80,12 @@ const BookmarkBtn = ({ children, htmlType }: bookmarkBtnType) => {
         >
           {children}
         </Button>
-        <img
-          src={bookmarkImage}
-          alt="북마크"
-          style={{
-            position: 'relative',
-            bottom: '13px',
-            zIndex: '1',
-            right: '41px',
-            filter: 'drop-shadow(2px 2px 3px #454343)',
-          }}
-        />
+        <img src={bookmarkImage} alt="북마크" style={bookmarkBtn_bookmark} />
       </div>
     </>
   );
 };
 
-export default BookmarkBtn;
+const MemoBookmarkBtn = memo(BookmarkBtn);
+
+export default MemoBookmarkBtn;

@@ -8,4 +8,5 @@ export const darkGrayBtn_button: CSSProperties = {
   color: '#FFFFFF',
   fontWeight: '600',
   fontSize: '16px',
+  borderRadius: '10px',
 };
