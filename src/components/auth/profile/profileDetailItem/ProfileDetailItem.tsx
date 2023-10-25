@@ -1,7 +1,7 @@
 import {
   profile_detailItem_margin,
   profile_detailItem_title,
-} from './profileDetailItem.style';
+} from './ProfileDetailItem.style';
 
 type ProfileDetailItemType = {
   title: string;
