@@ -12,6 +12,8 @@ import { MiddleGrayBtn } from '../../../../../../common/components';
 import { useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { studyInquiryAnswer } from '../../../../api';
+import useCacheInstance from '../../../../../../common/utils/cache';
+import useStudyDetailStore from '../../../../../../common/store/studyDetail';
 
 const StudyDetailQuestionInsideAnswer = ({
   item,
@@ -24,15 +26,14 @@ const StudyDetailQuestionInsideAnswer = ({
 }) => {
   const studyAnswer = useRef<HTMLTextAreaElement>(null);
   const { inquiryResponse, createdAt, id } = item;
-
+  const { cache } = useCacheInstance();
+  const { detailStatusCode } = useStudyDetailStore();
   const AnswerDataSubmit = () => {
     const studyAnswerData = {
       contents: studyAnswer.current?.value,
     };
 
     mutate(studyAnswerData);
-    // 나중에 팝업으로 바꿔주기
-    alert('답변이 등록 되었습니다');
   };
 
   const handleAnswer = async (studyAnswerData: {
@@ -40,6 +41,7 @@ const StudyDetailQuestionInsideAnswer = ({
   }) => {
     try {
       await studyInquiryAnswer(studyId, id, studyAnswerData);
+      cache.invalidateQueries(['studyInquiry']);
       console.log('스터디 문의 답변 성공');
     } catch (err) {
       // if (err instanceof AxiosError) {
@@ -70,7 +72,7 @@ const StudyDetailQuestionInsideAnswer = ({
       ) : (
         <div style={StudyDetailQuestionInsideAnswer_container}>
           <div style={StudyDetailQuestionInsideAnswer_wrap}>
-            {showInput ? (
+            {detailStatusCode === 409 && showInput ? (
               <>
                 <div style={StudyDetailQuestionInsideAnswer_contents_wrap}>
                   <p style={StudyDetailQuestionInsideAnswer_title}>답변</p>

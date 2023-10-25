@@ -19,6 +19,7 @@ import StudyParticipatePop from './studyParticipate/StudyParticipatePop';
 import CreateInquiryPop from './createInquiry/CreateInquiryPop';
 import { AxiosError } from 'axios';
 import { studyCheck } from '../api';
+import useStudyDetailStore from '../../../common/store/studyDetail';
 
 const StudyDetail = () => {
   const navigate = useNavigate();
@@ -33,12 +34,12 @@ const StudyDetail = () => {
 
   // 스터디 신청 여부 확인
   const [isStudyCheck, setIsStudyCheck] = useState(null);
-  const [statusCode, setStatusCode] = useState(0);
+  // const [statusCode, setStatusCode] = useState(0);
   const [popSuccessTitle, setPopSuccessTitle] = useState('');
   const [popSuccessText, setPopSuccessText] = useState('');
-
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
+  const { detailStatusCode, setDetailStatusCode } = useStudyDetailStore();
 
   useEffect(() => {
     (async () => {
@@ -47,11 +48,11 @@ const StudyDetail = () => {
         setIsStudyCheck(userStudyCheck);
       } catch (err) {
         if (err instanceof AxiosError) {
-          setStatusCode(err.response?.data.statusCode);
+          setDetailStatusCode(err.response?.data.statusCode);
         }
       }
     })();
-  }, [statusCode]);
+  }, [setDetailStatusCode]);
 
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
   if (!data) return;
@@ -75,7 +76,7 @@ const StudyDetail = () => {
               <StudyDetailQuestion
                 setIsCreateInquiry={setIsCreateInquiry}
                 studyId={studyIdAsNumber}
-                statusCode={statusCode}
+                statusCode={detailStatusCode}
               />
             </div>
             <Space>
@@ -87,7 +88,7 @@ const StudyDetail = () => {
                 >
                   스터디 신청하기
                 </YellowBtn>
-              ) : statusCode === 400 ? (
+              ) : detailStatusCode === 400 ? (
                 <WhiteGrayBtn>신청중</WhiteGrayBtn>
               ) : null}
             </Space>

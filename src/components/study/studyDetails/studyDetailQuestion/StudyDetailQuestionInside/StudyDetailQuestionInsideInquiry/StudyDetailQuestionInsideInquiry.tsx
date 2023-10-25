@@ -9,6 +9,7 @@ import {
   StudyDetailQuestionInsideInquiry_title,
   StudyDetailQuestionInsideInquiry_wrap,
 } from './StudyDetailQuestionInsideInquiry.style';
+import useStudyDetailStore from '../../../../../../common/store/studyDetail';
 
 const StudyDetailQuestionInsideInquiry = ({
   item,
@@ -20,6 +21,7 @@ const StudyDetailQuestionInsideInquiry = ({
   showInput: boolean;
 }) => {
   const { contents, createdAt, inquiryResponse } = item;
+  const { detailStatusCode } = useStudyDetailStore();
 
   return (
     <>
@@ -49,21 +51,23 @@ const StudyDetailQuestionInsideInquiry = ({
                 </p>
               </div>
             </div>
-            {showInput ? (
-              <MiddleGrayBtn
-                setShowInput={setShowInput}
-                buttonStyle={StudyDetailQuestionInsideInquiry_btn}
-              >
-                답변닫기
-              </MiddleGrayBtn>
-            ) : (
-              <MiddleGrayBtn
-                setShowInput={setShowInput}
-                buttonStyle={StudyDetailQuestionInsideInquiry_btn}
-              >
-                답변하기
-              </MiddleGrayBtn>
-            )}
+            {detailStatusCode === 409 ? (
+              showInput ? (
+                <MiddleGrayBtn
+                  setShowInput={setShowInput}
+                  buttonStyle={StudyDetailQuestionInsideInquiry_btn}
+                >
+                  답변닫기
+                </MiddleGrayBtn>
+              ) : (
+                <MiddleGrayBtn
+                  setShowInput={setShowInput}
+                  buttonStyle={StudyDetailQuestionInsideInquiry_btn}
+                >
+                  답변하기
+                </MiddleGrayBtn>
+              )
+            ) : null}
           </div>
         </div>
       )}

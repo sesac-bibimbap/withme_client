@@ -70,6 +70,6 @@ export const profile_detail_title: CSSProperties = {
 export const profile_button_wrapper: CSSProperties = {
   display: 'flex',
   justifyContent: 'space-between',
-  width: '370px',
+  width: '340px',
   marginTop: '20px',
 };
