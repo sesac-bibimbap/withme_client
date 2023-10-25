@@ -31,7 +31,7 @@ export const profile_button_close: CSSProperties = {
 export const profile_image_circle: CSSProperties = {
   width: '70px',
   height: '70px',
-  border: '3px solid red',
+  border: '3px solid black',
   borderRadius: '70px',
 };
 

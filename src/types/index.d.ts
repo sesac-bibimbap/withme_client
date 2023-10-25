@@ -1,5 +1,6 @@
 interface AuthType {
-  email?: string;
+  id: string;
+  email: string;
   password?: string;
   passwordCheck?: string;
   personalInfo?: string;
@@ -13,7 +14,7 @@ interface StudyAttendResponse {
   comment: keyof typeof NOTIFICATION_COMMENTS;
   contents: Contents;
   toUserId: string;
-  fromUser: any; // FIXME: 수정필요
+  fromUser: User;
   studyName: string;
   studyId: string;
   time: Date;
@@ -28,7 +29,7 @@ interface NotificationItemProps {
   item: StudyAttendResponse;
 }
 interface RequestData {
-  fromUser: any; // FIXME: 수정필요
+  fromUser: User;
   toUserId: string;
   studyId: string;
   studyName: string;
@@ -67,15 +68,14 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
-// 지니 옵셔널 추가
-type TechStack = {
-  id: number;
-  stackName?: string;
-  stackImg?: string;
-};
+// type TechStack = {
+//   id: number;
+//   stackName?: string;
+// };
 
 type Recruit = {
-  title?: stirng;
+  title?: string;
+  isRecruit?: boolean;
   recruitPlaceholder?: string;
 };
 
@@ -113,29 +113,41 @@ type VerifyInputType = (count: number) => {
   nextInputRef: React.RefObject<HTMLInputElement> | null;
 }[];
 
-//Study
-interface Bookmark {
-  name?: string;
-  id?: number;
-  techStacks?: TechStack[];
+type StudyDataType = {
+  data: Study;
+  userId?: string;
+};
+interface SendCode {
+  email?: string;
+  token?: string;
 }
+
+interface SendCode {
+  email?: string;
+  token?: string;
+}
+
+type StudyDataType = {
+  data: Study;
+  userId?: string;
+};
 
 interface Study extends ISuperDate {
   id?: number;
-  name?: string;
+  name?: string | null;
   content?: string;
   attendantsLimit?: number;
-  startDate?: Date;
-  endDate?: Date;
+  startDate?: Date | null;
+  endDate?: Date | null;
   owner: User;
+  recruit: Recruit;
   inquiries: Inquiry[];
   techStacks: TechStack[];
   participants: User[];
-  recruit?: Recruit;
 }
 
 interface ISuperDate {
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date | null;
 }
@@ -146,11 +158,18 @@ interface User extends ISuperDate {
   password?: string;
   emailVerified?: string;
   profile: Profile;
-  bookmarkedStudies?: Study[];
-  participatingStudies?: Study[];
-  job?: FirstLogin;
-  devCareer?: FirstLogin;
-  techStacks?: TechStack[];
+  devCareer?: Category;
+  job?: Category;
+  techStacks: TechStack[];
+  participatingStudies: Study[];
+  bookmarkedStudies: Study[];
+  inquiries?: Inquiry[];
+  ownedStudies: Study[];
+}
+
+interface Category extends ISuperDate {
+  id?: string;
+  category: string;
 }
 
 interface Profile extends ISuperDate {
@@ -169,17 +188,30 @@ interface Inquiry extends ISuperDate {
   id?: number;
   title?: string;
   contents?: string;
-  inquiryResponse: inquiryRes;
+  inquiryResponse?: InquiryResponse;
 }
 
-type inquiryRes = {
-  contents?: string;
-};
+interface InquiryResponse extends ISuperDate {
+  contents: string;
+}
 
 interface TechStack extends ISuperDate {
   id?: number;
   stackName?: string;
   stackImg?: string;
+}
+
+type Announcement = {
+  id: string;
+  title: string;
+  contents: string;
+};
+
+interface StudyListType extends Study {
+  techStacks: TechStack[];
+  recruit?: {
+    title?: string;
+  };
 }
 
 interface Studies {

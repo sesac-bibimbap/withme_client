@@ -7,34 +7,36 @@ export const layout_container: CSSProperties = {
   display: 'flex',
 };
 
-// export const layout_header: CSSProperties = {
-//   backgroundColor: '#222121',
-//   width: '1440px',
-//   height: '52px',
-// };
-
-export const layout_sidebar_container: CSSProperties = {
-  display: 'flex',
-};
-
 // 스터디 목록
 export const layout_sidebar_studylist: CSSProperties = {
   backgroundColor: '#222121',
-  width: '81px',
+  width: '108px',
   height: '100dvh',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   // paddingTop: '20px',
+  overflowY: 'scroll',
+};
+
+export const layout_sidebar_icon: CSSProperties = {
+  fontSize: '22px',
+  marginRight: '10px',
 };
 
 // 스터디 목록 원
 export const layout_sidebar_studylist_circle: CSSProperties = {
   backgroundColor: '#F6C54D',
-  width: '45px',
-  height: '45px',
-  borderRadius: '50px',
+  width: '50px',
+  height: '50px',
+  borderRadius: '70px',
   marginTop: '20px',
+  color: '#222121',
+  fontWeight: 'bolder',
+  fontSize: '20px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 // 페이지 탭들
@@ -90,13 +92,17 @@ export const layout_sidebar_pageTabs_userInfo_circle: CSSProperties = {
 
 // 바뀌어질 페이지 부분
 export const layout_contents_container: CSSProperties = {
-  // width: '100dvw',
-  // height: '100dvh',
-  // backgroundColor: '#FFFFFF',
-  // width: '1148px',
-  // height: '972px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  // display: 'flex',
+  // alignItems: 'center',
+  // justifyContent: 'center',
   padding: '20px',
+  width: '100%',
+};
+
+export const layout_profile: CSSProperties = {
+  width: ' 130px',
+  color: '#FFFFFF',
+  fontSize: '16px',
+  fontWeight: '600',
+  marginLeft: '5px',
 };

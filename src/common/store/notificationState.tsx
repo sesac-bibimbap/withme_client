@@ -6,7 +6,7 @@ interface NotificationState {
   addNewNotification: (notification: StudyAttendResponse) => void;
 }
 
-export const useNotificationStore = create<NotificationState>((set) => ({
+const useNotificationStore = create<NotificationState>((set) => ({
   notifications: [],
   setNotifications: (notifications: StudyAttendResponse[]) =>
     set((prev: NotificationState) => ({
@@ -19,3 +19,5 @@ export const useNotificationStore = create<NotificationState>((set) => ({
       notifications: [...prev.notifications, notification],
     })),
 }));
+
+export default useNotificationStore;

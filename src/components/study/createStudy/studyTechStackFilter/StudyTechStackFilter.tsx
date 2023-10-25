@@ -52,7 +52,7 @@ const StudyTechStackFilter = ({
                 key={techStack.id}
                 techStackName={techStack.stackName}
                 techStackImage={techStack.stackImg}
-                techStackId={techStack.id}
+                techStackId={Number(techStack.id)}
                 techStackIds={selectedTechStacks}
                 onTechStackSelect={handleTechStackSelect}
               />

@@ -1,6 +1,10 @@
 const ROUTES = {
-  MAIN: {
+  LOADING: {
     PATH: '/',
+    NAME: 'Loading',
+  },
+  MAIN: {
+    PATH: '/main',
     NAME: 'Main',
   },
   REGISTER: {
@@ -13,11 +17,11 @@ const ROUTES = {
   },
   RESET_PASSWORD: {
     PATH: '/reset-password',
-    NAME: 'RESET_PASSWORD',
+    NAME: 'ResetPassword',
   },
   RESET_PASSWORD_CHECK: {
     PATH: 'check',
-    NAME: 'RESET_PASSWORD_CHECK',
+    NAME: 'ResetPasswordCheck',
   },
   CREATE_STUDY: {
     PATH: '/study/create',
@@ -35,13 +39,17 @@ const ROUTES = {
     PATH: '/study/detail/:studyId',
     NAME: 'StudyDetail',
   },
+  STUDY_ROOM: {
+    PATH: '/study/room/:id',
+    NAME: 'StudyRoom',
+  },
   STUDY_EDIT: {
     PATH: '/study/edit/:studyId',
     NAME: 'StudyEdit',
   },
-  STUDY_ROOM: {
-    PATH: '/study/room/:id',
-    NAME: 'StudyRoom',
+  FIRST_LOGIN: {
+    PATH: '/firstLogin',
+    NAME: 'FirstLogin',
   },
   PROFILE: {
     PATH: '/profile',

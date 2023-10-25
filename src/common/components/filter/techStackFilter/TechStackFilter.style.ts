@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 export const techStackFilter_beforeClicking_bg: CSSProperties = {
   width: '56px',
   height: '56px',
+  margin: '5px',
   backgroundColor: '#D9D9D9',
   color: '#000000',
   borderRadius: '10px',
@@ -18,6 +19,7 @@ export const techStackFilter_beforeClicking_bg: CSSProperties = {
 export const techStackFilter_afterClicking_bg: CSSProperties = {
   width: '56px',
   height: '56px',
+  margin: '5px',
   backgroundColor: '#9F9C9C',
   color: '#000000',
   borderRadius: '10px',

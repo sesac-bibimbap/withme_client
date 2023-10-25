@@ -17,8 +17,7 @@ import { useProfileQuery } from '../hooks/queries/useQueries';
 import { Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../../common/constants';
-import ProfileDetailItem from './profileDetailItem/profileDetailItem';
+import ProfileDetailItem from './profileDetailItem/ProfileDetailItem';
 
 const Profile = () => {
   const { data, isLoading } = useProfileQuery();
@@ -34,7 +33,7 @@ const Profile = () => {
                 style={profile_button_close}
                 shape="round"
                 icon={<CloseOutlined style={{ color: 'white' }} />}
-                onClick={() => navigate(ROUTES.MAIN.PATH)}
+                onClick={() => navigate(-1)}
               />
               <div style={profile_image_circle}>
                 <img src={data?.profile.profileImg} alt="userImg" />

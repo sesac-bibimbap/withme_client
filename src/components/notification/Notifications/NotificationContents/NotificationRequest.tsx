@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import SelectRejectReason from './SelectRejectReason';
-import useRequestAccept from '../hooks/useRequestAccept';
-import useRequestReject from '../hooks/userRequestReject';
+import useRequestAccept from '../../hooks/useRequestAccept';
+import useRequestReject from '../../hooks/userRequestReject';
 import {
   DarkGrayBtn,
   DeepDarkGrayBtn,
   YellowBtn,
-} from '../../../common/components';
+} from '../../../../common/components';
 import {
   notification_common,
   notification_contents_common,
@@ -16,7 +16,7 @@ import {
   notification_request_detail_container,
   notification_request_detail_title,
   notification_request_title,
-} from './Notifications.style';
+} from '../Notifications.style';
 
 const NotificationRequest = ({ item }: NotificationItemProps) => {
   const { contents, toUserId, fromUser, studyId, studyName } = item;
@@ -55,7 +55,7 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
             </div>
             <div style={notification_request_detail_container}>
               <div style={notification_request_detail_title}>개발경력</div>
-              <div>{fromUser.devCareer || '미등록'}</div>
+              <div>{fromUser.devCareer?.category || '미등록'}</div>
             </div>
             <div style={notification_request_detail_container}>
               <div style={notification_request_detail_title}>기술스택</div>

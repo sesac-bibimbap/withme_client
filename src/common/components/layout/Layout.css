@@ -1,0 +1,4 @@
+.layout_sidebar_studylist::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px;
+}

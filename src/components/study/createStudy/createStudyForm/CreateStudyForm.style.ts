@@ -1,10 +1,8 @@
 import { CSSProperties } from 'react';
 
 export const createStudyForm_container: CSSProperties = {
-  // width: '90dvw',
-  height: '90dvh',
-  width: '1107px',
-  // height: '917px',
+  height: '96dvh',
+  width: '100%',
   backgroundColor: '#222121',
   color: '#FFFFFF',
   fontSize: '20px',
@@ -20,7 +18,7 @@ export const createStudyForm_form_contaner: CSSProperties = {
   backgroundColor: '#454343',
   borderRadius: '10px',
   // padding: '20px',
-  width: '1051px',
+  width: '95%',
 };
 
 export const createStudyFrom_wrap: CSSProperties = {

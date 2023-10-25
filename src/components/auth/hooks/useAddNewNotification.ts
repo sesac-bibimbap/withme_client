@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useNotificationStore } from '../../../common/store/notificationState';
 import { socket } from '../../../common/utils/socket';
+import useNotificationStore from '../../../common/store/notificationState';
 
 const useAddNewNotification = () => {
   const { addNewNotification } = useNotificationStore();

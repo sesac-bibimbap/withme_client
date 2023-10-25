@@ -9,11 +9,11 @@ import {
   NOTIFICATION_TYPES,
 } from '../../common/constants/enum/notification.enum';
 import useSocketConnect from '../../common/hooks/useSocketConnect';
-import useAddNewNotification from '../../components/auth/hooks/useAddNewNotification';
 import { YellowBtn } from '../../common/components';
+import useAddNewNotification from '../../components/auth/hooks/useAddNewNotification';
 
 const NotificationPage = () => {
-  useSocketConnect(); // FIXME: 수정 필요할 수도 있음
+  const { data } = useSocketConnect(); // FIXME: 수정 필요할 수도 있음
   useAddNewNotification();
 
   // 스터디 신청칸 (임시 생성)
@@ -23,10 +23,10 @@ const NotificationPage = () => {
       action: NOTIFICATION_ACTIONS.STUDY_REQUEST,
       comment: NOTIFICATION_COMMENTS.STUDY_REQUEST,
       contents,
-      fromUserId: '7c4e25dc-d9ab-41ca-abe5-a39adea43cce', // abc1234
+      fromUserId: data?.id, // abc1234
       toUserId: '766073af-2225-48cf-8f23-6afc331082dd', // ttt123
-      studyName: '너만오면JS',
-      studyId: '4',
+      studyName: 'xptmxm',
+      studyId: '3',
       time: new Date(),
       status: false,
       color: NOTIFICATION_COLORS.STUDY_REQUEST,

@@ -3,7 +3,7 @@ import { socket } from '../utils/socket';
 import { useProfileQuery } from '../../components/auth/hooks/queries/useQueries';
 
 const useSocketConnect = () => {
-  const { data } = useProfileQuery();
+  const { data, isLoading } = useProfileQuery();
 
   useEffect(() => {
     if (data) {
@@ -11,6 +11,8 @@ const useSocketConnect = () => {
       socket.connect();
     }
   }, [data]);
+
+  return { data, isLoading };
 };
 
 export default useSocketConnect;
