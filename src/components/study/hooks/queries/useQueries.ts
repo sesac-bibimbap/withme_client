@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { techStacks, studyDetail, studyInquiry, studyCheck } from '../../api';
+import { techStacks, studyDetail, studyInquiry } from '../../api';
 import { studyList } from '../../api';
 import { useEffect } from 'react';
 
