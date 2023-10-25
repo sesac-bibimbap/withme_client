@@ -37,7 +37,7 @@ const StudyDetailQuestion = ({
     <>
       <div style={studyDetailQuestion_inquiry_btn_wrap}>
         <h4 style={studyDetailQuestion_title}>스터디 문의</h4>
-        {statusCode === (400 || 0) ? (
+        {statusCode !== 409 ? (
           <BlackBtn
             setIsOpen={setIsCreateInquiry}
             buttonStyle={studyDetailQuestion_inquiry_btn}
