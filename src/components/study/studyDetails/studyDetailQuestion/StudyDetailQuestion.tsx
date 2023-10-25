@@ -24,7 +24,6 @@ const StudyDetailQuestion = ({
 }: StudyDetailQuestionType) => {
   const { data, isLoading } = useStudyInquiry(studyId);
 
-  console.log('>>>>>>>', data);
   const getItems = data?.map((item, idx) => ({
     key: String(idx),
     label: <StudyDetailQuestionHeader item={item} />,

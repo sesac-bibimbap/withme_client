@@ -19,14 +19,29 @@ import {
   studyParticipatePop_title,
   studyParticipatePop_wrap,
 } from './StudyParticipatePop.style';
+import { useProfileQuery } from '../../../auth/hooks/queries/useQueries';
+import { useStudyDetail } from '../../hooks/queries/useQueries';
 
 type popOpenType = {
   setIsOpen?: (isOpen: React.SetStateAction<boolean>) => void;
+  studyIdAsNumber?: number;
+  setShowPopup: (isOpen: React.SetStateAction<boolean>) => void;
 };
 
-const StudyParticipatePop = ({ setIsOpen }: popOpenType) => {
+const StudyParticipatePop = ({
+  setIsOpen,
+  studyIdAsNumber,
+  setShowPopup,
+}: popOpenType) => {
   useSocketConnect(); // FIXME: 수정 필요할 수도 있음
   useAddNewNotification();
+
+  const { data: userData } = useProfileQuery();
+  // console.log('🦄  userData:', userData);
+  const { data: studyData } = useStudyDetail(studyIdAsNumber);
+  // console.log('🦄  studyData:', studyData);
+  if (!studyData) return;
+  const { owner, attendantsLimit, name } = studyData;
 
   // 스터디 신청칸 (임시 생성)
   const onSubmitStudyRequest = (contents: Contents) => {
@@ -35,26 +50,27 @@ const StudyParticipatePop = ({ setIsOpen }: popOpenType) => {
       action: NOTIFICATION_ACTIONS.STUDY_REQUEST,
       comment: NOTIFICATION_COMMENTS.STUDY_REQUEST,
       contents,
-      fromUserId: '7c4e25dc-d9ab-41ca-abe5-a39adea43cce', // abc1234
-      toUserId: '766073af-2225-48cf-8f23-6afc331082dd', // ttt123
-      studyName: '너만오면JS',
-      studyId: '4',
+      fromUserId: userData?.id, // 신청자
+      toUserId: owner.id, // 스터디장
+      studyName: name,
+      studyId: studyIdAsNumber,
       time: new Date(),
       status: false,
       color: NOTIFICATION_COLORS.STUDY_REQUEST,
     };
     socket.emit('studyAttendRequest', payload);
+    if (setIsOpen) setIsOpen((prev) => !prev);
+    setShowPopup(true);
   };
 
   return (
     <>
-      {/* FIXME: 스터디 신청칸 (임시 생성) 위치이동 필요 */}
       <div style={studyParticipatePop_back}></div>
       <div style={studyParticipatePop_container}>
         <h3 style={studyParticipatePop_title}>스터디 신청서 작성</h3>
         <div style={studyParticipatePop_info}>
-          <p>스터디 명 : </p>
-          <p>인원 : </p>
+          <p>스터디 명 : {name}</p>
+          <p>인원 : {attendantsLimit}</p>
         </div>
         <Form onFinish={onSubmitStudyRequest} layout="vertical">
           <div style={studyParticipatePop_wrap}>

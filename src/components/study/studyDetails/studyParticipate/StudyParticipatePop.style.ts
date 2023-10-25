@@ -43,6 +43,7 @@ export const studyParticipatePop_title: CSSProperties = {
 export const studyParticipatePop_info: CSSProperties = {
   width: '420px',
   marginBottom: '15px',
+  fontWeight: '500',
 };
 
 export const studyParticipatePop_textarea: CSSProperties = {
