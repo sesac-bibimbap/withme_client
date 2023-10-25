@@ -153,7 +153,7 @@ interface ISuperDate {
 }
 
 interface User extends ISuperDate {
-  id?: string;
+  id?: number;
   email: string;
   password?: string;
   emailVerified?: string;
@@ -173,10 +173,15 @@ interface Category extends ISuperDate {
 }
 
 interface Profile extends ISuperDate {
-  id?: string;
+  id?: number;
   nickname?: string;
   profileImg?: string;
   gender?: boolean;
+}
+
+interface FirstLogin extends ISuperDate {
+  id?: number;
+  category?: string;
 }
 
 interface Inquiry extends ISuperDate {

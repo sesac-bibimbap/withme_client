@@ -10,6 +10,7 @@ export const studyList_background: CSSProperties = {
   height: '100%',
   width: '890px',
   color: 'white',
+  float: 'left',
 };
 
 export const studyList_item_background: CSSProperties = {

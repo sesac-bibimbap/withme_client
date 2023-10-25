@@ -10,12 +10,13 @@ export const layout_container: CSSProperties = {
 // 스터디 목록
 export const layout_sidebar_studylist: CSSProperties = {
   backgroundColor: '#222121',
-  width: '120px',
+  width: '108px',
   height: '100dvh',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   // paddingTop: '20px',
+  overflowY: 'scroll',
 };
 
 export const layout_sidebar_icon: CSSProperties = {
@@ -28,7 +29,7 @@ export const layout_sidebar_studylist_circle: CSSProperties = {
   backgroundColor: '#F6C54D',
   width: '50px',
   height: '50px',
-  borderRadius: 'px',
+  borderRadius: '70px',
   marginTop: '20px',
   color: '#222121',
   fontWeight: 'bolder',

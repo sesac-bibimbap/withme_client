@@ -12,6 +12,7 @@ import FirstLoginPage from './firstLogin/FirstLoginPage';
 import EditStudyPage from './study/edit/EditStudyPage';
 import LoadingPage from './loading/LoadingPage';
 import StudyDetailPage from './study/detail/StudyDetailPage';
+import { Profile } from '../components';
 
 interface Route {
   element?: React.ReactNode; // JSX.Element는 React 컴포넌트 인스턴스가 아니며, 구체적인 React 엘리먼트 타입
@@ -85,6 +86,10 @@ const PAGE_LIST: Route[] = [
   {
     element: <FirstLoginPage />,
     path: ROUTES.FIRST_LOGIN.PATH,
+  },
+  {
+    element: <Profile />,
+    path: ROUTES.PROFILE.PATH,
   },
   // {
   //   path: "*",

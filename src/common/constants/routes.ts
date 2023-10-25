@@ -51,6 +51,10 @@ const ROUTES = {
     PATH: '/firstLogin',
     NAME: 'FirstLogin',
   },
+  PROFILE: {
+    PATH: '/profile',
+    NAME: 'Profile',
+  },
 };
 
 export default ROUTES;

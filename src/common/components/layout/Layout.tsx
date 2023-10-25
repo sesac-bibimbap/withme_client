@@ -19,6 +19,7 @@ import {
   layout_sidebar_icon,
 } from './Layout.style';
 import useSocketConnect from '../../hooks/useSocketConnect';
+import './Layout.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { data } = useSocketConnect();
@@ -78,7 +79,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 스터디 만들기
               </BlackBtn>
             </div>
-            <Link to={'!#'} style={layout_sidebar_pageTabs_link}>
+            <Link to={'/profile'} style={layout_sidebar_pageTabs_link}>
               <div style={layout_sidebar_pageTabs_userInfo}>
                 <img
                   src={data?.profile.profileImg}
