@@ -1,9 +1,13 @@
 import {
   profile_button_close,
+  profile_button_hashtag,
   profile_button_wrapper,
   profile_container,
+  profile_detail_grid,
+  profile_detail_hashtag,
   profile_detail_title,
   profile_detail_wrapper,
+  profile_hashtag_wrapper,
   profile_image_circle,
   profile_text_name,
   profile_wrapper,
@@ -38,31 +42,42 @@ const Profile = () => {
               <div style={profile_image_circle}>
                 <img src={data?.profile.profileImg} alt="userImg" />
               </div>
-              <p style={profile_text_name}>{data?.profile.nickname}</p>
+              <div style={profile_text_name}>{data?.profile.nickname}</div>
               <div style={profile_detail_wrapper}>
-                <ProfileDetailItem
-                  title="인증메일"
-                  data={data?.emailVerified}
-                />
-                <ProfileDetailItem
-                  title="닉네임"
-                  data={data?.profile.nickname}
-                />
-                <ProfileDetailItem
-                  title="성별"
-                  data={data?.profile.gender ? '남성' : '여성'}
-                />
-                <ProfileDetailItem
-                  title="주요직무"
-                  data={data?.job?.category}
-                />
-                <ProfileDetailItem
-                  title="개발경력"
-                  data={data?.devCareer?.category}
-                />
-                <div>
+                <div style={profile_detail_grid}>
+                  <ProfileDetailItem
+                    title="인증메일"
+                    data={data?.emailVerified}
+                  />
+                  <ProfileDetailItem
+                    title="닉네임"
+                    data={data?.profile.nickname}
+                  />
+                  <ProfileDetailItem
+                    title="성별"
+                    data={data?.profile.gender ? '남성' : '여성'}
+                  />
+                  <ProfileDetailItem
+                    title="주요직무"
+                    data={data?.job?.category}
+                  />
+                  <ProfileDetailItem
+                    title="개발경력"
+                    data={data?.devCareer?.category}
+                  />
+                </div>
+                <div style={profile_detail_hashtag}>
                   <p style={profile_detail_title}>기술스택</p>
-                  <TechStackHashtag>nest</TechStackHashtag>
+                  <div style={profile_hashtag_wrapper}>
+                    {data?.techStacks.map((v) => (
+                      <TechStackHashtag
+                        key={v.id}
+                        buttonStyle={profile_button_hashtag}
+                      >
+                        {v.stackName}
+                      </TechStackHashtag>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div style={profile_button_wrapper}>

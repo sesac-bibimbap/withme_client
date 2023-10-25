@@ -1,7 +1,4 @@
-import {
-  profile_detailItem_margin,
-  profile_detailItem_title,
-} from './ProfileDetailItem.style';
+import { profile_detailItem_title } from './ProfileDetailItem.style';
 
 type ProfileDetailItemType = {
   title: string;
@@ -11,7 +8,7 @@ type ProfileDetailItemType = {
 const ProfileDetailItem = ({ title, data }: ProfileDetailItemType) => {
   return (
     <>
-      <div style={profile_detailItem_margin}>
+      <div>
         <p style={profile_detailItem_title}>{title}</p>
         <p>{data}</p>
       </div>

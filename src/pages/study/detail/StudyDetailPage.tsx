@@ -6,7 +6,7 @@ const StudyDetailPage = () => {
     <>
       <StudyDetail />
       <div style={studyPage_right_wrapper}>
-        <StudyBookmark bookmarkStyle={{ height: '100%' }} />
+        <StudyBookmark disable={true} bookmarkStyle={{ height: '100%' }} />
       </div>
     </>
   );

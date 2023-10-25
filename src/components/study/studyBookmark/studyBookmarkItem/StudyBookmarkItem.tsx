@@ -16,9 +16,15 @@ export type BookmarkItemType = {
   teamName?: string;
   id?: number;
   techStacks?: TechStack[];
+  disable?: boolean;
 };
 
-const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
+const StudyBookmarkItem = ({
+  teamName,
+  id,
+  techStacks,
+  disable,
+}: BookmarkItemType) => {
   const navigate = useNavigate();
   const [bookmark, setBookmark] = useState(false);
   const { cache } = useCacheInstance();
@@ -89,8 +95,11 @@ const StudyBookmarkItem = ({ teamName, id, techStacks }: BookmarkItemType) => {
         <Button
           style={studyBookmark_bookmarkBtn_bookmark}
           onClick={handleButtonClick}
+          disabled
         >
-          <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />
+          {!disable ? (
+            <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />
+          ) : null}
         </Button>
       </div>
     </>
