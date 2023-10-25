@@ -27,18 +27,22 @@ const StudyRoomChat = ({ studyId }: any) => {
         (oldData) => {
           if (!oldData) return [newChatMessage];
           if (oldData.at(-1)?.userId === newChatMessage?.userId) {
+            console.log('✔️  oldData:', oldData);
             oldData.at(-1)?.contents.push(newChatMessage.contents[0]);
-            socket.emit('sameChatUser', {
-              oldDataId: oldData.at(-1)?._id,
-              messageId: newChatMessage._id,
-              chatRoomId,
-              userId: newChatMessage?.userId,
-              studyId,
-              userProfileImgUrl: newChatMessage?.userProfileImgUrl,
-              userNickname: newChatMessage?.userNickname,
-              createdAt: null,
-              contents: oldData.at(-1)?.contents,
-            });
+            console.log('✔️  oldData.at(-1):', oldData.at(-1));
+            if (oldData.at(-1)?.userId === user?.id) {
+              socket.emit('sameChatUser', {
+                oldDataId: oldData.at(-1)?._id,
+                messageId: newChatMessage._id,
+                chatRoomId,
+                userId: newChatMessage?.userId,
+                studyId,
+                userProfileImgUrl: newChatMessage?.userProfileImgUrl,
+                userNickname: newChatMessage?.userNickname,
+                createdAt: null,
+                contents: oldData.at(-1)?.contents,
+              });
+            }
             cache.invalidateQueries(['userProfile']);
             console.log('✔️  oldData:', oldData);
             return [...oldData];
