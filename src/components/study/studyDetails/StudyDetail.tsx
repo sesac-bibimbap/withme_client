@@ -4,10 +4,7 @@ import {
   studyDetail_yellowBtn,
 } from './StudyDetail.style';
 import StudyDetailContents from '../studyDetails/studyDetailContents/StudyDetailContents';
-import {
-  useStudyDetail,
-  useStudyParticipate,
-} from '../hooks/queries/useQueries';
+import { useStudyDetail } from '../hooks/queries/useQueries';
 import { useNavigate, useParams } from 'react-router-dom';
 import StudyDetailQuestion from './studyDetailQuestion/StudyDetailQuestion';
 import {
