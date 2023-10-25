@@ -7,7 +7,7 @@ export const studySearchFilter_wrapper: CSSProperties = {
   backgroundColor: '#222121',
   borderRadius: '10px',
   height: '49%',
-  width: '260px',
+  width: '95%',
   marginLeft: '23px',
   color: 'white',
 };

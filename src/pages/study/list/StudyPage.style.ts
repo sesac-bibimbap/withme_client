@@ -5,4 +5,5 @@ export const studyPage_right_wrapper: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: '15px',
+  width: '25%',
 };
