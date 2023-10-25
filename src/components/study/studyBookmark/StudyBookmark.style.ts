@@ -8,7 +8,7 @@ export const studyBookmark_wrapper: CSSProperties = {
   borderRadius: '10px',
   // height: '49%',
   height: '49%',
-  width: '260px',
+  width: '95%',
   marginLeft: '23px',
   color: 'white',
 };
@@ -25,6 +25,6 @@ export const studyBookmark_item_scroll: CSSProperties = {
   alignItems: 'center',
   flexDirection: 'column',
   overflowY: 'scroll',
-  width: '260px',
+  width: '90%',
   marginBottom: '15px',
 };

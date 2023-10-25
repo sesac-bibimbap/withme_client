@@ -8,7 +8,7 @@ export const studyList_background: CSSProperties = {
   backgroundColor: '#222121',
   borderRadius: '10px',
   height: '100%',
-  width: '890px',
+  width: '75%',
   color: 'white',
   float: 'left',
 };
@@ -20,7 +20,7 @@ export const studyList_item_background: CSSProperties = {
   backgroundColor: '#454343',
   borderRadius: '10px',
   height: '80%',
-  width: '796px',
+  width: '94%',
   marginTop: '40px',
   padding: '15px 0px',
   gap: '12px',
