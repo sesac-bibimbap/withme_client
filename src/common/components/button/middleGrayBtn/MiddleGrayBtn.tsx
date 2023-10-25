@@ -1,4 +1,4 @@
-import { CSSProperties, Dispatch } from 'react';
+import { CSSProperties } from 'react';
 import { Button } from 'antd';
 import { middleGrayBtn_button } from './MiddleGrayBtn.style';
 
@@ -6,7 +6,7 @@ type middleGrayBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  setShowInput?: Dispatch<React.SetStateAction<boolean>>;
+  setShowInput?: (isOpen: React.SetStateAction<boolean>) => void;
   AnswerDataSubmit?: () => void;
 };
 

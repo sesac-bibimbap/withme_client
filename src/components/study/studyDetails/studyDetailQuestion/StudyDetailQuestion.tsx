@@ -3,17 +3,27 @@ import { useStudyInquiry } from '../../hooks/queries/useQueries';
 import { CaretRightOutlined } from '@ant-design/icons';
 import StudyDetailQuestionHeader from './StudyDetailQuestionHeader/StudyDetailQuestionHeader';
 import {
-  StudyDetailQuestion_collapse,
-  StudyDetailQuestion_container,
-  StudyDetailQuestion_title,
+  studyDetailQuestion_collapse,
+  studyDetailQuestion_container,
+  studyDetailQuestion_inquiry_btn,
+  studyDetailQuestion_inquiry_btn_wrap,
+  studyDetailQuestion_title,
 } from './StudyDetailQuestion.style';
 import '../../study.css';
 import StudyDetailQuestionInside from './StudyDetailQuestionInside/StudyDetailQuestionInside';
+import { BlackBtn } from '../../../../common/components';
 
-const StudyDetailQuestion = ({ studyId }: { studyId: number | undefined }) => {
+type StudyDetailQuestionType = {
+  studyId: number | undefined;
+  setIsCreateInquiry?: (isOpen: React.SetStateAction<boolean>) => void;
+};
+
+const StudyDetailQuestion = ({
+  studyId,
+  setIsCreateInquiry,
+}: StudyDetailQuestionType) => {
   const { data, isLoading } = useStudyInquiry(studyId);
 
-  console.log('>>>>>>>', data);
   const getItems = data?.map((item, idx) => ({
     key: String(idx),
     label: <StudyDetailQuestionHeader item={item} />,
@@ -22,16 +32,24 @@ const StudyDetailQuestion = ({ studyId }: { studyId: number | undefined }) => {
 
   return (
     <>
-      <h4 style={StudyDetailQuestion_title}>스터디 문의</h4>
+      <div style={studyDetailQuestion_inquiry_btn_wrap}>
+        <h4 style={studyDetailQuestion_title}>스터디 문의</h4>
+        <BlackBtn
+          setIsOpen={setIsCreateInquiry}
+          buttonStyle={studyDetailQuestion_inquiry_btn}
+        >
+          문의작성
+        </BlackBtn>
+      </div>
       <div
         className="studyDetailQuestion_container"
-        style={StudyDetailQuestion_container}
+        style={studyDetailQuestion_container}
       >
         {!isLoading ? (
           <Space direction="vertical" style={{ width: '645px' }}>
             {getItems?.map((item, idx) => (
               <Collapse
-                style={StudyDetailQuestion_collapse}
+                style={studyDetailQuestion_collapse}
                 key={idx}
                 bordered={false}
                 collapsible="header"

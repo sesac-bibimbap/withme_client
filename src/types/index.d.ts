@@ -68,10 +68,11 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
-// type TechStack = {
-//   id: number;
-//   stackName?: string;
-// };
+type TechStack = {
+  id: number;
+  stackName?: string;
+  stackImg?: string;
+};
 
 type Recruit = {
   title?: string;
@@ -153,7 +154,7 @@ interface ISuperDate {
 }
 
 interface User extends ISuperDate {
-  id?: string;
+  id?: number;
   email: string;
   password?: string;
   emailVerified?: string;
@@ -173,10 +174,15 @@ interface Category extends ISuperDate {
 }
 
 interface Profile extends ISuperDate {
-  id?: string;
+  id?: number;
   nickname?: string;
   profileImg?: string;
   gender?: boolean;
+}
+
+interface FirstLogin extends ISuperDate {
+  id?: number;
+  category?: string;
 }
 
 interface Inquiry extends ISuperDate {

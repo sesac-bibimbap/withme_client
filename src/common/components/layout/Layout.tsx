@@ -19,6 +19,7 @@ import {
   layout_sidebar_icon,
 } from './Layout.style';
 import useSocketConnect from '../../hooks/useSocketConnect';
+import './Layout.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { data } = useSocketConnect();
@@ -48,7 +49,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       {
         <div style={layout_container}>
-          <div style={layout_sidebar_studylist}>
+          <div
+            className="layout_sidebar_studylist"
+            style={layout_sidebar_studylist}
+          >
             {data?.participatingStudies.map(({ id, name }, idx) => (
               <Link
                 to={`${ROUTES.STUDY.PATH}/room/${id}`}
@@ -78,7 +82,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 스터디 만들기
               </BlackBtn>
             </div>
-            <Link to={'!#'} style={layout_sidebar_pageTabs_link}>
+            <Link to={'/profile'} style={layout_sidebar_pageTabs_link}>
               <div style={layout_sidebar_pageTabs_userInfo}>
                 <img
                   src={data?.profile.profileImg}

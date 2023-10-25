@@ -49,7 +49,8 @@ export const studyDetail = async (studyId: number | undefined) => {
   return data;
 };
 
-export const studyCheck = async (studyId: string | undefined) => {
+// 스터디 신청을 했는지 안했는지 여부 체크
+export const studyCheck = async (studyId: number | undefined) => {
   const { data } = await API({
     method: 'get',
     url: `/studies/attend/check/${studyId}`,

@@ -23,6 +23,7 @@ const BookmarkedStudies = ({
         style={{
           padding: '0px 10px 10px 10px',
           overflowY: 'scroll',
+          marginBottom: '10px',
         }}
       >
         {bookmarkedStudies?.map(

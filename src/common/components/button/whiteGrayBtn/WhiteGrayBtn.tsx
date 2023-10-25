@@ -6,12 +6,14 @@ type whiteGrayBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
+  disabled?: boolean;
 };
 
 const WhiteGrayBtn = ({
   children,
   htmlType,
   buttonStyle,
+  disabled,
 }: whiteGrayBtnType) => {
   const whiteGrayBtnCss = {
     ...whiteGrayBtn_button,
@@ -19,7 +21,7 @@ const WhiteGrayBtn = ({
   };
   return (
     <>
-      <Button style={whiteGrayBtnCss} htmlType={htmlType}>
+      <Button style={whiteGrayBtnCss} htmlType={htmlType} disabled={disabled}>
         {children}
       </Button>
     </>
