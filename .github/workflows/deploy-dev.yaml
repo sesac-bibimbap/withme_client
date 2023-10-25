@@ -8,8 +8,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env: VITE_BASE_URL
-
     steps:
       - name: Checkout 코드
         uses: actions/checkout@v2
