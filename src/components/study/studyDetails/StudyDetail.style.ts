@@ -1,17 +1,18 @@
 import { CSSProperties } from 'react';
 
 export const studyDetail_container: CSSProperties = {
-  width: '890px',
-  height: '95dvh',
+  width: '75%',
+  height: '100%',
   backgroundColor: '#222121',
   borderRadius: '10px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  float: 'left',
 };
 
 export const studyDetail_box: CSSProperties = {
-  width: '840px',
+  width: '94%',
   height: '83dvh',
   backgroundColor: '#454343',
   borderRadius: '10px',

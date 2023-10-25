@@ -52,18 +52,4 @@ const useStudyInquiry = (studyId: number | undefined) => {
   return { data, isLoading };
 };
 
-// 스터디 신청을 했는지 안했는지 여부 체크
-// const useStudyParticipate = (studyId: number | undefined) => {
-//   const { data, error, isLoading } = useQuery(['studyCheck', studyId], () =>
-//     studyCheck(studyId),
-//   );
-
-//   return { data, error, isLoading };
-// };
-
-export {
-  useTechStakQuery,
-  useStudyDetail,
-  useStudyInquiry,
-  // useStudyParticipate,
-};
+export { useTechStakQuery, useStudyDetail, useStudyInquiry };

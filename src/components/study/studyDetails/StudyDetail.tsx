@@ -32,14 +32,6 @@ const StudyDetail = () => {
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
 
-  // const {
-  //   data: studyCheckData,
-  //   error: studyCheckError,
-  //   isLoading: studyCheckIsLoading,
-  // } = useStudyParticipate(studyIdAsNumber);
-  // console.log('studyCheckError❗️', studyCheckError.r);
-  // console.log('studyCheckData', studyCheckData);
-
   useEffect(() => {
     (async () => {
       try {
