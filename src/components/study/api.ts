@@ -93,5 +93,45 @@ export const editStudy = async (
     url: `/studies/${studyId}`,
     data: editStudyData,
   });
+  return { data };
+};
+export const fetchChatData = async (chatRoomId: string) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/chat/${chatRoomId}`,
+  });
+  return data;
+};
+
+export const fetchAnnouncementData = async (studyId: number | undefined) => {
+  const { data } = await API({
+    method: 'get',
+    url: `/studies/${studyId}/announcement`,
+  });
+  return data;
+};
+
+export const createAnnouncement = async (
+  studyId: number | undefined,
+  contents: { contents: string },
+) => {
+  const { data } = await API({
+    method: 'post',
+    url: `studies/${studyId}/announcement`,
+    data: contents,
+  });
+  return data;
+};
+
+export const updateAnnouncement = async (
+  studyId: number | undefined,
+  announcementId: number,
+  contents: { contents: string },
+) => {
+  const { data } = await API({
+    method: 'patch',
+    url: `studies/${studyId}/announcement/${announcementId}`,
+    data: contents,
+  });
   return data;
 };

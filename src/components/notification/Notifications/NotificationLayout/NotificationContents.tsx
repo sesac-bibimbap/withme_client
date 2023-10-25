@@ -1,7 +1,7 @@
-import { NOTIFICATION_ACTIONS } from '../../../common/constants/enum/notification.enum';
-import NotificationAccept from './NotificationAccept';
-import NotificationReject from './NotificationReject';
-import NotificationRequest from './NotificationRequest';
+import { NOTIFICATION_ACTIONS } from '../../../../common/constants/enum/notification.enum';
+import NotificationAccept from '../NotificationContents/NotificationAccept';
+import NotificationReject from '../NotificationContents/NotificationReject';
+import NotificationRequest from '../NotificationContents/NotificationRequest';
 
 const NotificationContents = ({ item }: NotificationItemProps) => {
   const { action } = item;

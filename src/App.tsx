@@ -8,10 +8,12 @@ const App = () => {
 
   return (
     <>
-      {url === '/login' ||
+      {url === '/' ||
+      url === '/login' ||
       url === '/register' ||
       url === '/reset-password' ||
-      url === '/reset-password/check' ? (
+      url === '/reset-password/check' ||
+      url === '/profile' ? (
         routes
       ) : (
         <Layout>{routes}</Layout>

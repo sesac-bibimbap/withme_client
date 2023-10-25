@@ -1,6 +1,5 @@
 export const detailDate = (serverTime: Date) => {
   const milliSeconds = new Date().getTime() - new Date(serverTime).getTime();
-  // console.log(milliSeconds);
   const seconds = milliSeconds / 1000;
   const minutes = seconds / 60;
   const hours = minutes / 60;

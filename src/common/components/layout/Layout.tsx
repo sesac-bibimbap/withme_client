@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
+import { Typography } from 'antd';
+import { HomeOutlined, BookOutlined, BellOutlined } from '@ant-design/icons';
+import { ROUTES } from '../../constants';
+import { BlackBtn } from '..';
+import useFetchNotifications from '../../../components/notification/hooks/useFetchNotifications';
 import {
   layout_container,
   layout_sidebar_studylist,
-  // layout_header,
-  layout_sidebar_container,
   layout_sidebar_pageTabs_userInfo,
   layout_sidebar_studylist_circle,
   layout_sidebar_pageTabs_userInfo_circle,
@@ -11,87 +15,86 @@ import {
   layout_sidebar_pageTabs_wrap,
   layout_sidebar_pageTabs_link,
   layout_contents_container,
+  layout_profile,
+  layout_sidebar_icon,
 } from './Layout.style';
-import { BlackBtn } from '..';
-import { HomeOutlined, BookOutlined, BellOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
-import { ROUTES } from '../../constants';
-import { Link } from 'react-router-dom';
+import useSocketConnect from '../../hooks/useSocketConnect';
+import './Layout.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { data } = useSocketConnect();
+
   const { Text } = Typography;
+  useFetchNotifications(); // FIXME: 수정 필요할 수도 있음
+
+  const navigatedList = [
+    {
+      to: ROUTES.MAIN.PATH,
+      icon: <HomeOutlined style={layout_sidebar_icon} />,
+      text: 'MAIN_PAGE',
+    },
+    {
+      to: ROUTES.STUDY.PATH,
+      icon: <BookOutlined style={layout_sidebar_icon} />,
+      text: 'STUDY',
+    },
+    {
+      to: ROUTES.NOTIFICATION.PATH,
+      icon: <BellOutlined style={layout_sidebar_icon} />,
+      text: 'NOTIFICATION',
+    },
+  ];
 
   return (
     <>
-      <div style={layout_container}>
-        {/* <div style={layout_header}>header</div> */}
-        <div style={layout_sidebar_container}>
+      {
+        <div style={layout_container}>
           <div style={layout_sidebar_studylist}>
-            <Link to={'!#'}>
-              <div style={layout_sidebar_studylist_circle}></div>
-            </Link>
+            {data?.participatingStudies.map(({ id, name }, idx) => (
+              <Link
+                to={`${ROUTES.STUDY.PATH}/room/${id}`}
+                key={idx}
+                style={{ textDecoration: 'none' }}
+              >
+                <div style={layout_sidebar_studylist_circle}>
+                  {name?.substring(0, 2)}
+                </div>
+              </Link>
+            ))}
           </div>
+
           <div style={layout_sidebar_pageTabs_container}>
             <div style={layout_sidebar_pageTabs_wrap}>
               <div style={layout_sidebar_pageTabs_text}>
-                <Link
-                  to={ROUTES.MAIN.PATH}
-                  style={layout_sidebar_pageTabs_link}
-                >
-                  <p style={{ marginBottom: '20px' }}>
-                    <HomeOutlined
-                      style={{ fontSize: '22px', marginRight: '10px' }}
-                    />
-                    MAINPAGE
-                  </p>
-                </Link>
-                <Link
-                  to={ROUTES.STUDY.PATH}
-                  style={layout_sidebar_pageTabs_link}
-                >
-                  <p style={{ marginBottom: '20px' }}>
-                    <BookOutlined
-                      style={{ fontSize: '22px', marginRight: '10px' }}
-                    />
-                    STUDY
-                  </p>
-                </Link>
-                <Link
-                  to={ROUTES.NOTIFICATION.PATH}
-                  style={layout_sidebar_pageTabs_link}
-                >
-                  <p style={{ marginBottom: '20px' }}>
-                    <BellOutlined
-                      style={{ fontSize: '22px', marginRight: '10px' }}
-                    />
-                    NOTIFICATION
-                  </p>
-                </Link>
+                {navigatedList.map(({ to, icon, text }) => (
+                  <Link key={to} to={to} style={layout_sidebar_pageTabs_link}>
+                    <p style={{ marginBottom: '20px' }}>
+                      {icon}
+                      {text}
+                    </p>
+                  </Link>
+                ))}
               </div>
               <BlackBtn htmlType="button" path={ROUTES.CREATE_STUDY.PATH}>
                 스터디 만들기
               </BlackBtn>
             </div>
-            <Link to={'!#'} style={layout_sidebar_pageTabs_link}>
+            <Link to={'/profile'} style={layout_sidebar_pageTabs_link}>
               <div style={layout_sidebar_pageTabs_userInfo}>
-                <div style={layout_sidebar_pageTabs_userInfo_circle}></div>
-                <Text
-                  ellipsis
-                  style={{
-                    width: ' 130px',
-                    color: '#FFFFFF',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                  }}
-                >
-                  익명의 스터디원이다dkdkdk
+                <img
+                  src={data?.profile.profileImg}
+                  alt="프로필이미지"
+                  style={layout_sidebar_pageTabs_userInfo_circle}
+                />
+                <Text ellipsis style={layout_profile}>
+                  {data?.profile.nickname}
                 </Text>
               </div>
             </Link>
           </div>
+          <div style={layout_contents_container}>{children}</div>
         </div>
-        <div style={layout_contents_container}>{children}</div>
-      </div>
+      }
     </>
   );
 };

@@ -32,6 +32,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
     '@typescript-eslint/no-duplicate-enum-values': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
   settings: {
     react: { version: 'detect' }, // for react version warning

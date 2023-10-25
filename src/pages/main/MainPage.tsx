@@ -1,16 +1,31 @@
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../common/constants';
+import Profile from '../../components/main/profile/Profile';
+import BookmarkedStudies from '../../components/main/bookmarkedStudies/BookmarkedStudies';
+import Inquires from '../../components/main/inquries/Inquires';
+import StudiesSchedules from '../../components/main/studiesSchedules/StudiesSchedules';
+import OwnedStudies from '../../components/main/ownedStudies/OwnedStudies';
 import useSocketConnect from '../../common/hooks/useSocketConnect';
-import useFetchNotifications from '../../components/notification/hooks/useFetchNotifications';
+import {
+  mainPage_lower_side,
+  mainPage_lower_side_right,
+  mainPage_upper_side,
+} from './MainPage.style';
 
 const MainPage = () => {
-  useSocketConnect();
-  useFetchNotifications(); // FIXME: 수정 필요할 수도 있음
+  const { data } = useSocketConnect();
 
   return (
     <>
-      <Link to={ROUTES.LOGIN.PATH}>로그인으로 뿅</Link>
-      <Link to={ROUTES.NOTIFICATION.PATH}>알림으로</Link>
+      <div style={mainPage_upper_side}>
+        <BookmarkedStudies bookmarkedStudies={data?.bookmarkedStudies} />
+        <Profile user={data} />
+      </div>
+      <div style={mainPage_lower_side}>
+        <StudiesSchedules user={data} />
+        <div style={mainPage_lower_side_right}>
+          <Inquires inquiries={data?.inquiries} />
+          <OwnedStudies ownedStudies={data?.ownedStudies} />
+        </div>
+      </div>
     </>
   );
 };

@@ -2,6 +2,7 @@
 export { default as RegisterForm } from './auth/registerForm/RegisterForm';
 export { default as LoginForm } from './auth/loginForm/LoginForm';
 export { default as ResetPassword } from './auth/resetPassword/ResetPassword';
+export { default as Profile } from './auth/profile/Profile';
 
 // Notification
 export { default as Notifications } from './notification/Notifications/Notifications';
