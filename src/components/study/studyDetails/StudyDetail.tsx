@@ -49,7 +49,7 @@ const StudyDetail = () => {
         console.log(err);
         if (err instanceof AxiosError) {
           setStatusCode(err.response?.data.statusCode);
-          console.log(statusCode);
+          console.log(typeof err.response?.data.statusCode);
         }
       }
     })();
@@ -79,19 +79,16 @@ const StudyDetail = () => {
             </div>
             <Space>
               <BlackBtn path="/study">닫기</BlackBtn>
-              {
-                isStudyCheck ? (
-                  <YellowBtn
-                    onClick={handleParticipate}
-                    buttonStyle={studyDetail_yellowBtn}
-                  >
-                    스터디 신청하기
-                  </YellowBtn>
-                ) : null
-                // {
-                //   statusCode === 400 ? (<WhiteGrayBtn>신청중</WhiteGrayBtn>) : null
-                // }
-              }
+              {isStudyCheck ? (
+                <YellowBtn
+                  onClick={handleParticipate}
+                  buttonStyle={studyDetail_yellowBtn}
+                >
+                  스터디 신청하기
+                </YellowBtn>
+              ) : statusCode === 400 ? (
+                <WhiteGrayBtn>신청중</WhiteGrayBtn>
+              ) : null}
             </Space>
           </div>
           {isOpen && <StudyParticipatePop setIsOpen={setIsOpen} />}
