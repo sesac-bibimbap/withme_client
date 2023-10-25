@@ -92,22 +92,15 @@ const StudyBookmarkItem = ({
             ))}
           </div>
         </Button>
-        {disable ? (
-          <Button
-            style={studyBookmark_bookmarkBtn_bookmark}
-            onClick={handleButtonClick}
-            disabled
-          >
+        <Button
+          style={studyBookmark_bookmarkBtn_bookmark}
+          onClick={handleButtonClick}
+          disabled
+        >
+          {!disable ? (
             <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />
-          </Button>
-        ) : (
-          <Button
-            style={studyBookmark_bookmarkBtn_bookmark}
-            onClick={handleButtonClick}
-          >
-            <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />
-          </Button>
-        )}
+          ) : null}
+        </Button>
       </div>
     </>
   );
