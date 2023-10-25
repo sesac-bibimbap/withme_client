@@ -58,11 +58,24 @@ export const studyCheck = async (studyId: number | undefined) => {
   return data;
 };
 
-// 스터디 문의
+// 스터디 문의 목록 가져오기
 export const studyInquiry = async (studyId: number | undefined) => {
   const { data } = await API({
     method: 'get',
     url: `/studies/${studyId}/inquiry`,
+  });
+  return data;
+};
+
+//스터디 문의 생성
+export const createInquiry = async (
+  studyId: number | undefined,
+  createInquiryData: Inquiry,
+) => {
+  const { data } = await API({
+    method: 'post',
+    url: `/studies/${studyId}/inquiry`,
+    data: createInquiryData,
   });
   return data;
 };

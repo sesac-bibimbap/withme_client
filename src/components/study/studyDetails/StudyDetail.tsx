@@ -34,6 +34,8 @@ const StudyDetail = () => {
   // 스터디 신청 여부 확인
   const [isStudyCheck, setIsStudyCheck] = useState(null);
   const [statusCode, setStatusCode] = useState(0);
+  const [popSuccessTitle, setPopSuccessTitle] = useState('');
+  const [popSuccessText, setPopSuccessText] = useState('');
 
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
@@ -44,20 +46,15 @@ const StudyDetail = () => {
         const userStudyCheck = await studyCheck(studyIdAsNumber);
         setIsStudyCheck(userStudyCheck);
       } catch (err) {
-        console.log(err);
         if (err instanceof AxiosError) {
           setStatusCode(err.response?.data.statusCode);
-          console.log(typeof err.response?.data.statusCode);
         }
       }
     })();
   }, [statusCode]);
 
-  console.log(statusCode);
-
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
   if (!data) return;
-  console.log(data);
 
   const handleParticipate = () => {
     setIsOpen(true);
@@ -67,11 +64,6 @@ const StudyDetail = () => {
     setShowPopup(false);
     navigate(`/study/detail/${studyIdAsNumber}`);
   };
-
-  const popSuccessTitle = `스터디 신청이 완료되었습니다`;
-  const popSuccessText = `스터디장의 검토 이후
-  스터디 참여 여부는
-  알림을 통해 전달됩니다. `;
 
   return (
     <>
@@ -83,6 +75,7 @@ const StudyDetail = () => {
               <StudyDetailQuestion
                 setIsCreateInquiry={setIsCreateInquiry}
                 studyId={studyIdAsNumber}
+                statusCode={statusCode}
               />
             </div>
             <Space>
@@ -104,10 +97,18 @@ const StudyDetail = () => {
               studyIdAsNumber={studyIdAsNumber}
               setIsOpen={setIsOpen}
               setShowPopup={setShowPopup}
+              setPopSuccessTitle={setPopSuccessTitle}
+              setPopSuccessText={setPopSuccessText}
             />
           )}
           {isCreateInquiry && (
-            <CreateInquiryPop setIsCreateInquiry={setIsCreateInquiry} />
+            <CreateInquiryPop
+              setIsCreateInquiry={setIsCreateInquiry}
+              setShowPopup={setShowPopup}
+              studyIdAsNumber={studyIdAsNumber}
+              setPopSuccessTitle={setPopSuccessTitle}
+              setPopSuccessText={setPopSuccessText}
+            />
           )}
         </div>
       ) : null}
