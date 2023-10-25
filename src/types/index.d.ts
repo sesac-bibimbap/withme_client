@@ -68,10 +68,11 @@ type SelectRejectReason = {
   selectRejectReasonChange: (value: RejectReason) => void;
 };
 
-// type TechStack = {
-//   id: number;
-//   stackName?: string;
-// };
+type TechStack = {
+  id: number;
+  stackName?: string;
+  stackImg?: string;
+};
 
 type Recruit = {
   title?: string;

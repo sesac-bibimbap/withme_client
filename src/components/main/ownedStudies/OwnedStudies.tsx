@@ -21,7 +21,7 @@ const OwnedStudies = ({
         style={{
           margin: '0px 10px',
           display: 'flex',
-          height: '80%',
+          height: '75%',
           overflowX: 'auto',
         }}
       >

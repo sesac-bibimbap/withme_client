@@ -9,14 +9,26 @@ import { useParams } from 'react-router-dom';
 import StudyDetailQuestion from './studyDetailQuestion/StudyDetailQuestion';
 import { BlackBtn, YellowBtn } from '../../../common/components';
 import { Space } from 'antd';
+import { useState } from 'react';
+import StudyParticipatePop from './studyParticipate/StudyParticipatePop';
+import CreateInquiryPop from './createInquiry/CreateInquiryPop';
 
 const StudyDetail = () => {
+  // 스터디 신청 팝업
+  const [isOpen, setIsOpen] = useState(false);
+
+  // 문의 작성 팝업
+  const [isCreateInquiry, setIsCreateInquiry] = useState(false);
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
 
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
   if (!data) return;
   console.log(data);
+
+  const handleParticipate = () => {
+    setIsOpen(true);
+  };
 
   return (
     <>
@@ -25,15 +37,25 @@ const StudyDetail = () => {
           <div style={studyDetail_box}>
             <div>
               <StudyDetailContents studyDetailData={data} />
-              <StudyDetailQuestion studyId={studyIdAsNumber} />
+              <StudyDetailQuestion
+                setIsCreateInquiry={setIsCreateInquiry}
+                studyId={studyIdAsNumber}
+              />
             </div>
             <Space>
               <BlackBtn path="/study">닫기</BlackBtn>
-              <YellowBtn buttonStyle={studyDetail_yellowBtn}>
+              <YellowBtn
+                onClick={handleParticipate}
+                buttonStyle={studyDetail_yellowBtn}
+              >
                 스터디 신청하기
               </YellowBtn>
             </Space>
           </div>
+          {isOpen && <StudyParticipatePop setIsOpen={setIsOpen} />}
+          {isCreateInquiry && (
+            <CreateInquiryPop setIsCreateInquiry={setIsCreateInquiry} />
+          )}
         </div>
       ) : null}
     </>

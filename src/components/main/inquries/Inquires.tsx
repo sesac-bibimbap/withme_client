@@ -15,7 +15,7 @@ const Inquires = ({ inquiries }: { inquiries: Inquiry[] | undefined }) => {
       }}
     >
       <div style={{ fontWeight: 'bold', padding: '15px' }}>스터디문의</div>
-      <div style={{ overflowY: 'scroll' }}>
+      <div style={{ overflowY: 'scroll', marginBottom: '10px' }}>
         {inquiries?.map(
           ({ id, title, contents, createdAt, inquiryResponse }) => (
             <div

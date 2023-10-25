@@ -7,5 +7,5 @@ export const yellowBtn_button: CSSProperties = {
   borderColor: 'transparent',
   color: 'inherit',
   fontSize: '16px',
-  fontWeight: '500',
+  fontWeight: '600',
 };
