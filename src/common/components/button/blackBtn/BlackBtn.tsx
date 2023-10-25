@@ -26,7 +26,6 @@ const BlackBtn = ({
     ...blackBtn_button,
     ...buttonStyle,
   };
-  console.log('✔️  blackBtnCss:', blackBtnCss);
 
   const handleButtonClick = () => {
     if (setIsOpen) setIsOpen((prev) => !prev);

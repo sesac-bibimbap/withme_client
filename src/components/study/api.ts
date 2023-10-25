@@ -49,7 +49,7 @@ export const studyDetail = async (studyId: number | undefined) => {
   return data;
 };
 
-// 스터디장인지 아닌지 체크
+// 스터디 신청을 했는지 안했는지 여부 체크
 export const studyCheck = async (studyId: number | undefined) => {
   const { data } = await API({
     method: 'get',

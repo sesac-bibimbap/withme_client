@@ -49,7 +49,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       {
         <div style={layout_container}>
-          <div style={layout_sidebar_studylist}>
+          <div
+            className="layout_sidebar_studylist"
+            style={layout_sidebar_studylist}
+          >
             {data?.participatingStudies.map(({ id, name }, idx) => (
               <Link
                 to={`${ROUTES.STUDY.PATH}/room/${id}`}
