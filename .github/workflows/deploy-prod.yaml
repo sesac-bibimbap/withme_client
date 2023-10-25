@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: 18 # 필요한 Node.js 버전으로 변경
 
+      - name: 환경변수 설정
+      run: |
+        echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+
       - name: 의존성 설치
         run: yarn install
 

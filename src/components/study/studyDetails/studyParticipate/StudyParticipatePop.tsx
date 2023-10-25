@@ -21,17 +21,22 @@ import {
 } from './StudyParticipatePop.style';
 import { useProfileQuery } from '../../../auth/hooks/queries/useQueries';
 import { useStudyDetail } from '../../hooks/queries/useQueries';
+import { SetStateAction } from 'react';
 
 type popOpenType = {
-  setIsOpen?: (isOpen: React.SetStateAction<boolean>) => void;
+  setIsOpen?: (isOpen: SetStateAction<boolean>) => void;
   studyIdAsNumber?: number;
-  setShowPopup: (isOpen: React.SetStateAction<boolean>) => void;
+  setShowPopup: (isOpen: SetStateAction<boolean>) => void;
+  setPopSuccessTitle?: (title: SetStateAction<string>) => void;
+  setPopSuccessText?: (title: SetStateAction<string>) => void;
 };
 
 const StudyParticipatePop = ({
   setIsOpen,
   studyIdAsNumber,
   setShowPopup,
+  setPopSuccessTitle,
+  setPopSuccessText,
 }: popOpenType) => {
   useSocketConnect(); // FIXME: 수정 필요할 수도 있음
   useAddNewNotification();
@@ -60,6 +65,11 @@ const StudyParticipatePop = ({
     };
     socket.emit('studyAttendRequest', payload);
     if (setIsOpen) setIsOpen((prev) => !prev);
+    if (setPopSuccessTitle) setPopSuccessTitle(`스터디 신청이 완료되었습니다`);
+    if (setPopSuccessText)
+      setPopSuccessText(`스터디장의 검토 이후
+  스터디 참여 여부는
+  알림을 통해 전달됩니다.`);
     setShowPopup(true);
   };
 
