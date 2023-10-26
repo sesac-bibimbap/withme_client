@@ -1,7 +1,19 @@
 import { TechStackHashtag } from '../../../common/components';
+import dateFormatting from '../../../common/utils/dateFormatting';
+import {
+  profileList_container,
+  profileList_contents_contents,
+  profileList_contents_title,
+  profileList_contents_wrapper,
+  profileList_techStacks_tag,
+  profileList_techStacks_wrapper,
+  profile_container,
+  profile_profileImg,
+  profile_profileImg_container,
+  profile_title,
+} from './Profile.style';
 
 const MainProfile = ({ user }: { user: User | undefined }) => {
-  console.log('✔️  user:', user);
   const profileList = [
     {
       title: '이메일',
@@ -9,7 +21,7 @@ const MainProfile = ({ user }: { user: User | undefined }) => {
     },
     {
       title: '생성일',
-      contents: user?.createdAt?.toString(),
+      contents: dateFormatting(user?.createdAt),
     },
     {
       title: '개발경력',
@@ -30,55 +42,33 @@ const MainProfile = ({ user }: { user: User | undefined }) => {
   ];
 
   return (
-    <div
-      style={{
-        width: '59%',
-        background: '#222121',
-        borderRadius: '10px',
-        padding: '15px',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <div style={{ fontWeight: 'bold' }}>프로필</div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '20px',
-          fontSize: '22px',
-          fontWeight: 'bold',
-          margin: '30px 0px 20px',
-        }}
-      >
+    <div style={profile_container}>
+      <div style={profile_title}>프로필</div>
+      <div style={profile_profileImg_container}>
         <img
           src={user?.profile.profileImg}
-          alt=""
-          style={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '50px',
-            background: '#F6C54D',
-          }}
+          alt="프로필 이미지"
+          style={profile_profileImg}
         />
         <div>{user?.profile.nickname}</div>
       </div>
-      <div style={{ overflowY: 'scroll' }}>
+      <div style={profileList_container}>
         <div>
           {profileList.map(({ title, contents }, idx) => (
-            <div key={idx} style={{ display: 'flex' }}>
-              <div style={{ minWidth: '80px', margin: '10px 0px' }}>
-                {title}
-              </div>
-              <div style={{ margin: '10px 0px' }}>{contents}</div>
+            <div key={idx} style={profileList_contents_wrapper}>
+              <div style={profileList_contents_title}>{title}</div>
+              <div style={profileList_contents_contents}>{contents}</div>
             </div>
           ))}
         </div>
         <div>
-          <div style={{ margin: '10px 0px' }}>기술스택</div>
-          <div style={{ display: 'flex', gap: '5px', padding: '10px 5px' }}>
+          <div style={profileList_contents_contents}>기술스택</div>
+          <div style={profileList_techStacks_wrapper}>
             {user?.techStacks.map(({ id, stackName }) => (
-              <TechStackHashtag key={id} buttonStyle={{ height: '20px' }}>
+              <TechStackHashtag
+                key={id}
+                buttonStyle={profileList_techStacks_tag}
+              >
                 {stackName ?? ''}
               </TechStackHashtag>
             ))}

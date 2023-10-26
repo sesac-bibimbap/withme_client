@@ -48,27 +48,27 @@ const calendars = [
 ];
 
 const StudyRoomCalendar = () => {
-  const calendarRef = useRef<any>(null); // 참조를 생성합니다
+  // const calendarRef = useRef<any>(null); // 참조를 생성합니다
 
-  useEffect(() => {
-    // Toast UI Calendar의 참조를 가져옵니다
-    if (!calendarRef.current) return;
-    const calendarInstance = calendarRef.current.getInstance();
+  // useEffect(() => {
+  //   // Toast UI Calendar의 참조를 가져옵니다
+  //   if (!calendarRef.current) return;
+  //   const calendarInstance = calendarRef.current.getInstance();
 
-    // createEvents 메서드를 사용하여 이벤트를 추가합니다
-    calendarInstance.createEvents([
-      {
-        id: '1',
-        calendarId: '0',
-        title: '새로운 이벤트',
-        category: 'time',
-        dueDateClass: '',
-        start: '2023-10-24T10:00:00',
-        end: '2023-10-24T12:00:00',
-      },
-      // 기타 이벤트
-    ]);
-  }, []); // 빈 배열을 사용하여 한 번만 실행되도록 설
+  //   // createEvents 메서드를 사용하여 이벤트를 추가합니다
+  //   calendarInstance.createEvents([
+  //     {
+  //       id: '1',
+  //       calendarId: '0',
+  //       title: '새로운 이벤트',
+  //       category: 'time',
+  //       dueDateClass: '',
+  //       start: '2023-10-24T10:00:00',
+  //       end: '2023-10-24T12:00:00',
+  //     },
+  //     // 기타 이벤트
+  //   ]);
+  // }, []); // 빈 배열을 사용하여 한 번만 실행되도록 설
 
   return (
     <div
@@ -81,8 +81,8 @@ const StudyRoomCalendar = () => {
       }}
     >
       <Calendar
+        // ref={calendarRef}
         height="100%"
-        ref={calendarRef}
         view="month"
         theme={theme}
         month={month}

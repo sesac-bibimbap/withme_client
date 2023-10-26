@@ -4,6 +4,7 @@ import {
   chatMessage_contents_wrapper,
   chatMessage_profileImg,
 } from './StudyRoomChat.style';
+import dateFormatWithTime from '../../../../../common/utils/dateFormatWithTime';
 
 const StudyRoomChatMessage = ({ chatMessages }: any) => {
   console.log('✔️  chatMessages:', chatMessages);
@@ -34,7 +35,7 @@ const StudyRoomChatMessage = ({ chatMessages }: any) => {
                   <div style={chatMessage_contents_wrapper}>
                     <div style={{ fontSize: '14px' }}>{userNickname}</div>
                     <div style={{ fontSize: '11px', color: '#DADADA' }}>
-                      {createdAt}
+                      {dateFormatWithTime(createdAt)}
                     </div>
                   </div>
                   <div style={{ marginTop: '5px' }}>
