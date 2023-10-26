@@ -27,6 +27,7 @@ const NotificationPage = () => {
         알림 목록
       </div>
       <div
+        className="NotificationPage_scroll"
         style={{
           background: '#454343',
           height: '88%',

@@ -13,12 +13,15 @@
 .studySearchFilter_item_scroll::-webkit-scrollbar,
 .bookmarkedStudies_scroll::-webkit-scrollbar,
 .studyRoom_mainWrapper::-webkit-scrollbar,
-.studyRoomChatMessage::-webkit-scrollbar {
+.studyRoomChatMessage::-webkit-scrollbar,
+.profileList_container::-webkit-scrollbar,
+.Inquires_scroll::-webkit-scrollbar,
+.NotificationPage_scroll::-webkit-scrollbar {
   background-color: transparent;
   width: 7px;
 }
 
-.ownedStudies_scroll::-webkit-scrollbar {
+.ownedStudies_wrapper::-webkit-scrollbar {
   background-color: transparent;
   height: 7px;
 }
@@ -30,9 +33,12 @@
 .studyBookmark_item_scroll::-webkit-scrollbar-thumb,
 .studySearchFilter_item_scroll::-webkit-scrollbar-thumb,
 .bookmarkedStudies_scroll::-webkit-scrollbar-thumb,
-.ownedStudies_scroll::-webkit-scrollbar-thumb,
+.ownedStudies_wrapper::-webkit-scrollbar-thumb,
 .studyRoom_mainWrapper::-webkit-scrollbar-thumb,
-.studyRoomChatMessage::-webkit-scrollbar-thumb {
+.studyRoomChatMessage::-webkit-scrollbar-thumb,
+.profileList_container::-webkit-scrollbar-thumb,
+.Inquires_scroll::-webkit-scrollbar-thumb,
+.NotificationPage_scroll::-webkit-scrollbar-thumb {
   background-color: #9f9c9c;
   border-radius: 10px;
 }
