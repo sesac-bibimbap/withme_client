@@ -21,7 +21,7 @@ import {
 } from './StudyParticipatePop.style';
 import { useProfileQuery } from '../../../auth/hooks/queries/useQueries';
 import { useStudyDetail } from '../../hooks/queries/useQueries';
-import { SetStateAction } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 
 type popOpenType = {
   setIsOpen?: (isOpen: SetStateAction<boolean>) => void;
@@ -44,7 +44,19 @@ const StudyParticipatePop = ({
   const { data: userData } = useProfileQuery();
   // console.log('🦄  userData:', userData);
   const { data: studyData } = useStudyDetail(studyIdAsNumber);
-  console.log('🦄  studyData:', studyData);
+  const [error, setError] = useState<string>();
+
+  useEffect(() => {
+    const errorMsgResponse = (err: { statusCode: number; message: string }) => {
+      setError(err.message);
+      alert(err.message);
+    };
+    socket.on('attend-duplicate', errorMsgResponse);
+    return () => {
+      socket.off('attend-duplicate');
+    };
+  }, []);
+
   if (!studyData) return;
   const { owner, attendantsLimit, name, recruit, participants } = studyData;
 
@@ -64,6 +76,10 @@ const StudyParticipatePop = ({
       color: NOTIFICATION_COLORS.STUDY_REQUEST,
     };
     socket.emit('studyAttendRequest', payload);
+    if (error) {
+      alert(error);
+      return;
+    }
     if (setIsOpen) setIsOpen((prev) => !prev);
     if (setPopSuccessTitle) setPopSuccessTitle(`스터디 신청이 완료되었습니다`);
     if (setPopSuccessText)
