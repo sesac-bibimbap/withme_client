@@ -9,9 +9,10 @@ import useCacheInstance from '../../../common/utils/cache';
 
 type StudyBookmarkType = {
   bookmarkStyle?: CSSProperties;
+  disable?: boolean;
 };
 
-const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
+const StudyBookmark = ({ bookmarkStyle, disable }: StudyBookmarkType) => {
   const { cache } = useCacheInstance();
   const user: User | undefined = cache.getQueryData(['userProfile']);
   const bookmarkedStudies = user?.bookmarkedStudies || [];
@@ -35,6 +36,7 @@ const StudyBookmark = ({ bookmarkStyle }: StudyBookmarkType) => {
                 id={id}
                 teamName={name}
                 techStacks={techStacks}
+                disable={disable}
               />
             ))
           ) : (
