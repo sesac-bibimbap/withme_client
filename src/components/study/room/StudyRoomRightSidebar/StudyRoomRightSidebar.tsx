@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { CharcoalBtn } from '../../../../common/components';
 import useStudyState from '../../../../common/store/studyState';
 import StudyRoomChatRoomList from './StudyRoomChatRoomList/StudyRoomChatRoomList';
@@ -19,7 +20,12 @@ const StudyRoomRightSidebar = ({
 }) => {
   const { id } = data;
   const { isChat, chatClose } = useStudyState();
+  const navigate = useNavigate();
+
   const onClickCloseChat = () => chatClose();
+  const onClickStudyEdit = (id: number | undefined) => {
+    navigate(`/study/edit/${id}`);
+  };
 
   return (
     <>
@@ -42,13 +48,16 @@ const StudyRoomRightSidebar = ({
             </CharcoalBtn>
           ) : null}
           {/* TODO:  */}
-          <CharcoalBtn buttonStyle={studyRoom_rightSidebar_charcoal_btn}>
+          <CharcoalBtn
+            buttonStyle={studyRoom_rightSidebar_charcoal_btn}
+            onClick={() => onClickStudyEdit(id)}
+          >
             스터디수정
           </CharcoalBtn>
           {/* TODO:  */}
-          <CharcoalBtn buttonStyle={studyRoom_rightSidebar_charcoal_btn}>
+          {/* <CharcoalBtn buttonStyle={studyRoom_rightSidebar_charcoal_btn}>
             일정작성
-          </CharcoalBtn>
+          </CharcoalBtn> */}
         </div>
       </div>
     </>

@@ -1,13 +1,12 @@
 import { CSSProperties } from 'react';
 
-// FIXME: 타입 지정
 export const notification_collapse: (props: number) => CSSProperties = (
   props,
 ) => {
   return {
     marginBottom: `${props}px`,
     background: '#222121',
-    width: '70%',
+    width: '90%',
   };
 };
 

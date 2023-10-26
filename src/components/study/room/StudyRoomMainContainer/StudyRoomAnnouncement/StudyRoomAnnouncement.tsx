@@ -44,8 +44,7 @@ const StudyRoomAnnouncement = ({
     isCreate
       ? createAnnouncement(studyId, contents)
       : updateAnnouncement(studyId, announcementId, contents);
-    alert('정상적으로 반영되었습니다.');
-
+    cache.invalidateQueries(['fetchAnnouncementData']);
     setOpenInput(false);
   };
 
