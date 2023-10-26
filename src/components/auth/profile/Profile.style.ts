@@ -1,8 +1,6 @@
 import { CSSProperties } from 'react';
 
 export const profile_container: CSSProperties = {
-  // width: '500px',
-  // height: '600px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -95,6 +93,7 @@ export const profile_detail_title: CSSProperties = {
   fontWeight: 600,
   marginRight: '25px',
   fontSize: '16px',
+  minWidth: '59px',
 };
 
 export const profile_button_wrapper: CSSProperties = {

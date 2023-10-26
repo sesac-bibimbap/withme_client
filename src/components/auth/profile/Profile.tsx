@@ -24,6 +24,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import ProfileDetailItem from './profileDetailItem/ProfileDetailItem';
 import './Profile.css';
+import { ROUTES } from '../../../common/constants';
 
 const Profile = () => {
   const { data, isLoading } = useProfileQuery();
@@ -33,7 +34,7 @@ const Profile = () => {
     <>
       {!isLoading ? (
         <>
-          <div className="profile_detail_wrapper" style={profile_container}>
+          <div style={profile_container}>
             <div style={profile_wrapper}>
               <Button
                 style={profile_button_close}
@@ -48,9 +49,11 @@ const Profile = () => {
                   style={profile_image_circle}
                 />
               </div>
-              {/* </div> */}
               <div style={profile_text_name}>{data?.profile.nickname}</div>
-              <div style={profile_detail_wrapper}>
+              <div
+                className="profile_detail_wrapper"
+                style={profile_detail_wrapper}
+              >
                 <div style={profile_detail_grid}>
                   <ProfileDetailItem
                     title="인증메일"
@@ -88,7 +91,10 @@ const Profile = () => {
                 </div>
               </div>
               <div style={profile_button_wrapper}>
-                <CharcoalBtn buttonStyle={{ fontWeight: 600 }}>
+                <CharcoalBtn
+                  buttonStyle={{ fontWeight: 600 }}
+                  onClick={() => navigate(ROUTES.LOGIN.PATH)}
+                >
                   계정변경
                 </CharcoalBtn>
                 <YellowBtn buttonStyle={{ color: '#222121', fontWeight: 600 }}>
