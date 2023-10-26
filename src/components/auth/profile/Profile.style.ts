@@ -1,8 +1,6 @@
 import { CSSProperties } from 'react';
 
 export const profile_container: CSSProperties = {
-  // width: '500px',
-  // height: '600px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -28,12 +26,16 @@ export const profile_button_close: CSSProperties = {
   marginLeft: '430px',
 };
 
+export const profile_image_circleWrapper: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+};
+
 export const profile_image_circle: CSSProperties = {
-  width: '50px',
-  height: '50px',
-  border: '3px solid black',
-  borderRadius: '70px',
-  float: 'left',
+  backgroundColor: '#F6C54D',
+  width: '70px',
+  height: '70px',
+  borderRadius: '50px',
 };
 
 export const profile_text_name: CSSProperties = {
@@ -91,6 +93,7 @@ export const profile_detail_title: CSSProperties = {
   fontWeight: 600,
   marginRight: '25px',
   fontSize: '16px',
+  minWidth: '59px',
 };
 
 export const profile_button_wrapper: CSSProperties = {

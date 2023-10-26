@@ -1,4 +1,11 @@
 import { Link } from 'react-router-dom';
+import {
+  ownedStudies_container,
+  ownedStudies_contents,
+  ownedStudies_link,
+  ownedStudies_title,
+  ownedStudies_wrapper,
+} from './OwnedStudies.style';
 
 const OwnedStudies = ({
   ownedStudies,
@@ -6,53 +13,21 @@ const OwnedStudies = ({
   ownedStudies: Study[] | undefined;
 }) => {
   return (
-    <div
-      style={{
-        background: '#222121',
-        borderRadius: '10px',
-        height: '59%',
-        overflow: 'hidden',
-      }}
-    >
-      <div style={{ fontWeight: 'bold', padding: '15px', height: '10%' }}>
-        소유중인 스터디
-      </div>
-      <div
-        className="ownedStudies_scroll"
-        style={{
-          margin: '0px 10px',
-          display: 'flex',
-          height: '75%',
-          overflowX: 'auto',
-        }}
-      >
-        {ownedStudies?.map(({ id, name, recruit: { isRecruit } }) => (
-          <Link
-            to={`/study/room/${id}`}
-            key={id}
-            style={{
-              padding: '10px',
-              background: '#454343',
-              borderRadius: '10px',
-              marginRight: '10px',
-              color: '#ffffff',
-              textDecoration: 'none',
-              fontSize: '14px',
-              minWidth: '150px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div># {id}</div>
-                <div>{isRecruit ? '모집중' : '모집종료'}</div>
+    <div style={ownedStudies_container}>
+      <div style={ownedStudies_title}>소유중인 스터디</div>
+      <div style={ownedStudies_wrapper}>
+        {ownedStudies &&
+          ownedStudies.map(({ id, name, recruit: { isRecruit } }) => (
+            <Link to={`/study/detail/${id}`} key={id} style={ownedStudies_link}>
+              <div>
+                <div style={ownedStudies_contents}>
+                  <div># {id}</div>
+                  <div>{isRecruit ? '모집중' : '모집종료'}</div>
+                </div>
+                <div>{name}</div>
               </div>
-              <div>{name}</div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
       </div>
     </div>
   );

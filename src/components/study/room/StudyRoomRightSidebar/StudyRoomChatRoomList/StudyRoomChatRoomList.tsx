@@ -26,7 +26,7 @@ const StudyRoomChatRoomList = ({
   const [showCreateChatRoomForm, setShowCreateChatRoomForm] = useState(false);
   const [chatRoomList, setChatRoomList] = useState<ChatRoomList[]>([]);
   const inputRef = useRef<InputRef>(null);
-  const { chatOpen, setChatRoomId } = useStudyState();
+  const { chatOpen, setChatRoomId, setChatRoomTitle } = useStudyState();
 
   const onClickShowForm = () => setShowCreateChatRoomForm((prev) => !prev);
   const onSubmitCreateChatRoom = (e: FormEvent<HTMLFormElement>) => {
@@ -43,7 +43,8 @@ const StudyRoomChatRoomList = ({
     if (inputRef.current.input) inputRef.current.input.value = '';
     setShowCreateChatRoomForm((prev) => !prev);
   };
-  const onClickEnterChatRoom = (_id: string) => {
+  const onClickEnterChatRoom = (_id: string, chatRoomName: string) => {
+    setChatRoomTitle(chatRoomName);
     setChatRoomId(_id);
     chatOpen();
   };
@@ -120,7 +121,7 @@ const StudyRoomChatRoomList = ({
           <button
             style={studyRoomChatRoomList_chatRoom}
             key={userId}
-            onClick={() => onClickEnterChatRoom(_id)}
+            onClick={() => onClickEnterChatRoom(_id, chatRoomName)}
           >
             # {chatRoomName}
           </button>
