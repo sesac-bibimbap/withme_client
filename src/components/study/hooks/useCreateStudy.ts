@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { createStudy } from '../api';
 import { useState } from 'react';
-import useCacheInstance from '../../../common/utils/cache';
+// import useCacheInstance from '../../../common/utils/cache';
 
 const useCreateStudy = () => {
   const navigate = useNavigate();
