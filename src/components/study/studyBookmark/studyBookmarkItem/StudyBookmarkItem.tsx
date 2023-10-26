@@ -51,19 +51,6 @@ const StudyBookmarkItem = ({
             ),
           }),
         );
-      } else {
-        cache.setQueryData(['userProfile'], (oldData) =>
-          Object.assign({}, oldData, {
-            bookmarkedStudies: [
-              ...bookmarkedStudies,
-              {
-                id,
-                name: teamName,
-                techStacks: techStacks,
-              },
-            ],
-          }),
-        );
       }
 
       await studyBookMark(id);
@@ -95,7 +82,6 @@ const StudyBookmarkItem = ({
         <Button
           style={studyBookmark_bookmarkBtn_bookmark}
           onClick={handleButtonClick}
-          disabled
         >
           {!disable ? (
             <img src={bookmarkImage} alt="북마크" style={{ height: '22px' }} />

@@ -1,0 +1,4 @@
+.profile_detail_wrapper::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px;
+}

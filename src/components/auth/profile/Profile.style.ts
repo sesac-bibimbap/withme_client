@@ -28,12 +28,16 @@ export const profile_button_close: CSSProperties = {
   marginLeft: '430px',
 };
 
+export const profile_image_circleWrapper: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+};
+
 export const profile_image_circle: CSSProperties = {
-  width: '50px',
-  height: '50px',
-  border: '3px solid black',
-  borderRadius: '70px',
-  float: 'left',
+  backgroundColor: '#F6C54D',
+  width: '70px',
+  height: '70px',
+  borderRadius: '50px',
 };
 
 export const profile_text_name: CSSProperties = {
