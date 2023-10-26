@@ -18,7 +18,8 @@ const useCreateStudy = () => {
   const handleStudySubmit = async (createStudyData: CreateStudyType) => {
     try {
       const data = await createStudy(createStudyData);
-      setStudyId(data.recruit.id);
+      console.log('✔️  data:', data);
+      setStudyId(data.id);
       setShowPopup(true);
       // cache.invalidateQueries(['studyList']);
       console.log('전송 성공');

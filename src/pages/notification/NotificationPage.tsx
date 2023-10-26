@@ -7,12 +7,11 @@ const NotificationPage = () => {
   return (
     <div
       style={{
-        width: '96%',
-        height: '95%',
+        width: '97%',
+        height: '96%',
         background: '#222121',
         borderRadius: '15px',
         padding: '15px',
-        margin: '15px',
       }}
     >
       <div
