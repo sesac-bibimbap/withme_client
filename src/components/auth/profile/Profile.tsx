@@ -9,6 +9,7 @@ import {
   profile_detail_wrapper,
   profile_hashtag_wrapper,
   profile_image_circle,
+  profile_image_circleWrapper,
   profile_text_name,
   profile_wrapper,
 } from './Profile.style';
@@ -39,9 +40,20 @@ const Profile = () => {
                 icon={<CloseOutlined style={{ color: 'white' }} />}
                 onClick={() => navigate(-1)}
               />
-              <div style={profile_image_circle}>
-                <img src={data?.profile.profileImg} alt="userImg" />
+              {/* <div style={profile_image_circle}> */}
+              {/* <img
+                style={profile_image_circle}
+                src={data?.profile.profileImg}
+                alt="userImg"
+              /> */}
+              <div style={profile_image_circleWrapper}>
+                <img
+                  src={data?.profile.profileImg}
+                  alt="프로필이미지"
+                  style={profile_image_circle}
+                />
               </div>
+              {/* </div> */}
               <div style={profile_text_name}>{data?.profile.nickname}</div>
               <div style={profile_detail_wrapper}>
                 <div style={profile_detail_grid}>
