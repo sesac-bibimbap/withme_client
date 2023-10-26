@@ -4,3 +4,35 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* 스크롤바 배경 */
+.studyTechStackFilter_warp::-webkit-scrollbar,
+.studyDetailQuestion_container::-webkit-scrollbar,
+.studyList_item_background::-webkit-scrollbar,
+.studyBookmark_item_scroll::-webkit-scrollbar,
+.studySearchFilter_item_scroll::-webkit-scrollbar,
+.bookmarkedStudies_scroll::-webkit-scrollbar,
+.studyRoom_mainWrapper::-webkit-scrollbar,
+.studyRoomChatMessage::-webkit-scrollbar {
+  background-color: transparent;
+  width: 7px;
+}
+
+.ownedStudies_scroll::-webkit-scrollbar {
+  background-color: transparent;
+  height: 7px;
+}
+
+/* 스크롤바 막대 */
+.studyTechStackFilter_warp::-webkit-scrollbar-thumb,
+.studyDetailQuestion_container::-webkit-scrollbar-thumb,
+.studyList_item_background::-webkit-scrollbar-thumb,
+.studyBookmark_item_scroll::-webkit-scrollbar-thumb,
+.studySearchFilter_item_scroll::-webkit-scrollbar-thumb,
+.bookmarkedStudies_scroll::-webkit-scrollbar-thumb,
+.ownedStudies_scroll::-webkit-scrollbar-thumb,
+.studyRoom_mainWrapper::-webkit-scrollbar-thumb,
+.studyRoomChatMessage::-webkit-scrollbar-thumb {
+  background-color: #9f9c9c;
+  border-radius: 10px;
+}

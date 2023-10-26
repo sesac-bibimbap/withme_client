@@ -51,11 +51,11 @@ export const studyDetail = async (studyId: number | undefined) => {
 
 // 스터디 신청을 했는지 안했는지 여부 체크
 export const studyCheck = async (studyId: number | undefined) => {
-  const { data } = await API({
+  const { data, status } = await API({
     method: 'get',
     url: `/studies/attend/check/${studyId}`,
   });
-  return data;
+  return { data, status };
 };
 
 // 스터디 문의 목록 가져오기

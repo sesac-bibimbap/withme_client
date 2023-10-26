@@ -18,7 +18,10 @@ const StudyRoomMainContainer = ({ data }: StudyDataType) => {
       <h1 style={studyRoom_title}>
         {isChat ? `#${id} ${name}의 채팅방` : `#${id} ${name}의 스터디룸`}
       </h1>
-      <div style={studyRoom_mainWrapper(isChat)}>
+      <div
+        className="studyRoom_mainWrapper"
+        style={studyRoom_mainWrapper(isChat)}
+      >
         {isChat ? (
           <StudyRoomChat studyId={id} />
         ) : (

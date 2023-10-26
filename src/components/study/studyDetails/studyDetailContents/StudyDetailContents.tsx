@@ -22,6 +22,7 @@ const StudyDetailContents = ({
     startDate,
     endDate,
     techStacks,
+    participants,
   } = studyDetailData;
 
   return (
@@ -37,7 +38,9 @@ const StudyDetailContents = ({
         </div>
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>인원</h4>
-          <p>{attendantsLimit} / 10</p>
+          <p>
+            {participants.length} / {attendantsLimit}
+          </p>
         </div>
         <div style={studyDetail_contents}>
           <h4 style={studyDetail_contents_title}>진행기간</h4>

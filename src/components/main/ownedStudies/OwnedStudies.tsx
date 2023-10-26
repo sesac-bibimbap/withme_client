@@ -18,6 +18,7 @@ const OwnedStudies = ({
         소유중인 스터디
       </div>
       <div
+        className="ownedStudies_scroll"
         style={{
           margin: '0px 10px',
           display: 'flex',

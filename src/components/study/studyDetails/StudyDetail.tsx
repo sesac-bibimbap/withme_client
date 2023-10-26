@@ -33,8 +33,6 @@ const StudyDetail = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   // 스터디 신청 여부 확인
-  const [isStudyCheck, setIsStudyCheck] = useState(null);
-  // const [statusCode, setStatusCode] = useState(0);
   const [popSuccessTitle, setPopSuccessTitle] = useState('');
   const [popSuccessText, setPopSuccessText] = useState('');
   const { studyId } = useParams();
@@ -45,14 +43,15 @@ const StudyDetail = () => {
     (async () => {
       try {
         const userStudyCheck = await studyCheck(studyIdAsNumber);
-        setIsStudyCheck(userStudyCheck);
+        // 초기화를 하거나 200을 받거나
+        setDetailStatusCode(userStudyCheck.status);
       } catch (err) {
         if (err instanceof AxiosError) {
           setDetailStatusCode(err.response?.data.statusCode);
         }
       }
     })();
-  }, [setDetailStatusCode]);
+  }, [setDetailStatusCode, studyIdAsNumber]);
 
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
   if (!data) return;
@@ -71,7 +70,14 @@ const StudyDetail = () => {
       {!isLoading ? (
         <div style={studyDetail_container}>
           <div style={studyDetail_box}>
-            <div>
+            <div
+              style={{
+                width: '84%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
               <StudyDetailContents studyDetailData={data} />
               <StudyDetailQuestion
                 setIsCreateInquiry={setIsCreateInquiry}
@@ -81,7 +87,7 @@ const StudyDetail = () => {
             </div>
             <Space>
               <BlackBtn path="/study">닫기</BlackBtn>
-              {isStudyCheck ? (
+              {detailStatusCode === 200 ? (
                 <YellowBtn
                   onClick={handleParticipate}
                   buttonStyle={studyDetail_yellowBtn}

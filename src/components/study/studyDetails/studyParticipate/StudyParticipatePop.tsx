@@ -46,7 +46,7 @@ const StudyParticipatePop = ({
   const { data: studyData } = useStudyDetail(studyIdAsNumber);
   console.log('🦄  studyData:', studyData);
   if (!studyData) return;
-  const { owner, attendantsLimit, name, recruit } = studyData;
+  const { owner, attendantsLimit, name, recruit, participants } = studyData;
 
   // 스터디 신청칸 (임시 생성)
   const onSubmitStudyRequest = (contents: Contents) => {
@@ -80,7 +80,9 @@ const StudyParticipatePop = ({
         <h3 style={studyParticipatePop_title}>스터디 신청서 작성</h3>
         <div style={studyParticipatePop_info}>
           <p>스터디 명 : {name}</p>
-          <p>인원 : {attendantsLimit}</p>
+          <p>
+            인원 : {participants.length} / {attendantsLimit}
+          </p>
         </div>
         <Form onFinish={onSubmitStudyRequest} layout="vertical">
           <div style={studyParticipatePop_wrap}>

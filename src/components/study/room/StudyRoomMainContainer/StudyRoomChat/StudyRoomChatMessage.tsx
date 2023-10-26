@@ -17,7 +17,11 @@ const StudyRoomChatMessage = ({ chatMessages }: any) => {
   return (
     <>
       {chatMessages ? (
-        <div ref={scrollRef} style={{ height: '90%', overflowY: 'scroll' }}>
+        <div
+          className="studyRoomChatMessage"
+          ref={scrollRef}
+          style={{ height: '90%', overflowY: 'scroll' }}
+        >
           {chatMessages.map(
             ({
               userProfileImgUrl,

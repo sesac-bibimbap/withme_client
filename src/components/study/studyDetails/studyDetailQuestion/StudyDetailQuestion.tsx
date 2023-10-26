@@ -35,23 +35,25 @@ const StudyDetailQuestion = ({
 
   return (
     <>
-      <div style={studyDetailQuestion_inquiry_btn_wrap}>
-        <h4 style={studyDetailQuestion_title}>스터디 문의</h4>
-        {statusCode !== 409 ? (
-          <BlackBtn
-            setIsOpen={setIsCreateInquiry}
-            buttonStyle={studyDetailQuestion_inquiry_btn}
-          >
-            문의작성
-          </BlackBtn>
-        ) : null}
+      <div style={{ width: '84%' }}>
+        <div style={studyDetailQuestion_inquiry_btn_wrap}>
+          <h4 style={studyDetailQuestion_title}>스터디 문의</h4>
+          {statusCode !== 409 ? (
+            <BlackBtn
+              setIsOpen={setIsCreateInquiry}
+              buttonStyle={studyDetailQuestion_inquiry_btn}
+            >
+              문의작성
+            </BlackBtn>
+          ) : null}
+        </div>
       </div>
       <div
         className="studyDetailQuestion_container"
         style={studyDetailQuestion_container}
       >
         {!isLoading ? (
-          <Space direction="vertical" style={{ width: '645px' }}>
+          <Space direction="vertical" style={{ width: '630px' }}>
             {getItems?.map((item, idx) => (
               <Collapse
                 style={studyDetailQuestion_collapse}
