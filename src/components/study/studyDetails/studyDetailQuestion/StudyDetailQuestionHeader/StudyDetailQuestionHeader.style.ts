@@ -6,6 +6,7 @@ export const StudyDetailQuestionHeader_container: CSSProperties = {
   fontWeight: '600',
   fontSize: '16px',
   backgroundColor: '#222121',
+  // width: '645px',
 };
 
 export const StudyDetailQuestionHeader_id: CSSProperties = {

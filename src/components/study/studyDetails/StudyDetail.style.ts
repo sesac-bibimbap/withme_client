@@ -31,7 +31,3 @@ export const studyDetail_yellowBtn: CSSProperties = {
   fontSize: '16px',
   fontWeight: '600',
 };
-
-// export const studyDetail_contents_wrap:CSSProperties={
-
-// }

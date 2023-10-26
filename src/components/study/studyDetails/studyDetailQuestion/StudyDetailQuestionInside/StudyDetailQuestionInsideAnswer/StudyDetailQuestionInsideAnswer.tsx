@@ -2,7 +2,7 @@ import dateFormatting from '../../../../../../common/utils/dateFormatting';
 import {
   StudyDetailQuestionInsideAnswer_btn,
   StudyDetailQuestionInsideAnswer_container,
-  StudyDetailQuestionInsideAnswer_contents,
+  // StudyDetailQuestionInsideAnswer_contents,
   StudyDetailQuestionInsideAnswer_contents_wrap,
   StudyDetailQuestionInsideAnswer_textarea,
   StudyDetailQuestionInsideAnswer_title,
@@ -61,10 +61,9 @@ const StudyDetailQuestionInsideAnswer = ({
             <div style={StudyDetailQuestionInsideAnswer_contents_wrap}>
               <p style={StudyDetailQuestionInsideAnswer_title}>답변</p>
               <div>
+                {/* style={StudyDetailQuestionInsideAnswer_contents} */}
                 <p>{dateFormatting(createdAt)}</p>
-                <p style={StudyDetailQuestionInsideAnswer_contents}>
-                  {inquiryResponse.contents}
-                </p>
+                <p>{inquiryResponse.contents}</p>
               </div>
             </div>
           </div>

@@ -20,6 +20,7 @@ const BookmarkedStudies = ({
     >
       <div style={{ fontWeight: 'bold', padding: '15px' }}>북마크</div>
       <div
+        className="bookmarkedStudies_scroll"
         style={{
           padding: '0px 10px 10px 10px',
           overflowY: 'scroll',

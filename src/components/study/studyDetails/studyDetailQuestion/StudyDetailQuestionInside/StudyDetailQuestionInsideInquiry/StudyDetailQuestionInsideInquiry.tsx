@@ -4,7 +4,7 @@ import dateFormatting from '../../../../../../common/utils/dateFormatting';
 import {
   StudyDetailQuestionInsideInquiry_btn,
   StudyDetailQuestionInsideInquiry_container,
-  StudyDetailQuestionInsideInquiry_contents,
+  // StudyDetailQuestionInsideInquiry_contents,
   StudyDetailQuestionInsideInquiry_contents_wrap,
   StudyDetailQuestionInsideInquiry_title,
   StudyDetailQuestionInsideInquiry_wrap,
@@ -32,9 +32,8 @@ const StudyDetailQuestionInsideInquiry = ({
               <p style={StudyDetailQuestionInsideInquiry_title}>문의</p>
               <div>
                 <p>{dateFormatting(createdAt)}</p>
-                <p style={StudyDetailQuestionInsideInquiry_contents}>
-                  {contents}
-                </p>
+                {/* style={StudyDetailQuestionInsideInquiry_contents} */}
+                <p>{contents}</p>
               </div>
             </div>
           </div>
@@ -46,9 +45,8 @@ const StudyDetailQuestionInsideInquiry = ({
               <p style={StudyDetailQuestionInsideInquiry_title}>문의</p>
               <div>
                 <p>{dateFormatting(createdAt)}</p>
-                <p style={StudyDetailQuestionInsideInquiry_contents}>
-                  {contents}
-                </p>
+                {/* style={StudyDetailQuestionInsideInquiry_contents} */}
+                <p>{contents}</p>
               </div>
             </div>
             {detailStatusCode === 409 ? (

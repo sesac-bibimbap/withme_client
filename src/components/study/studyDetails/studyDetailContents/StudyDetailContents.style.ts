@@ -6,7 +6,7 @@ export const studyDetail_title: CSSProperties = {
 };
 
 export const studyDetail_wrap_contents: CSSProperties = {
-  width: '645px',
+  width: '84%',
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
