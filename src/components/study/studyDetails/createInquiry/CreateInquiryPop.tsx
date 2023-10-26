@@ -16,6 +16,7 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { createInquiry } from '../../api';
 import { SetStateAction } from 'react';
+import useCacheInstance from '../../../../common/utils/cache';
 
 type CreateInquiryType = {
   setIsCreateInquiry?: (isOpen: React.SetStateAction<boolean>) => void;
@@ -32,9 +33,11 @@ const CreateInquiryPop = ({
   setPopSuccessTitle,
   setPopSuccessText,
 }: CreateInquiryType) => {
+  const { cache } = useCacheInstance();
   const handleInquirySubmit = async (createInquiryData: Inquiry) => {
     try {
       await createInquiry(studyIdAsNumber, createInquiryData);
+      cache.invalidateQueries(['studyInquiry']);
       if (setPopSuccessTitle)
         setPopSuccessTitle(`스터디 문의가 등록 되었습니다`);
       if (setPopSuccessText)

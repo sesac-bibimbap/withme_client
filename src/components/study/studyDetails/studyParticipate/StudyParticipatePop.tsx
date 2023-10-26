@@ -44,9 +44,9 @@ const StudyParticipatePop = ({
   const { data: userData } = useProfileQuery();
   // console.log('🦄  userData:', userData);
   const { data: studyData } = useStudyDetail(studyIdAsNumber);
-  // console.log('🦄  studyData:', studyData);
+  console.log('🦄  studyData:', studyData);
   if (!studyData) return;
-  const { owner, attendantsLimit, name } = studyData;
+  const { owner, attendantsLimit, name, recruit } = studyData;
 
   // 스터디 신청칸 (임시 생성)
   const onSubmitStudyRequest = (contents: Contents) => {
@@ -110,6 +110,7 @@ const StudyParticipatePop = ({
                     },
                   }}
                   style={studyParticipatePop_textarea}
+                  placeholder={recruit.recruitPlaceholder}
                 />
               </Form.Item>
             </div>
