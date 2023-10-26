@@ -15,7 +15,7 @@ const OwnedStudies = ({
   return (
     <div style={ownedStudies_container}>
       <div style={ownedStudies_title}>소유중인 스터디</div>
-      <div style={ownedStudies_wrapper}>
+      <div className="ownedStudies_wrapper" style={ownedStudies_wrapper}>
         {ownedStudies &&
           ownedStudies.map(({ id, name, recruit: { isRecruit } }) => (
             <Link to={`/study/detail/${id}`} key={id} style={ownedStudies_link}>

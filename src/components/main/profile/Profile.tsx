@@ -52,7 +52,7 @@ const MainProfile = ({ user }: { user: User | undefined }) => {
         />
         <div>{user?.profile.nickname}</div>
       </div>
-      <div style={profileList_container}>
+      <div className="profileList_container" style={profileList_container}>
         <div>
           {profileList.map(({ title, contents }, idx) => (
             <div key={idx} style={profileList_contents_wrapper}>
