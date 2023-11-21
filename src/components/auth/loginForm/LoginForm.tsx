@@ -63,16 +63,16 @@ const LoginForm = () => {
           </Form.Item>
         </Form>
         <Space size={'large'}>
-          <Link to="!#">
+          <Link to={import.meta.env.VITE_NAVER_LOGIN_URL}>
             <img src={'/socialLogin/naver.svg'} alt="네이버" />
           </Link>
-          <Link to="!#">
+          <Link to={import.meta.env.VITE_KAKAO_LOGIN_URL}>
             <img src={'/socialLogin/kakao.svg'} alt="카카오" />
           </Link>
-          <Link to="!#">
+          <Link to={import.meta.env.VITE_GOOGLE_LOGIN_URL}>
             <img src={'/socialLogin/google.svg'} alt="구글" />
           </Link>
-          <Link to="!#">
+          <Link to={import.meta.env.VITE_GITHUB_LOGIN_URL}>
             <img src={'/socialLogin/github.svg'} alt="깃허브" />
           </Link>
         </Space>
