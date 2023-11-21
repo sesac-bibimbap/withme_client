@@ -20,6 +20,10 @@ jobs:
       - name: 환경변수 설정
         run: |
           echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+          echo "VITE_GOOGLE_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_KAKAO_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_NAVER_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_GITHUB_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
 
       - name: 의존성 설치
         run: yarn install
