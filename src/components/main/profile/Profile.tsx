@@ -54,7 +54,7 @@ const MainProfile = ({ user }: { user: User | undefined }) => {
       </div>
       <div className="profileList_container" style={profileList_container}>
         <div>
-          {profileList.map(({ title, contents }, idx) => (
+          {profileList?.map(({ title, contents }, idx) => (
             <div key={idx} style={profileList_contents_wrapper}>
               <div style={profileList_contents_title}>{title}</div>
               <div style={profileList_contents_contents}>{contents}</div>
@@ -64,7 +64,7 @@ const MainProfile = ({ user }: { user: User | undefined }) => {
         <div>
           <div style={profileList_contents_contents}>기술스택</div>
           <div style={profileList_techStacks_wrapper}>
-            {user?.techStacks.map(({ id, stackName }) => (
+            {user?.techStacks?.map(({ id, stackName }) => (
               <TechStackHashtag
                 key={id}
                 buttonStyle={profileList_techStacks_tag}

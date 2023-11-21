@@ -79,7 +79,7 @@ const Profile = () => {
                 <div style={profile_detail_hashtag}>
                   <p style={profile_detail_title}>기술스택</p>
                   <div style={profile_hashtag_wrapper}>
-                    {data?.techStacks.map((v) => (
+                    {data?.techStacks?.map((v) => (
                       <TechStackHashtag
                         key={v.id}
                         buttonStyle={profile_button_hashtag}
