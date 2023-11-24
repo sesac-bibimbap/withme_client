@@ -4,7 +4,7 @@ export const setProfile_container: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minWidth: '360px',
+  width: '100%',
 };
 
 export const setProfile_title: CSSProperties = {
@@ -12,80 +12,108 @@ export const setProfile_title: CSSProperties = {
   fontSize: '20px',
   color: 'white',
   marginBottom: '20px',
+  marginTop: '20px',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
+};
+
+export const setProfile_form: CSSProperties = {
+  width: '100%',
+  padding: '0px 50px',
+};
+
+export const setProfile_form_item: (marginBottom: number) => CSSProperties = (
+  marginBottom,
+) => {
+  return {
+    marginBottom: `${marginBottom}px`,
+  };
+};
+
+export const setProfile_nickname_input: CSSProperties = {
+  height: '45px',
+  borderRadius: '10px',
 };
 
 export const setProfile_comment: CSSProperties = {
   fontSize: '12px',
   color: 'white',
-  fontWeight: 'bold',
   textAlign: 'center',
   whiteSpace: 'pre-line',
-  marginBottom: '15px',
-  marginTop: '15px',
+  marginBottom: '20px',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
 export const setProfile_label: CSSProperties = {
-  color: 'white',
-  fontWeight: 'bold',
+  color: '#FFFFFF',
+  marginRight: '15px',
+  paddingTop: '30px',
+  height: '40px',
+  minWidth: '56px',
+  textAlign: 'left',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
+};
+export const setProfile_label_gender: CSSProperties = {
+  color: '#FFFFFF',
+  marginRight: '15px',
+  paddingTop: '30px',
+  height: '40px',
+  minWidth: '56px',
+  textAlign: 'left',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
 export const setProfile_warning: CSSProperties = {
-  fontSize: '10px',
+  fontSize: '12px',
   color: 'white',
-  fontWeight: 'bold',
-  textAlign: 'center',
-  marginLeft: '15px',
+  marginLeft: '75px',
+  marginBottom: '5px',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
-export const radio_wrapper: CSSProperties = {
+export const setProfile_gender: CSSProperties = {
   display: 'flex',
   flexDirection: 'row',
+  justifyContent: 'space-between',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
-export const setProfile_radioBtn: CSSProperties = {
-  width: '80px',
-  height: '30px',
-  textAlign: 'center',
-  border: 'none',
-  borderRadius: '4px',
-  margin: '0 15px 0 25px',
+export const setProfile_select: CSSProperties = {
+  height: '45px',
 };
 
-export const setProfile_setBtn: CSSProperties = {
-  width: '100px',
-  height: '40px',
-  backgroundColor: '#F6C54D',
-  borderColor: 'transparent',
-  color: 'inherit',
-  fontSize: '16px',
-  fontWeight: '500',
+export const setProfile_btn_form_item: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
-// .form_radio_btn input[type=radio] {
-//     display: none;
-// }
-// .form_radio_btn label {
-//     display: block;
-//     border-radius: 10px;
-//        margin: 0 auto;
-//     text-align: center;
-//     height: -webkit-fill-available;
-//     line-height: 45px;
-// }
+export const setProfile_btn_wrapper: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
+};
 
-// /* Checked */
-// .form_radio_btn input[type=radio]:checked + label {
-//     background: #184DA0;
-//     color: #fff;
-// }
+export const setProfile_charcoal_btn: CSSProperties = {
+  marginRight: '5px',
+  fontSize: '14px',
+};
 
-// /* Hover */
-// .form_radio_btn label:hover {
-//     color: #666;
-// }
-
-// /* Disabled */
-// .form_radio_btn input[type=radio] + label {
-//     background: #F9FAFC;
-//     color: #666;
-// }
+export const setProfile_yellow_btn: CSSProperties = {
+  marginLeft: '5px',
+  color: '#222121',
+  fontWeight: 'bold',
+};

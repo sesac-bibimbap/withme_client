@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   techStackFilter_afterClicking_bg,
   techStackFilter_beforeClicking_bg,
@@ -8,11 +8,16 @@ import { Button } from 'antd';
 type TechStackFilterType = {
   techStackName: string;
   techStackImage: string;
+  setSelectedTechStacks?: Dispatch<SetStateAction<{ id: number }[]>>;
+  id?: number;
+  // onClick?: () => void;
 };
 
 const TechStackFilter = ({
   techStackName,
   techStackImage,
+  setSelectedTechStacks, // onClick,
+  id,
 }: TechStackFilterType) => {
   const [isTechClicked, setTechClicked] = useState(false);
   const tackStackChoose = isTechClicked
@@ -20,7 +25,19 @@ const TechStackFilter = ({
     : techStackFilter_beforeClicking_bg;
 
   const handleButtonClick = () => {
-    setTechClicked(!isTechClicked);
+    if (setSelectedTechStacks && id && isTechClicked === false) {
+      setSelectedTechStacks((prev) => [
+        ...prev,
+        { id, stackName: techStackName },
+      ]);
+      setTechClicked(!isTechClicked);
+    } else if (setSelectedTechStacks && isTechClicked === true) {
+      setSelectedTechStacks((prev) => {
+        prev.pop();
+        return prev;
+      });
+      setTechClicked(!isTechClicked);
+    }
   };
 
   return (

@@ -106,8 +106,6 @@ type EmailTokenData = {
   token: string;
 };
 
-type navigatedDataType = { statusCode: number; email: string };
-
 type VerifyInputType = (count: number) => {
   prevInputRef: React.RefObject<HTMLInputElement> | null;
   currentInputRef: React.RefObject<HTMLInputElement> | null;

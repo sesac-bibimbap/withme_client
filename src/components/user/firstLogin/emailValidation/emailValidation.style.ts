@@ -1,41 +1,56 @@
 import { CSSProperties } from 'react';
 
-export const emailValidation_container: CSSProperties = {
+export const emailValidationCheck_container: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minWidth: '360px',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
-export const emailValidation_title: CSSProperties = {
+export const emailValidationCheck_title: CSSProperties = {
   fontWeight: 'bold',
   fontSize: '20px',
   color: 'white',
   marginBottom: '10px',
 };
 
-export const emailValidation_comment: CSSProperties = {
+export const emailValidationCheck_comment: CSSProperties = {
   fontSize: '12px',
   color: 'white',
-  fontWeight: 'bold',
   textAlign: 'center',
   whiteSpace: 'pre-line',
   marginBottom: '20px',
-  marginTop: '35px',
+  marginTop: '30px',
 };
 
-export const emailValidation_inputs: CSSProperties = {
+export const emailValidationCheck_retry_underline: CSSProperties = {
+  textDecoration: 'underline',
+  fontSize: '16px',
+  color: 'white',
+  backgroundColor: '#454343',
+  border: '0',
+  cursor: 'pointer',
+  marginBottom: '20px',
+};
+
+export const emailValidationCheck_inputs: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
   width: '350px',
 };
 
-export const EmailValidationBtn_wrapper: CSSProperties = {
+export const EmailValidationCheckBtn_wrapper: CSSProperties = {
   display: 'flex',
   justifyContent: 'center',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
-export const emailValidation_otherEmail: CSSProperties = {
+export const emailValidationCheck_otherEmail: CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

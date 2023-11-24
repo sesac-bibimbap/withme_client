@@ -1,132 +1,143 @@
-import { Form, Input, Select, Button } from 'antd';
+import { Form, Input, Select } from 'antd';
 import {
-  radio_wrapper,
+  setProfile_gender,
   setProfile_comment,
   setProfile_container,
   setProfile_label,
-  // setProfile_radioBtn,
-  setProfile_setBtn,
   setProfile_title,
   setProfile_warning,
+  setProfile_label_gender,
+  setProfile_form,
+  setProfile_form_item,
+  setProfile_nickname_input,
+  setProfile_btn_wrapper,
+  setProfile_yellow_btn,
+  setProfile_btn_form_item,
+  setProfile_select,
 } from './setProfile.style';
 import './setProfile.css';
+import { useEffect, useState } from 'react';
+import { API } from '../../../../common/utils/axiosInstance';
+import { AxiosResponse } from 'axios';
+import { YellowBtn } from '../../../../common/components';
 
-const SetProfile = () => {
+const SetProfile = ({ setCurrent, setProfileFormData }: any) => {
+  const [[job, devCareer], setResults] = useState<AxiosResponse[]>([]);
+
+  const createOptions = (category) => {
+    return category?.data.map(({ id, category }) => ({
+      value: id,
+      label: category,
+    }));
+  };
+
+  const onFinish = (values: any) => {
+    values.gender === 'true' ? (values.gender = true) : (values.gender = false);
+    values.job = job.data[values.job - 1];
+    values.devCareer = devCareer.data[values.devCareer - 1];
+    setProfileFormData(values);
+    setCurrent((prev: number) => prev + 1);
+  };
+
+  useEffect(() => {
+    (async () => {
+      const results = await Promise.all([
+        API({ url: '/categories/job' }),
+        API({ url: '/categories/devCareer' }),
+      ]);
+      setResults(results);
+    })();
+  }, []);
+
   return (
-    <>
-      <div style={setProfile_container}>
-        <div style={setProfile_title}>프로필 설정</div>
-        <Form>
-          <Form.Item>
-            <label htmlFor="닉네임" style={setProfile_label}>
-              닉네임:
-            </label>
-            <Input style={{ width: '200px', marginLeft: '15px' }} />
-          </Form.Item>
+    <div style={setProfile_container}>
+      <div style={setProfile_title}>프로필 설정</div>
+      <Form style={setProfile_form} onFinish={onFinish}>
+        <Form.Item
+          label={<div style={setProfile_label}>닉 네 임</div>}
+          rules={[{ required: true, message: '닉네임을 작성해주세요' }]}
+          name="nickname"
+          style={setProfile_form_item(10)}
+        >
+          <Input
+            style={setProfile_nickname_input}
+            placeholder="닉네임을 작성해주세요"
+          />
+        </Form.Item>
 
-          <Form.Item>
-            {/* <label htmlFor="성별" style={setProfile_label}>
-              성 별:
-            </label>
-            <Radio.Group>
-              <Radio.Button value="남성" style={setProfile_radioBtn}>
-                남성
-              </Radio.Button>
-              <Radio.Button value="여성" style={setProfile_radioBtn}>
-                여성
-              </Radio.Button>
-            </Radio.Group> */}
-            <div style={radio_wrapper}>
-              <label htmlFor="성별" className="form-label">
-                성 별:
-              </label>
-              <div className="form_toggle">
-                <div className="form_radio_btn">
-                  <input
-                    id="radio-1"
-                    type="radio"
-                    name="userSex"
-                    value="male"
-                    checked
-                  />
-                  <label htmlFor="radio-1">남성</label>
-                </div>
-
-                <div className="form_radio_btn">
-                  <input
-                    id="radio-2"
-                    type="radio"
-                    name="userSex"
-                    value="female"
-                  />
-                  <label htmlFor="radio-2">여성</label>
-                </div>
-              </div>
-            </div>
-            <div style={setProfile_warning}>
-              성별은 한번 선택시 변경할 수 없습니다.
-            </div>
-          </Form.Item>
-
-          <Form.Item>
-            <label htmlFor="주요직무" style={setProfile_label}>
-              주요직무:{' '}
-            </label>
-            <Select style={{ width: '200px' }}>
-              <Select.Option value="백엔드">백엔드</Select.Option>
-              <Select.Option value="프론트엔드">프론트엔드</Select.Option>
-              <Select.Option value="데브옵스">데브옵스</Select.Option>
-              <Select.Option value="UI/UX 디자이너">
-                UI/UX 디자이너
-              </Select.Option>
-              <Select.Option value="PM">PM</Select.Option>
-              <Select.Option value="IT 기획자">IT 기획자</Select.Option>
-              <Select.Option value="DBA">DBA</Select.Option>
-              <Select.Option value="시스템 개발자">시스템 개발자</Select.Option>
-              <Select.Option value="네트워크 엔지니어">
-                네트워크 엔지니어
-              </Select.Option>
-              <Select.Option value="인공지능">인공지능</Select.Option>
-            </Select>
-            <div style={setProfile_warning}>
-              재직 중이 아닌 경우 희망직군을 고르세요.
-            </div>
-          </Form.Item>
-
-          <Form.Item>
-            <label htmlFor="개발경력" style={setProfile_label}>
-              개발경력:{' '}
-            </label>
-            <Select style={{ width: '200px' }}>
-              <Select.Option value="신입(1년미만)">신입(1년미만)</Select.Option>
-              <Select.Option value="주니어(1~3년)">주니어(1~3년)</Select.Option>
-              <Select.Option value="미들(3~5년)">미들(3~5년)</Select.Option>
-              <Select.Option value="시니어(5년 이상)">
-                시니어(5년 이상)
-              </Select.Option>
-            </Select>
-          </Form.Item>
-
-          <Form.Item
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <div style={setProfile_comment}>
-              저장 이후에는 프로필에서 수정이 가능합니다.
+        <div style={setProfile_warning}>
+          성별은 한번 선택시 변경할 수 없습니다.
+        </div>
+        <Form.Item
+          label={<div style={setProfile_label_gender}>성 별</div>}
+          rules={[{ required: true, message: '성별을 선택해주세요.' }]}
+          name="gender"
+          style={setProfile_form_item(15)}
+        >
+          <div style={setProfile_gender}>
+            <div className="form_radio_btn">
+              <input id="radio-1" type="radio" name="userSex" value="true" />
+              <label htmlFor="radio-1">남성</label>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Button htmlType="submit" style={setProfile_setBtn}>
-                저장
-              </Button>
+            <div className="form_radio_btn">
+              <input id="radio-2" type="radio" name="userSex" value="false" />
+              <label htmlFor="radio-2">여성</label>
             </div>
-          </Form.Item>
-        </Form>
-      </div>
-    </>
+          </div>
+        </Form.Item>
+
+        <div style={setProfile_warning}>
+          재직 중이 아닌 경우 희망직군을 고르세요.
+        </div>
+        <Form.Item
+          label={<div style={setProfile_label}>주요직무</div>}
+          rules={[{ required: true, message: '주요직무를 선택해주세요' }]}
+          name="job"
+        >
+          <Select
+            style={setProfile_select}
+            options={createOptions(job)}
+            placeholder="주요직무를 선택해주세요"
+          />
+        </Form.Item>
+
+        <Form.Item
+          label={<div style={setProfile_label}>개발경력</div>}
+          rules={[{ required: true, message: '개발경력을 선택해주세요' }]}
+          name="devCareer"
+          style={setProfile_form_item(20)}
+        >
+          <Select
+            style={setProfile_select}
+            options={createOptions(devCareer)}
+            placeholder="개발경력을 선택해주세요"
+          />
+        </Form.Item>
+
+        <Form.Item style={setProfile_btn_form_item}>
+          <div style={setProfile_comment}>
+            저장 이후에는 프로필에서 수정이 가능합니다.
+          </div>
+          <div style={setProfile_btn_wrapper}>
+            {/* <CharcoalBtn
+              disabled={false}
+              buttonStyle={setProfile_charcoal_btn}
+              onClick={() => setCurrent((prev: number) => prev - 1)}
+            >
+              이전
+            </CharcoalBtn> */}
+            <YellowBtn
+              disabled={false}
+              htmlType="submit"
+              buttonStyle={setProfile_yellow_btn}
+            >
+              저장
+            </YellowBtn>
+          </div>
+        </Form.Item>
+      </Form>
+    </div>
   );
 };
 

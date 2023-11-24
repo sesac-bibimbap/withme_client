@@ -5,14 +5,19 @@ import {
   celebration_yellowBtn,
 } from './Celebration.style';
 import './Celebration.css';
+import { sendFirstLoginVerifyEmail } from '../../api';
 
-interface Iprops {
+interface IProps {
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Celebration = ({ current, setCurrent }: Iprops) => {
-  const onNextPage = () => setCurrent(current + 1);
+const Celebration = ({ current, setCurrent }: IProps) => {
+  const onNextPage = () => {
+    sendFirstLoginVerifyEmail();
+    setCurrent(current + 1);
+  };
+
   return (
     <>
       <div className="celebrate" style={celebration_wrapper}>

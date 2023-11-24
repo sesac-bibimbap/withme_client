@@ -27,7 +27,7 @@ const useVerifyInputOnChange = ({
   };
 
   useEffect(() => {
-    setEmailTokenData((prev) => ({ ...prev, token: emailToken.join('') }));
+    setEmailTokenData({ email: navigatedEmail, token: emailToken.join('') });
   }, [emailToken, navigatedEmail, setEmailToken]);
 
   return { emailTokenData, emailToken, onChangeInputValue };

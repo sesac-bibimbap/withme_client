@@ -1,15 +1,20 @@
 import { CSSProperties } from 'react';
 
 export const steps_container: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
+  width: '100%',
+  height: '100%',
+  // display: 'flex',
+  // flexDirection: 'column',
 };
 
 export const steps_box: CSSProperties = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: '10px',
+  width: '100%',
+  background: 'black',
+  borderRadius: '10px 10px 0px 0px',
+  zIndex: '100', // display: 'flex',
+  // justifyContent: 'center',
+  // alignItems: 'center',
+  // margin: '10px',
 };
 
 export const FirstLogin_YellowBtn: CSSProperties = {
@@ -33,8 +38,12 @@ export const firstLogin_CharcoalBtn: CSSProperties = {
 };
 
 export const contentStyle: React.CSSProperties = {
-  width: 'inherit',
-  height: 'inherit',
+  width: '100%',
+  height: '90%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
 };
 
 export const prev_btn: CSSProperties = {
@@ -51,4 +60,8 @@ export const next_btn: CSSProperties = {
 
 export const steps_wrapper: CSSProperties = {
   display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  height: '90%',
 };

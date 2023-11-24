@@ -5,6 +5,9 @@ export const setTechStack_container: CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   minWidth: '360px',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };
 
 export const setTechStack_wrapper: CSSProperties = {
@@ -16,31 +19,40 @@ export const setTechStack_wrapper: CSSProperties = {
   backgroundColor: '#000000',
   border: 'none',
   borderRadius: '10px',
+  padding: '10px',
 };
 
 export const setTechStack_title: CSSProperties = {
   fontWeight: 'bold',
   fontSize: '20px',
   color: 'white',
-  marginBottom: '20px',
+  marginBottom: '10px',
 };
 
 export const setTechStack_comment: CSSProperties = {
   fontSize: '12px',
   color: 'white',
-  fontWeight: 'bold',
   textAlign: 'center',
   whiteSpace: 'pre-line',
   marginBottom: '20px',
-  marginTop: '25px',
+  marginTop: '20px',
 };
 
-export const setTechStack_yellowBtn: CSSProperties = {
-  width: '100px',
-  height: '40px',
-  backgroundColor: '#F6C54D',
-  borderColor: 'transparent',
-  color: '#000000',
-  fontSize: '16px',
-  fontWeight: '500',
+export const setTechStack_charcoal_btn: CSSProperties = {
+  marginRight: '5px',
+  fontSize: '14px',
+};
+
+export const setTechStack_yellow_btn: CSSProperties = {
+  marginLeft: '5px',
+  color: '#222121',
+  fontWeight: 'bold',
+};
+
+export const setTechStack_btn_wrapper: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  animationName: 'SmoothAppear',
+  animationDuration: '2s',
+  animationTimingFunction: 'ease',
 };

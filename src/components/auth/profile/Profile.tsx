@@ -24,11 +24,21 @@ import { CloseOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import ProfileDetailItem from './profileDetailItem/ProfileDetailItem';
 import './Profile.css';
+import { logout } from '../api';
 import { ROUTES } from '../../../common/constants';
 
 const Profile = () => {
   const { data, isLoading } = useProfileQuery();
   const navigate = useNavigate();
+
+  const onClickLogout = async () => {
+    try {
+      await logout();
+      navigate(ROUTES.LOGIN.PATH);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -93,7 +103,7 @@ const Profile = () => {
               <div style={profile_button_wrapper}>
                 <CharcoalBtn
                   buttonStyle={{ fontWeight: 600 }}
-                  onClick={() => navigate(ROUTES.LOGIN.PATH)}
+                  onClick={onClickLogout}
                 >
                   계정변경
                 </CharcoalBtn>
