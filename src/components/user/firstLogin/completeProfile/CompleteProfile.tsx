@@ -15,7 +15,7 @@ import { TechStackHashtag, YellowBtn } from '../../../../common/components';
 import { API } from '../../../../common/utils/axiosInstance';
 import { ROUTES } from '../../../../common/constants';
 
-const CompleteProfile = ({ profileFormData, setCurrent }: any) => {
+const CompleteProfile = ({ profileFormData }: any) => {
   const navigate = useNavigate();
   const completeProfileContents = [
     {
@@ -38,7 +38,7 @@ const CompleteProfile = ({ profileFormData, setCurrent }: any) => {
       title: '기술스택',
       contents: (
         <div style={{ display: 'flex', gap: '5px' }}>
-          {profileFormData?.techStacks.map(({ stackName }) => (
+          {profileFormData?.techStacks.map(({ stackName }: any) => (
             <TechStackHashtag
               key={stackName}
               buttonStyle={{ borderRadius: '5px' }}

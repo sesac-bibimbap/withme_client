@@ -24,8 +24,8 @@ import { YellowBtn } from '../../../../common/components';
 const SetProfile = ({ setCurrent, setProfileFormData }: any) => {
   const [[job, devCareer], setResults] = useState<AxiosResponse[]>([]);
 
-  const createOptions = (category) => {
-    return category?.data.map(({ id, category }) => ({
+  const createOptions = (category: any) => {
+    return category?.data.map(({ id, category }: any) => ({
       value: id,
       label: category,
     }));
