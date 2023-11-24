@@ -25,7 +25,7 @@ import useVerifyInputRef from '../hooks/useVerifyInputRef';
 
 const EmailVerify = () => {
   const location = useLocation();
-  const navigatedData: navigatedDataType = location.state.data;
+  const navigatedData = location.state.data;
   const [navigatedEmail, setNavigatedEmail] = useState(navigatedData['email']);
   const [checkEmailToken, setCheckEmailToken] = useState('');
   const [retry, setRetry] = useState(false);

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { Steps } from 'antd';
 import Celebration from '../celebration/Celebration';
 import EmailValidation from '../emailValidation/EmailValidation';

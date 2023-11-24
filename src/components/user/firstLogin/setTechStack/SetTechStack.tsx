@@ -63,7 +63,7 @@ const SetTechStack = ({ setProfileFormData, setCurrent }: any) => {
           disabled={false}
           buttonStyle={setTechStack_yellow_btn}
           onClick={() => {
-            setProfileFormData((prev) => ({
+            setProfileFormData((prev: any) => ({
               ...prev,
               techStacks: selectedTechStacks,
             }));
