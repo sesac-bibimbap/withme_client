@@ -1,44 +1,44 @@
-# name: dev AWS S3 배포
+name: dev AWS S3 배포
 
-# on:
-#   push:
-#     branches: ['dev']
+on:
+  push:
+    branches: ['dev']
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout 코드
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout 코드
+        uses: actions/checkout@v2
 
-#       - name: Node 설치
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: 18 # 필요한 Node.js 버전으로 변경
+      - name: Node 설치
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18 # 필요한 Node.js 버전으로 변경
 
-#       - name: 환경변수 설정
-#         run: |
-#           echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
-#           echo "VITE_GOOGLE_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
-#           echo "VITE_KAKAO_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
-#           echo "VITE_NAVER_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
-#           echo "VITE_GITHUB_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+      - name: 환경변수 설정
+        run: |
+          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
+          echo "VITE_GOOGLE_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_KAKAO_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_NAVER_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
+          echo "VITE_GITHUB_LOGIN_URL=${{ secrets.VITE_BASE_URL }}/api/auth/google" >> .env
 
-#       - name: 의존성 설치
-#         run: yarn install
+      - name: 의존성 설치
+        run: yarn install
 
-#       - name: React 코드 빌드
-#         run: yarn build
+      - name: React 코드 빌드
+        run: yarn build
 
-#       - name: Deploy to AWS S3
-#         env:
-#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           AWS_DEFAULT_REGION: ap-northeast-2 # S3 버킷의 지역에 맞게 변경
-#         run: |
-#           aws s3 sync dist/ s3://withme-sesac-dev/ --acl public-read
-#           aws s3 website s3://withme-sesac-dev/ --index-document index.html --error-document 404.html
+      - name: Deploy to AWS S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ap-northeast-2 # S3 버킷의 지역에 맞게 변경
+        run: |
+          aws s3 sync dist/ s3://withme-sesac-dev/ --acl public-read
+          aws s3 website s3://withme-sesac-dev/ --index-document index.html --error-document 404.html
 
 # aws s3api put-bucket-acl --bucket withme-sesac-dev --grant-read 'uri="http://acs.amazonaws.com/groups/global/AllUsers"'
 # aws s3api put-bucket-acl --bucket withme-sesac-dev --acl public-read
