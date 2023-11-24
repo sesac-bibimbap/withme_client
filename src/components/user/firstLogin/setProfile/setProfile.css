@@ -3,17 +3,14 @@
   font-weight: bold;
 }
 
-.form_toggle {
+/* .form_toggle {
   display: flex;
   flex-direction: row;
-}
+} */
 
 .form_radio_btn {
-  width: 95px;
-  height: 30px;
-  border: none;
-  border-radius: 5px;
-  -webkit-margin-start: 24px;
+  height: 40px;
+  width: 48%;
 }
 
 .form_radio_btn input[type='radio'] {
@@ -22,7 +19,7 @@
 
 .form_radio_btn label {
   display: block;
-  width: 80px;
+  width: 100%;
   height: inherit;
   line-height: 35px;
   color: #000000;
@@ -35,6 +32,9 @@
   background: #f6c54d;
   color: #000000;
   font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-top: 5px;
 }
 
 /* Disabled */
@@ -42,4 +42,16 @@
   background: #f9fafc;
   color: #000000;
   font-weight: bold;
+  border-radius: 10px;
+  color: '#222121';
+  cursor: pointer;
+  padding-top: 5px;
+}
+
+.ant-form-item .ant-form-item-label > label::after {
+  display: none;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 10px;
 }

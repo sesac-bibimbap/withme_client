@@ -37,13 +37,10 @@ const LoginForm = () => {
           style={login_form_base}
           name="basic"
           initialValues={{ remember: true }}
-          onFinish={(data) => {
-            mutate(data);
-          }}
+          onFinish={(data) => mutate(data)}
           autoComplete="off"
         >
           <EmailInput />
-
           <PasswdInput inputname="password" />
 
           <Form.Item<AuthType>

@@ -84,8 +84,13 @@ const PAGE_LIST: Route[] = [
     ],
   },
   {
-    element: <FirstLoginPage />,
     path: ROUTES.FIRST_LOGIN.PATH,
+    children: [
+      {
+        element: <FirstLoginPage />,
+        path: ROUTES.FIRST_LOGIN.PATH,
+      },
+    ],
   },
   {
     element: <Profile />,

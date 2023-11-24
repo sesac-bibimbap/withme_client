@@ -15,7 +15,8 @@ const useLogin = () => {
 `;
   const handleLoginSubmit = async (loginData: AuthType) => {
     try {
-      await loginUser(loginData);
+      const { firstLogin } = await loginUser(loginData);
+      if (firstLogin) return navigate(ROUTES.FIRST_LOGIN.PATH);
       navigate(ROUTES.MAIN.PATH);
     } catch (err) {
       if (err instanceof AxiosError) {

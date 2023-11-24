@@ -9,9 +9,17 @@ import {
   mainPage_lower_side_right,
   mainPage_upper_side,
 } from './MainPage.style';
+import { useLayoutEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../common/constants';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const { data } = useSocketConnect();
+
+  useLayoutEffect(() => {
+    if (data?.emailVerified === 'NOT_YET') navigate(ROUTES.FIRST_LOGIN.PATH);
+  }, [data?.emailVerified, navigate]);
 
   return (
     <>

@@ -1,13 +1,13 @@
 import { Button } from 'antd';
 import { charcoalBtn_button } from './CharcoalBtn.style';
 import { CSSProperties } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { To, useNavigate } from 'react-router-dom';
 
 type charcoalBtnType = {
   children: string;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
   buttonStyle?: CSSProperties;
-  path?: string | undefined;
+  path?: To;
   disabled?: boolean;
   onClick?: () => Promise<void> | void;
 };

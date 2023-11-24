@@ -1,0 +1,62 @@
+.ant-steps {
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.ant-steps-item-tail {
+  display: none;
+}
+
+.ant-steps
+  .ant-steps-item-finish
+  .ant-steps-item-icon
+  > .ant-steps-icon
+  .ant-steps-icon-dot {
+  background: #f6c54d;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.ant-steps
+  .ant-steps-item-wait
+  .ant-steps-item-icon
+  > .ant-steps-icon
+  .ant-steps-icon-dot {
+  background: #f6c54d;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.ant-steps
+  .ant-steps-item-process
+  .ant-steps-item-icon
+  > .ant-steps-icon
+  .ant-steps-icon-dot {
+  background: #f6c54d;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.ant-steps
+  .ant-steps-item-process
+  .ant-steps-item-icon
+  > .ant-steps-icon
+  .ant-steps-icon-dot::after {
+  width: 0px;
+}
+
+.ant-steps.ant-steps-dot.ant-steps-small
+  .ant-steps-item-icon
+  .ant-steps-icon-dot::after {
+  width: 0px;
+}
+.ant-steps.ant-steps-dot .ant-steps-item-icon .ant-steps-icon-dot::after {
+  width: 0px;
+}
+
+.ant-steps.ant-steps-inline .ant-steps-item-container {
+  margin: 0px;
+}

@@ -1,5 +1,5 @@
 import { useState, Dispatch } from 'react';
-import { verifyToken } from '../api';
+import { verifyFirstLoginToken, verifyToken } from '../api';
 import {
   TOKEN_VERIFIED_TEXT,
   TOKEN_VERIFIED_TITLE,
@@ -10,8 +10,12 @@ import { AxiosError } from 'axios';
 
 const useVerifyToken = ({
   setCheckEmailToken,
+  firstLogin,
+  setCurrent,
 }: {
   setCheckEmailToken: Dispatch<React.SetStateAction<string>>;
+  firstLogin?: any;
+  setCurrent?: any;
 }) => {
   const navigate = useNavigate();
   const [popupTitle, setPopupTitle] = useState(``);
@@ -30,10 +34,16 @@ const useVerifyToken = ({
         setCheckEmailToken('6자리 모두 입력해주세요.');
         return;
       }
-      await verifyToken(emailTokenData);
-      setPopupTitle(TOKEN_VERIFIED_TITLE);
-      setPopupText(TOKEN_VERIFIED_TEXT);
-      setShowPopup(true);
+      if (firstLogin) {
+        await verifyFirstLoginToken(emailTokenData);
+        alert('이메일 인증에 성공했습니다.');
+        setCurrent((prev: number) => prev + 1);
+      } else {
+        await verifyToken(emailTokenData);
+        setPopupTitle(TOKEN_VERIFIED_TITLE);
+        setPopupText(TOKEN_VERIFIED_TEXT);
+        setShowPopup(true);
+      }
     } catch (err) {
       if (err instanceof AxiosError) {
         err.response?.data;

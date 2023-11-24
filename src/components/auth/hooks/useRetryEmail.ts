@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { emailCheck } from '../api';
+import { retrySendEmail } from '../api';
 
 const useRetryEmail = ({
   setNavigatedEmail,
@@ -8,11 +8,13 @@ const useRetryEmail = ({
   setNavigatedEmail: Dispatch<React.SetStateAction<string>>;
   setRetry: Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const onClickRetrySendEmail = async (navigatedData: navigatedDataType) => {
+  const onClickRetrySendEmail = async ({ email }: EmailData) => {
+    console.log('✔️  email:', email);
     try {
-      const data = await emailCheck(navigatedData);
-      setNavigatedEmail(data['email']);
+      await retrySendEmail({ email });
+      setNavigatedEmail(email);
       setRetry(true);
+      alert('이메일이 재전송 되었습니다.');
     } catch (err) {
       console.log(err);
     }
