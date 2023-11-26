@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Typography } from 'antd';
+import { Typography, notification } from 'antd';
 import { HomeOutlined, BookOutlined, BellOutlined } from '@ant-design/icons';
 import { ROUTES } from '../../constants';
 import { BlackBtn } from '..';
@@ -17,15 +17,18 @@ import {
   layout_contents_container,
   layout_profile,
   layout_sidebar_icon,
+  layout_sidebar_studylist_circle_id,
 } from './Layout.style';
 import useSocketConnect from '../../hooks/useSocketConnect';
 import './Layout.css';
+import useAddNewNotification from '../../../components/auth/hooks/useAddNewNotification';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { data } = useSocketConnect();
-
   const { Text } = Typography;
-  useFetchNotifications(); // FIXME: 수정 필요할 수도 있음
+  const [api, contextHolder] = notification.useNotification();
+  useAddNewNotification(api);
+  useFetchNotifications();
 
   const navigatedList = [
     {
@@ -47,6 +50,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
+      {contextHolder}
       {
         <div style={layout_container}>
           <div
@@ -60,7 +64,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 style={{ textDecoration: 'none' }}
               >
                 <div style={layout_sidebar_studylist_circle}>
-                  {name?.substring(0, 2)}
+                  <div style={layout_sidebar_studylist_circle_id}># {id}</div>
+                  <div>{name?.substring(0, 2)}</div>
                 </div>
               </Link>
             ))}

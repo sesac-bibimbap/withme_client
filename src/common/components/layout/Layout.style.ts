@@ -26,6 +26,10 @@ export const layout_sidebar_icon: CSSProperties = {
 
 // 스터디 목록 원
 export const layout_sidebar_studylist_circle: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
   backgroundColor: '#F6C54D',
   width: '50px',
   height: '50px',
@@ -33,10 +37,14 @@ export const layout_sidebar_studylist_circle: CSSProperties = {
   marginTop: '20px',
   color: '#222121',
   fontWeight: 'bolder',
-  fontSize: '20px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  fontSize: '16px',
+};
+
+export const layout_sidebar_studylist_circle_id: CSSProperties = {
+  fontSize: '12px',
+  fontWeight: '600',
+  width: '100%',
+  marginLeft: '20px',
 };
 
 // 페이지 탭들

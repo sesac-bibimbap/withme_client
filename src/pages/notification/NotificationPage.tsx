@@ -1,44 +1,18 @@
 import Notifications from '../../components/notification/Notifications/Notifications';
 import useAddNewNotification from '../../components/auth/hooks/useAddNewNotification';
+import {
+  notification_container,
+  notification_title,
+  notification_wrapper,
+} from './NotificationPage.style';
 
 const NotificationPage = () => {
   useAddNewNotification();
 
   return (
-    <div
-      style={{
-        width: '97%',
-        height: '96%',
-        background: '#222121',
-        borderRadius: '15px',
-        padding: '15px',
-      }}
-    >
-      <div
-        style={{
-          color: '#ffffff',
-          fontSize: '24px',
-          fontWeight: 'bold',
-          textAlign: 'center',
-          marginBottom: '30px',
-          marginTop: '15px',
-        }}
-      >
-        알림 목록
-      </div>
-      <div
-        className="NotificationPage_scroll"
-        style={{
-          background: '#454343',
-          height: '88%',
-          borderRadius: '15px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          paddingTop: '20px',
-          overflowY: 'scroll',
-        }}
-      >
+    <div style={notification_container}>
+      <div style={notification_title}>알림 목록</div>
+      <div className="NotificationPage_scroll" style={notification_wrapper}>
         <Notifications />
       </div>
     </div>

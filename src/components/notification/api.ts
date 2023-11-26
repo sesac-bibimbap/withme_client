@@ -8,3 +8,10 @@ export const acceptAttend = async (requestData: RequestData) => {
   });
   return data;
 };
+
+// export const check = async (id) => {
+//   const { data } = await API({
+//     method: 'get',
+//     url: `attend/check/${id}`
+//   })
+// }

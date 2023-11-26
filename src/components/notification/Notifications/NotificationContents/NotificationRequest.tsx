@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SelectRejectReason from './SelectRejectReason';
 import useRequestAccept from '../../hooks/useRequestAccept';
 import useRequestReject from '../../hooks/userRequestReject';
@@ -17,8 +17,6 @@ import {
   notification_request_detail_title,
   notification_request_title,
 } from '../Notifications.style';
-import { acceptAttend } from '../../api';
-import { AxiosError } from 'axios';
 
 const NotificationRequest = ({ item }: NotificationItemProps) => {
   const { contents, toUserId, fromUser, studyId, studyName } = item;
@@ -26,6 +24,7 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
   const [rejectTab, setRejectTab] = useState(false);
   const [rejectReason, setRejectReason] = useState<string>('');
   const [isChecked, setIsChecked] = useState<RequestData | boolean>();
+  console.log('✔️  setIsChecked:', setIsChecked);
 
   const requestData = { fromUser, toUserId, studyId, studyName };
   const rejectRequestData = { ...requestData, rejectReason };
@@ -37,18 +36,18 @@ const NotificationRequest = ({ item }: NotificationItemProps) => {
   const selectRejectReasonChange = ({ value }: RejectReason) =>
     setRejectReason(value);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const studyCheck = await acceptAttend(requestData);
-        setIsChecked(studyCheck);
-      } catch (err) {
-        if (err instanceof AxiosError) {
-          if (err.status === 422) setIsChecked(false);
-        }
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const studyCheck = await acceptAttend(requestData);
+  //       setIsChecked(studyCheck);
+  //     } catch (err) {
+  //       if (err instanceof AxiosError) {
+  //         if (err.status === 422) setIsChecked(false);
+  //       }
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <>
