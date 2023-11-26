@@ -6,8 +6,6 @@ import {
   NOTIFICATION_COMMENTS,
   NOTIFICATION_TYPES,
 } from '../../../../common/constants/enum/notification.enum';
-import useSocketConnect from '../../../../common/hooks/useSocketConnect';
-import useAddNewNotification from '../../../auth/hooks/useAddNewNotification';
 import { BlackBtn, YellowBtn } from '../../../../common/components';
 import { socket } from '../../../../common/utils/socket';
 import {
@@ -38,11 +36,7 @@ const StudyParticipatePop = ({
   setPopSuccessTitle,
   setPopSuccessText,
 }: popOpenType) => {
-  useSocketConnect(); // FIXME: 수정 필요할 수도 있음
-  useAddNewNotification();
-
   const { data: userData } = useProfileQuery();
-  // console.log('🦄  userData:', userData);
   const { data: studyData } = useStudyDetail(studyIdAsNumber);
   const [error, setError] = useState<string>();
 
