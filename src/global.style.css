@@ -16,7 +16,8 @@
 .studyRoomChatMessage::-webkit-scrollbar,
 .profileList_container::-webkit-scrollbar,
 .Inquires_scroll::-webkit-scrollbar,
-.NotificationPage_scroll::-webkit-scrollbar {
+.NotificationPage_scroll::-webkit-scrollbar,
+.completeProfile_wrapper_scroll::-webkit-scrollbar {
   background-color: transparent;
   width: 7px;
 }
@@ -38,7 +39,8 @@
 .studyRoomChatMessage::-webkit-scrollbar-thumb,
 .profileList_container::-webkit-scrollbar-thumb,
 .Inquires_scroll::-webkit-scrollbar-thumb,
-.NotificationPage_scroll::-webkit-scrollbar-thumb {
+.NotificationPage_scroll::-webkit-scrollbar-thumb,
+.completeProfile_wrapper_scroll::-webkit-scrollbar-thumb {
   background-color: #9f9c9c;
   border-radius: 10px;
 }

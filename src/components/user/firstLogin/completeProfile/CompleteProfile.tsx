@@ -9,13 +9,17 @@ import {
   completeProfile_comment_contents,
   completeProfile_btn_wrapper,
   completeProfile_contents_wrapper,
+  completeProfile_contents_techStacks,
+  completeProfile_contents_email,
+  completeProfile_contents_techStacks_wrapper,
 } from './CompleteProfile.style';
 import { useNavigate } from 'react-router-dom';
 import { TechStackHashtag, YellowBtn } from '../../../../common/components';
 import { API } from '../../../../common/utils/axiosInstance';
 import { ROUTES } from '../../../../common/constants';
+import '../../../../global.style.css';
 
-const CompleteProfile = ({ profileFormData }: any) => {
+const CompleteProfile = ({ navigatedEmail, profileFormData }: any) => {
   const navigate = useNavigate();
   const completeProfileContents = [
     {
@@ -34,21 +38,6 @@ const CompleteProfile = ({ profileFormData }: any) => {
       title: '개발경력',
       contents: profileFormData?.devCareer?.category,
     },
-    {
-      title: '기술스택',
-      contents: (
-        <div style={{ display: 'flex', gap: '5px' }}>
-          {profileFormData?.techStacks.map(({ stackName }: any) => (
-            <TechStackHashtag
-              key={stackName}
-              buttonStyle={{ borderRadius: '5px' }}
-            >
-              {stackName}
-            </TechStackHashtag>
-          ))}
-        </div>
-      ),
-    },
   ];
 
   const onClickUpdateProfile = () => {
@@ -60,7 +49,9 @@ const CompleteProfile = ({ profileFormData }: any) => {
           data: profileFormData,
         });
         alert('WithMe 가입을 환영합니다!');
-        navigate(ROUTES.MAIN.PATH);
+        setTimeout(() => {
+          navigate(ROUTES.MAIN.PATH);
+        }, 1000);
       })();
     } catch (error) {
       console.log(error);
@@ -71,18 +62,36 @@ const CompleteProfile = ({ profileFormData }: any) => {
     <>
       <div style={completeProfile_container}>
         <div style={completeProfile_title}>모든 설정이 완료되었습니다.</div>
-        <div style={completeProfile_wrapper}>
+        <div
+          className="completeProfile_wrapper_scroll"
+          style={completeProfile_wrapper}
+        >
           <div style={completeProfile_contents_wrapper}>
-            {/* <div style={completeProfile_contents}>
-              인증메일
-              {data?.emailVerified}
-            </div> */}
+            <div style={completeProfile_contents_email}>
+              <div style={completeProfile_comment_title}>인증메일</div>
+              <div style={completeProfile_comment_contents}>
+                {navigatedEmail}
+              </div>
+            </div>
             {completeProfileContents.map(({ title, contents }) => (
               <div key={title} style={completeProfile_contents}>
                 <div style={completeProfile_comment_title}>{title}</div>
                 <div style={completeProfile_comment_contents}>{contents}</div>
               </div>
             ))}
+            <div style={completeProfile_contents_techStacks}>
+              <div style={completeProfile_comment_title}>기술스택</div>
+              <div style={completeProfile_contents_techStacks_wrapper}>
+                {profileFormData?.techStacks?.map(({ stackName }: any) => (
+                  <TechStackHashtag
+                    key={stackName}
+                    buttonStyle={{ borderRadius: '5px' }}
+                  >
+                    {stackName}
+                  </TechStackHashtag>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
