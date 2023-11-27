@@ -1,4 +1,5 @@
 import { DatePicker, Form, Input, InputNumber, Space } from 'antd';
+import dayjs from 'dayjs';
 import { BlackBtn, Popup, YellowBtn } from '../../../common/components';
 import { useMutation } from '@tanstack/react-query';
 import StudyTechStackFilter from '../../study/createStudy/studyTechStackFilter/StudyTechStackFilter';
@@ -24,6 +25,7 @@ import { useParams } from 'react-router-dom';
 import { useStudyDetail } from '../hooks/queries/useQueries';
 
 const { RangePicker } = DatePicker;
+// const dateFormat = 'YYYY/MM/DD';
 
 const EditStudyForm = () => {
   const { studyId } = useParams();
@@ -40,6 +42,7 @@ const EditStudyForm = () => {
 
   const { mutate } = useMutation(handleStudySubmit);
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
+  console.log(data);
 
   if (!data) return;
   const {
@@ -47,13 +50,18 @@ const EditStudyForm = () => {
     recruit,
     content,
     attendantsLimit,
-    // startDate,
-    // endDate,
+    startDate,
+    endDate,
     // techStacks,
   } = data;
 
+  // 숫자만 입력 가능하게
   const handleOnlyNumber = (e: KeyboardEvent<HTMLInputElement>) => {
     e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+  };
+
+  const dateFormat = {
+    date: [dayjs(startDate, 'YYYY/MM/DD'), dayjs(endDate, 'YYYY/MM/DD')],
   };
 
   const formatEditStudyData = (data: CreateStudyDataType) => {
@@ -93,6 +101,7 @@ const EditStudyForm = () => {
               onFinish={(data) => {
                 formatEditStudyData(data);
               }}
+              initialValues={dateFormat}
             >
               <div style={editStudyFrom_wrap}>
                 <div style={editStudyFrom_form_btn_wrap}>
