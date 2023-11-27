@@ -33,7 +33,7 @@ const StudyListBoard = ({
 
   const { ref, inView } = useInView({
     threshold: 1.0,
-    skip: keyCount < 5,
+    // skip: keyCount < 5,
   });
 
   const [searchFilter, setSearchFilter] = useState('');
