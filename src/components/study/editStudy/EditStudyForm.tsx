@@ -23,11 +23,14 @@ import {
 import useEditStudy from '../hooks/useEditStudy';
 import { useParams } from 'react-router-dom';
 import { useStudyDetail } from '../hooks/queries/useQueries';
+import useCacheInstance from '../../../common/utils/cache';
 
 const { RangePicker } = DatePicker;
 // const dateFormat = 'YYYY/MM/DD';
 
 const EditStudyForm = () => {
+  const { cache } = useCacheInstance();
+  cache.invalidateQueries(['studyDetail']);
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
 
@@ -42,7 +45,7 @@ const EditStudyForm = () => {
 
   const { mutate } = useMutation(handleStudySubmit);
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
-  console.log(data);
+  // console.log(data);
 
   if (!data) return;
   const {
@@ -68,6 +71,7 @@ const EditStudyForm = () => {
     const { name, attendantsLimit, date, title, recruitPlaceholder, content } =
       data;
     const [startDate, endDate] = date.map((el: any) => el.$d);
+    console.log('수정하는 데이터', data);
 
     const techStacks: TechStack[] = [];
     techStackId.map((el) => {
@@ -118,10 +122,7 @@ const EditStudyForm = () => {
                         ]}
                         initialValue={name}
                       >
-                        <Input
-                          // placeholder="스터디 명을 입력하세요"
-                          style={editStudyForm_input_studyName}
-                        />
+                        <Input style={editStudyForm_input_studyName} />
                       </Form.Item>
                     </div>
                     <div style={editStudyFrom_input_wrap}>
