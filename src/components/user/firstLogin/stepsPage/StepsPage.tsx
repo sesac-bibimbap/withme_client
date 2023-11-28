@@ -7,22 +7,32 @@ import SetTechStack from '../setTechStack/SetTechStack';
 import CompleteProfile from '../completeProfile/CompleteProfile';
 import { contentStyle, steps_box, steps_container } from './steps.style';
 import './Steps.style.css';
-import { useQueryClient } from '@tanstack/react-query';
 
 const StepsPage = () => {
-  const cache = useQueryClient();
-  const user = cache.getQueryData<User>(['userProfile']);
   const [current, setCurrent] = useState(0);
   const [profileFormData, setProfileFormData] = useState();
+  const [navigatedEmail, setNavigatedEmail] = useState<string>('');
 
   const steps = [
     {
       title: '1',
-      content: <Celebration current={current} setCurrent={setCurrent} />,
+      content: (
+        <Celebration
+          current={current}
+          setCurrent={setCurrent}
+          setNavigatedEmail={setNavigatedEmail}
+        />
+      ),
     },
     {
       title: '2',
-      content: <EmailValidation setCurrent={setCurrent} user={user} />,
+      content: (
+        <EmailValidation
+          setCurrent={setCurrent}
+          navigatedEmail={navigatedEmail}
+          setNavigatedEmail={setNavigatedEmail}
+        />
+      ),
     },
     {
       title: '3',
@@ -46,7 +56,7 @@ const StepsPage = () => {
       title: '5',
       content: (
         <CompleteProfile
-          setCurrent={setCurrent}
+          navigatedEmail={navigatedEmail}
           profileFormData={profileFormData}
         />
       ),

@@ -10,11 +10,14 @@ import { sendFirstLoginVerifyEmail } from '../../api';
 interface IProps {
   current: number;
   setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  setNavigatedEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Celebration = ({ current, setCurrent }: IProps) => {
-  const onNextPage = () => {
-    sendFirstLoginVerifyEmail();
+const Celebration = ({ current, setCurrent, setNavigatedEmail }: IProps) => {
+  const onNextPage = async () => {
+    const data = await sendFirstLoginVerifyEmail();
+    const [email] = data.accepted;
+    setNavigatedEmail(email);
     setCurrent(current + 1);
   };
 
