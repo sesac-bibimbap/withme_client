@@ -33,6 +33,10 @@ const SetProfile = ({ setCurrent, setProfileFormData }: any) => {
 
   const onFinish = (values: any) => {
     values.gender === 'true' ? (values.gender = true) : (values.gender = false);
+    values.profile = {
+      nickname: values.nickname,
+      gender: values.gender,
+    };
     values.job = job.data[values.job - 1];
     values.devCareer = devCareer.data[values.devCareer - 1];
     setProfileFormData(values);

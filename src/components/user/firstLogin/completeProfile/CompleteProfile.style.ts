@@ -14,17 +14,27 @@ export const completeProfile_title: CSSProperties = {
   fontWeight: 'bold',
   fontSize: '20px',
   color: 'white',
-  marginBottom: '30px',
+  marginBottom: '15px',
 };
 
 export const completeProfile_wrapper: CSSProperties = {
   display: 'flex',
   width: '270px',
+  height: '260px',
   backgroundColor: '#000000',
   border: 'none',
   borderRadius: '10px',
   padding: '10px',
   overflowY: 'scroll',
+};
+
+export const completeProfile_contents_email: CSSProperties = {
+  display: 'flex',
+  fontSize: '12px',
+  color: 'white',
+  textAlign: 'center',
+  whiteSpace: 'pre-line',
+  padding: '0px 10px 10px 10px',
 };
 
 export const completeProfile_contents: CSSProperties = {
@@ -34,6 +44,20 @@ export const completeProfile_contents: CSSProperties = {
   textAlign: 'center',
   whiteSpace: 'pre-line',
   padding: '12px 10px 10px 10px',
+};
+
+export const completeProfile_contents_techStacks: CSSProperties = {
+  fontSize: '12px',
+  color: 'white',
+  whiteSpace: 'pre-line',
+  padding: '12px 10px 10px 10px',
+};
+
+export const completeProfile_contents_techStacks_wrapper: CSSProperties = {
+  display: 'flex',
+  gap: '5px',
+  marginTop: '15px',
+  flexWrap: 'wrap',
 };
 
 export const completeProfile_comment_contents: CSSProperties = {

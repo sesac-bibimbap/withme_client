@@ -9,8 +9,11 @@ import Spinner from '../../../../common/components/loading/Spinner';
 import EmailValidationCheck from './emailValidationCheck/EmailValidationCheck';
 import AnotherEmailValidate from './anotherEmailValidate/AnotherEmailValidate';
 
-const EmailValidation = ({ setCurrent, user }: any) => {
-  const [navigatedEmail, setNavigatedEmail] = useState(user?.email as string);
+const EmailValidation = ({
+  setCurrent,
+  navigatedEmail,
+  setNavigatedEmail,
+}: any) => {
   const [retry, setRetry] = useState(false);
   const [checkEmailToken, setCheckEmailToken] = useState('');
   const [anotherEmailValidate, setAnotherEmailValidate] = useState(false);
