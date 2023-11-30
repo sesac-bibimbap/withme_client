@@ -29,7 +29,7 @@ const StudyListBoard = ({
   const list = useRef<Study[]>([]);
 
   const keys = Object.keys(studyData?.data[0] || {});
-  const keyCount = keys.length;
+  // const keyCount = keys.length;
 
   const { ref, inView } = useInView({
     threshold: 1.0,
@@ -38,6 +38,7 @@ const StudyListBoard = ({
 
   const [searchFilter, setSearchFilter] = useState('');
 
+  //? 원본
   useEffect(() => {
     if (!inView) return;
     if (!studyData) return;
@@ -67,11 +68,14 @@ const StudyListBoard = ({
             {list.current.flat().length !== 0 ? (
               <>
                 {list.current.flat().map((study: Study, index: number) => (
-                  <MemoedStudyItem
-                    key={index}
-                    study={study}
-                    userData={userData}
-                  />
+                  <>
+                    <MemoedStudyItem
+                      key={index}
+                      study={study}
+                      userData={userData}
+                    />
+                    {index < 4 ? <div ref={ref}></div> : <div></div>}
+                  </>
                 ))}
               </>
             ) : (
