@@ -28,7 +28,7 @@ const StudyListBoard = ({
 }: studyListBoardType) => {
   const list = useRef<Study[]>([]);
 
-  const keys = Object.keys(studyData?.data[0] || {});
+  // const keys = Object.keys(studyData?.data[0] || {});
   // const keyCount = keys.length;
 
   const { ref, inView } = useInView({
@@ -38,7 +38,6 @@ const StudyListBoard = ({
 
   const [searchFilter, setSearchFilter] = useState('');
 
-  //? 원본
   useEffect(() => {
     if (!inView) return;
     if (!studyData) return;
