@@ -1,4 +1,5 @@
 import { DatePicker, Form, Input, InputNumber, Space } from 'antd';
+import dayjs from 'dayjs';
 import { BlackBtn, Popup, YellowBtn } from '../../../common/components';
 import { useMutation } from '@tanstack/react-query';
 import StudyTechStackFilter from '../../study/createStudy/studyTechStackFilter/StudyTechStackFilter';
@@ -22,10 +23,14 @@ import {
 import useEditStudy from '../hooks/useEditStudy';
 import { useParams } from 'react-router-dom';
 import { useStudyDetail } from '../hooks/queries/useQueries';
+import useCacheInstance from '../../../common/utils/cache';
 
 const { RangePicker } = DatePicker;
+// const dateFormat = 'YYYY/MM/DD';
 
 const EditStudyForm = () => {
+  const { cache } = useCacheInstance();
+  cache.invalidateQueries(['studyDetail']);
   const { studyId } = useParams();
   const studyIdAsNumber = Number(studyId);
 
@@ -40,6 +45,7 @@ const EditStudyForm = () => {
 
   const { mutate } = useMutation(handleStudySubmit);
   const { data, isLoading } = useStudyDetail(studyIdAsNumber);
+  // console.log(data);
 
   if (!data) return;
   const {
@@ -47,19 +53,25 @@ const EditStudyForm = () => {
     recruit,
     content,
     attendantsLimit,
-    // startDate,
-    // endDate,
+    startDate,
+    endDate,
     // techStacks,
   } = data;
 
+  // 숫자만 입력 가능하게
   const handleOnlyNumber = (e: KeyboardEvent<HTMLInputElement>) => {
     e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+  };
+
+  const dateFormat = {
+    date: [dayjs(startDate, 'YYYY/MM/DD'), dayjs(endDate, 'YYYY/MM/DD')],
   };
 
   const formatEditStudyData = (data: CreateStudyDataType) => {
     const { name, attendantsLimit, date, title, recruitPlaceholder, content } =
       data;
     const [startDate, endDate] = date.map((el: any) => el.$d);
+    console.log('수정하는 데이터', data);
 
     const techStacks: TechStack[] = [];
     techStackId.map((el) => {
@@ -93,6 +105,7 @@ const EditStudyForm = () => {
               onFinish={(data) => {
                 formatEditStudyData(data);
               }}
+              initialValues={dateFormat}
             >
               <div style={editStudyFrom_wrap}>
                 <div style={editStudyFrom_form_btn_wrap}>
@@ -109,10 +122,7 @@ const EditStudyForm = () => {
                         ]}
                         initialValue={name}
                       >
-                        <Input
-                          // placeholder="스터디 명을 입력하세요"
-                          style={editStudyForm_input_studyName}
-                        />
+                        <Input style={editStudyForm_input_studyName} />
                       </Form.Item>
                     </div>
                     <div style={editStudyFrom_input_wrap}>
