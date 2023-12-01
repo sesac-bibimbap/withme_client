@@ -39,6 +39,7 @@ const StudyDetail = () => {
   const studyIdAsNumber = Number(studyId);
   const { detailStatusCode, setDetailStatusCode } = useStudyDetailStore();
 
+  // 스터디 모집 상세 페이지에 들어오자마자 스터디 신청여부 코드 받기
   useEffect(() => {
     (async () => {
       try {
