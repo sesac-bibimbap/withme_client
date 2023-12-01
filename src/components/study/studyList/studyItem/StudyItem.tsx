@@ -27,7 +27,9 @@ const StudyItem = ({ study, userData }: studyItemType) => {
     attendantsLimit,
     content,
     techStacks,
+    endDate,
   } = study;
+
   const navigate = useNavigate();
   const userBookmarkedStudies = userData?.bookmarkedStudies;
   const loginUserBookmarkedStudy = userBookmarkedStudies?.find(
@@ -35,6 +37,11 @@ const StudyItem = ({ study, userData }: studyItemType) => {
       return userBookmarkedStudy.id === id;
     },
   );
+
+  const today = new Date();
+  const studyEnd =
+    endDate !== undefined && endDate !== null && new Date(endDate);
+  const isRecruiting = today < studyEnd;
 
   return (
     <>
@@ -68,8 +75,9 @@ const StudyItem = ({ study, userData }: studyItemType) => {
             isMarked={loginUserBookmarkedStudy ? true : false}
             teamName={name || undefined}
             techStacks={techStacks}
+            isRecruiting={isRecruiting}
           >
-            모집중
+            {isRecruiting ? `모집중` : `모집마감`}
           </MemoBookmarkBtn>
           <DarkGrayBtn
             buttonStyle={studyItem_button_detail}

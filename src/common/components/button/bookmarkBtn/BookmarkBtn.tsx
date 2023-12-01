@@ -15,6 +15,7 @@ type bookmarkBtnType = {
   isMarked?: boolean;
   teamName?: string;
   techStacks?: TechStack[];
+  isRecruiting?: boolean;
 };
 
 const BookmarkBtn = ({
@@ -24,10 +25,19 @@ const BookmarkBtn = ({
   isMarked,
   teamName,
   techStacks,
+  isRecruiting,
 }: bookmarkBtnType) => {
   const [bookmark, setBookmark] = useState(isMarked);
   const [bookmarkImage, setBookmarkImage] = useState<string>();
   const { cache } = useCacheInstance();
+
+  const recruitBackground = {
+    ...bookmarkBtn_button,
+    backgroundColor: '#2D2B2B',
+    color: '#898787',
+  };
+
+  const recruitCss = isRecruiting ? bookmarkBtn_button : recruitBackground;
 
   useEffect(() => {
     setBookmarkImage(
@@ -74,13 +84,15 @@ const BookmarkBtn = ({
     <>
       <div style={bookmarkBtn_container}>
         <Button
-          style={bookmarkBtn_button}
+          style={recruitCss}
           htmlType={htmlType}
           onClick={handleButtonClick}
         >
           {children}
         </Button>
-        <img src={bookmarkImage} alt="북마크" style={bookmarkBtn_bookmark} />
+        {isRecruiting && (
+          <img src={bookmarkImage} alt="북마크" style={bookmarkBtn_bookmark} />
+        )}
       </div>
     </>
   );
