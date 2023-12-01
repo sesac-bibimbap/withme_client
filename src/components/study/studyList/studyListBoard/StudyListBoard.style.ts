@@ -23,6 +23,6 @@ export const studyList_item_background: CSSProperties = {
   width: '94%',
   marginTop: '40px',
   padding: '15px 0px',
-  gap: '12px',
+  gap: '8px',
   overflowY: 'scroll',
 };
