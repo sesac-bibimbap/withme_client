@@ -55,6 +55,10 @@ const ROUTES = {
     PATH: '/profile',
     NAME: 'Profile',
   },
+  PROFILE_EDIT: {
+    PATH: '/profile/edit',
+    NAME: 'ProfileEdit',
+  },
 };
 
 export default ROUTES;
